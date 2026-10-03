@@ -20,10 +20,10 @@ from generator import upload
 
 class GeneratorTests(unittest.TestCase):
     def setUp(self):
-        self.c=character('이든'); self.cfg=config()
+        self.c=character('클로이'); self.cfg=config()
 
     def test_characters(self):
-        for name in ('이든','루다'): validate(character(name))
+        for name in ('클로이','클로다'): validate(character(name))
         bad=copy.deepcopy(self.c); del bad['basic']['height_cm']
         with self.assertRaises(ValueError): validate(bad)
 
@@ -70,9 +70,12 @@ class GeneratorTests(unittest.TestCase):
         self.assertIn(self.c['cover_letter']['promise'],docs['자기소개서.md'])
         self.assertIn(self.c['resume']['education'][0]['school'],docs['이력서.md'])
         self.assertIn(self.c['role']['title'],docs['profile.md'])
-        self.assertIn('프리패스모빌리티(가상)',docs['이력서.md'])
-        self.assertIn('작성 전',render(character('루다'))['이력서.md'])
-        self.assertIn('작성 전',render(character('루다'))['자기소개서.md'])
+        self.assertNotIn('프리패스모빌리티(가상)',docs['이력서.md'])
+        empty=copy.deepcopy(character('클로다')); empty['resume']={}; empty['cover_letter']={}
+        self.assertIn('작성 전',render(empty)['이력서.md'])
+        self.assertIn('작성 전',render(empty)['자기소개서.md'])
+        self.assertIn('프리패스모빌리티 ·',render(character('클로다'))['이력서.md'])   # 실제 회사에는 (가상)을 붙이지 않는다
+        self.assertNotIn('프리패스모빌리티(가상)',render(character('클로다'))['이력서.md'])
 
     def test_plan(self):
         self.assertEqual(len(plan(self.c,'turnaround',1,self.cfg)['jobs']),4)
@@ -80,12 +83,12 @@ class GeneratorTests(unittest.TestCase):
         self.assertEqual(len(plan(self.c,'outfits',1,self.cfg)['jobs']),5)
         p=plan(self.c,'all',1,self.cfg)
         self.assertEqual(len(p['sheet_files']),8)
-        self.assertEqual(p['duo_partner'],'루다')
+        self.assertEqual(p['duo_partner'],'클로다')
         self.assertFalse(next(x for x in p['jobs'] if x['id']=='back')['face_check'])
         with self.assertRaises(ValueError): plan(self.c,'face',99,self.cfg)
 
     def test_dry_run(self):
-        result=subprocess.run([sys.executable,'generator/gen.py','--char','이든','--set','turnaround','--n','2','--dry-run'],cwd=ROOT,capture_output=True,encoding='utf-8')
+        result=subprocess.run([sys.executable,'generator/gen.py','--char','클로이','--set','turnaround','--n','2','--dry-run'],cwd=ROOT,capture_output=True,encoding='utf-8')
         self.assertEqual(result.returncode,0,result.stderr)
         data=json.loads(result.stdout); self.assertEqual(len(data['jobs']),8)
         self.assertNotEqual(data['jobs'][0]['seeds'],data['jobs'][1]['seeds'])
@@ -95,9 +98,10 @@ class GeneratorTests(unittest.TestCase):
         page,records=compose([source]*3,self.c,boxes=[[150,50,351,951]]*3)
         self.assertEqual(page.size,(2400,3200))
         for r in records:
-            self.assertEqual(r['destination_box'][1],730)
+            h=self.c['basic']['height_cm']*10   # 1cm = 10px (casting v2)
+            self.assertEqual(r['destination_box'][1],2410-h)
             self.assertEqual(r['destination_box'][3],2410)
-            self.assertEqual(r['body_height_px'],1680)
+            self.assertEqual(r['body_height_px'],h)
         with tempfile.TemporaryDirectory() as folder:
             data=validate_casting(self.c,folder)
             self.assertEqual(data['grid_top_y_px'],410)
@@ -120,12 +124,12 @@ class GeneratorTests(unittest.TestCase):
         backend=Mock(); backend.generate.return_value=Image.new('RGB',(64,64),'white')
         checker=Mock(); checker.reference.return_value=np.zeros((32,32,3),np.uint8)
         checker.check.side_effect=[{'passed':False,'face_count':0},{'passed':True,'face_count':1}]
-        with tempfile.TemporaryDirectory() as folder,patch('generator.face_check.FaceChecker',return_value=checker),patch('generator.gen.digest',return_value='test-hash'):
+        with tempfile.TemporaryDirectory() as folder,patch('generator.face_check.FaceChecker',return_value=checker),patch('generator.face_check.read_image',return_value=np.zeros((32,32,3),np.uint8)),patch('generator.gen.digest',return_value='test-hash'):
             cfg['output_root']=folder; cfg['models']={}
             accepted,failures=run(self.c,p,cfg,backend)
             self.assertFalse(failures); self.assertEqual(backend.generate.call_count,2)
             self.assertIn(('expressions','neutral',0),accepted)
-            manifest=json.loads((Path(folder)/'이든/expressions/manifest.json').read_text(encoding='utf-8'))
+            manifest=json.loads((Path(folder)/'클로이/expressions/manifest.json').read_text(encoding='utf-8'))
             self.assertEqual([r['seed'] for r in manifest['runs'][0]['attempts']],[10301,10302])
 
     def test_retry_exhausted(self):
@@ -135,7 +139,7 @@ class GeneratorTests(unittest.TestCase):
         backend=Mock(); backend.generate.return_value=Image.new('RGB',(64,64),'white')
         checker=Mock(); checker.reference.return_value=np.zeros((32,32,3),np.uint8)
         checker.check.return_value={'passed':False,'face_count':0}
-        with tempfile.TemporaryDirectory() as folder,patch('generator.face_check.FaceChecker',return_value=checker),patch('generator.gen.digest',return_value='test-hash'):
+        with tempfile.TemporaryDirectory() as folder,patch('generator.face_check.FaceChecker',return_value=checker),patch('generator.face_check.read_image',return_value=np.zeros((32,32,3),np.uint8)),patch('generator.gen.digest',return_value='test-hash'):
             cfg['output_root']=folder; cfg['models']={}
             accepted,failures=run(self.c,p,cfg,backend)
             self.assertFalse(accepted); self.assertEqual(len(failures),1)
@@ -144,7 +148,7 @@ class GeneratorTests(unittest.TestCase):
     def test_existing_sheet_preflight(self):
         with tempfile.TemporaryDirectory() as folder:
             cfg=copy.deepcopy(self.cfg); cfg['output_root']=folder
-            target=Path(folder)/'이든/세트/03-턴어라운드.png'
+            target=Path(folder)/'클로이/세트/03-턴어라운드.png'
             target.parent.mkdir(parents=True); target.write_bytes(b'original')
             problems=preflight(plan(self.c,'turnaround',1,cfg),cfg)
             self.assertTrue(any('기존 시트 보존' in x for x in problems))
@@ -159,7 +163,7 @@ class GeneratorTests(unittest.TestCase):
     def test_upload_skip_and_cwd(self):
         with tempfile.TemporaryDirectory() as folder:
             root=Path(folder); (root/'old.png').write_bytes(b'old'); (root/'new.png').write_bytes(b'new')
-            with patch.object(sys,'argv',['upload','--char','이든','--set','세트','--dir',folder]),patch.object(upload,'folder',return_value='folder'),patch.object(upload,'children',return_value=[{'name':'old.png'}]),patch.object(upload,'call',return_value={'id':'uploaded'}) as call:
+            with patch.object(sys,'argv',['upload','--char','클로이','--set','세트','--dir',folder]),patch.object(upload,'folder',return_value='folder'),patch.object(upload,'children',return_value=[{'name':'old.png'}]),patch.object(upload,'call',return_value={'id':'uploaded'}) as call:
                 upload.main()
                 self.assertEqual(call.call_count,1)
                 self.assertEqual(call.call_args.kwargs['cwd'],root.resolve())
@@ -173,7 +177,7 @@ class GeneratorTests(unittest.TestCase):
         backend.pipe.return_value.images=['result']
         backend.pipe.tokenizer=lambda text,**kw:{'input_ids':[1,2]}
         backend.pipe.tokenizer_2=backend.pipe.tokenizer
-        result=backend.generate_duo(self.c,character('루다'),['left','right'],10301)
+        result=backend.generate_duo(self.c,character('클로다'),['left','right'],10301)
         self.assertEqual(result,'result')
         args=backend.pipe.call_args.kwargs
         masks=args['cross_attention_kwargs']['ip_adapter_masks']

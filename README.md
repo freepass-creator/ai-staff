@@ -1,6 +1,6 @@
 # ai-staff — AI 직원 가상 인물
 
-회사 AI 직원(경영지원실장 **이든**, 프리패스 AI 매니저 **루다**(초안))을 «살아 있는 가상 인물 한 명»으로 정의하고, 같은 사람의 이미지를 다시 뽑을 수 있게 하는 저장소.
+회사 AI 직원(경영지원실장 **클로이**, 프리패스 AI 매니저 **클로다**)을 «살아 있는 가상 인물 한 명»으로 정의하고, 같은 사람의 이미지를 다시 뽑을 수 있게 하는 저장소.
 
 - 규칙: [AGENTS.md](AGENTS.md)
 - 캐릭터 정본: `characters/<이름>/character.json`
@@ -10,12 +10,12 @@
 Python의 기존 설치 패키지를 사용합니다. 설치·다운로드는 하지 않습니다. PowerShell에서 실행 정책 때문에 `npm`이 막히면 `npm.cmd`를 사용하세요.
 
 ```powershell
-npm.cmd run gen -- --char 이든 --set turnaround --dry-run
-npm.cmd run gen -- --char 이든 --set turnaround
-npm.cmd run gen -- --char 이든 --set all --n 2 --dry-run
-npm.cmd run docs -- --char 이든
-npm.cmd run check -- --char 이든 --dir D:/large/ai-staff/이든/세트
-npm.cmd run check -- characters/이든/refs/front.png D:/large/ai-staff/이든/turnaround/front-10301.png
+npm.cmd run gen -- --char 클로이 --set turnaround --dry-run
+npm.cmd run gen -- --char 클로이 --set turnaround
+npm.cmd run gen -- --char 클로이 --set all --n 2 --dry-run
+npm.cmd run docs -- --char 클로이
+npm.cmd run check -- --char 클로이 --dir D:/large/ai-staff/클로이/세트
+npm.cmd run check -- characters/클로이/refs/front.png D:/large/ai-staff/클로이/turnaround/front-10301.png
 npm.cmd test
 ```
 
@@ -43,7 +43,7 @@ npm.cmd test
 casting-v2 템플릿을 재사용합니다. 2400×3200, 1cm=10px, 200cm y=410, 바닥 y=2410입니다. 배경을 제거하지 않고 사람 경계 사각형을 크롭한 뒤 키×10px로 리사이즈합니다. 단색 배경 차이로 경계를 추정한 경우 해부학적 정수리·발바닥 오차는 **미측정(null)**, 검토 필요로 기록합니다. 지정한 경계의 픽셀 높이·바닥 오차와 구별합니다. 템플릿의 수치 검증기는 casting.json만 검사하므로 실제 이미지 해부학적 정확성까지 PASS로 간주하지 않습니다.
 
 ```powershell
-python generator/compose_scale.py --char 이든 --images front.png side.png back.png --output out/scale.png --boxes boxes.json
+python generator/compose_scale.py --char 클로이 --images front.png side.png back.png --output out/scale.png --boxes boxes.json
 node templates/casting-v2/validate-casting-v2.mjs out/casting.json
 ```
 
@@ -52,8 +52,8 @@ node templates/casting-v2/validate-casting-v2.mjs out/casting.json
 ### Drive 업로드
 
 ```powershell
-npm.cmd run upload -- --char 이든 --set 세트 --dir D:/large/ai-staff/이든/세트 --dry-run
-npm.cmd run upload -- --char 이든 --set 세트 --dir D:/large/ai-staff/이든/세트
+npm.cmd run upload -- --char 클로이 --set 세트 --dir D:/large/ai-staff/클로이/세트 --dry-run
+npm.cmd run upload -- --char 클로이 --set 세트 --dir D:/large/ai-staff/클로이/세트
 ```
 
 실행하면 지정된 Drive 부모 아래 `<이름>/<세트>`를 찾거나 만들고 이름이 같은 파일은 건너뜁니다. 페이지네이션을 끝까지 읽고, 업로드는 파일의 폴더를 cwd로 하여 파일명만 전달합니다. 이 개발 작업에서는 실제 업로드를 실행하지 않았습니다.
@@ -62,8 +62,8 @@ npm.cmd run upload -- --char 이든 --set 세트 --dir D:/large/ai-staff/이든/
 
 CREATE_NEW_JUSTIFIED(2026-10-03): `reuse:check` 후보인 character.json과 casting-v2 PNG·JSON·검증기를 재사용했습니다. 기존 자산에는 정본 기반 SDXL 실행·얼굴 검사·문서 재생성·Drive 래퍼가 없어 generator 모듈과 단위 시험을 새로 만들었습니다. academy READY는 사용자 전달 ai-core #382를 따릅니다. 대상 가지는 `feat/generator`이며 Git 명령은 실행하지 않았습니다.
 
-현재 루다의 `refs/front.png`가 없어 루다 이미지 생성과 `duo/all` 실제 실행은 HOLD입니다. dry-run·문서 생성은 가능합니다. 대표프로필의 예문은 한글 시스템 글꼴에 작은 기울기·기준선 변화를 주어 필기 느낌으로 조판합니다. 합 시트는 키 비교와 두 사람이 함께 보고서를 보는 업무 장면으로 구성합니다. 업무 장면은 좌우 IP-Adapter 마스크로 두 얼굴을 구분하고 검출 얼굴이 정확히 두 개이며 각각 해당 정본 기준을 넘을 때만 사용합니다. 실제 GPU 생성·시각 품질·Drive 업로드는 미검증입니다. Claude 독립 검토는 `CLAUDE_PROCESS_FAILED`로 UNAVAILABLE이며 통과로 계산하지 않았습니다.
+현재 클로다의 `refs/front.png`가 없어 클로다 이미지 생성과 `duo/all` 실제 실행은 HOLD입니다. dry-run·문서 생성은 가능합니다. 대표프로필의 예문은 한글 시스템 글꼴에 작은 기울기·기준선 변화를 주어 필기 느낌으로 조판합니다. 합 시트는 키 비교와 두 사람이 함께 보고서를 보는 업무 장면으로 구성합니다. 업무 장면은 좌우 IP-Adapter 마스크로 두 얼굴을 구분하고 검출 얼굴이 정확히 두 개이며 각각 해당 정본 기준을 넘을 때만 사용합니다. 실제 GPU 생성·시각 품질·Drive 업로드는 미검증입니다. Claude 독립 검토는 `CLAUDE_PROCESS_FAILED`로 UNAVAILABLE이며 통과로 계산하지 않았습니다.
 
-`next_start_here`: `npm.cmd test` → dry-run의 blockers 확인 → 루다 기준 얼굴 준비 → 별도 output_root에서 GPU 생성 → geometry/face manifest와 실제 시트 검토. 커밋·푸시·PR은 사용자가 진행합니다.
+`next_start_here`: `npm.cmd test` → dry-run의 blockers 확인 → 클로다 기준 얼굴 준비 → 별도 output_root에서 GPU 생성 → geometry/face manifest와 실제 시트 검토. 커밋·푸시·PR은 사용자가 진행합니다.
 
 > CREATE_NEW_JUSTIFIED(2026-10-03): ai-core `reuse:check "AI 직원 가상 캐릭터 프로젝트" --root C:\dev` — 일반 capability(프로젝트 빌드·테스트)만 나오고 캐릭터·이미지 자산 프로젝트는 없음. ai-ops 에 시험판 생성기 `scripts/이미지/캐릭터-생성.py` 가 있으나 캐릭터 정본·문서·검사가 없어 새 저장소로 분리(대표 결정).

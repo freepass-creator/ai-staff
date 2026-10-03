@@ -5,6 +5,7 @@ try:
 except ImportError:
     from common import ROOT, character
 
+REAL={'프리패스모빌리티','팀제이피케이'}   # 실제 회사 — 가상 표기를 붙이지 않는다
 LABELS={'education':'학력','career':'경력','certificates':'자격','skills':'역량','growth':'성장 과정','how_i_work':'일하는 방식','promise':'약속'}
 
 def value(v):
@@ -22,7 +23,7 @@ def render(c):
             entries=[dict(x) for x in entries]
             field='school' if key=='education' else 'company'
             for x in entries:
-                if x.get(field) and '가상' not in x[field]: x[field]+='(가상)'
+                if x.get(field) and '가상' not in x[field] and x[field] not in REAL: x[field]+='(가상)'
         resume+=f'## {LABELS[key]}\n\n{value(entries)}\n\n'
     cover=header+' 자기소개서\n\n'
     for key in ('growth','how_i_work','promise'):
