@@ -1,0 +1,35 @@
+{
+  "models": {
+    "checkpoint": "D:/large/image-workshop/models/checkpoints/realvisxl-v5/RealVisXL_V5.0_fp16.safetensors",
+    "config": "D:/large/image-workshop/models/configs/sdxl",
+    "vae": "D:/large/image-workshop/models/vae/sdxl-fp16-fix",
+    "ip_adapter": "D:/large/image-workshop/models/ip-adapter/h94-IP-Adapter",
+    "ip_weight": "sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors",
+    "image_encoder": "D:/large/image-workshop/models/ip-adapter/h94-IP-Adapter/models/image_encoder",
+    "controlnet": "D:/large/image-workshop/models/controlnet/openpose-sdxl",
+    "yunet": "D:/large/image-workshop/models/face/face_detection_yunet_2023mar.onnx",
+    "sface": "D:/large/image-workshop/models/face/face_recognition_sface_2021dec.onnx"
+  },
+  "sampler": "DPM++ 2M Karras",
+  "steps": 30,
+  "cfg": 5.0,
+  "seeds": [10301, 10302, 10303, 10304, 10305, 10306, 10307, 10308, 10309, 10310, 10311, 10312],
+  "max_attempts": 3,
+  "face_threshold": 0.363,
+  "face_crop_margin": 0.35,
+  "controlnet_conditioning_scale": 0.8,
+  "negative_common": "extra people, duplicate person, malformed hands, extra limbs, watermark, text, swimsuit",
+  "output_root": "D:/large/ai-staff",
+  "font": "C:/Windows/Fonts/malgun.ttf",
+  "sets": {
+    "profile": {"resolution": [1024, 1536], "ip_scale": 0.6},
+    "scale": {"resolution": [1024, 1536], "ip_scale": 0.55},
+    "turnaround": {"resolution": [1024, 1536], "ip_scale": 0.55},
+    "face": {"resolution": [1024, 1024], "ip_scale": 0.55},
+    "expressions": {"resolution": [1024, 1024], "ip_scale": 0.45},
+    "outfits": {"resolution": [1024, 1536], "ip_scale": 0.6},
+    "poses": {"resolution": [1024, 1536], "ip_scale": 0.6},
+    "scenes": {"resolution": [1024, 1536], "ip_scale": 0.6},
+    "duo": {"resolution": [1024, 1536], "ip_scale": 0.6}
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "이든": [
+    {"id":"report", "name":"보고서 확인", "desc":"checking a report at a laptop in an office"},
+    {"id":"meeting", "name":"회의", "desc":"standing at a whiteboard in a meeting room"},
+    {"id":"running", "name":"새벽 달리기", "desc":"running beside the Han river at dawn, sports clothing"},
+    {"id":"phone", "name":"전화 메모", "desc":"taking notes while answering a phone"},
+    {"id":"briefing", "name":"업무 보고", "desc":"presenting a report folder in an office"},
+    {"id":"planning", "name":"일정 정리", "desc":"organizing a work schedule at a desk"}
+  ],
+  "루다": [
+    {"id":"reply", "name":"카톡 답장", "desc":"replying to a message on a smartphone"},
+    {"id":"conditions", "name":"조건표 확인", "desc":"checking a terms table at two computer monitors"},
+    {"id":"phone", "name":"문의 전화", "desc":"answering a customer phone call"},
+    {"id":"notes", "name":"상담 메모", "desc":"writing consultation notes at a desk"},
+    {"id":"briefing", "name":"진행 보고", "desc":"presenting a work report in an office"},
+    {"id":"welcome", "name":"고객 안내", "desc":"welcoming a visitor at an office desk"}
+  ]
+}

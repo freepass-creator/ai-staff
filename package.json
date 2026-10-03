@@ -1,0 +1,11 @@
+{
+  "name": "ai-staff",
+  "private": true,
+  "scripts": {
+    "gen": "python generator/gen.py",
+    "docs": "python generator/docs.py",
+    "check": "python generator/face_check.py",
+    "upload": "python generator/upload.py",
+    "test": "python -m unittest discover -s tests -v"
+  }
+}
