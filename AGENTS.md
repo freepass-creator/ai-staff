@@ -1,0 +1,26 @@
+# ai-staff — 작업 규칙 (Codex·Claude 공통)
+
+목적: 회사 AI 직원을 «살아 있는 가상 인물 한 명»으로 만든다 — 외모·성격·이력서·자기소개서·이미지가 한 사람으로 일관되고, 같은 입력이면 같은 사람이 다시 나온다.
+
+## 정본
+
+- 캐릭터의 정본은 `characters/<이름>/character.json` 하나다. 이력서·자기소개서·프로필 문서와 이미지 생성은 전부 이 파일을 읽어서 만든다. 문서를 손으로 고치지 말고 json 을 고친 뒤 다시 뽑는다.
+- 기준 얼굴은 `characters/<이름>/refs/front.png`(·`three_quarter.png`). 이 사진이 얼굴의 정본이다.
+
+## 기준 (대표 결정, 2026-10-03)
+
+- 한국 사람. 혼혈·서양 얼굴 아님.
+- 수수하고 평범한 실제 직장인. 화보·모델·아이돌 느낌이 나오면 버리고 다시 만든다. 「일만 잘하면 된다」.
+- 체형은 평범하게 — 마르지 않고 통통하지도 않게. 이든은 운동(달리기·수영)으로 단단한 체형.
+- 결과물 형식은 `freepass-creator/webtoon-studio` 배우 오디션 형식(대표 프로필·키 눈금 전신·표정·복장·자세)을 따른다. 단 수영복 바디 프로필은 쓰지 않는다.
+- 실존 인물·실존 기관을 닮게 하거나 사칭하지 않는다(이력서의 학교·회사는 「(가상)」 표기).
+- 비서 캐릭터 이름 옛 안은 대표가 취소했다 — 이든만 쓴다.
+
+## 이미지 보관
+
+- 이미지는 git 에 넣지 않는다(기준 얼굴 `refs/` 와 작은 썸네일만 예외). 원본은 `D:\large\ai-staff\<이름>\<세트>\`, 대표 보기용 사본은 구글 드라이브 「AI 직원 캐릭터」(`1UMKoanJFM6z6Co12kgiRFI915CMM2a_d`, pyh@teamjpk.com, `gws` CLI).
+- 모델은 `D:\large\image-workshop\models`(RealVisXL V5, IP-Adapter plus-face SDXL, ControlNet openpose/depth SDXL, sdxl-fp16-fix VAE). GPU RTX 3060 12GB.
+
+## 커밋
+
+- main 직접 커밋 금지 — 가지 → PR → 검토 → 그날 머지.
