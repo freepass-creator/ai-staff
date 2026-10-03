@@ -1,6 +1,6 @@
 # ai-staff — AI 직원 가상 인물
 
-회사 AI 직원(경영지원실장 **클로이**, 프리패스 AI 매니저 **클로다**)을 «살아 있는 가상 인물 한 명»으로 정의하고, 같은 사람의 이미지를 다시 뽑을 수 있게 하는 저장소.
+회사 AI 직원(경영지원실장 **클로이**, 프리패스 AI 매니저 **클로아**)을 «살아 있는 가상 인물 한 명»으로 정의하고, 같은 사람의 이미지를 다시 뽑을 수 있게 하는 저장소.
 
 - 규칙: [AGENTS.md](AGENTS.md)
 - 캐릭터 정본: `characters/<이름>/character.json`
@@ -62,8 +62,8 @@ npm.cmd run upload -- --char 클로이 --set 세트 --dir D:/large/ai-staff/클�
 
 CREATE_NEW_JUSTIFIED(2026-10-03): `reuse:check` 후보인 character.json과 casting-v2 PNG·JSON·검증기를 재사용했습니다. 기존 자산에는 정본 기반 SDXL 실행·얼굴 검사·문서 재생성·Drive 래퍼가 없어 generator 모듈과 단위 시험을 새로 만들었습니다. academy READY는 사용자 전달 ai-core #382를 따릅니다. 대상 가지는 `feat/generator`이며 Git 명령은 실행하지 않았습니다.
 
-현재 클로다의 `refs/front.png`가 없어 클로다 이미지 생성과 `duo/all` 실제 실행은 HOLD입니다. dry-run·문서 생성은 가능합니다. 대표프로필의 예문은 한글 시스템 글꼴에 작은 기울기·기준선 변화를 주어 필기 느낌으로 조판합니다. 합 시트는 키 비교와 두 사람이 함께 보고서를 보는 업무 장면으로 구성합니다. 업무 장면은 좌우 IP-Adapter 마스크로 두 얼굴을 구분하고 검출 얼굴이 정확히 두 개이며 각각 해당 정본 기준을 넘을 때만 사용합니다. 실제 GPU 생성·시각 품질·Drive 업로드는 미검증입니다. Claude 독립 검토는 `CLAUDE_PROCESS_FAILED`로 UNAVAILABLE이며 통과로 계산하지 않았습니다.
+현재 클로아의 `refs/front.png`가 없어 클로아 이미지 생성과 `duo/all` 실제 실행은 HOLD입니다. dry-run·문서 생성은 가능합니다. 대표프로필의 예문은 한글 시스템 글꼴에 작은 기울기·기준선 변화를 주어 필기 느낌으로 조판합니다. 합 시트는 키 비교와 두 사람이 함께 보고서를 보는 업무 장면으로 구성합니다. 업무 장면은 좌우 IP-Adapter 마스크로 두 얼굴을 구분하고 검출 얼굴이 정확히 두 개이며 각각 해당 정본 기준을 넘을 때만 사용합니다. 실제 GPU 생성·시각 품질·Drive 업로드는 미검증입니다. Claude 독립 검토는 `CLAUDE_PROCESS_FAILED`로 UNAVAILABLE이며 통과로 계산하지 않았습니다.
 
-`next_start_here`: `npm.cmd test` → dry-run의 blockers 확인 → 클로다 기준 얼굴 준비 → 별도 output_root에서 GPU 생성 → geometry/face manifest와 실제 시트 검토. 커밋·푸시·PR은 사용자가 진행합니다.
+`next_start_here`: `npm.cmd test` → dry-run의 blockers 확인 → 클로아 기준 얼굴 준비 → 별도 output_root에서 GPU 생성 → geometry/face manifest와 실제 시트 검토. 커밋·푸시·PR은 사용자가 진행합니다.
 
 > CREATE_NEW_JUSTIFIED(2026-10-03): ai-core `reuse:check "AI 직원 가상 캐릭터 프로젝트" --root C:\dev` — 일반 capability(프로젝트 빌드·테스트)만 나오고 캐릭터·이미지 자산 프로젝트는 없음. ai-ops 에 시험판 생성기 `scripts/이미지/캐릭터-생성.py` 가 있으나 캐릭터 정본·문서·검사가 없어 새 저장소로 분리(대표 결정).

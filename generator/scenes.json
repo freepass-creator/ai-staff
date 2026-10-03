@@ -7,7 +7,7 @@
     {"id":"briefing", "name":"업무 보고", "desc":"presenting a report folder in an office"},
     {"id":"planning", "name":"일정 정리", "desc":"organizing a work schedule at a desk"}
   ],
-  "클로다": [
+  "클로아": [
     {"id":"reply", "name":"카톡 답장", "desc":"replying to a message on a smartphone"},
     {"id":"conditions", "name":"조건표 확인", "desc":"checking a terms table at two computer monitors"},
     {"id":"phone", "name":"문의 전화", "desc":"answering a customer phone call"},

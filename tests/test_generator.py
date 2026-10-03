@@ -23,7 +23,7 @@ class GeneratorTests(unittest.TestCase):
         self.c=character('클로이'); self.cfg=config()
 
     def test_characters(self):
-        for name in ('클로이','클로다'): validate(character(name))
+        for name in ('클로이','클로아'): validate(character(name))
         bad=copy.deepcopy(self.c); del bad['basic']['height_cm']
         with self.assertRaises(ValueError): validate(bad)
 
@@ -71,11 +71,11 @@ class GeneratorTests(unittest.TestCase):
         self.assertIn(self.c['resume']['education'][0]['school'],docs['이력서.md'])
         self.assertIn(self.c['role']['title'],docs['profile.md'])
         self.assertNotIn('프리패스모빌리티(가상)',docs['이력서.md'])
-        empty=copy.deepcopy(character('클로다')); empty['resume']={}; empty['cover_letter']={}
+        empty=copy.deepcopy(character('클로아')); empty['resume']={}; empty['cover_letter']={}
         self.assertIn('작성 전',render(empty)['이력서.md'])
         self.assertIn('작성 전',render(empty)['자기소개서.md'])
-        self.assertIn('프리패스모빌리티 ·',render(character('클로다'))['이력서.md'])   # 실제 회사에는 (가상)을 붙이지 않는다
-        self.assertNotIn('프리패스모빌리티(가상)',render(character('클로다'))['이력서.md'])
+        self.assertIn('프리패스모빌리티 ·',render(character('클로아'))['이력서.md'])   # 실제 회사에는 (가상)을 붙이지 않는다
+        self.assertNotIn('프리패스모빌리티(가상)',render(character('클로아'))['이력서.md'])
 
     def test_plan(self):
         self.assertEqual(len(plan(self.c,'turnaround',1,self.cfg)['jobs']),4)
@@ -83,7 +83,7 @@ class GeneratorTests(unittest.TestCase):
         self.assertEqual(len(plan(self.c,'outfits',1,self.cfg)['jobs']),5)
         p=plan(self.c,'all',1,self.cfg)
         self.assertEqual(len(p['sheet_files']),8)
-        self.assertEqual(p['duo_partner'],'클로다')
+        self.assertEqual(p['duo_partner'],'클로아')
         self.assertFalse(next(x for x in p['jobs'] if x['id']=='back')['face_check'])
         with self.assertRaises(ValueError): plan(self.c,'face',99,self.cfg)
 
@@ -177,7 +177,7 @@ class GeneratorTests(unittest.TestCase):
         backend.pipe.return_value.images=['result']
         backend.pipe.tokenizer=lambda text,**kw:{'input_ids':[1,2]}
         backend.pipe.tokenizer_2=backend.pipe.tokenizer
-        result=backend.generate_duo(self.c,character('클로다'),['left','right'],10301)
+        result=backend.generate_duo(self.c,character('클로아'),['left','right'],10301)
         self.assertEqual(result,'result')
         args=backend.pipe.call_args.kwargs
         masks=args['cross_attention_kwargs']['ip_adapter_masks']
