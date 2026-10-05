@@ -1,0 +1,32 @@
+{
+  "$schema": "./casting-v2.schema.json",
+  "template": "CASTING-ABS-v2.0",
+  "candidate_code": "ROLE-01",
+  "display_name": "가상 이름",
+  "role": "배역",
+  "adult_age": 20,
+  "status": "draft",
+  "canvas_px": [2400, 3200],
+  "scale_px_per_cm": 10,
+  "grid_top_y_px": 410,
+  "floor_y_px": 2410,
+  "height_cm": 168,
+  "body_height_px": 1680,
+  "camera": {
+    "equivalent_focal_length_mm": 85,
+    "height_cm": 100,
+    "tilt_deg": 0,
+    "barefoot": true
+  },
+  "views": ["front", "exact-profile", "back"],
+  "pages": {
+    "01_overview": "draft",
+    "02_body_scale": "draft",
+    "03_face_expression": "draft",
+    "04_costume": "draft",
+    "05_movement": "draft",
+    "06_chemistry": "not-made"
+  },
+  "identity_reference": "face-reference.jpg",
+  "notes": ""
+}
