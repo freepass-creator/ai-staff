@@ -1,13 +1,24 @@
 """Google Drive 업로드. 같은 이름은 건너뛰고 파일 폴더에서 gws를 실행합니다."""
 import argparse
 import json
+import os
 import shutil
 import subprocess
 import sys
 from pathlib import Path
 
-PARENT='1UMKoanJFM6z6Co12kgiRFI915CMM2a_d'
 if hasattr(sys.stdout,'reconfigure'): sys.stdout.reconfigure(encoding='utf-8')
+LOCAL_CONFIG=Path(__file__).with_name('.drive.local.json')
+
+def load_parent():
+    env_value=os.environ.get('AI_STAFF_DRIVE_FOLDER_ID','').strip()
+    if env_value: return env_value
+    if LOCAL_CONFIG.exists():
+        data=json.loads(LOCAL_CONFIG.read_text(encoding='utf-8'))
+        folder_id=str(data.get('folder_id','')).strip()
+        if folder_id: return folder_id
+        raise RuntimeError(f'{LOCAL_CONFIG} 에 folder_id 가 없습니다')
+    raise RuntimeError('AI_STAFF_DRIVE_FOLDER_ID 또는 generator/.drive.local.json 의 folder_id 가 필요합니다')
 
 def call(args,cwd=None):
     executable=shutil.which('gws')
@@ -38,10 +49,11 @@ def folder(parent,name):
 def main():
     p=argparse.ArgumentParser(description=__doc__); p.add_argument('--char',required=True); p.add_argument('--set',required=True)
     p.add_argument('--dir',required=True,type=Path); p.add_argument('--dry-run',action='store_true'); a=p.parse_args()
+    parent_id=load_parent()
     files=sorted(x for x in a.dir.resolve().iterdir() if x.is_file() and x.suffix.lower() in ('.png','.jpg','.jpeg','.json'))
     if a.dry_run:
-        print(json.dumps({'parent':PARENT,'folder':f'{a.char}/{a.set}','files':[x.name for x in files]},ensure_ascii=False,indent=2)); return
-    parent=folder(folder(PARENT,a.char),a.set)
+        print(json.dumps({'parent':parent_id,'folder':f'{a.char}/{a.set}','files':[x.name for x in files]},ensure_ascii=False,indent=2)); return
+    parent=folder(folder(parent_id,a.char),a.set)
     names={x['name'] for x in children(parent)}
     for path in files:
         if path.name in names: print(f'건너뜀: {path.name}'); continue
