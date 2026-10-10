@@ -1,5 +1,6 @@
 __pycache__/
 *.pyc
+generator/.drive.local.json
 node_modules/
 .venv/
 out/

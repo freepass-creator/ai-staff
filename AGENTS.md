@@ -18,7 +18,7 @@
 
 ## 이미지 보관
 
-- 이미지는 git 에 넣지 않는다(기준 얼굴 `refs/` 와 작은 썸네일만 예외). 원본은 `D:\large\ai-staff\<이름>\<세트>\`, 대표 보기용 사본은 구글 드라이브 「AI 직원 캐릭터」(`1UMKoanJFM6z6Co12kgiRFI915CMM2a_d`, pyh@teamjpk.com, `gws` CLI).
+- 이미지는 git 에 넣지 않는다(기준 얼굴 `refs/` 와 작은 썸네일만 예외). 원본은 `D:\large\ai-staff\<이름>\<세트>\`, 대표 보기용 사본은 구글 드라이브 「AI 직원 캐릭터」(ID 는 비공개 ai-ops 문서, pyh@teamjpk.com, `gws` CLI).
 - 모델은 `D:\large\image-workshop\models`(RealVisXL V5, IP-Adapter plus-face SDXL, ControlNet openpose/depth SDXL, sdxl-fp16-fix VAE). GPU RTX 3060 12GB.
 
 ## 커밋
