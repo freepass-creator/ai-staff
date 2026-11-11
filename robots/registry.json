@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "updated_on": "2026-11-11",
+  "timezone": "Asia/Seoul",
+  "authority": "대표 직접 확정: 보라색 CLO-02 클로이, CLO-04 클로아",
+  "characters": [
+    {
+      "id": "CLO-02",
+      "name_ko": "클로이",
+      "type": "robot",
+      "identity_status": "confirmed",
+      "id_aliases": [
+        "CLO 02",
+        "CLO02",
+        "clo02"
+      ],
+      "signature_color": {
+        "name_ko": "보라색",
+        "hex": null,
+        "status": "confirmed_name_only"
+      },
+      "reference": {
+        "status": "existing_candidate_visually_checked",
+        "source_basename": "clo02-true.png",
+        "sha256": "30f415209c0d9bd1fd637f9a2fecf49f7708551288300c0ae7cb4dfaaad9a714",
+        "repository_path": null,
+        "notes": "보라색 눈·속눈썹, 중앙이 파인 검은 얼굴 화면, 귀 옆 핀, 머리 위 고리 안테나 없음. 원본은 불투명 배경이며 투명 납품본으로 취급하지 않는다."
+      }
+    },
+    {
+      "id": "CLO-04",
+      "name_ko": "클로아",
+      "type": "robot",
+      "identity_status": "confirmed",
+      "id_aliases": [
+        "CLO 04",
+        "CLO04",
+        "clo04"
+      ],
+      "signature_color": {
+        "name_ko": null,
+        "hex": null,
+        "status": "not_specified_in_latest_decision"
+      },
+      "reference": {
+        "status": "needs_verified_source",
+        "source_basename": null,
+        "sha256": null,
+        "repository_path": null,
+        "notes": "이름·번호만 확정. 과거 주황 원본이나 착한거래 노랑 파생본을 파일명만 보고 자동 지정하지 않는다."
+      }
+    }
+  ],
+  "rules": {
+    "canonical_display": "<id> · <name_ko>",
+    "brand_color_does_not_assign_character_id": true,
+    "pc_assignment_is_separate": true,
+    "preserve_original_images": true,
+    "unresolved_asset_identity": "review_before_reuse",
+    "existing_human_characters": "characters/클로운, characters/클로담 자료와 별도 관리",
+    "generator_support": "registry_only; existing SDXL/SFace human generator unchanged"
+  },
+  "superseded_name_pairs": [
+    {
+      "id": "CLO-02",
+      "name_ko": "클로아",
+      "status": "superseded_on_2026-11-11"
+    },
+    {
+      "id": "CLO-04",
+      "name_ko": "클로이",
+      "status": "superseded_on_2026-11-11"
+    }
+  ]
+}
