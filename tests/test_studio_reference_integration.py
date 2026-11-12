@@ -38,6 +38,14 @@ class ChloeStudioReferenceIntegration(unittest.TestCase):
             self.assertIn("reference: '" + view + "'", self.js)
             self.assertIn("chloe-" + view + ".webp", self.blog_js)
 
+    def test_chakhan_identity_defaults_to_ten_view_source_and_blocks_legacy_export(self):
+        self.assertIn("var selectedPose = 'view-front'", self.js)
+        self.assertIn("var source = new URL(POSES['view-front'].file, referenceBase).href;", self.js)
+        self.assertIn('data-chloe-source="view-front" data-reference-angle="front" aria-pressed="true"', self.html)
+        self.assertIn('!POSES[selectedPose].reference || !state.ready', self.js)
+        self.assertIn('brandApprovedReference: !!POSES[selectedPose].reference', self.js)
+        self.assertIn('기존 모션 포즈는 외형 재검수 전까지 참고 시연용', self.html)
+
     def test_source_path_and_deep_link_are_whitelisted(self):
         self.assertIn("var referenceBase = new URL('../../robots/CLO-02/chakhan-sales/motion-3d/assets/'", self.js)
         self.assertIn("POSES[next].reference ? referenceBase :", self.js)
