@@ -49,7 +49,7 @@
       "brand_variants": [
         {
           "id": "CLO-02-CHAKHAN",
-          "name": "착한거래 클로이",
+          "name": "착한 클로이",
           "status": "owner_confirmed_single_10_view_brand_identity_2026-11-13",
           "look": "white silver robot with yellow glow, 착한거래 branding",
           "current_studio_assets": [
@@ -65,7 +65,8 @@
             "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-bottom.webp"
           ],
           "motion": "existing_2d_motions_are_legacy_preview_only; approved_brand_export_not_implemented",
-          "note": "Only the original 10-view reference set is authorized for 착한거래 production. Old poses are archived and cannot substitute for this appearance."
+          "note": "Only the original 10-view reference set is authorized for 착한거래 production. Old poses are archived and cannot substitute for this appearance.",
+          "previous_name": "착한거래 클로이"
         }
       ],
       "reference_views": {
