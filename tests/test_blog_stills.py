@@ -38,11 +38,18 @@ class BlogStillWorkbenchTests(unittest.TestCase):
         self.assertIn("0x02014b50", self.js)
         self.assertIn("0x06054b50", self.js)
 
-    def test_identity_and_unverified_asset_notice(self):
-        self.assertIn("공식 보라색 CLO-02 원본은 저장소에 없으므로", self.html)
-        self.assertIn("원본 외형 미검수", self.js)
-        self.assertIn("아카이브 이미지의 외형·이름을 직접 검수", self.html)
+    def test_confirmed_brand_variant_and_new_image_safety(self):
+        import json
+        registry = json.loads((ROOT / "robots" / "registry.json").read_text(encoding="utf-8"))
+        chloe = next(item for item in registry["characters"] if item["id"] == "CLO-02")
+        variant = next(item for item in chloe["brand_variants"] if item["variant_id"] == "CLO-02-CHAKHAN")
+        self.assertEqual(variant["parent_id"], "CLO-02")
+        self.assertEqual(variant["identity_status"], "owner_confirmed_brand_variant")
+        self.assertEqual(next(item["name_ko"] for item in registry["characters"] if item["id"] == "CLO-04"), "클로아")
+        self.assertIn("착한거래 클로이 · 엄지척", self.html)
+        self.assertIn("직접 업로드한 이미지의 캐릭터 외형을 검수", self.html)
         self.assertIn("캐릭터 없음 (즉시 활용)", self.html)
+        self.assertIn("if(actor==='uploaded'&&!approved)", self.js)
         self.assertIn("외부 게시 금지", self.js)
         self.assertIn("출처·기준일", self.html)
 
