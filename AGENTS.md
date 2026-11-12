@@ -19,6 +19,8 @@
 
 ## 착한거래 클로이 단일 외형 고정 (대표 재확정, 2026-11-13)
 
+- **착한 클로이**는 착한거래 전용 CLO-02-CHAKHAN의 화면 표시 이름이다. 기존 표기 `착한거래 클로이`는 같은 캐릭터의 옛 표기이며, 일반 CLO-02 `클로이` 및 CLO-04 `클로아`의 이름이나 10장 원본 파일명은 변경하지 않는다.
+
 - **착한거래에서 쓰는 클로이는 `CLO-02-CHAKHAN` 1종**이다. 새 얼굴·다른 로봇·CLO-04·보라색 기본 원본을 착한거래 클로이로 대체하지 않는다.
 - **착한거래 제작용 승인 기준은 기존 10방향 원본 WebP 10장만**이다. 정면 `chloe-front.webp`를 기본으로 사용하고 나머지 9장은 같은 세트의 다른 시점으로 사용한다. 경로: `robots/CLO-02/chakhan-sales/motion-3d/assets/`. 파일별 Git blob SHA는 `studio/turnaround/reference-index.json`.
 - 과거 `clo02-thumbs-up`, `clo02-compare`, `clo02-consultation`, `marketing/assets/character/` 원본은 삭제하지 않고 **보관·연구 전용**으로 격리한다. 해당 이미지나 외형이 다른 AI 생성물을 **착한거래 홈페이지·블로그·쇼츠 게시용으로 선택하거나 내보내지 않는다.**
