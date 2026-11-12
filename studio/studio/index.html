@@ -9,6 +9,7 @@
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./studio.css">
   <link rel="stylesheet" href="./pose-library.css">
+  <link rel="stylesheet" href="./angle-gallery.css">
   <script src="../chloe-motion.js" defer></script>
   <script src="./recorder.js" defer></script>
   <script src="./studio.js" defer></script>
@@ -35,8 +36,9 @@
       <div class="chloe-quick-links" aria-label="제작 시작 선택">
         <a href="../">모션 키트 라이브러리 ↗</a>
         <a href="?kit=shorts">쇼츠 PT 시작</a>
-        <a href="../turnaround/">기존 다각도 원본 10장 ↗</a>
-<a href="../blog-stills/">블로그 정지컷 6종 제작 ↗</a><a href="?still=point">현재 포즈 PNG</a>
+        <a href="?angle=front">다각도 사진 10장 열기 ↗</a>
+<a href="../blog-stills/">블로그 정지컷 6종 제작 ↗</a>
+        <a href="?still=point">현재 포즈 PNG</a>
       </div>
 
     <div class="workspace">
@@ -62,6 +64,25 @@
       </section>
 
       <aside id="studio-controls" class="control-panel" aria-label="클로이 연출 조절" tabindex="-1">
+        <section class="control-section chloe-reference-section" aria-labelledby="chloe-angles-title">
+          <div class="section-heading"><span class="section-number">10</span><h2 id="chloe-angles-title">기존 클로이 다각도 사진</h2><span class="section-hint">8방향 + 상·하</span></div>
+          <p class="field-note">이미 제작한 착한거래 클로이 10장을 그대로 불러옵니다. 사진을 누르면 왼쪽 촬영 화면에서 정지 상태로 볼 수 있고, 배경·위치·말풍선을 조절해 PNG로 저장할 수 있습니다.</p>
+          <div class="chloe-angle-grid" role="group" aria-label="착한거래 클로이 기존 원본 사진 10장">
+              <button type="button" class="chloe-angle-choice" data-chloe-source="view-front" data-reference-angle="front" aria-pressed="false"><img src="../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-front.webp" alt="" loading="lazy" width="1024" height="1536"><span>01 정면</span></button>
+              <button type="button" class="chloe-angle-choice" data-chloe-source="view-front-left" data-reference-angle="front-left" aria-pressed="false"><img src="../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-front-left.webp" alt="" loading="lazy" width="1024" height="1536"><span>02 좌전 45°</span></button>
+              <button type="button" class="chloe-angle-choice" data-chloe-source="view-left" data-reference-angle="left" aria-pressed="false"><img src="../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-left.webp" alt="" loading="lazy" width="1024" height="1536"><span>03 좌측</span></button>
+              <button type="button" class="chloe-angle-choice" data-chloe-source="view-back-left" data-reference-angle="back-left" aria-pressed="false"><img src="../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-back-left.webp" alt="" loading="lazy" width="1024" height="1536"><span>04 좌후 45°</span></button>
+              <button type="button" class="chloe-angle-choice" data-chloe-source="view-back" data-reference-angle="back" aria-pressed="false"><img src="../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-back.webp" alt="" loading="lazy" width="1024" height="1536"><span>05 후면</span></button>
+              <button type="button" class="chloe-angle-choice" data-chloe-source="view-back-right" data-reference-angle="back-right" aria-pressed="false"><img src="../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-back-right.webp" alt="" loading="lazy" width="1024" height="1536"><span>06 우후 45°</span></button>
+              <button type="button" class="chloe-angle-choice" data-chloe-source="view-right" data-reference-angle="right" aria-pressed="false"><img src="../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-right.webp" alt="" loading="lazy" width="1024" height="1536"><span>07 우측</span></button>
+              <button type="button" class="chloe-angle-choice" data-chloe-source="view-front-right" data-reference-angle="front-right" aria-pressed="false"><img src="../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-front-right.webp" alt="" loading="lazy" width="1024" height="1536"><span>08 우전 45°</span></button>
+              <button type="button" class="chloe-angle-choice" data-chloe-source="view-top" data-reference-angle="top" aria-pressed="false"><img src="../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-top.webp" alt="" loading="lazy" width="1024" height="1536"><span>09 상단</span></button>
+              <button type="button" class="chloe-angle-choice" data-chloe-source="view-bottom" data-reference-angle="bottom" aria-pressed="false"><img src="../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-bottom.webp" alt="" loading="lazy" width="1024" height="1536"><span>10 하단</span></button>
+          </div>
+          <p id="chloe-angle-status" class="field-note" role="status" aria-live="polite">원하는 각도를 선택하세요. 기존 정면 동작은 아래 원본 포즈에서 선택할 수 있습니다.</p>
+          <a id="chloe-angle-download" class="button button-download chloe-angle-download" href="#" download hidden>선택한 원본 WebP 저장</a>
+          <p class="field-note">원본 사진과 3D 모션은 구분합니다. 10개 각도는 검증된 이미지 파일이지만 동일한 3D 스캔은 아니며, 좌우·후면 사진에 관절 모션을 자동 생성하지 않습니다. <a href="../turnaround/">다각도 사진 크게 보기</a></p>
+        </section>
         <section class="control-section" aria-labelledby="motion-kits-title">
           <div class="section-heading"><span class="section-number">KIT</span><h2 id="motion-kits-title">클로이 모션 키트</h2><span class="section-hint">용도별 연출 저장소</span></div>
           <p class="field-note">원본 클로이를 유지하면서 속도·동작·배경·대사를 한 번에 설정합니다. 키트 선택 후 동작과 문구를 다시 조정할 수 있습니다.</p>
@@ -92,7 +113,7 @@
           </div>
           <button type="button" class="button button-download chloe-still-export" id="blog-still-save">선택한 블로그 이미지 PNG 저장</button>
           <p id="blog-still-status" class="field-note" role="status">포즈를 선택하면 이미지 미리보기에 정지 상태로 표시합니다.</p>
-          <p class="field-note">앉은 자세·옆모습·뒷모습은 검증된 원본/관절 이미지가 없어 아직 생성하지 않습니다. 기존 얼굴을 임의로 다시 그리지 않습니다.</p>
+          <p class="field-note">좌우·후면·상하 10개 각도 원본은 위에서 정지 이미지로 선택할 수 있습니다. 손가락 관절 모션과 실제 3D 모델은 별도로 검수하며 기존 얼굴을 임의로 다시 그리지 않습니다.</p>
         </section>
         <section class="control-section" aria-labelledby="pose-title">
           <div class="section-heading"><span class="section-number">00</span><h2 id="pose-title">원본 포즈</h2><span class="section-hint">승인된 이미지에서 움직임 연결</span></div>
@@ -110,7 +131,7 @@
             <button type="button" class="chloe-pose-choice" data-chloe-source="surprise" aria-pressed="false"><img src="../../robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-surprise.png" alt="" loading="lazy"><span>놀람</span></button>
             <button type="button" class="chloe-pose-choice" data-chloe-source="thumbsup" aria-pressed="false"><img src="../../robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-thumbsup.png" alt="" loading="lazy"><span>엄지척 변형</span></button>
           </div>
-          <p class="field-note">추가 포즈는 원본 보관 이미지를 그대로 표시합니다. 관절 리깅은 기존 3종에만 연결되며, 측면·후면 각도는 검증된 원본 확인 전까지 선택지로 제공하지 않습니다.</p>
+          <p class="field-note">기존 포즈 3종은 정면 관절 모션, 보관 이미지 5종과 위의 다각도 10종은 정지 사진입니다. 원본 사진과 동작용 관절 이미지를 구분해 관리합니다.</p>
         </section>
 
         <section class="control-section" aria-labelledby="action-title">
