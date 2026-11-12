@@ -36,15 +36,15 @@ AI 직원의 번호·이름·기준 이미지를 관리한다. 로봇 캐릭터�
 - 이미지 출처 선택: 기본값 **캐릭터 없는 안전한 본문 카드**. 확정 원본 PNG/WebP/JPG를 사용자가 로컬에서 불러와 넣을 수 있다. 업로드 파일은 AI Staff 서버에 자동 전송·보관되지 않는다.
 - **착한거래의 노란색 CLO-02 이미지는 대표가 확인한 브랜드 변형**이므로 내장 포즈를 사용·내보낼 수 있다. 직접 올린 이미지와 새 생성 시안은 따로 외형 검수한다. 공식 보라색 원본을 노란색으로 대체하거나 클로아(CLO-04)로 바꾸지 않는다.
 - 실제 금액이나 비율을 수동 입력하면 출처·기준일이 없을 때 저장을 차단한다. 다른 조건(차종·트림·기간·주행거리·보험·초기비용)은 게시 전에 별도 확인해야 한다.
-- 6컷 일괄 ZIP: **현재 선택 컷은 편집한 문구를**, 나머지 컷은 선택한 카테고리의 기본 문구를 사용한다. 외부 게시/댓글/상담 전송을 자동 수행하지 않는다.
+- 블로그용 정지컷 편집기는 기존 다각도 10개 WebP를 추가 선택지로 제공한다. 6컷 일괄 ZIP: **현재 선택 컷은 편집한 문구를**, 나머지 컷은 선택한 카테고리의 기본 문구를 사용한다. 외부 게시/댓글/상담 전송을 자동 수행하지 않는다.
 - 로컬 실행: 저장소 루트에서 python -m http.server 8000 → http://localhost:8000/studio/blog-stills/. file:// 직접 열기 대신 HTTP(S)에서 검수한다.
-- 회귀 검사: python -m unittest tests.test_blog_stills -v. 개발 단계에서 JS 구문 검사 및 DOM 모의 실행을 확인했으나, **실제 브라우저 PNG/ZIP 다운로드와 Vercel 프로덕션 동작은 배포 후 실기검수 필요**.
+- 회귀 검사: `python -m unittest tests.test_blog_stills tests.test_chloe_turnaround tests.test_studio_reference_integration -v`. JS 구문·DOM 모의 전환(정지 원본 → 기존 정면 모션 복구) 검증을 수행했으나, **실제 Chrome/모바일 PNG·WebP 저장과 Vercel 배포는 별도 실기검수 필요**.
 
 ## 기존 착한거래 클로이 다각도 10장 복구 (2026-11-12)
 
 - **새로 그린 이미지가 아니다.** 착한거래의 기존 작업 브랜치 `codex/chloe-pt-continuation-20261112`, 원본 Draft PR [#11](https://github.com/freepass-creator/chakhan-sales/pull/11)의 `motion-3d/assets/chloe-*.webp` 10장을 **바이트 그대로 복사**했다.
 - 8방향: `chloe-front.webp`, `chloe-front-left.webp`, `chloe-left.webp`, `chloe-back-left.webp`, `chloe-back.webp`, `chloe-back-right.webp`, `chloe-right.webp`, `chloe-front-right.webp`; 위·아래: `chloe-top.webp`, `chloe-bottom.webp`.
-- 보관 위치: `robots/CLO-02/chakhan-sales/motion-3d/assets/` (각각 Git blob SHA 일치 확인). **[다각도 10장 뷰어](studio/turnaround/index.html)** 에서 클릭 전환·원본 저장 가능. [출처 및 SHA 목록](studio/turnaround/reference-index.json).
+- 보관 위치: `robots/CLO-02/chakhan-sales/motion-3d/assets/` (각각 Git blob SHA 일치 확인). **[다각도 10장 뷰어](studio/turnaround/index.html)** 와 **[실제 모션 스튜디오의 10방향 원본 선택](studio/studio/index.html?angle=front)** 에서 같은 원본을 사용한다. [출처 및 SHA 목록](studio/turnaround/reference-index.json).
 - 원본 PT 코드, 손가락 관절·17.5초 영상 검증은 착한거래 브랜치의 `motion-3d/PT-HANDOFF.md`에 있다. 기존 PT 페이지는 해당 브랜치의 `/motion-3d/pt.html`이며 AI Staff에 임의로 재구현하지 않았다.
 - **검수 범위:** 원본 보존과 이미지 10장 확보는 확인. 다각도 생성 이미지끼리 일부 손목 자세 차이가 있으므로 하나의 완전 일치 3D 스캔/모델은 아니다. 3D PT 외형은 여전히 검수 대상이다.
 - 기존 착한거래 홈페이지·원본 브랜치는 변경하지 않았으며, AI Staff main 병합과 배포는 검토 후 별도 진행한다.
@@ -54,7 +54,7 @@ AI 직원의 번호·이름·기준 이미지를 관리한다. 로봇 캐릭터�
 착한거래에서 사용한 CLO-02 자산과 검증된 **정면 2D 모션 키트 1.5.0**을 AI Staff로 복사하여 별도 실행할 수 있게 구성했다. **착한거래 홈페이지 소스는 수정하지 않는다.**
 
 - [클로이 포즈·말풍선 미리보기](studio/index.html)
-- [클로이 영상·정지 이미지 스튜디오](studio/studio/index.html): 대기/인사/설명/끄덕임/제자리 걷기/제자리 뛰기, 속도·크기·배경·대사, 9:16/16:9, 현재 장면 PNG 저장, 브라우저 지원 MP4 또는 WebM 녹화
+- [클로이 영상·정지 이미지 스튜디오](studio/studio/index.html): 기존 10방향 원본 사진을 스튜디오 내 선택 → 정지 미리보기 → 원본 WebP / 합성 PNG 저장. 기존 정면 대기/인사/설명/끄덕임/제자리 걷기/제자리 뛰기, 속도·크기·배경·대사, 9:16/16:9, 브라우저 지원 MP4/WebM 녹화는 그대로 유지. 정지 원본 선택 시 관절 모션·영상 녹화는 비활성화하며 정면 동작 원본으로 돌아오면 복구.
 - [캐릭터별 지원 상태/검수 게이트](studio/characters.json)
 - [착한거래 원본 자산 복사본](robots/CLO-02/chakhan-sales/README.md)
 
