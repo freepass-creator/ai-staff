@@ -11,11 +11,22 @@
     point: { file: 'clo02-point.png', pose: null, archived: true },
     phone: { file: 'clo02-phone.png', pose: null, archived: true },
     surprise: { file: 'clo02-surprise.png', pose: null, archived: true },
-    thumbsup: { file: 'clo02-thumbsup.png', pose: null, archived: true }
+    thumbsup: { file: 'clo02-thumbsup.png', pose: null, archived: true },
+    'view-front': { file: 'chloe-front.webp', pose: null, archived: true, reference: 'front' },
+    'view-front-left': { file: 'chloe-front-left.webp', pose: null, archived: true, reference: 'front-left' },
+    'view-left': { file: 'chloe-left.webp', pose: null, archived: true, reference: 'left' },
+    'view-back-left': { file: 'chloe-back-left.webp', pose: null, archived: true, reference: 'back-left' },
+    'view-back': { file: 'chloe-back.webp', pose: null, archived: true, reference: 'back' },
+    'view-back-right': { file: 'chloe-back-right.webp', pose: null, archived: true, reference: 'back-right' },
+    'view-right': { file: 'chloe-right.webp', pose: null, archived: true, reference: 'right' },
+    'view-front-right': { file: 'chloe-front-right.webp', pose: null, archived: true, reference: 'front-right' },
+    'view-top': { file: 'chloe-top.webp', pose: null, archived: true, reference: 'top' },
+    'view-bottom': { file: 'chloe-bottom.webp', pose: null, archived: true, reference: 'bottom' }
   };
   var selectedPose = 'thumbs', poseRequest = 0;
   var assetBase = new URL('../assets/', document.currentScript.src);
   var archiveBase = new URL('../../robots/CLO-02/chakhan-sales/marketing/assets/character/', document.currentScript.src);
+  var referenceBase = new URL('../../robots/CLO-02/chakhan-sales/motion-3d/assets/', document.currentScript.src);
   var source = new URL(POSES.thumbs.file, assetBase).href;
   var image = new Image(), actor = null, recorder = null, downloadURL = '', raf = 0;
   var lastNow = 0, lastSecond = -1, lastPhrase = -1, lastScene = null;
@@ -338,14 +349,20 @@
 
   // Small public directing API: scripts can reuse the same controls as the UI.
   window.ChloeStudio = Object.freeze({
-    version: '1.2.1',
+    version: '1.3.0',
     kits: Object.freeze(['homepage', 'compare', 'consult', 'shorts', 'energetic', 'reaction']),
     useKit: applyMotionKit,
     act: changeAction,
     say: function (text) { state.text = String(text).slice(0, 90); $('speech-text').value = state.text; lastPhrase = -1; draw(); },
     play: function () { setPlayback(true); }, pause: function () { setPlayback(false); }, restart: restart,
     captureFrame: function () { if (!state.ready || !image.naturalWidth || !image.naturalHeight) return false; draw(); return true; },
-    getState: function () { return { action: currentScene().action, time: state.time, playing: state.playing, ratio: state.ratio, ready: !!actor, imageReady: state.ready, source: selectedPose, motionReady: !!actor }; }
+    useReferenceView: function (angle) {
+      if (!Object.prototype.hasOwnProperty.call(POSES, 'view-' + angle)) return false;
+      var button = document.querySelector('[data-chloe-source="view-' + angle + '"]');
+      if (!button || (recorder && recorder.state.busy)) return false;
+      button.click(); return true;
+    },
+    getState: function () { return { action: currentScene().action, time: state.time, playing: state.playing, ratio: state.ratio, ready: !!actor, imageReady: state.ready, source: selectedPose, motionReady: !!actor, referenceView: POSES[selectedPose].reference || null }; }
   });
   setPlayback(state.playing); setRatio('portrait'); raf = requestAnimationFrame(frame);
 
@@ -438,6 +455,9 @@
     if (Object.prototype.hasOwnProperty.call(STILL_PRESETS, parameters.get('still'))) {
       return { kind: 'still', id: parameters.get('still') };
     }
+    if (Object.prototype.hasOwnProperty.call(POSES, 'view-' + parameters.get('angle'))) {
+      return { kind: 'pose', id: 'view-' + parameters.get('angle') };
+    }
     if (Object.prototype.hasOwnProperty.call(POSES, parameters.get('pose'))) {
       return { kind: 'pose', id: parameters.get('pose') };
     }
@@ -471,18 +491,31 @@
       if (actor) actor.destroy();
       actor = created; if (!recorder) initializeRecording();
       if (!actor && POSES[selectedPose].archived) {
-        canvas.dataset.renderer = 'original-still';
+        canvas.dataset.renderer = POSES[selectedPose].reference ? 'reference-angle' : 'original-still';
+        setPlayback(false);
+        $('play-toggle').disabled = true;
+        $('restart').disabled = true;
         document.querySelectorAll('[data-action]').forEach(function (item) { item.disabled = true; });
         $('demo-toggle').disabled = true;
         $('record-button').disabled = true;
-        $('studio-status').textContent = '아카이브 원본 이미지입니다. 정지 포즈로 확인하며, 관절 모션은 지원하지 않습니다.';
+        $('studio-status').textContent = POSES[selectedPose].reference ? '기존 착한거래 클로이의 다각도 정지 사진입니다. 실제 3D 관절 모션과 구분합니다.' : '아카이브 원본 이미지입니다. 정지 포즈로 확인하며, 관절 모션은 지원하지 않습니다.';
         $('capture-status').textContent = '이 포즈는 PNG 정지 이미지로 내보내세요.';
+        if (POSES[selectedPose].reference) {
+          var original = $('chloe-angle-download');
+          original.href = source; original.download = POSES[selectedPose].file;
+          original.hidden = false;
+          var choice = document.querySelector('[data-chloe-source="' + selectedPose + '"]');
+          $('chloe-angle-status').textContent = (choice ? choice.textContent.trim() : '선택한 각도') + ' · 기존 원본을 불러왔습니다. PNG 촬영 또는 WebP 원본 저장을 이용하세요.';
+        }
         if (applyInitialRoute()) return;
         if (pendingStill) { var queuedStill = pendingStill; pendingStill = null; showStill(STILL_PRESETS[queuedStill], queuedStill); }
         else draw();
         return;
       }
       if (!actor) { unsupported(); return; }
+      $('play-toggle').disabled = false;
+      $('restart').disabled = false;
+      if (recorder) captureState(recorder.state);
       $('demo-toggle').disabled = false;
       canvas.dataset.renderer = 'connected-rig';
       document.querySelectorAll('button[data-action]').forEach(function (button) { button.disabled = actor.supportedActions.indexOf(button.dataset.action) < 0; });
@@ -493,7 +526,11 @@
       else draw();
     }).catch(function () { unsupported(); draw(); });
   };
-  image.onerror = function () { $('studio-status').textContent = '클로이 이미지를 불러오지 못했어요. 새로고침해 주세요.'; };
+  image.onerror = function () {
+    $('studio-status').textContent = '클로이 원본을 불러오지 못했습니다. 원본 경로를 확인해 주세요.';
+    $('chloe-angle-download').hidden = true;
+    if (POSES[selectedPose].reference) $('chloe-angle-status').textContent = '원본 로드 실패: ' + POSES[selectedPose].file;
+  };
   document.querySelectorAll('[data-motion-kit]').forEach(function (button) {
     button.addEventListener('click', function () {
       if (recorder && recorder.state.busy) return;
@@ -531,10 +568,17 @@
       state.previousPose = null;
       state.action = 'idle'; state.resolvedAction = 'idle';
       state.time = 0; state.lifeTime = 0;
+      if (POSES[next].reference) {
+        setPlayback(false);
+        state.demo = false; $('demo-toggle').checked = false;
+        state.speech = false; $('speech-toggle').checked = false;
+        $('chloe-angle-status').textContent = '다각도 ' + POSES[next].reference + ' 원본을 불러오는 중입니다.';
+      }
+      $('chloe-angle-download').hidden = true;
       document.querySelectorAll('[data-chloe-source]').forEach(function (item) { item.setAttribute('aria-pressed', String(item === button)); });
       document.querySelectorAll('[data-action]').forEach(function (item) { item.disabled = true; });
       $('studio-status').textContent = '선택한 원본 포즈를 불러오는 중입니다.';
-      source = new URL(POSES[next].file, POSES[next].archived ? archiveBase : assetBase).href;
+      source = new URL(POSES[next].file, POSES[next].reference ? referenceBase : (POSES[next].archived ? archiveBase : assetBase)).href;
       image.src = source;
     });
   });
