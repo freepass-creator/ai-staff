@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_on": "2026-11-12",
-  "policy": "Preserve official CLO-02 reference and approved 착한거래 CLO-02 brand variant as separate assets of the same character. New generated candidates still require visual review.",
+  "updated_on": "2026-11-13",
+  "policy": "착한거래 클로이(CLO-02-CHAKHAN)의 제작 기준 이미지는 기존 10방향 WebP 10장 하나의 세트만 허용. 이전 2D 포즈 이미지·타 캐릭터는 보존하되 착한거래 게시용 출력 금지. 보라색 CLO-02 기본 원본은 별도.",
   "characters": [
     {
       "id": "CLO-02",
@@ -30,11 +30,10 @@
       },
       "production": {
         "stills": [
-          "png"
+          "png_from_10_view_reference_only"
         ],
         "video": [
-          "mp4_if_browser_supported",
-          "webm_fallback"
+          "blocked_until_identity_preserving_chakhan_motion_review"
         ],
         "audio": "not_supported"
       },
@@ -43,21 +42,30 @@
         "preserve established yellow 착한거래 variant",
         "do not relabel 착한거래 Chloe as CLO-04",
         "newly generated likeness and true multi-angle identity require visual review",
-        "do not replace source website automatically"
+        "do not replace source website automatically",
+        "Chakhan public imagery must come from the 10-view authoritative reference set",
+        "Legacy pose preview is not approved for branded still or video export"
       ],
       "brand_variants": [
         {
           "id": "CLO-02-CHAKHAN",
           "name": "착한거래 클로이",
-          "status": "owner_confirmed_2026-11-12",
+          "status": "owner_confirmed_single_10_view_brand_identity_2026-11-13",
           "look": "white silver robot with yellow glow, 착한거래 branding",
           "current_studio_assets": [
-            "studio/assets/clo02-thumbs-up-master.webp",
-            "studio/assets/clo02-compare-640.webp",
-            "studio/assets/clo02-consultation-640.webp"
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-front.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-front-left.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-left.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-back-left.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-back.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-back-right.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-right.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-front-right.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-top.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-bottom.webp"
           ],
-          "motion": "front_2d_supported",
-          "note": "Not pixel-identical to purple master; do not replace either reference."
+          "motion": "existing_2d_motions_are_legacy_preview_only; approved_brand_export_not_implemented",
+          "note": "Only the original 10-view reference set is authorized for 착한거래 production. Old poses are archived and cannot substitute for this appearance."
         }
       ],
       "reference_views": {
