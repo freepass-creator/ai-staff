@@ -25,8 +25,8 @@
         "nod": "supported_2d_front",
         "walk": "in_place_front_only",
         "run": "in_place_front_only",
-        "true_3d": "not_implemented",
-        "side_back": "not_verified"
+        "true_3d": "source_draft_pr_11_pt_prototype_review_only",
+        "side_back": "reference_images_available_final_articulated_3d_not_verified"
       },
       "production": {
         "stills": [
@@ -59,7 +59,33 @@
           "motion": "front_2d_supported",
           "note": "Not pixel-identical to purple master; do not replace either reference."
         }
-      ]
+      ],
+      "reference_views": {
+        "status": "existing_10_images_imported_preserved_2026_11_12",
+        "variant": "CLO-02-CHAKHAN",
+        "count": 10,
+        "files": [
+          "chloe-front.webp",
+          "chloe-front-left.webp",
+          "chloe-left.webp",
+          "chloe-back-left.webp",
+          "chloe-back.webp",
+          "chloe-back-right.webp",
+          "chloe-right.webp",
+          "chloe-front-right.webp",
+          "chloe-top.webp",
+          "chloe-bottom.webp"
+        ],
+        "local_copy": "robots/CLO-02/chakhan-sales/motion-3d/assets",
+        "viewer": "studio/turnaround/index.html",
+        "source_repository": "freepass-creator/chakhan-sales",
+        "source_branch": "codex/chloe-pt-continuation-20261112",
+        "source_commit": "3ef1eba51630113d4e83c53a0ab9581b820e7636",
+        "source_pull_request": 11,
+        "source_handoff": "motion-3d/PT-HANDOFF.md",
+        "original_sha_verified": true,
+        "limitation": "Images are angle reference stills, not proof of identical 3D geometry or production motion approval."
+      }
     },
     {
       "id": "CLO-04",
