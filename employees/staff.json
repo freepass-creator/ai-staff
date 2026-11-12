@@ -43,7 +43,10 @@
           "source": "studio/assets/clo02-thumbs-up-master.webp",
           "source_status": "owner_confirmed_brand_variant"
         }
-      ]
+      ],
+      "reference_gallery": "../studio/turnaround/",
+      "reference_views_count": 10,
+      "content_assets_status": "10 existing angle still images preserved from chakhan-sales Draft PR #11; prototype 3D motion remains under visual review"
     },
     {
       "id": "CLO-04",
