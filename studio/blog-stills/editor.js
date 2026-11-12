@@ -110,7 +110,17 @@
     point:'../../robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-point.png',
     phone:'../../robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-phone.png',
     surprise:'../../robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-surprise.png',
-    thumbsup:'../../robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-thumbsup.png'
+    thumbsup:'../../robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-thumbsup.png',
+    angleFront:'../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-front.webp',
+    angleFrontLeft:'../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-front-left.webp',
+    angleLeft:'../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-left.webp',
+    angleBackLeft:'../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-back-left.webp',
+    angleBack:'../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-back.webp',
+    angleBackRight:'../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-back-right.webp',
+    angleRight:'../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-right.webp',
+    angleFrontRight:'../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-front-right.webp',
+    angleTop:'../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-top.webp',
+    angleBottom:'../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-bottom.webp'
   };
   let topic='price',cut='cover',format='body',actor='none',approved=false;
   let photo=null,personalPhoto=null,personalURL=null,loadVersion=0,raf=0,busy=false;
