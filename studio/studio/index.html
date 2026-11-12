@@ -201,9 +201,11 @@ AI 클로이가 함께 비교해 드려요.</textarea>
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'ai-staff-CLO-02-still-' + new Date().toISOString().replace(/[:.]/g, '-') + '.png';
+      const sourceName = String(window.ChloeStudio.getState().source || 'pose').replace(/[^a-z0-9-]/gi, '');
+      a.download = 'ai-staff-CLO-02-' + sourceName + '-still-' + new Date().toISOString().replace(/[:.]/g, '-') + '.png';
       document.body.appendChild(a);
       a.click();
+      document.getElementById('capture-status').textContent = '현재 장면 PNG 저장 요청을 보냈습니다.';
       a.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
     }, 'image/png');
