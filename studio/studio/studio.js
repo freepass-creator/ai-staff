@@ -23,11 +23,11 @@
     'view-top': { file: 'chloe-top.webp', pose: null, archived: true, reference: 'top' },
     'view-bottom': { file: 'chloe-bottom.webp', pose: null, archived: true, reference: 'bottom' }
   };
-  var selectedPose = 'thumbs', poseRequest = 0;
+  var selectedPose = 'view-front', poseRequest = 0; // 착한거래 정본: 기존 다각도 10장만 기본 선택
   var assetBase = new URL('../assets/', document.currentScript.src);
   var archiveBase = new URL('../../robots/CLO-02/chakhan-sales/marketing/assets/character/', document.currentScript.src);
   var referenceBase = new URL('../../robots/CLO-02/chakhan-sales/motion-3d/assets/', document.currentScript.src);
-  var source = new URL(POSES.thumbs.file, assetBase).href;
+  var source = new URL(POSES['view-front'].file, referenceBase).href;
   var image = new Image(), actor = null, recorder = null, downloadURL = '', raf = 0;
   var lastNow = 0, lastSecond = -1, lastPhrase = -1, lastScene = null;
   var TRANSITION_SECONDS = .55;
@@ -273,7 +273,7 @@
     state.recording = info.busy;
     $('record-button').dataset.recording = String(info.busy);
     $('record-button').textContent = info.busy ? '녹화 끝내기' : '영상 녹화';
-    $('record-button').disabled = !actor || !info.supported || info.status === 'stopping';
+    $('record-button').disabled = !actor || !POSES[selectedPose].reference || !info.supported || info.status === 'stopping'; // 구형 포즈로 브랜드 영상 출력 금지
     $('record-progress').hidden = !info.busy;
     $('record-progress').max = info.targetDurationMs || 1;
     $('record-progress').value = info.elapsedMs;
@@ -336,7 +336,10 @@
   $('record-button').addEventListener('click', function () {
     if (!recorder) return;
     if (recorder.state.busy) { recorder.stop(); return; }
-    if (!actor) return;
+    if (!actor || !POSES[selectedPose].reference) {
+      $('capture-status').textContent = '착한거래 영상은 기존 10방향 기준 외형을 유지한 모션 검증 후에만 출력합니다.';
+      return;
+    }
     restart(true); setPlayback(true); draw();
     recorder.start({ durationMs: Number($('record-duration').value) * 1000 });
   });
@@ -355,14 +358,14 @@
     act: changeAction,
     say: function (text) { state.text = String(text).slice(0, 90); $('speech-text').value = state.text; lastPhrase = -1; draw(); },
     play: function () { setPlayback(true); }, pause: function () { setPlayback(false); }, restart: restart,
-    captureFrame: function () { if (!state.ready || !image.naturalWidth || !image.naturalHeight) return false; draw(); return true; },
+    captureFrame: function () { if (!POSES[selectedPose].reference || !state.ready || !image.naturalWidth || !image.naturalHeight) return false; draw(); return true; },
     useReferenceView: function (angle) {
       if (!Object.prototype.hasOwnProperty.call(POSES, 'view-' + angle)) return false;
       var button = document.querySelector('[data-chloe-source="view-' + angle + '"]');
       if (!button || (recorder && recorder.state.busy)) return false;
       button.click(); return true;
     },
-    getState: function () { return { action: currentScene().action, time: state.time, playing: state.playing, ratio: state.ratio, ready: !!actor, imageReady: state.ready, source: selectedPose, motionReady: !!actor, referenceView: POSES[selectedPose].reference || null }; }
+    getState: function () { return { action: currentScene().action, time: state.time, playing: state.playing, ratio: state.ratio, ready: !!actor, imageReady: state.ready, source: selectedPose, motionReady: !!actor, referenceView: POSES[selectedPose].reference || null, brandApprovedReference: !!POSES[selectedPose].reference }; }
   });
   setPlayback(state.playing); setRatio('portrait'); raf = requestAnimationFrame(frame);
 
@@ -411,7 +414,7 @@
   }
 
   var STILL_PRESETS = {
-    front: { source: 'front', label: '정면 소개' },
+    front: { source: 'view-front', label: '정면 소개 · 착한거래 기준' },
     greeting: { source: 'thumbs', action: 'greet', second: 1.05, label: '손 흔들기' },
     point: { source: 'point', label: '가리키기' },
     proposal: { source: 'compare', action: 'explain', second: 1.1, label: '제안하기' },
