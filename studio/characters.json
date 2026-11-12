@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
   "updated_on": "2026-11-12",
-  "policy": "Do not infer identity from filename; preserve originals; derivatives require review.",
+  "policy": "Preserve official CLO-02 reference and approved 착한거래 CLO-02 brand variant as separate assets of the same character. New generated candidates still require visual review.",
   "characters": [
     {
       "id": "CLO-02",
       "display_name": "클로이",
       "identity_reference": "robots/registry.json",
-      "identity_source_status": "verified_reference_not_present_in_repo",
+      "identity_source_status": "official_purple_reference_not_present_in_repo",
       "verified_reference_filename": "clo02-true.png",
       "source_archive": "robots/CLO-02/chakhan-sales",
       "motion_studio": "studio/studio/index.html",
       "motion_engine": "studio/chloe-motion.js",
-      "asset_identity_status": "needs_visual_review_against_verified_purple_reference",
+      "asset_identity_status": "owner_confirmed_chakhan_brand_variant",
       "image_generation": {
         "human_generator_compatible": false,
         "robot_identity_preserving_generation": "not_implemented",
@@ -39,9 +39,26 @@
         "audio": "not_supported"
       },
       "constraints": [
-        "no unverified identity promotion",
-        "no automatic replacement of source website",
-        "no artificial face reconstruction"
+        "preserve original purple master",
+        "preserve established yellow 착한거래 variant",
+        "do not relabel 착한거래 Chloe as CLO-04",
+        "newly generated likeness and true multi-angle identity require visual review",
+        "do not replace source website automatically"
+      ],
+      "brand_variants": [
+        {
+          "id": "CLO-02-CHAKHAN",
+          "name": "착한거래 클로이",
+          "status": "owner_confirmed_2026-11-12",
+          "look": "white silver robot with yellow glow, 착한거래 branding",
+          "current_studio_assets": [
+            "studio/assets/clo02-thumbs-up-master.webp",
+            "studio/assets/clo02-compare-640.webp",
+            "studio/assets/clo02-consultation-640.webp"
+          ],
+          "motion": "front_2d_supported",
+          "note": "Not pixel-identical to purple master; do not replace either reference."
+        }
       ]
     },
     {
