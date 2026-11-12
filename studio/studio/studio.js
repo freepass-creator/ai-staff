@@ -3,7 +3,14 @@
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
   var canvas = $('stage-canvas'), ctx = canvas.getContext('2d', { alpha: false });
-  var source = new URL('../assets/clo02-thumbs-up-master.webp', document.currentScript.src).href;
+  var POSES = {
+    thumbs: { file: 'clo02-thumbs-up-master.webp', pose: 'thumbs' },
+    compare: { file: 'clo02-compare-640.webp', pose: 'compare' },
+    consultation: { file: 'clo02-consultation-640.webp', pose: 'consultation' }
+  };
+  var selectedPose = 'thumbs', poseRequest = 0;
+  var assetBase = new URL('../assets/', document.currentScript.src);
+  var source = new URL(POSES.thumbs.file, assetBase).href;
   var image = new Image(), actor = null, recorder = null, downloadURL = '', raf = 0;
   var lastNow = 0, lastSecond = -1, lastPhrase = -1, lastScene = null;
   var TRANSITION_SECONDS = .55;
@@ -326,12 +333,15 @@
   });
   setPlayback(state.playing); setRatio('portrait'); raf = requestAnimationFrame(frame);
   image.onload = function () {
+    var request = poseRequest;
     state.ready = true;
     var creation = window.ChloeMotion && window.ChloeMotion.createActor
-      ? window.ChloeMotion.createActor({ src: source, pose: 'thumbs', width: 1024, height: 1536 })
+      ? window.ChloeMotion.createActor({ src: source, pose: POSES[selectedPose].pose, width: 1024, height: 1536 })
       : Promise.resolve(null);
     creation.then(function (created) {
-      actor = created; initializeRecording();
+      if (request !== poseRequest) { if (created) created.destroy(); return; }
+      if (actor) actor.destroy();
+      actor = created; if (!recorder) initializeRecording();
       if (!actor) { unsupported(); return; }
       canvas.dataset.renderer = 'connected-rig';
       document.querySelectorAll('button[data-action]').forEach(function (button) { button.disabled = actor.supportedActions.indexOf(button.dataset.action) < 0; });
@@ -340,5 +350,21 @@
     }).catch(function () { unsupported(); draw(); });
   };
   image.onerror = function () { $('studio-status').textContent = '클로이 이미지를 불러오지 못했어요. 새로고침해 주세요.'; };
+  document.querySelectorAll('[data-chloe-source]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var next = button.dataset.chloeSource;
+      if (!POSES[next] || selectedPose === next || (recorder && recorder.state.busy)) return;
+      selectedPose = next; poseRequest += 1;
+      state.ready = false;
+      state.previousPose = null;
+      state.action = 'idle'; state.resolvedAction = 'idle';
+      state.time = 0; state.lifeTime = 0;
+      document.querySelectorAll('[data-chloe-source]').forEach(function (item) { item.setAttribute('aria-pressed', String(item === button)); });
+      document.querySelectorAll('[data-action]').forEach(function (item) { item.disabled = true; });
+      $('studio-status').textContent = '선택한 원본 포즈를 불러오는 중입니다.';
+      source = new URL(POSES[next].file, assetBase).href;
+      image.src = source;
+    });
+  });
   image.src = source;
 }());
