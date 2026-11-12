@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="착한거래 블로그용 클로이 정지 이미지·카드뉴스 PNG 제작실">
+  <title>블로그 정지컷 제작 · AI Staff</title>
+  <link rel="stylesheet" href="./editor.css">
+  <script src="./editor.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#editing">편집으로 이동</a>
+  <header class="site-header"><div class="shell header-row">
+    <a class="logo" href="../../"><span>AI</span> Staff</a>
+    <nav aria-label="AI Staff 작업"><a href="../studio/">모션 스튜디오</a><a href="../">모션 키트</a><a href="../../employees/">직원 관리</a></nav>
+  </div></header>
+  <main class="shell">
+    <div class="breadcrumbs"><a href="../../">AI Staff</a><span>/</span><span>블로그 정지컷 제작</span></div>
+    <section class="hero">
+      <p class="eyebrow">AI STAFF / BLOG STILL WORKBENCH</p>
+      <h1>블로그 정지컷, <em>바로 만들어 쓰세요.</em></h1>
+      <p>표지부터 비교·체크리스트·AI 설명·FAQ·마무리까지, 6가지 컷을 같은 글 분위기로 만들 수 있습니다. 정지 이미지는 WebGL이나 동영상 녹화 기능 없이도 제작됩니다.</p>
+    </section>
+    <div class="layout">
+      <section class="preview-column" aria-labelledby="preview-heading">
+        <div class="preview-head"><div><h2 id="preview-heading">실시간 PNG 미리보기</h2><p id="dimensions" aria-live="polite">1200 × 800 · 블로그 본문</p></div><span class="ready">CANVAS / STILL</span></div>
+        <div class="preview-frame"><canvas id="art" width="1200" height="800" role="img" aria-label="블로그 정지 이미지 미리보기">Canvas 지원 브라우저에서 이미지를 만들 수 있습니다.</canvas></div>
+        <p class="preview-caption">실제 저장 파일에는 화면 주변의 편집 UI가 포함되지 않습니다. 문구를 바꾸면 위 이미지에 곧바로 반영됩니다.</p>
+        <div class="preview-actions"><button class="primary" id="save-png" type="button">현재 컷 PNG 저장</button><button class="secondary" id="save-pack" type="button">6컷 ZIP 일괄 저장</button></div>
+        <p class="status" id="status" role="status" aria-live="polite">이미지 제작 준비 완료. 샘플 문구를 수정하거나 6컷을 한 번에 저장하세요.</p>
+        <div class="usage"><b>콘텐츠 검수</b><p>기본 문구에는 실제 가격·시세를 넣지 않았습니다. 금액을 적을 경우 차종·트림·기간·주행거리·초기비용·보험 조건·기준일·출처를 확인하세요. 이미지가 생성돼도 블로그에 자동 게시하지 않습니다.</p></div>
+      </section>
+      <aside id="editing" class="controls" aria-label="블로그 이미지 편집">
+        <section class="panel"><div class="heading"><b>01</b><h2>글 주제와 컷</h2></div>
+          <label for="category">블로그 카테고리</label><select id="category">
+            <option value="price">장기렌트 가격·시세</option><option value="cars">신차·차종별 비교</option>
+            <option value="guide">장기렌트 실전 가이드</option><option value="credit">신용·심사·승인 정보</option>
+            <option value="market">자동차 시장·이슈</option><option value="care">자동차 상식·관리</option>
+            <option value="analysis">AI 자동차 분석실</option><option value="notice">착한거래 소식·안내</option>
+          </select>
+          <div class="group-caption">이미지 종류 <small>글 한 편에 필요한 6컷</small></div>
+          <div class="cut-grid" role="group" aria-label="제작할 정지컷">
+            <button type="button" data-cut="cover" aria-pressed="true"><b>01 표지</b><small>질문·후킹</small></button>
+            <button type="button" data-cut="compare" aria-pressed="false"><b>02 핵심 비교</b><small>차이 정리</small></button>
+            <button type="button" data-cut="check" aria-pressed="false"><b>03 체크리스트</b><small>확인 포인트</small></button>
+            <button type="button" data-cut="explain" aria-pressed="false"><b>04 AI 설명</b><small>클로이 한마디</small></button>
+            <button type="button" data-cut="faq" aria-pressed="false"><b>05 FAQ</b><small>질문·답변</small></button>
+            <button type="button" data-cut="closing" aria-pressed="false"><b>06 마무리</b><small>비교 안내</small></button>
+          </div>
+          <label for="format">이미지 규격</label><select id="format">
+            <option value="body">네이버 블로그 본문 · 1200 × 800</option>
+            <option value="portrait">세로형 카드 · 1080 × 1350</option>
+            <option value="wide">대표 커버 · 1200 × 630</option>
+          </select>
+        </section>
+        <section class="panel"><div class="heading"><b>02</b><h2>제목·내용 편집</h2></div>
+          <label for="badge">상단 분류 문구</label><input id="badge" maxlength="38" autocomplete="off">
+          <label for="headline">큰 제목</label><textarea id="headline" rows="2" maxlength="90"></textarea>
+          <label for="subtitle">설명 한 줄</label><textarea id="subtitle" rows="2" maxlength="160"></textarea>
+          <div class="group-caption">비교·체크 포인트 <small>최대 3개</small></div>
+          <input id="item-1" maxlength="75" aria-label="첫 번째 포인트">
+          <input id="item-2" maxlength="75" aria-label="두 번째 포인트">
+          <input id="item-3" maxlength="75" aria-label="세 번째 포인트">
+          <label for="evidence">출처·기준일 <span class="optional">(선택, 실제 금액 사용 시 필수)</span></label>
+          <input id="evidence" maxlength="115" placeholder="예: 2026-11-12 · 동일 조건 견적 조회 기준">
+          <p class="field-help">주제나 컷을 바꾸면 해당 카테고리의 기본 문구가 채워집니다. 입력한 문구는 현재 컷에 적용됩니다.</p>
+        </section>
+        <section class="panel"><div class="heading"><b>03</b><h2>캐릭터 원본 선택</h2></div>
+          <label for="actor">이미지 사용</label><select id="actor">
+            <option value="none">문구 중심 · 캐릭터 없음 (즉시 활용)</option>
+            <option value="uploaded">검수된 클로이 원본 직접 불러오기</option>
+            <option value="thumbs">기존 노랑 아카이브 · 엄지척 (검수 전)</option>
+            <option value="compare">기존 노랑 아카이브 · 양손 설명 (검수 전)</option>
+            <option value="consult">기존 노랑 아카이브 · 휴대폰 (검수 전)</option>
+            <option value="point">기존 이미지 · 가리키기 (검수 전)</option>
+            <option value="front">기존 이미지 · 정면 (검수 전)</option>
+            <option value="phone">기존 이미지 · 전화 (검수 전)</option>
+            <option value="surprise">기존 이미지 · 놀람 (검수 전)</option>
+            <option value="thumbsup">기존 이미지 · 엄지척 변형 (검수 전)</option>
+          </select>
+          <label class="upload-label" for="file">원본 PNG / WebP / JPG 업로드 <small>브라우저 안에서만 사용</small></label>
+          <input id="file" type="file" accept="image/png,image/webp,image/jpeg">
+          <p id="actor-state" class="field-help" role="status">공식 보라색 CLO-02 원본은 저장소에 없으므로, 기본값은 캐릭터 없는 안전한 이미지입니다.</p>
+          <label class="checkbox-label"><input id="sample-approved" type="checkbox"><span>아카이브 이미지의 외형·이름을 직접 검수했습니다.</span></label>
+          <p class="field-help">검수되지 않은 기존 노랑/주황 이미지에는 샘플 워터마크가 들어가며, 검수 체크를 하지 않으면 홍보용 내보내기가 제한됩니다. 원본 사진을 다시 그리거나 임의로 3D 각도를 만들지 않습니다.</p>
+        </section>
+      </aside>
+    </div>
+    <section class="bottom-links"><h2>동작이 필요한 경우에만 모션으로 이어가세요.</h2><p>정지 이미지 제작은 여기서 끝내고, 손 흔들기·설명·끄덕임·걷기 같은 영상 연출이 필요하면 기존 모션 스튜디오를 사용합니다.</p><div><a href="../studio/">모션 스튜디오 열기</a><a href="../">모션 키트 라이브러리</a></div></section>
+  </main>
+  <footer class="shell">AI Staff · BLOG STILL WORKBENCH · 이미지 생성은 브라우저 내부에서 처리</footer>
+</body>
+</html>
