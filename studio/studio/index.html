@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#f6fd00">
   <meta name="description" content="클로이의 동작과 대사, 화면 구도를 골라 짧은 영상을 만드는 모션 스튜디오입니다.">
-  <title>클로이 모션 스튜디오 · 착한거래</title>
+  <title>AI Staff · 클로이 이미지·모션 스튜디오</title>
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./studio.css">
   <script src="../chloe-motion.js" defer></script>
@@ -15,8 +15,8 @@
 <body>
   <a class="skip-link" href="#studio-controls">동작 조절로 바로 가기</a>
   <header class="site-header shell">
-    <a class="brand" href="https://chakhan-sales.vercel.app/" aria-label="착한거래 홈페이지"><span>착한거래</span><i aria-hidden="true"></i></a>
-    <span class="header-label">CHLOE STUDIO</span>
+    <a class="brand" href="../../README.md" aria-label="AI Staff"><span>AI Staff</span><i aria-hidden="true"></i></a>
+    <span class="header-label">AI STAFF · CHARACTER STUDIO</span>
     <a class="text-link header-link" href="../index.html">모션 키트 <span aria-hidden="true">↗</span></a>
   </header>
 
@@ -95,6 +95,7 @@ AI 클로이가 함께 비교해 드려요.</textarea>
         <section class="control-section record-section" aria-labelledby="record-title">
           <div class="section-heading"><span class="section-number">04</span><h2 id="record-title">녹화</h2><span class="section-hint">이 장면을 영상으로</span></div>
           <div class="duration-row"><label for="record-duration">영상 길이</label><select id="record-duration"><option value="6">6초</option><option value="12" selected>12초</option><option value="20">20초</option></select></div>
+          <button id="still-button" class="button button-download" type="button">현재 장면 PNG 이미지 저장</button>
           <button id="record-button" class="button button-record" type="button" disabled>영상 녹화</button>
           <progress id="record-progress" max="1" value="0" aria-label="녹화 진행률" hidden></progress>
           <a id="download-link" class="button button-download" download hidden>영상 내려받기 <span aria-hidden="true">↓</span></a>
@@ -107,5 +108,22 @@ AI 클로이가 함께 비교해 드려요.</textarea>
   </main>
 
   <footer class="site-footer shell"><span>CLO-02 클로이 · 착한거래</span><nav aria-label="관련 화면"><a href="https://chakhan-sales.vercel.app/">홈페이지</a><a href="../index.html">재사용 모션 키트</a></nav></footer>
+<script>
+  document.getElementById('still-button').addEventListener('click', () => {
+    const canvas = document.getElementById('stage-canvas');
+    if (!canvas || !canvas.width || !canvas.height) return;
+    canvas.toBlob(blob => {
+      if (!blob) { document.getElementById('capture-status').textContent = 'PNG 저장 실패: 브라우저 캔버스를 확인하세요.'; return; }
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'ai-staff-CLO-02-still-' + new Date().toISOString().replace(/[:.]/g, '-') + '.png';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }, 'image/png');
+  });
+</script>
 </body>
 </html>
