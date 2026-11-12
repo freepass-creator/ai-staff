@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "updated_on": "2026-11-12",
-  "policy": "Do not infer identity from filename; preserve originals; derivatives require review.",
+  "updated_on": "2026-11-13",
+  "policy": "착한거래 클로이(CLO-02-CHAKHAN)의 제작 기준 이미지는 기존 10방향 WebP 10장 하나의 세트만 허용. 이전 2D 포즈 이미지·타 캐릭터는 보존하되 착한거래 게시용 출력 금지. 보라색 CLO-02 기본 원본은 별도.",
   "characters": [
     {
       "id": "CLO-02",
       "display_name": "클로이",
       "identity_reference": "robots/registry.json",
-      "identity_source_status": "verified_reference_not_present_in_repo",
+      "identity_source_status": "official_purple_reference_not_present_in_repo",
       "verified_reference_filename": "clo02-true.png",
       "source_archive": "robots/CLO-02/chakhan-sales",
       "motion_studio": "studio/studio/index.html",
       "motion_engine": "studio/chloe-motion.js",
-      "asset_identity_status": "needs_visual_review_against_verified_purple_reference",
+      "asset_identity_status": "owner_confirmed_chakhan_brand_variant",
       "image_generation": {
         "human_generator_compatible": false,
         "robot_identity_preserving_generation": "not_implemented",
@@ -25,24 +25,81 @@
         "nod": "supported_2d_front",
         "walk": "in_place_front_only",
         "run": "in_place_front_only",
-        "true_3d": "not_implemented",
-        "side_back": "not_verified"
+        "true_3d": "source_draft_pr_11_pt_prototype_review_only",
+        "side_back": "reference_images_available_final_articulated_3d_not_verified"
       },
       "production": {
         "stills": [
-          "png"
+          "png_from_10_view_reference_only"
         ],
         "video": [
-          "mp4_if_browser_supported",
-          "webm_fallback"
+          "blocked_until_identity_preserving_chakhan_motion_review"
         ],
         "audio": "not_supported"
       },
       "constraints": [
-        "no unverified identity promotion",
-        "no automatic replacement of source website",
-        "no artificial face reconstruction"
-      ]
+        "preserve original purple master",
+        "preserve established yellow 착한거래 variant",
+        "do not relabel 착한거래 Chloe as CLO-04",
+        "newly generated likeness and true multi-angle identity require visual review",
+        "do not replace source website automatically",
+        "Chakhan public imagery must come from the 10-view authoritative reference set",
+        "Legacy pose preview is not approved for branded still or video export"
+      ],
+      "brand_variants": [
+        {
+          "id": "CLO-02-CHAKHAN",
+          "name": "착한 클로이",
+          "status": "owner_confirmed_single_10_view_brand_identity_2026-11-13",
+          "look": "white silver robot with yellow glow, 착한거래 branding",
+          "current_studio_assets": [
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-front.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-front-left.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-left.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-back-left.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-back.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-back-right.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-right.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-front-right.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-top.webp",
+            "robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-bottom.webp"
+          ],
+          "motion": "existing_2d_motions_are_legacy_preview_only; approved_brand_export_not_implemented",
+          "note": "Only the original 10-view reference set is authorized for 착한거래 production. Old poses are archived and cannot substitute for this appearance.",
+          "previous_name": "착한거래 클로이"
+        }
+      ],
+      "reference_views": {
+        "status": "existing_10_images_imported_preserved_2026_11_12",
+        "variant": "CLO-02-CHAKHAN",
+        "count": 10,
+        "files": [
+          "chloe-front.webp",
+          "chloe-front-left.webp",
+          "chloe-left.webp",
+          "chloe-back-left.webp",
+          "chloe-back.webp",
+          "chloe-back-right.webp",
+          "chloe-right.webp",
+          "chloe-front-right.webp",
+          "chloe-top.webp",
+          "chloe-bottom.webp"
+        ],
+        "local_copy": "robots/CLO-02/chakhan-sales/motion-3d/assets",
+        "viewer": "studio/turnaround/index.html",
+        "source_repository": "freepass-creator/chakhan-sales",
+        "source_branch": "codex/chloe-pt-continuation-20261112",
+        "source_commit": "3ef1eba51630113d4e83c53a0ab9581b820e7636",
+        "source_pull_request": 11,
+        "source_handoff": "motion-3d/PT-HANDOFF.md",
+        "original_sha_verified": true,
+        "limitation": "Images are angle reference stills, not proof of identical 3D geometry or production motion approval.",
+        "in_studio_selector": "studio/studio/index.html#chloe-angles-title",
+        "example_deep_link": "studio/studio/index.html?angle=front",
+        "blog_still_selector": "studio/blog-stills/index.html#editing",
+        "static_png_and_original_webp": true,
+        "animated_on_side_back": false
+      }
     },
     {
       "id": "CLO-04",

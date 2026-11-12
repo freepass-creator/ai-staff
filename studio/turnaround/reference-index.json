@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "character": "CLO-02",
+  "variant": "CLO-02-CHAKHAN",
+  "type": "existing_reference_stills",
+  "source": {
+    "repository": "freepass-creator/chakhan-sales",
+    "branch": "codex/chloe-pt-continuation-20261112",
+    "commit": "3ef1eba51630113d4e83c53a0ab9581b820e7636",
+    "pullRequest": "https://github.com/freepass-creator/chakhan-sales/pull/11",
+    "path": "motion-3d/assets/"
+  },
+  "imported_on": "2026-11-12",
+  "sourceByteIdentical": true,
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "notes": "Some wrist differences between angles. The 10 views are existing generated reference images, not a verified 3D scan or final approved rig.",
+  "images": [
+    {
+      "filename": "chloe-front.webp",
+      "label": "정면 · 0°",
+      "group": "8방향",
+      "gitBlobSha": "8b785ba2bc5190c9efa74800969a2770b62029a1"
+    },
+    {
+      "filename": "chloe-front-left.webp",
+      "label": "좌전면 · 45°",
+      "group": "8방향",
+      "gitBlobSha": "cfe658f706b431fbeb07d464e2dd61e22a9817d7"
+    },
+    {
+      "filename": "chloe-left.webp",
+      "label": "좌측 · 90°",
+      "group": "8방향",
+      "gitBlobSha": "c6f3e3c94976f419e07b28e4a4ff9eb3296bc67a"
+    },
+    {
+      "filename": "chloe-back-left.webp",
+      "label": "좌후면 · 135°",
+      "group": "8방향",
+      "gitBlobSha": "fc2e35893394d0e7751519d2e61d547a29fbcbbf"
+    },
+    {
+      "filename": "chloe-back.webp",
+      "label": "후면 · 180°",
+      "group": "8방향",
+      "gitBlobSha": "d28621e06fc0ae25625c02bc383d6ab038f6e6aa"
+    },
+    {
+      "filename": "chloe-back-right.webp",
+      "label": "우후면 · 225°",
+      "group": "8방향",
+      "gitBlobSha": "5b86ddd071ae9a77499dfd4a15352ec3f599391a"
+    },
+    {
+      "filename": "chloe-right.webp",
+      "label": "우측 · 270°",
+      "group": "8방향",
+      "gitBlobSha": "da16fcff5b9c858e8c7f0ffb699ed76440df60b8"
+    },
+    {
+      "filename": "chloe-front-right.webp",
+      "label": "우전면 · 315°",
+      "group": "8방향",
+      "gitBlobSha": "79d0de961566cea008075896b15aeb8e6276f653"
+    },
+    {
+      "filename": "chloe-top.webp",
+      "label": "상단 시점",
+      "group": "상하",
+      "gitBlobSha": "94dc4ae80d61c394635e606afba0abcb2e3135bc"
+    },
+    {
+      "filename": "chloe-bottom.webp",
+      "label": "하단 시점",
+      "group": "상하",
+      "gitBlobSha": "f5cf4effe02c9e66c787b390e5e402669f1d869a"
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "updated_on": "2026-11-11",
+  "updated_on": "2026-11-13",
   "timezone": "Asia/Seoul",
-  "authority": "대표 직접 확정: 보라색 CLO-02 클로이, CLO-04 클로아",
+  "authority": "대표 직접 확정: 착한거래 클로이 외형은 기존 노란색·흰색 로봇 다각도 10장으로 단일 고정. CLO-02의 보라색 기본 원본과 CLO-04 클로아는 별도로 보존.",
   "characters": [
     {
       "id": "CLO-02",
@@ -25,7 +25,83 @@
         "sha256": "30f415209c0d9bd1fd637f9a2fecf49f7708551288300c0ae7cb4dfaaad9a714",
         "repository_path": null,
         "notes": "보라색 눈·속눈썹, 중앙이 파인 검은 얼굴 화면, 귀 옆 핀, 머리 위 고리 안테나 없음. 원본은 불투명 배경이며 투명 납품본으로 취급하지 않는다."
-      }
+      },
+      "brand_variants": [
+        {
+          "variant_id": "CLO-02-CHAKHAN",
+          "display_name_ko": "착한 클로이",
+          "brand": "착한거래",
+          "parent_id": "CLO-02",
+          "identity_status": "owner_confirmed_brand_variant",
+          "confirmed_on": "2026-11-12",
+          "observed_design": "흰색·은색 외장, 노란 눈과 발광 부위, 이마 착한거래 로고 및 가슴 CLO-02 계열 마킹",
+          "source_repository": "freepass-creator/chakhan-sales",
+          "source_paths": [
+            "motion-3d/assets/chloe-front.webp",
+            "motion-3d/assets/chloe-front-left.webp",
+            "motion-3d/assets/chloe-left.webp",
+            "motion-3d/assets/chloe-back-left.webp",
+            "motion-3d/assets/chloe-back.webp",
+            "motion-3d/assets/chloe-back-right.webp",
+            "motion-3d/assets/chloe-right.webp",
+            "motion-3d/assets/chloe-front-right.webp",
+            "motion-3d/assets/chloe-top.webp",
+            "motion-3d/assets/chloe-bottom.webp"
+          ],
+          "studio_repository": "freepass-creator/ai-staff",
+          "studio_path": "studio/studio/index.html",
+          "usage": "착한거래 홈페이지·블로그·쇼츠 및 AI Staff 착한거래 전용 스튜디오",
+          "note": "대표 2026-11-13 확정: 착한거래에는 기존 흰색·노란색 로봇의 다각도 10장만 정본으로 사용한다. 다른 클로이·클로아·옛 포즈·임의 신규 이미지를 착한거래 클로이로 교체 사용하지 않는다. 공식 보라색 클로이 기본 원본은 별도 보존한다.",
+          "existing_10_angle_reference": {
+            "count": 10,
+            "source_repository": "freepass-creator/chakhan-sales",
+            "source_branch": "codex/chloe-pt-continuation-20261112",
+            "source_commit": "3ef1eba51630113d4e83c53a0ab9581b820e7636",
+            "files": [
+              "chloe-front.webp",
+              "chloe-front-left.webp",
+              "chloe-left.webp",
+              "chloe-back-left.webp",
+              "chloe-back.webp",
+              "chloe-back-right.webp",
+              "chloe-right.webp",
+              "chloe-front-right.webp",
+              "chloe-top.webp",
+              "chloe-bottom.webp"
+            ],
+            "ai_staff_copy": "robots/CLO-02/chakhan-sales/motion-3d/assets",
+            "viewer": "studio/turnaround/index.html",
+            "validated": "original Git blob SHA matches copied Git blob SHA for all 10",
+            "limitations": "reference images only; 3D PT remains a Draft PR #11 visual-review prototype"
+          },
+          "archived_legacy_pose_source_paths": [
+            "assets/clo02/clo02-thumbs-up-master.webp",
+            "assets/clo02/clo02-compare-640.webp",
+            "assets/clo02/clo02-consultation-640.webp",
+            "marketing/assets/character/clo02-front.png",
+            "marketing/assets/character/clo02-point.png",
+            "marketing/assets/character/clo02-phone.png"
+          ],
+          "production_reference_policy": "only_existing_10_angle_reference_images",
+          "production_reference_manifest": "studio/turnaround/reference-index.json",
+          "default_reference": "chloe-front.webp",
+          "allowed_production_reference_files": [
+            "chloe-front.webp",
+            "chloe-front-left.webp",
+            "chloe-left.webp",
+            "chloe-back-left.webp",
+            "chloe-back.webp",
+            "chloe-back-right.webp",
+            "chloe-right.webp",
+            "chloe-front-right.webp",
+            "chloe-top.webp",
+            "chloe-bottom.webp"
+          ],
+          "legacy_pose_usage": "archive_and_experiment_only; not_authorized_for_chakhan_brand_output",
+          "derived_motion_rule": "Match character appearance to all applicable reference views and require review before branded export. A 2D motion rig made from older pose assets is not an approved substitute.",
+          "previous_display_name_ko": "착한거래 클로이"
+        }
+      ]
     },
     {
       "id": "CLO-04",
@@ -58,7 +134,13 @@
     "preserve_original_images": true,
     "unresolved_asset_identity": "review_before_reuse",
     "existing_human_characters": "characters/클로운, characters/클로담 자료와 별도 관리",
-    "generator_support": "registry_only; existing SDXL/SFace human generator unchanged"
+    "generator_support": "registry_only; existing SDXL/SFace human generator unchanged",
+    "brand_variant_inherits_canonical_id": true,
+    "purple_master_and_chakhan_variant_are_distinct_assets": true,
+    "new_generated_candidates_require_review": true,
+    "remote_pc_control_transport": "AI Link; RDC 사용하지 않음",
+    "chakhan_brand_single_authoritative_10_view_set": true,
+    "chakhan_do_not_substitute_legacy_or_generated_poses": true
   },
   "superseded_name_pairs": [
     {
