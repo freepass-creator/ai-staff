@@ -3,7 +3,20 @@
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
   var canvas = $('stage-canvas'), ctx = canvas.getContext('2d', { alpha: false });
-  var source = new URL('../assets/clo02-thumbs-up-master.webp', document.currentScript.src).href;
+  var POSES = {
+    thumbs: { file: 'clo02-thumbs-up-master.webp', pose: 'thumbs' },
+    compare: { file: 'clo02-compare-640.webp', pose: 'compare' },
+    consultation: { file: 'clo02-consultation-640.webp', pose: 'consultation' },
+    front: { file: 'clo02-front.png', pose: null, archived: true },
+    point: { file: 'clo02-point.png', pose: null, archived: true },
+    phone: { file: 'clo02-phone.png', pose: null, archived: true },
+    surprise: { file: 'clo02-surprise.png', pose: null, archived: true },
+    thumbsup: { file: 'clo02-thumbsup.png', pose: null, archived: true }
+  };
+  var selectedPose = 'thumbs', poseRequest = 0;
+  var assetBase = new URL('../assets/', document.currentScript.src);
+  var archiveBase = new URL('../../robots/CLO-02/chakhan-sales/marketing/assets/character/', document.currentScript.src);
+  var source = new URL(POSES.thumbs.file, assetBase).href;
   var image = new Image(), actor = null, recorder = null, downloadURL = '', raf = 0;
   var lastNow = 0, lastSecond = -1, lastPhrase = -1, lastScene = null;
   var TRANSITION_SECONDS = .55;
@@ -214,7 +227,14 @@
           unsupported();
         }
       }
-      ctx.drawImage(drawable, rect.x, rect.y, rect.width, rect.height);
+      if (POSES[selectedPose].archived && image.naturalWidth && image.naturalHeight) {
+        // Archive images may have a different aspect ratio from the rig master.
+        var fit = Math.min(rect.width / image.naturalWidth, rect.height / image.naturalHeight);
+        var dw = image.naturalWidth * fit, dh = image.naturalHeight * fit;
+        ctx.drawImage(image, rect.center - dw / 2, rect.y + rect.height - dh, dw, dh);
+      } else {
+        ctx.drawImage(drawable, rect.x, rect.y, rect.width, rect.height);
+      }
     }
     speech(rect);
     lastScene = { action: scene.action, seconds: scene.seconds };
@@ -318,27 +338,169 @@
 
   // Small public directing API: scripts can reuse the same controls as the UI.
   window.ChloeStudio = Object.freeze({
-    version: '1.1.0',
+    version: '1.2.0',
+    kits: Object.freeze(['homepage', 'compare', 'consult', 'shorts', 'energetic', 'reaction']),
+    useKit: applyMotionKit,
     act: changeAction,
     say: function (text) { state.text = String(text).slice(0, 90); $('speech-text').value = state.text; lastPhrase = -1; draw(); },
     play: function () { setPlayback(true); }, pause: function () { setPlayback(false); }, restart: restart,
     getState: function () { return { action: currentScene().action, time: state.time, playing: state.playing, ratio: state.ratio, ready: !!actor }; }
   });
   setPlayback(state.playing); setRatio('portrait'); raf = requestAnimationFrame(frame);
+
+  // Reusable direction presets, using the existing verified ChloeMotion rig.
+  var MOTION_KITS = Object.freeze({
+    homepage: { label: '홈페이지 환영', action: 'greet', speed: .8, intensity: .45, background: 'paper', ratio: 'portrait', speech: '안녕하세요!\\n계약 전, 비교부터 해 보세요.' },
+    compare: { label: '비교 설명', action: 'explain', speed: .7, intensity: .58, background: 'paper', ratio: 'landscape', speech: '같은 차도 조건에 따라 대여료가 달라요.\\n차근차근 비교해 드릴게요.' },
+    consult: { label: '상담 유도', action: 'nod', speed: .65, intensity: .38, background: 'paper', ratio: 'portrait', speech: '계약하지 않으셔도 괜찮아요.\\n먼저 알아만 보세요.' },
+    shorts: { label: '쇼츠 PT', action: 'explain', speed: 1.05, intensity: .8, background: 'yellow', ratio: 'portrait', speech: '장기렌트, 어디가 저렴할까요?\\n조건을 비교하면 보입니다.' },
+    energetic: { label: '활기찬 등장', action: 'walk', speed: 1.15, intensity: .75, background: 'paper', ratio: 'portrait', speech: '오늘의 차량 비교, 시작해 볼까요?' },
+    reaction: { label: '리액션', action: 'nod', speed: .9, intensity: .5, background: 'paper', ratio: 'portrait', speech: '맞아요!\\n이 조건도 꼭 확인하세요.' }
+  });
+  var selectedMotionKit = null, pendingMotionKit = null;
+  function applyMotionKit(id) {
+    var kit = MOTION_KITS[id];
+    if (!kit || (recorder && recorder.state.busy)) return false;
+    selectedMotionKit = id;
+    state.speed = state.appliedSpeed = kit.speed;
+    state.intensity = state.appliedIntensity = kit.intensity;
+    state.background = kit.background;
+    state.text = kit.speech;
+    state.speech = true;
+    state.demo = false;
+    $('demo-toggle').checked = false;
+    $('speech-toggle').checked = true;
+    $('speech-text').value = kit.speech;
+    $('speed').value = String(kit.speed);
+    $('speed-value').textContent = kit.speed.toFixed(2) + '×';
+    $('intensity').value = String(kit.intensity);
+    $('intensity-value').textContent = Math.round(kit.intensity * 100) + '%';
+    selected('data-background', kit.background);
+    setRatio(kit.ratio);
+    state.previousPose = null;
+    state.transitionStart = -TRANSITION_SECONDS;
+    state.action = state.resolvedAction = kit.action;
+    state.actionMotionStart = state.motionTime = state.time = 0;
+    selected('data-action', kit.action);
+    setPlayback(true);
+    lastPhrase = -1;
+    document.querySelectorAll('[data-motion-kit]').forEach(function (button) {
+      button.setAttribute('aria-pressed', String(button.dataset.motionKit === id));
+    });
+    $('motion-kit-status').textContent = kit.label + ' 키트를 적용했습니다. 기존 버튼으로 세부 동작을 조정할 수 있습니다.';
+    draw();
+    return true;
+  }
+
+  var STILL_PRESETS = {
+    front: { source: 'front', label: '정면 소개' },
+    greeting: { source: 'thumbs', action: 'greet', second: 1.05, label: '손 흔들기' },
+    point: { source: 'point', label: '가리키기' },
+    proposal: { source: 'compare', action: 'explain', second: 1.1, label: '제안하기' },
+    phone: { source: 'phone', label: '휴대폰 안내' },
+    surprise: { source: 'surprise', label: '놀란 표정' },
+    thumb: { source: 'thumbsup', label: '엄지척' },
+    walk: { source: 'thumbs', action: 'walk', second: .72, label: '걷는 장면' },
+    run: { source: 'thumbs', action: 'run', second: .55, label: '뛰는 장면' },
+    nod: { source: 'thumbs', action: 'nod', second: .86, label: '끄덕이기' }
+  };
+  var pendingStill = null, currentStill = null;
+  function showStill(preset, id) {
+    if (!preset || (recorder && recorder.state.busy)) return;
+    currentStill = id;
+    setPlayback(false);
+    state.demo = false; $('demo-toggle').checked = false;
+    state.speech = false; $('speech-toggle').checked = false;
+    state.previousPose = null; state.previousAction = preset.action || 'idle';
+    state.action = state.resolvedAction = preset.action || 'idle';
+    state.actionMotionStart = 0;
+    state.motionTime = state.time = Math.max(0, preset.second || 0);
+    state.lifeTime = state.time;
+    state.transitionStart = -TRANSITION_SECONDS - 1;
+    state.appliedIntensity = state.intensity;
+    selected('data-action', state.action);
+    document.querySelectorAll('[data-still-preset]').forEach(function (button) {
+      button.setAttribute('aria-pressed', String(button.dataset.stillPreset === id));
+    });
+    $('blog-still-status').textContent = preset.label + ' 정지 포즈를 선택했습니다. 아래 PNG 저장 버튼을 사용하세요.';
+    draw();
+  }
+
   image.onload = function () {
+    var request = poseRequest;
     state.ready = true;
-    var creation = window.ChloeMotion && window.ChloeMotion.createActor
-      ? window.ChloeMotion.createActor({ src: source, pose: 'thumbs', width: 1024, height: 1536 })
+    var creation = POSES[selectedPose].pose && window.ChloeMotion && window.ChloeMotion.createActor
+      ? window.ChloeMotion.createActor({ src: source, pose: POSES[selectedPose].pose, width: 1024, height: 1536 })
       : Promise.resolve(null);
     creation.then(function (created) {
-      actor = created; initializeRecording();
+      if (request !== poseRequest) { if (created) created.destroy(); return; }
+      if (actor) actor.destroy();
+      actor = created; if (!recorder) initializeRecording();
+      if (!actor && POSES[selectedPose].archived) {
+        canvas.dataset.renderer = 'original-still';
+        document.querySelectorAll('[data-action]').forEach(function (item) { item.disabled = true; });
+        $('demo-toggle').disabled = true;
+        $('record-button').disabled = true;
+        $('studio-status').textContent = '아카이브 원본 이미지입니다. 정지 포즈로 확인하며, 관절 모션은 지원하지 않습니다.';
+        $('capture-status').textContent = '이 포즈는 PNG 정지 이미지로 내보내세요.';
+        if (pendingStill) { var queuedStill = pendingStill; pendingStill = null; showStill(STILL_PRESETS[queuedStill], queuedStill); }
+        else draw();
+        return;
+      }
       if (!actor) { unsupported(); return; }
+      $('demo-toggle').disabled = false;
       canvas.dataset.renderer = 'connected-rig';
       document.querySelectorAll('button[data-action]').forEach(function (button) { button.disabled = actor.supportedActions.indexOf(button.dataset.action) < 0; });
       $('studio-status').textContent = reduced.matches ? '동작 줄이기 설정에 따라 멈춰 있어요. 재생을 누르면 연출할 수 있어요.' : '준비됐어요. 동작을 골라 클로이를 움직여 보세요.';
-      draw();
+      if (pendingMotionKit) { var queuedKit = pendingMotionKit; pendingMotionKit = null; applyMotionKit(queuedKit); }
+      else if (pendingStill) { var queuedStill = pendingStill; pendingStill = null; showStill(STILL_PRESETS[queuedStill], queuedStill); }
+      else draw();
     }).catch(function () { unsupported(); draw(); });
   };
   image.onerror = function () { $('studio-status').textContent = '클로이 이미지를 불러오지 못했어요. 새로고침해 주세요.'; };
+  document.querySelectorAll('[data-motion-kit]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      if (recorder && recorder.state.busy) return;
+      if (selectedPose !== 'thumbs' || !actor) {
+        pendingMotionKit = button.dataset.motionKit;
+        if (selectedPose !== 'thumbs') {
+          var buttonForOriginal = document.querySelector('[data-chloe-source="thumbs"]');
+          if (buttonForOriginal) buttonForOriginal.click();
+        } else {
+          $('motion-kit-status').textContent = '모션 원본을 준비하는 중입니다.';
+        }
+        return;
+      }
+      applyMotionKit(button.dataset.motionKit);
+    });
+  });
+  document.querySelectorAll('[data-still-preset]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var id = button.dataset.stillPreset, preset = STILL_PRESETS[id];
+      if (!preset || (recorder && recorder.state.busy)) return;
+      if (selectedPose !== preset.source) {
+        pendingStill = id;
+        var sourceButton = document.querySelector('[data-chloe-source="' + preset.source + '"]');
+        if (sourceButton) sourceButton.click();
+      } else if (state.ready) showStill(preset, id);
+    });
+  });
+  $('blog-still-save').addEventListener('click', function () { $('still-button').click(); });
+  document.querySelectorAll('[data-chloe-source]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var next = button.dataset.chloeSource;
+      if (!POSES[next] || selectedPose === next || (recorder && recorder.state.busy)) return;
+      selectedPose = next; poseRequest += 1;
+      state.ready = false;
+      state.previousPose = null;
+      state.action = 'idle'; state.resolvedAction = 'idle';
+      state.time = 0; state.lifeTime = 0;
+      document.querySelectorAll('[data-chloe-source]').forEach(function (item) { item.setAttribute('aria-pressed', String(item === button)); });
+      document.querySelectorAll('[data-action]').forEach(function (item) { item.disabled = true; });
+      $('studio-status').textContent = '선택한 원본 포즈를 불러오는 중입니다.';
+      source = new URL(POSES[next].file, POSES[next].archived ? archiveBase : assetBase).href;
+      image.src = source;
+    });
+  });
   image.src = source;
 }());
