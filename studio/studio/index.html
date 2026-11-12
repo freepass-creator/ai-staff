@@ -26,7 +26,7 @@
       <div>
         <p class="eyebrow">CLO-02 · CREATIVE STUDIO</p>
         <h1 id="studio-title">클로이 <span>모션 스튜디오</span></h1>
-        <p class="intro-copy">동작을 고르고, 말을 적고, 클로이의 한 장면을 만들어 보세요.</p>
+        <p class="intro-copy">블로그용 포즈를 고르고 정지 PNG로 저장하거나, 기존 동작을 영상으로 녹화하세요.</p>
       </div>
       <div class="intro-note"><span class="mode-badge">정면 동작</span><p>지금은 정면에서 걷고 뛰는<br class="desktop-break"> 동작을 연출해요.</p></div>
     </section>
@@ -34,8 +34,8 @@
     <div class="workspace">
       <section class="preview-panel" aria-labelledby="preview-title">
         <header class="preview-header">
-          <div class="preview-heading"><span class="status-dot" aria-hidden="true"></span><h2 id="preview-title">촬영 화면</h2></div>
-          <span class="preview-caption">보이는 구도 그대로</span>
+          <div class="preview-heading"><span class="status-dot" aria-hidden="true"></span><h2 id="preview-title">클로이 이미지 미리보기</h2></div>
+          <span class="preview-caption">정지 포즈와 촬영 화면 공용</span>
         </header>
         <div class="preview-surface">
           <div id="stage-wrap" class="stage-wrap" data-ratio="portrait">
@@ -54,6 +54,25 @@
       </section>
 
       <aside id="studio-controls" class="control-panel" aria-label="클로이 연출 조절" tabindex="-1">
+        <section class="control-section" aria-labelledby="blog-stills-title">
+          <div class="section-heading"><span class="section-number">★</span><h2 id="blog-stills-title">블로그 이미지 포즈</h2><span class="section-hint">선택 → 정지 장면 → PNG 저장</span></div>
+          <p class="field-note">기존 클로이 원본과 움직임에서 장면을 골라 정지 이미지로 만듭니다. 움직임 캡처 포즈는 선택 시 정확한 시점에서 멈춥니다.</p>
+          <div class="chloe-still-grid" role="group" aria-label="블로그용 클로이 정지 장면 예시">
+            <button type="button" data-still-preset="front"><span>01</span><b>정면 소개</b><small>인사말·프로필</small></button>
+            <button type="button" data-still-preset="greeting"><span>02</span><b>손 흔들기</b><small>환영·시작</small></button>
+            <button type="button" data-still-preset="point"><span>03</span><b>가리키기</b><small>가격·핵심 강조</small></button>
+            <button type="button" data-still-preset="proposal"><span>04</span><b>제안하기</b><small>추천·비교</small></button>
+            <button type="button" data-still-preset="phone"><span>05</span><b>휴대폰 안내</b><small>상담 안내</small></button>
+            <button type="button" data-still-preset="surprise"><span>06</span><b>놀란 표정</b><small>이슈·가격 변화</small></button>
+            <button type="button" data-still-preset="thumb"><span>07</span><b>엄지척</b><small>체크·요약</small></button>
+            <button type="button" data-still-preset="walk"><span>08</span><b>걷는 장면</b><small>단계별 가이드</small></button>
+            <button type="button" data-still-preset="run"><span>09</span><b>뛰는 장면</b><small>빠른 비교</small></button>
+            <button type="button" data-still-preset="nod"><span>10</span><b>끄덕이기</b><small>확인·동의</small></button>
+          </div>
+          <button type="button" class="button button-download chloe-still-export" id="blog-still-save">선택한 블로그 이미지 PNG 저장</button>
+          <p id="blog-still-status" class="field-note" role="status">포즈를 선택하면 이미지 미리보기에 정지 상태로 표시합니다.</p>
+          <p class="field-note">앉은 자세·옆모습·뒷모습은 검증된 원본/관절 이미지가 없어 아직 생성하지 않습니다. 기존 얼굴을 임의로 다시 그리지 않습니다.</p>
+        </section>
         <section class="control-section" aria-labelledby="pose-title">
           <div class="section-heading"><span class="section-number">00</span><h2 id="pose-title">원본 포즈</h2><span class="section-hint">승인된 이미지에서 움직임 연결</span></div>
           <div class="chloe-pose-grid" role="group" aria-label="클로이 원본 포즈 선택">
