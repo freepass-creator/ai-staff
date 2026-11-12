@@ -17,6 +17,13 @@
 
 - AI Staff의 PC 파일·화면·터미널 작업에는 AI Link를 사용한다. RDC를 대체 경로로 사용하지 않는다. GitHub 코드 반영과 실제 PC/배포 반영을 구분하고 AI Link 영수증으로 검증한다.
 
+## 이미 복구한 착한거래 클로이 다각도 세트 (2026-11-12)
+
+- **새로 생성하지 말 것.** 기존 착한거래 `codex/chloe-pt-continuation-20261112` Draft PR #11에 정면·좌전·좌측·좌후·후면·우후·우측·우전·상단·하단 이미지 10개가 이미 있다.
+- AI Staff 보존 위치: `robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-*.webp`. `studio/turnaround/reference-index.json`에 각각 원본 Git blob SHA 기록. 10장 모두 소스와 사본 SHA 일치.
+- 확인 화면: `studio/turnaround/index.html`. 착한거래 기존 PT/손가락/17.5초 모션 검증: `motion-3d/PT-HANDOFF.md` (원본 착한거래 저장소, Draft PR #11).
+- 10장 자산 확보와 최종 3D 모델 동일성 판정은 다르다. 캐릭터/갑옷/손목·측면 비율 차이는 시안 검수로 남기며 원본을 덮어쓰지 않는다.
+
 ## 기존 사람형 캐릭터 정본
 
 이 절과 다음 사람형 기준은 `characters/클로운`, `characters/클로담`에만 적용한다. 로봇에는 사람의 나이·키·몸무게·이력서·얼굴 인식 검사를 강제하지 않는다.
