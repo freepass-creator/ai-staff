@@ -46,7 +46,7 @@ AI 직원의 번호·이름·기준 이미지를 관리한다. 로봇 캐릭터�
 ### 치마 정장 AI 비서 후보 (ASSISTANT-SKIRT-01)
 
 - [6방향 2.5D 캐릭터 스튜디오](studio/secretary/) — 원본 이미지를 유지하는 SVG 뷰포트·미세 모션.
-- [캐릭터 기준과 자산 설명](characters/secretary-skirt-01/README.md) — 외형 검수 전 후보이며, SVG 안의 인물은 순수 벡터가 아닌 내장 WebP입니다. 독립 관절·실제 3D는 미구현.
+- [캐릭터 기준과 자산 설명](characters/secretary-skirt-01/README.md) — 외형 검수 전 후보이며, SVG 안의 인물은 순수 벡터가 아닌 내장 JPEG입니다. 독립 관절·실제 3D는 미구현.
 
 ## 기존 사람형 캐릭터·생성기
 

@@ -24,8 +24,8 @@ class SecretaryStudioTest(unittest.TestCase):
     def test_preview_has_no_external_image_dependencies(self):
         s=(ROOT/'characters/secretary-skirt-01/refs/turnaround-preview.svg').read_text(encoding='utf-8')
         self.assertIn('<svg',s)
-        match=re.search(r'data:image/webp;base64,([\w+/=]+)',s)
+        match=re.search(r'data:image/jpeg;base64,([\w+/=]+)',s)
         self.assertIsNotNone(match)
-        self.assertTrue(base64.b64decode(match.group(1)).startswith(b'RIFF'))
+        self.assertTrue(base64.b64decode(match.group(1)).startswith(bytes.fromhex('ffd8')))
 
 if __name__ == '__main__':unittest.main()
