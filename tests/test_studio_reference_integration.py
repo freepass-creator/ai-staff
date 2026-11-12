@@ -66,7 +66,7 @@ class ChloeStudioReferenceIntegration(unittest.TestCase):
     def test_blog_still_editor_selects_same_ten_source_images(self):
         option_count = len(re.findall(r'<option value="angle(?:Front|Back|Left|Right|Top|Bottom)', self.blog))
         self.assertEqual(option_count, len(VIEWS))
-        self.assertIn("기존 다각도 사진 10장", self.blog)
+        self.assertIn("다각도 원본 10장", self.blog)
         self.assertIn('href="../turnaround/"', self.blog)
 
     def test_js_parses(self):
