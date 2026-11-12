@@ -345,6 +345,41 @@
     getState: function () { return { action: currentScene().action, time: state.time, playing: state.playing, ratio: state.ratio, ready: !!actor }; }
   });
   setPlayback(state.playing); setRatio('portrait'); raf = requestAnimationFrame(frame);
+
+  var STILL_PRESETS = {
+    front: { source: 'front', label: '정면 소개' },
+    greeting: { source: 'thumbs', action: 'greet', second: 1.05, label: '손 흔들기' },
+    point: { source: 'point', label: '가리키기' },
+    proposal: { source: 'compare', action: 'explain', second: 1.1, label: '제안하기' },
+    phone: { source: 'phone', label: '휴대폰 안내' },
+    surprise: { source: 'surprise', label: '놀란 표정' },
+    thumb: { source: 'thumbsup', label: '엄지척' },
+    walk: { source: 'thumbs', action: 'walk', second: .72, label: '걷는 장면' },
+    run: { source: 'thumbs', action: 'run', second: .55, label: '뛰는 장면' },
+    nod: { source: 'thumbs', action: 'nod', second: .86, label: '끄덕이기' }
+  };
+  var pendingStill = null, currentStill = null;
+  function showStill(preset, id) {
+    if (!preset || (recorder && recorder.state.busy)) return;
+    currentStill = id;
+    setPlayback(false);
+    state.demo = false; $('demo-toggle').checked = false;
+    state.speech = false; $('speech-toggle').checked = false;
+    state.previousPose = null; state.previousAction = preset.action || 'idle';
+    state.action = state.resolvedAction = preset.action || 'idle';
+    state.actionMotionStart = 0;
+    state.motionTime = state.time = Math.max(0, preset.second || 0);
+    state.lifeTime = state.time;
+    state.transitionStart = -TRANSITION_SECONDS - 1;
+    state.appliedIntensity = state.intensity;
+    selected('data-action', state.action);
+    document.querySelectorAll('[data-still-preset]').forEach(function (button) {
+      button.setAttribute('aria-pressed', String(button.dataset.stillPreset === id));
+    });
+    $('blog-still-status').textContent = preset.label + ' 정지 포즈를 선택했습니다. 아래 PNG 저장 버튼을 사용하세요.';
+    draw();
+  }
+
   image.onload = function () {
     var request = poseRequest;
     state.ready = true;
@@ -362,7 +397,8 @@
         $('record-button').disabled = true;
         $('studio-status').textContent = '아카이브 원본 이미지입니다. 정지 포즈로 확인하며, 관절 모션은 지원하지 않습니다.';
         $('capture-status').textContent = '이 포즈는 PNG 정지 이미지로 내보내세요.';
-        draw();
+        if (pendingStill) { var queuedStill = pendingStill; pendingStill = null; showStill(STILL_PRESETS[queuedStill], queuedStill); }
+        else draw();
         return;
       }
       if (!actor) { unsupported(); return; }
@@ -370,10 +406,23 @@
       canvas.dataset.renderer = 'connected-rig';
       document.querySelectorAll('button[data-action]').forEach(function (button) { button.disabled = actor.supportedActions.indexOf(button.dataset.action) < 0; });
       $('studio-status').textContent = reduced.matches ? '동작 줄이기 설정에 따라 멈춰 있어요. 재생을 누르면 연출할 수 있어요.' : '준비됐어요. 동작을 골라 클로이를 움직여 보세요.';
-      draw();
+      if (pendingStill) { var queuedStill = pendingStill; pendingStill = null; showStill(STILL_PRESETS[queuedStill], queuedStill); }
+      else draw();
     }).catch(function () { unsupported(); draw(); });
   };
   image.onerror = function () { $('studio-status').textContent = '클로이 이미지를 불러오지 못했어요. 새로고침해 주세요.'; };
+  document.querySelectorAll('[data-still-preset]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var id = button.dataset.stillPreset, preset = STILL_PRESETS[id];
+      if (!preset || (recorder && recorder.state.busy)) return;
+      if (selectedPose !== preset.source) {
+        pendingStill = id;
+        var sourceButton = document.querySelector('[data-chloe-source="' + preset.source + '"]');
+        if (sourceButton) sourceButton.click();
+      } else if (state.ready) showStill(preset, id);
+    });
+  });
+  $('blog-still-save').addEventListener('click', function () { $('still-button').click(); });
   document.querySelectorAll('[data-chloe-source]').forEach(function (button) {
     button.addEventListener('click', function () {
       var next = button.dataset.chloeSource;
