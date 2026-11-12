@@ -338,13 +338,14 @@
 
   // Small public directing API: scripts can reuse the same controls as the UI.
   window.ChloeStudio = Object.freeze({
-    version: '1.2.0',
+    version: '1.2.1',
     kits: Object.freeze(['homepage', 'compare', 'consult', 'shorts', 'energetic', 'reaction']),
     useKit: applyMotionKit,
     act: changeAction,
     say: function (text) { state.text = String(text).slice(0, 90); $('speech-text').value = state.text; lastPhrase = -1; draw(); },
     play: function () { setPlayback(true); }, pause: function () { setPlayback(false); }, restart: restart,
-    getState: function () { return { action: currentScene().action, time: state.time, playing: state.playing, ratio: state.ratio, ready: !!actor }; }
+    captureFrame: function () { if (!state.ready || !image.naturalWidth || !image.naturalHeight) return false; draw(); return true; },
+    getState: function () { return { action: currentScene().action, time: state.time, playing: state.playing, ratio: state.ratio, ready: !!actor, imageReady: state.ready, source: selectedPose, motionReady: !!actor }; }
   });
   setPlayback(state.playing); setRatio('portrait'); raf = requestAnimationFrame(frame);
 
