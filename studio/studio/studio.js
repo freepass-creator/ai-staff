@@ -426,6 +426,39 @@
     draw();
   }
 
+
+  // Deep links from the motion-kit gallery use only known preset identifiers.
+  // No untrusted query values are interpreted as image paths or executable actions.
+  var initialRoute = (function () {
+    var parameters = new URLSearchParams(window.location.search);
+    if (MOTION_KITS && Object.prototype.hasOwnProperty.call(MOTION_KITS, parameters.get('kit'))) {
+      return { kind: 'kit', id: parameters.get('kit') };
+    }
+    if (Object.prototype.hasOwnProperty.call(STILL_PRESETS, parameters.get('still'))) {
+      return { kind: 'still', id: parameters.get('still') };
+    }
+    if (Object.prototype.hasOwnProperty.call(POSES, parameters.get('pose'))) {
+      return { kind: 'pose', id: parameters.get('pose') };
+    }
+    return null;
+  }());
+  function applyInitialRoute() {
+    if (!initialRoute) return false;
+    var route = initialRoute;
+    initialRoute = null; // exactly once; image source changes may trigger another onload
+    if (route.kind === 'kit') {
+      var kitButton = document.querySelector('[data-motion-kit="' + route.id + '"]');
+      if (kitButton) { kitButton.click(); return true; }
+    } else if (route.kind === 'still') {
+      var stillButton = document.querySelector('[data-still-preset="' + route.id + '"]');
+      if (stillButton) { stillButton.click(); return true; }
+    } else if (route.kind === 'pose') {
+      var poseButton = document.querySelector('[data-chloe-source="' + route.id + '"]');
+      if (poseButton) { poseButton.click(); return true; }
+    }
+    return false;
+  }
+
   image.onload = function () {
     var request = poseRequest;
     state.ready = true;
@@ -443,6 +476,7 @@
         $('record-button').disabled = true;
         $('studio-status').textContent = '아카이브 원본 이미지입니다. 정지 포즈로 확인하며, 관절 모션은 지원하지 않습니다.';
         $('capture-status').textContent = '이 포즈는 PNG 정지 이미지로 내보내세요.';
+        if (applyInitialRoute()) return;
         if (pendingStill) { var queuedStill = pendingStill; pendingStill = null; showStill(STILL_PRESETS[queuedStill], queuedStill); }
         else draw();
         return;
@@ -452,6 +486,7 @@
       canvas.dataset.renderer = 'connected-rig';
       document.querySelectorAll('button[data-action]').forEach(function (button) { button.disabled = actor.supportedActions.indexOf(button.dataset.action) < 0; });
       $('studio-status').textContent = reduced.matches ? '동작 줄이기 설정에 따라 멈춰 있어요. 재생을 누르면 연출할 수 있어요.' : '준비됐어요. 동작을 골라 클로이를 움직여 보세요.';
+      if (applyInitialRoute()) return;
       if (pendingMotionKit) { var queuedKit = pendingMotionKit; pendingMotionKit = null; applyMotionKit(queuedKit); }
       else if (pendingStill) { var queuedStill = pendingStill; pendingStill = null; showStill(STILL_PRESETS[queuedStill], queuedStill); }
       else draw();
