@@ -357,7 +357,7 @@
     energetic: { label: '활기찬 등장', action: 'walk', speed: 1.15, intensity: .75, background: 'paper', ratio: 'portrait', speech: '오늘의 차량 비교, 시작해 볼까요?' },
     reaction: { label: '리액션', action: 'nod', speed: .9, intensity: .5, background: 'paper', ratio: 'portrait', speech: '맞아요!\\n이 조건도 꼭 확인하세요.' }
   });
-  var selectedMotionKit = null;
+  var selectedMotionKit = null, pendingMotionKit = null;
   function applyMotionKit(id) {
     var kit = MOTION_KITS[id];
     if (!kit || (recorder && recorder.state.busy)) return false;
@@ -452,15 +452,23 @@
       canvas.dataset.renderer = 'connected-rig';
       document.querySelectorAll('button[data-action]').forEach(function (button) { button.disabled = actor.supportedActions.indexOf(button.dataset.action) < 0; });
       $('studio-status').textContent = reduced.matches ? '동작 줄이기 설정에 따라 멈춰 있어요. 재생을 누르면 연출할 수 있어요.' : '준비됐어요. 동작을 골라 클로이를 움직여 보세요.';
-      if (pendingStill) { var queuedStill = pendingStill; pendingStill = null; showStill(STILL_PRESETS[queuedStill], queuedStill); }
+      if (pendingMotionKit) { var queuedKit = pendingMotionKit; pendingMotionKit = null; applyMotionKit(queuedKit); }
+      else if (pendingStill) { var queuedStill = pendingStill; pendingStill = null; showStill(STILL_PRESETS[queuedStill], queuedStill); }
       else draw();
     }).catch(function () { unsupported(); draw(); });
   };
   image.onerror = function () { $('studio-status').textContent = '클로이 이미지를 불러오지 못했어요. 새로고침해 주세요.'; };
   document.querySelectorAll('[data-motion-kit]').forEach(function (button) {
     button.addEventListener('click', function () {
-      if (!state.ready || !actor) {
-        $('motion-kit-status').textContent = '움직임 원본이 준비된 상태에서 키트를 선택하세요.';
+      if (recorder && recorder.state.busy) return;
+      if (selectedPose !== 'thumbs' || !actor) {
+        pendingMotionKit = button.dataset.motionKit;
+        if (selectedPose !== 'thumbs') {
+          var buttonForOriginal = document.querySelector('[data-chloe-source="thumbs"]');
+          if (buttonForOriginal) buttonForOriginal.click();
+        } else {
+          $('motion-kit-status').textContent = '모션 원본을 준비하는 중입니다.';
+        }
         return;
       }
       applyMotionKit(button.dataset.motionKit);
