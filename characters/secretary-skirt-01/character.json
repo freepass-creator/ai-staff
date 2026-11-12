@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "id": "ASSISTANT-SKIRT-01",
+  "name": "치마 정장 AI 비서 후보 01",
+  "kind": "human",
+  "role": "AI Staff 안내 및 콘텐츠 진행자 후보",
+  "review_state": "candidate_unapproved",
+  "approved_for_external_use": false,
+  "identity_lock": {
+    "reference_description": "2026-11-13 대화에서 새로 생성된 동일 여성 AI 비서, 긴 짙은 갈색 웨이브 머리, 흰 리본 블라우스, 네이비 치마 정장, 검은 펌프스",
+    "reuse_existing_references": true,
+    "do_not_regenerate_face_per_scene": true,
+    "do_not_mix_with_existing_ai_staff_or_webtoon_cast": true,
+    "primary_art": "refs/turnaround-preview.svg",
+    "full_quality_art": "refs/turnaround-full.webp",
+    "reference_originals": ["source/welcome-original.png", "source/turnaround-original.png"]
+  },
+  "view_order": ["front", "left_three_quarter", "left_side", "back", "right_side", "right_three_quarter"],
+  "view_labels_ko": ["정면", "좌측 45°", "좌측면", "후면", "우측면", "우측 45°"],
+  "studio": "studio/secretary/",
+  "motion_engine": "studio/secretary/engine.js",
+  "supported_motion": ["idle", "greet", "present", "nod", "still"],
+  "not_supported": ["true_3d", "skeletal_animation", "limb_independent_movement", "lip_sync", "video_export"],
+  "render_method": "svg_viewport_with_embedded_raster_turnaround",
+  "provenance": {
+    "created_on": "2026-11-13",
+    "original_format": "AI generated raster PNG",
+    "preview_is_true_vector": false,
+    "face_identity_verified_across_all_angles": false,
+    "notes": "6면도는 생성된 이미지 한 장을 방향별로 구분. 모든 방향의 정확한 동일인 여부는 사람 검수 전 후보 상태."
+  }
+}
