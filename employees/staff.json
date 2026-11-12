@@ -12,7 +12,7 @@
       "status_label": "착한거래용 클로이 변형 확인",
       "description": "CLO-02 클로이의 공식 보라색 원본과 착한거래 전용 노란색 브랜드 변형을 별도 보존·활용. 현재 스튜디오 및 블로그에서 쓰는 노란색 캐릭터는 대표 확인을 받은 같은 클로이의 브랜드 버전이다.",
       "avatar": "../studio/assets/clo02-compare-320.webp",
-      "avatar_note": "착한거래 클로이(CLO-02-CHAKHAN) 브랜드 변형. 공식 보라색 원본과 다른 외관 자산",
+      "avatar_note": "착한 클로이(CLO-02-CHAKHAN) 브랜드 변형. 공식 보라색 원본과 다른 외관 자산",
       "source": "robots/registry.json",
       "studio": "../studio/studio/",
       "kit": "../studio/",
@@ -39,7 +39,7 @@
         },
         {
           "variant_id": "CLO-02-CHAKHAN",
-          "label": "착한거래 클로이",
+          "label": "착한 클로이",
           "source": "studio/assets/clo02-thumbs-up-master.webp",
           "source_status": "owner_confirmed_brand_variant"
         }
