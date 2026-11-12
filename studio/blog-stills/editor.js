@@ -253,7 +253,7 @@
   function drawSampleWarning(c,H){
     c.save();rounded(c,585,H-160,535,38,6);c.fillStyle='#b74128';c.fill();
     c.font='800 20px '+FONT;c.fillStyle='#fff';c.textAlign='center';c.textBaseline='middle';
-    c.fillText('원본 외형 미검수 · 내부 시안 / 외부 게시 금지',852,H-141);c.restore();
+    c.fillText('업로드한 새 이미지 검수 전 · 외부 게시 금지',852,H-141);c.restore();
   }
   function render(target,part,data){
     const def=FORMATS[format];const c=target.getContext('2d');
@@ -282,7 +282,7 @@
       }
     }
     drawCharacter(c,H,photoReady?photo:null);
-    if(actor!=='none'&&actor!=='uploaded'&&!approved)drawSampleWarning(c,H);
+    if(actor==='uploaded'&&!approved)drawSampleWarning(c,H);
     footer(c,H,part,data);
   }
   function refresh(){
@@ -315,10 +315,10 @@
       schedule();return;
     }
     const src=IMAGE_FILES[next];if(!src){actorStatus('이미지를 선택할 수 없습니다.');schedule();return;}
-    actorStatus('아카이브 샘플을 불러오는 중입니다. 이름·외형 검수 전에는 외부 게시할 수 없습니다.');
+    actorStatus('대표가 확인한 착한거래 클로이 브랜드 변형을 불러오는 중입니다.');
     const image=new Image();image.onload=()=>{
       if(request!==loadVersion)return;
-      photo=image;actorStatus('기존 아카이브 샘플입니다. 공식 보라색 클로이 정본과 일치 여부를 확인한 뒤 사용하세요.');schedule();
+      photo=image;actorStatus('착한거래 클로이(CLO-02-CHAKHAN) 브랜드 변형입니다. 기본 보라색 원본과 다른 외형으로 보존합니다.');schedule();
     };
     image.onerror=()=>{
       if(request!==loadVersion)return;
@@ -334,7 +334,7 @@
     const url=URL.createObjectURL(file),image=new Image();
     image.onload=()=>{
       if(personalURL)URL.revokeObjectURL(personalURL);
-      personalURL=url;personalPhoto=image;$('actor').value='uploaded';loadActor('uploaded');
+      personalURL=url;personalPhoto=image;$('actor').value='uploaded';$('sample-approved').checked=false;approved=false;loadActor('uploaded');
       actorStatus(file.name+' 원본이 준비됐습니다. 형태를 변경하지 않고 카드 안에 배치합니다.');
     };
     image.onerror=()=>{URL.revokeObjectURL(url);actorStatus('이미지를 읽지 못했습니다. 다른 PNG 파일로 시도하세요.');};
@@ -343,7 +343,7 @@
   function checkExport(data){
     if(busy){status('이미지 파일을 저장하고 있습니다. 중복 실행은 하지 않습니다.',true);return false;}
     if(actor==='uploaded'&&!personalPhoto){status('검수된 캐릭터 원본 파일을 먼저 불러오세요.',true);return false;}
-    if(actor!=='none'&&actor!=='uploaded'&&!approved){status('미검수 아카이브 이미지는 홍보용으로 내보낼 수 없습니다. 직접 검수하거나 캐릭터 없는 템플릿을 사용하세요.',true);return false;}
+    if(actor==='uploaded'&&!approved){status('직접 업로드한 캐릭터 이미지는 외형 검수 확인 후 내보낼 수 있습니다.',true);return false;}
     if(actor!=='none'&&!photo){status('캐릭터 이미지를 불러오는 중이거나 파일이 없습니다.',true);return false;}
     const whole=[data.headline,data.subtitle,...data.items,data.badge].join(' ');
     if(/(?:[₩￦$])|(?:\d[\d,.]*\s*(?:만원|천원|원|%))/.test(whole)&&!data.evidence){
