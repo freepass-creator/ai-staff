@@ -48,6 +48,8 @@ class ChloeStudioReferenceIntegration(unittest.TestCase):
         self.assertIn('id="chloe-angle-download"', self.html)
         self.assertIn("original.href = source; original.download = POSES[selectedPose].file;", self.js)
         self.assertIn("setPlayback(false);", self.js)
+        self.assertIn("$('record-button').disabled = true;", self.js)
+        self.assertIn("$('play-toggle').disabled = true;", self.js)
         self.assertIn("state.speech = false; $('speech-toggle').checked = false;", self.js)
         self.assertIn("if (recorder) captureState(recorder.state);", self.js)
         self.assertIn("captureFrame: function ()", self.js)
