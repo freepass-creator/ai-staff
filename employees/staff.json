@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "updated_on": "2026-11-12",
+  "policy": "Visual identity and publication require human review. Static registry; no production publishing.",
+  "staff": [
+    {
+      "id": "CLO-02",
+      "name": "클로이",
+      "role": "착한거래 AI 안내 캐릭터",
+      "kind": "robot",
+      "status": "identity-review",
+      "status_label": "원본 동일성 검수 필요",
+      "description": "착한거래 블로그·가격 비교 안내·쇼츠에 사용할 로봇 캐릭터. 보라색 승인 정본과 보관된 홈페이지 이미지의 동일성을 최종 검수해야 함.",
+      "avatar": "../studio/assets/clo02-compare-320.webp",
+      "avatar_note": "착한거래 보관 이미지·공식 정본 여부 미확인",
+      "source": "robots/registry.json",
+      "studio": "../studio/studio/",
+      "kit": "../studio/",
+      "formats": [
+        "블로그",
+        "홈페이지",
+        "쇼츠",
+        "상담"
+      ],
+      "presets": [
+        "비교 설명",
+        "가리키기",
+        "환영 인사",
+        "쇼츠 PT"
+      ],
+      "contentVoice": "쉬운 말로 사실과 견적 조건을 설명하고 계약을 재촉하지 않는다.",
+      "approval": "캐릭터 외형 동일성 검증 전 외부 광고용 확정 이미지로 사용 금지"
+    },
+    {
+      "id": "CLO-04",
+      "name": "클로아",
+      "role": "AI 캐릭터 후보",
+      "kind": "robot",
+      "status": "source-needed",
+      "status_label": "이미지 정본 필요",
+      "description": "번호와 명칭은 확정, 원본 외형 및 역할은 미확정.",
+      "avatar": null,
+      "avatar_note": "원본 미등록",
+      "source": "robots/registry.json",
+      "studio": null,
+      "kit": null,
+      "formats": [
+        "프로필 검토"
+      ],
+      "presets": [],
+      "contentVoice": "역할·말투 미확정",
+      "approval": "원본 이미지 확정 전 제작·홍보 사용 보류"
+    },
+    {
+      "id": "chloun",
+      "name": "클로운",
+      "role": "AI 상황실장",
+      "kind": "human",
+      "status": "reference-pending",
+      "status_label": "얼굴 정본 대기",
+      "description": "업무 지휘·대표 보고·팀 업무 공지 등에 활용하는 사람형 AI 직원. 얼굴·체형 기준 최종 확정 대기.",
+      "avatar": null,
+      "avatar_note": "기준 인물 이미지 확정 대기",
+      "source": "characters/클로운/character.json",
+      "studio": null,
+      "kit": null,
+      "formats": [
+        "업무 보고",
+        "사내 공지",
+        "브리핑"
+      ],
+      "presets": [
+        "차분한 브리핑"
+      ],
+      "contentVoice": "간결하고 판단 근거를 분명히 전달",
+      "approval": "인물 동일성 검수 후 외부 콘텐츠 제작"
+    },
+    {
+      "id": "chlodam",
+      "name": "클로담",
+      "role": "프리패스 AI 매니저",
+      "kind": "human",
+      "status": "reference-pending",
+      "status_label": "얼굴 정본 대기",
+      "description": "카카오톡 고객 응대·조건 안내·공급사 커뮤니케이션을 담당하는 사람형 AI 직원. 얼굴 정본 대기.",
+      "avatar": null,
+      "avatar_note": "기준 인물 이미지 확정 대기",
+      "source": "characters/클로담/character.json",
+      "studio": null,
+      "kit": null,
+      "formats": [
+        "상담",
+        "카카오톡",
+        "안내 이미지"
+      ],
+      "presets": [
+        "친절한 상담"
+      ],
+      "contentVoice": "친절하고 부담 없이 필요한 정보를 확인",
+      "approval": "인물 동일성 검수 후 외부 콘텐츠 제작"
+    }
+  ]
+}
