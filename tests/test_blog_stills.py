@@ -46,7 +46,10 @@ class BlogStillWorkbenchTests(unittest.TestCase):
         self.assertEqual(variant["parent_id"], "CLO-02")
         self.assertEqual(variant["identity_status"], "owner_confirmed_brand_variant")
         self.assertEqual(next(item["name_ko"] for item in registry["characters"] if item["id"] == "CLO-04"), "클로아")
-        self.assertIn("착한거래 클로이 · 엄지척", self.html)
+        self.assertIn("착한거래 클로이 원본 · 정면", self.html)
+        self.assertNotIn('<option value="thumbs">', self.html)
+        self.assertEqual(variant["production_reference_policy"], "only_existing_10_angle_reference_images")
+        self.assertEqual(len(variant["allowed_production_reference_files"]), 10)
         self.assertIn("직접 업로드한 이미지의 캐릭터 외형을 검수", self.html)
         self.assertIn("캐릭터 없음 (즉시 활용)", self.html)
         self.assertIn("if(actor==='uploaded'&&!approved)", self.js)
@@ -54,8 +57,9 @@ class BlogStillWorkbenchTests(unittest.TestCase):
         self.assertIn("출처·기준일", self.html)
 
     def test_character_asset_paths(self):
-        paths = re.findall(r"""(?:thumbs|compare|consult|front|point|phone|surprise|thumbsup):'([^']+\.(?:png|webp))'""", self.js)
-        self.assertEqual(len(paths), 8)
+        paths = re.findall(r"""angle[A-Za-z]+:'([^']+\.webp)'""", self.js)
+        self.assertEqual(len(paths), 10)
+        self.assertTrue(all("/motion-3d/assets/chloe-" in src for src in paths))
         for src in paths:
             self.assertTrue((PAGE / src).exists(), f"Source asset missing: {src}")
 
