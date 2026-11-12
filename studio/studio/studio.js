@@ -339,7 +339,7 @@
   // Small public directing API: scripts can reuse the same controls as the UI.
   window.ChloeStudio = Object.freeze({
     version: '1.2.0',
-    kits: Object.freeze(Object.keys(MOTION_KITS)),
+    kits: Object.freeze(['homepage', 'compare', 'consult', 'shorts', 'energetic', 'reaction']),
     useKit: applyMotionKit,
     act: changeAction,
     say: function (text) { state.text = String(text).slice(0, 90); $('speech-text').value = state.text; lastPhrase = -1; draw(); },
