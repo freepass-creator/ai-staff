@@ -26,6 +26,24 @@
     @media(min-width:761px) and (max-width:960px){.card{padding:20px 14px}.card h2{font-size:16px}.controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.demo-speech{padding-inline:11px}.demo-speech strong{font-size:13px}}
     @media(max-width:760px){.demo-speech{margin-top:19px;margin-bottom:10px}.face-demo{padding-top:10px}.face-demo .mini-bubble{margin-bottom:90px}.face-panel .controls{max-width:none}}
     @media(max-width:359px){.version{padding:5px 8px;font-size:10px}.brand{font-size:17px}.card{padding-inline:16px}.controls .btn{font-size:12px}.face-panel{padding-inline:18px}.btn{padding-inline:11px}}
+
+    .workbench-link{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 16px;border-radius:11px;background:#111211;color:#fff;text-decoration:none;font-weight:800;font-size:13px;gap:8px}
+    .workbench-link:hover{background:#333}
+    .workbench-nav{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:19px}
+    .workbench-nav .docs-link{padding:10px}
+    .kit-library{margin:38px 0 32px;padding-top:28px;border-top:1px solid var(--line)}
+    .kit-library h2{margin:0 0 9px;letter-spacing:-.6px;font-size:24px}
+    .kit-library>p{margin:0 0 17px;color:var(--muted);font-size:13px}
+    .kit-library-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .kit-library-grid a{display:flex;flex-direction:column;gap:5px;padding:18px 16px;border:1px solid var(--line);border-radius:16px;text-decoration:none;min-height:112px;transition:border-color .15s,background .15s}
+    .kit-library-grid a:hover,.kit-library-grid a:focus-visible{background:#f7f9d8;border-color:#555}
+    .kit-library-grid b{font-size:15px}.kit-library-grid small{font-size:12px;color:var(--muted)}
+    .kit-library-grid .kit-link-meta{font-size:10px;font-weight:800;color:#5e6300;margin-top:auto}
+    .kit-open{display:inline-flex;align-items:center;margin:8px 0 0;font-weight:800;font-size:12px;text-decoration:none;min-height:32px}
+    .kit-open:hover{text-decoration:underline}
+    @media(max-width:760px){.kit-library-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.workbench-nav{margin-top:14px}}
+    @media(max-width:380px){.kit-library-grid{grid-template-columns:1fr}}
+
   </style>
 </head>
 <body>
@@ -36,6 +54,10 @@
         <p class="eyebrow">CHLOE MOTION</p>
         <h1 id="title">같은 클로이,<br><span>어느 홈페이지에서든.</span></h1>
         <p>시선을 따라 부드럽게 돌아보고, 작은 몸짓 뒤에 편안히 쉬는 클로이예요.<br>주변으로 포인터를 움직이거나 ‘다음 멘트’를 눌러 반응을 보세요.</p>
+        <div class="workbench-nav" aria-label="스튜디오 바로가기">
+          <a class="workbench-link" href="studio/">스튜디오에서 직접 제작 ↗</a>
+          <a class="docs-link" href="studio/?still=point">블로그용 이미지 만들기 ↗</a>
+        </div>
         <div class="toolbar" aria-label="모든 클로이 제어">
           <button class="btn primary" type="button" data-all-action="next">다음 멘트 보기</button>
           <button class="btn" type="button" data-all-action="greet">모두 인사</button>
@@ -51,6 +73,7 @@
           <div class="demo-speech" id="speech-thumbs"><strong>안녕하세요, 클로이예요.</strong><span>원하는 차와 예산을<br>편하게 이야기해 주세요.</span></div>
           <div class="stage"><img id="demo-thumbs" class="chloe-mascot" src="assets/clo02-thumbs-up-640.webp" width="640" height="960" alt="엄지를 들고 반기는 AI 상담사 클로이"></div>
           <div class="controls" aria-label="엄지척 클로이 제어"><button type="button" class="btn primary" data-action="next">다음 멘트</button><button type="button" class="btn" data-action="greet">인사</button><button type="button" class="btn" data-action="pause">정지</button><button type="button" class="btn" data-action="play">재생</button></div>
+          <a class="kit-open" href="studio/?pose=thumbs">엄지척 포즈로 스튜디오 열기 ↗</a>
           <p class="card-state" data-state>준비 중</p>
         </article>
         <article class="card" data-card="compare">
@@ -59,6 +82,7 @@
           <div class="demo-speech" id="speech-compare"><strong>반납할까요? 인수할까요?</strong><span>두 가지 경우를 놓고<br>천천히 비교해 봐요.</span></div>
           <div class="stage"><img id="demo-compare" class="chloe-mascot" src="assets/clo02-compare-640.webp" width="640" height="960" alt="양쪽을 가리키며 안내하는 AI 상담사 클로이"></div>
           <div class="controls" aria-label="양쪽 안내 클로이 제어"><button type="button" class="btn primary" data-action="next">다음 멘트</button><button type="button" class="btn" data-action="greet">인사</button><button type="button" class="btn" data-action="pause">정지</button><button type="button" class="btn" data-action="play">재생</button></div>
+          <a class="kit-open" href="studio/?pose=compare">양손 안내 포즈로 스튜디오 열기 ↗</a>
           <p class="card-state" data-state>준비 중</p>
         </article>
         <article class="card" data-card="consultation">
@@ -67,8 +91,22 @@
           <div class="demo-speech" id="speech-consultation"><strong>카톡에서 만나요.</strong><span>궁금했던 것부터<br>편하게 물어보세요.</span></div>
           <div class="stage"><img id="demo-consultation" class="chloe-mascot" src="assets/clo02-consultation-640.webp" width="640" height="960" alt="휴대폰을 들고 손인사하는 AI 상담사 클로이"></div>
           <div class="controls" aria-label="손인사 클로이 제어"><button type="button" class="btn primary" data-action="next">다음 멘트</button><button type="button" class="btn" data-action="greet">인사</button><button type="button" class="btn" data-action="pause">정지</button><button type="button" class="btn" data-action="play">재생</button></div>
+          <a class="kit-open" href="studio/?pose=consultation">휴대폰 상담 포즈로 스튜디오 열기 ↗</a>
           <p class="card-state" data-state>준비 중</p>
         </article>
+      </section>
+      <section class="kit-library" aria-labelledby="motion-library-title">
+        <p class="eyebrow">MOTION KIT LIBRARY</p>
+        <h2 id="motion-library-title">모션 키트를 고르고 바로 편집하세요.</h2>
+        <p>같은 클로이 원본으로 움직임·속도·구도·말풍선을 조정합니다. 키트를 선택하면 제작 스튜디오에 해당 설정이 적용됩니다.</p>
+        <div class="kit-library-grid">
+          <a href="studio/?kit=homepage"><b>홈페이지 환영</b><small>자연스러운 인사·대기</small><span class="kit-link-meta">스튜디오에서 편집 ↗</span></a>
+          <a href="studio/?kit=compare"><b>비교 설명</b><small>차량·가격 비교 PT</small><span class="kit-link-meta">스튜디오에서 편집 ↗</span></a>
+          <a href="studio/?kit=consult"><b>상담 안내</b><small>차분한 반응·맞장구</small><span class="kit-link-meta">스튜디오에서 편집 ↗</span></a>
+          <a href="studio/?kit=shorts"><b>쇼츠 PT</b><small>세로 영상·명확한 설명</small><span class="kit-link-meta">스튜디오에서 편집 ↗</span></a>
+          <a href="studio/?kit=energetic"><b>활기찬 등장</b><small>걷기 동작·시작 화면</small><span class="kit-link-meta">스튜디오에서 편집 ↗</span></a>
+          <a href="studio/?kit=reaction"><b>리액션</b><small>끄덕임·짧은 반응</small><span class="kit-link-meta">스튜디오에서 편집 ↗</span></a>
+        </div>
       </section>
       <section class="face-panel" data-card="face" aria-labelledby="face-title">
         <div>
