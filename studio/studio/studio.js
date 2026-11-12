@@ -565,6 +565,10 @@
       if (!POSES[next] || selectedPose === next || (recorder && recorder.state.busy)) return;
       selectedPose = next; poseRequest += 1;
       state.ready = false;
+      // A source switch is not ready to record or export until the new image loads.
+      $('record-button').disabled = true;
+      $('play-toggle').disabled = true;
+      $('restart').disabled = true;
       state.previousPose = null;
       state.action = 'idle'; state.resolvedAction = 'idle';
       state.time = 0; state.lifeTime = 0;
