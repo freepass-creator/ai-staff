@@ -47,7 +47,29 @@
           "studio_repository": "freepass-creator/ai-staff",
           "studio_path": "studio/studio/index.html",
           "usage": "착한거래 홈페이지·블로그·모션 스튜디오",
-          "note": "대표가 착한거래 전용으로 변경한 클로이라고 직접 확인. 공식 보라색 이미지의 외관·파일 해시가 동일하다는 의미는 아니며 두 외형/원본은 별개로 보존한다."
+          "note": "대표가 착한거래 전용으로 변경한 클로이라고 직접 확인. 공식 보라색 이미지의 외관·파일 해시가 동일하다는 의미는 아니며 두 외형/원본은 별개로 보존한다.",
+          "existing_10_angle_reference": {
+            "count": 10,
+            "source_repository": "freepass-creator/chakhan-sales",
+            "source_branch": "codex/chloe-pt-continuation-20261112",
+            "source_commit": "3ef1eba51630113d4e83c53a0ab9581b820e7636",
+            "files": [
+              "chloe-front.webp",
+              "chloe-front-left.webp",
+              "chloe-left.webp",
+              "chloe-back-left.webp",
+              "chloe-back.webp",
+              "chloe-back-right.webp",
+              "chloe-right.webp",
+              "chloe-front-right.webp",
+              "chloe-top.webp",
+              "chloe-bottom.webp"
+            ],
+            "ai_staff_copy": "robots/CLO-02/chakhan-sales/motion-3d/assets",
+            "viewer": "studio/turnaround/index.html",
+            "validated": "original Git blob SHA matches copied Git blob SHA for all 10",
+            "limitations": "reference images only; 3D PT remains a Draft PR #11 visual-review prototype"
+          }
         }
       ]
     },
