@@ -237,7 +237,7 @@
   }
   function summaryBox(c,value,H,hasPhoto,part){
     const tall=H>1060,short=H<730;
-    const x=80,y=short?394:tall?650:484,w=hasPhoto&&!tall?694:1040,h=short?118:tall?235:180;
+    const x=80,y=short?394:tall?650:484,w=hasPhoto?(tall?615:694):1040,h=short?118:tall?235:180;
     rounded(c,x,y,w,h,22);c.fillStyle=part==='faq'?'#f4f4f0':'#f5f9d1';c.fill();
     c.fillStyle='#dfe700';c.fillRect(x, y+25,8,h-50);
     drawText(c,value,x+33,y+26,w-67,short?28:tall?41:34,800,'#222222',short?3:4,1.3);
@@ -248,7 +248,7 @@
     drawText(c,'착한거래 · 조건부터 비교하세요',81,y+17,540,19,800,'#3a3a36',1,1.1);
     c.textAlign='right';c.textBaseline='top';c.fillStyle='#85857e';c.font='600 17px '+FONT;
     c.fillText(CUT_LABELS[cutKey]+' / AI STAFF',1115,y+20);
-    if(data.evidence){drawText(c,data.evidence,82,y-38,950,16,600,'#73736c',1,1.1);}
+    if(data.evidence){drawText(c,data.evidence,82,y+45,1038,15,600,'#73736c',1,1.1);}
   }
   function drawSampleWarning(c,H){
     c.save();rounded(c,585,H-160,535,38,6);c.fillStyle='#b74128';c.fill();
