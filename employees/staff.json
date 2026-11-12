@@ -46,7 +46,9 @@
       ],
       "reference_gallery": "../studio/turnaround/",
       "reference_views_count": 10,
-      "content_assets_status": "10 existing angle still images preserved from chakhan-sales Draft PR #11; prototype 3D motion remains under visual review"
+      "content_assets_status": "10 existing angle still images preserved from chakhan-sales Draft PR #11; prototype 3D motion remains under visual review",
+      "motion_studio_angle_entry": "../studio/studio/?angle=front",
+      "blog_still_angle_options": 10
     },
     {
       "id": "CLO-04",
