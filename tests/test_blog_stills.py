@@ -46,7 +46,7 @@ class BlogStillWorkbenchTests(unittest.TestCase):
         self.assertEqual(variant["parent_id"], "CLO-02")
         self.assertEqual(variant["identity_status"], "owner_confirmed_brand_variant")
         self.assertEqual(next(item["name_ko"] for item in registry["characters"] if item["id"] == "CLO-04"), "클로아")
-        self.assertIn("착한거래 클로이 원본 · 정면", self.html)
+        self.assertIn("착한 클로이 원본 · 정면", self.html)
         self.assertNotIn('<option value="thumbs">', self.html)
         self.assertEqual(variant["production_reference_policy"], "only_existing_10_angle_reference_images")
         self.assertEqual(len(variant["allowed_production_reference_files"]), 10)
