@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f6fd00">
+  <meta name="description" content="클로이의 동작과 대사, 화면 구도를 골라 짧은 영상을 만드는 모션 스튜디오입니다.">
+  <title>클로이 모션 스튜디오 · 착한거래</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./studio.css">
+  <script src="../chloe-motion.js" defer></script>
+  <script src="./recorder.js" defer></script>
+  <script src="./studio.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#studio-controls">동작 조절로 바로 가기</a>
+  <header class="site-header shell">
+    <a class="brand" href="https://chakhan-sales.vercel.app/" aria-label="착한거래 홈페이지"><span>착한거래</span><i aria-hidden="true"></i></a>
+    <span class="header-label">CHLOE STUDIO</span>
+    <a class="text-link header-link" href="../index.html">모션 키트 <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main class="shell">
+    <section class="intro" aria-labelledby="studio-title">
+      <div>
+        <p class="eyebrow">CLO-02 · CREATIVE STUDIO</p>
+        <h1 id="studio-title">클로이 <span>모션 스튜디오</span></h1>
+        <p class="intro-copy">동작을 고르고, 말을 적고, 클로이의 한 장면을 만들어 보세요.</p>
+      </div>
+      <div class="intro-note"><span class="mode-badge">정면 동작</span><p>지금은 정면에서 걷고 뛰는<br class="desktop-break"> 동작을 연출해요.</p></div>
+    </section>
+
+    <div class="workspace">
+      <section class="preview-panel" aria-labelledby="preview-title">
+        <header class="preview-header">
+          <div class="preview-heading"><span class="status-dot" aria-hidden="true"></span><h2 id="preview-title">촬영 화면</h2></div>
+          <span class="preview-caption">보이는 구도 그대로</span>
+        </header>
+        <div class="preview-surface">
+          <div id="stage-wrap" class="stage-wrap" data-ratio="portrait">
+            <canvas id="stage-canvas" width="1080" height="1920" role="img" aria-label="선택한 동작과 대사를 보여 주는 클로이 촬영 화면">클로이 촬영 화면을 표시하려면 캔버스를 지원하는 브라우저가 필요합니다.</canvas>
+          </div>
+        </div>
+        <div class="transport">
+          <div class="transport-buttons">
+            <button id="play-toggle" class="button button-small" type="button">일시정지</button>
+            <button id="restart" class="button button-quiet button-small" type="button">처음부터</button>
+          </div>
+          <output id="elapsed-time" class="elapsed" aria-label="재생 시간">00:00</output>
+        </div>
+        <p id="studio-status" class="studio-status" role="status">클로이를 준비하고 있어요.</p>
+        <p class="preview-footnote">대사와 배경을 바꿔도 같은 클로이로 계속 연출할 수 있어요.</p>
+      </section>
+
+      <aside id="studio-controls" class="control-panel" aria-label="클로이 연출 조절" tabindex="-1">
+        <section class="control-section" aria-labelledby="action-title">
+          <div class="section-heading"><span class="section-number">01</span><h2 id="action-title">동작</h2><span class="section-hint">어떻게 움직일까요?</span></div>
+          <div class="action-grid" role="group" aria-label="클로이 동작 선택">
+            <button type="button" class="action-button" data-action="idle" aria-pressed="true"><span class="action-symbol" aria-hidden="true">○</span>대기</button>
+            <button type="button" class="action-button" data-action="greet" aria-pressed="false"><span class="action-symbol" aria-hidden="true">↗</span>인사</button>
+            <button type="button" class="action-button" data-action="explain" aria-pressed="false"><span class="action-symbol" aria-hidden="true">↔</span>설명</button>
+            <button type="button" class="action-button" data-action="nod" aria-pressed="false"><span class="action-symbol" aria-hidden="true">↓</span>끄덕이기</button>
+            <button type="button" class="action-button" data-action="walk" aria-pressed="false"><span class="action-symbol" aria-hidden="true">›</span>제자리 걷기</button>
+            <button type="button" class="action-button" data-action="run" aria-pressed="false"><span class="action-symbol" aria-hidden="true">»</span>제자리 뛰기</button>
+          </div>
+          <label class="switch-row"><input id="demo-toggle" type="checkbox"><span class="switch-track" aria-hidden="true"></span><span>동작을 이어서 시연</span></label>
+          <div class="range-control"><label for="speed">동작 속도</label><output id="speed-value" for="speed">1.00×</output><input id="speed" type="range" min="0.5" max="1.5" step="0.05" value="1"></div>
+          <div class="range-control"><label for="intensity">동작 크기</label><output id="intensity-value" for="intensity">70%</output><input id="intensity" type="range" min="0.35" max="1" step="0.05" value="0.7"></div>
+        </section>
+
+        <section class="control-section" aria-labelledby="frame-title">
+          <div class="section-heading"><span class="section-number">02</span><h2 id="frame-title">화면</h2><span class="section-hint">어디에 담을까요?</span></div>
+          <div class="segmented" role="group" aria-label="영상 비율 선택">
+            <button type="button" data-ratio="portrait" aria-pressed="true"><span class="ratio-icon portrait" aria-hidden="true"></span><span>쇼츠 <b>9:16</b></span></button>
+            <button type="button" data-ratio="landscape" aria-pressed="false"><span class="ratio-icon landscape" aria-hidden="true"></span><span>가로 <b>16:9</b></span></button>
+          </div>
+          <div class="range-control"><label for="actor-size">클로이 크기</label><output id="actor-size-value" for="actor-size">100%</output><input id="actor-size" type="range" min="0.7" max="1.15" step="0.05" value="1"></div>
+          <div class="range-control"><label for="actor-x">좌우 위치</label><output id="actor-x-value" for="actor-x">가운데</output><input id="actor-x" type="range" min="15" max="85" step="1" value="50"></div>
+          <fieldset class="background-field"><legend>배경</legend><div class="background-grid" role="group" aria-label="촬영 배경 선택">
+            <button type="button" class="background-button" data-background="paper" aria-pressed="true"><span class="swatch swatch-paper" aria-hidden="true"></span><span>흰색</span></button>
+            <button type="button" class="background-button" data-background="yellow" aria-pressed="false"><span class="swatch swatch-yellow" aria-hidden="true"></span><span>노랑</span></button>
+            <button type="button" class="background-button" data-background="ink" aria-pressed="false"><span class="swatch swatch-ink" aria-hidden="true"></span><span>검정</span></button>
+            <button type="button" class="background-button" data-background="green" aria-pressed="false"><span class="swatch swatch-green" aria-hidden="true"></span><span>크로마키</span></button>
+          </div></fieldset>
+        </section>
+
+        <section class="control-section" aria-labelledby="speech-title">
+          <div class="section-heading"><span class="section-number">03</span><h2 id="speech-title">대사</h2><label class="switch-row switch-compact"><span>말풍선</span><input id="speech-toggle" type="checkbox" checked><span class="switch-track" aria-hidden="true"></span></label></div>
+          <label class="sr-only" for="speech-text">클로이가 건넬 말</label>
+          <textarea id="speech-text" maxlength="90" rows="3" aria-describedby="speech-hint">어떤 차 찾으세요?
+AI 클로이가 함께 비교해 드려요.</textarea>
+          <p id="speech-hint" class="field-note">한 줄씩 입력하면 차례로 바뀌어요. 최대 90자.</p>
+        </section>
+
+        <section class="control-section record-section" aria-labelledby="record-title">
+          <div class="section-heading"><span class="section-number">04</span><h2 id="record-title">녹화</h2><span class="section-hint">이 장면을 영상으로</span></div>
+          <div class="duration-row"><label for="record-duration">영상 길이</label><select id="record-duration"><option value="6">6초</option><option value="12" selected>12초</option><option value="20">20초</option></select></div>
+          <button id="record-button" class="button button-record" type="button" disabled>영상 녹화</button>
+          <progress id="record-progress" max="1" value="0" aria-label="녹화 진행률" hidden></progress>
+          <a id="download-link" class="button button-download" download hidden>영상 내려받기 <span aria-hidden="true">↓</span></a>
+          <p id="capture-status" class="capture-status" role="status">화면을 준비한 뒤 녹화를 시작할 수 있어요.</p>
+          <p id="export-note" class="field-note">배경·캐릭터·말풍선이 함께 녹화돼요. 음성은 포함되지 않아요.</p>
+          <p class="format-note">브라우저가 지원하는 MP4 또는 WebM으로 저장합니다.</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer shell"><span>CLO-02 클로이 · 착한거래</span><nav aria-label="관련 화면"><a href="https://chakhan-sales.vercel.app/">홈페이지</a><a href="../index.html">재사용 모션 키트</a></nav></footer>
+</body>
+</html>

@@ -1,0 +1,42 @@
+/* Chloe Dialogue 1.2.0. Load after the host bubble styles.
+   Individual translate keeps host transforms (e.g. centering) intact. */
+.chloe-dialogue{
+  --chloe-dialogue-x:0px;--chloe-dialogue-y:0px;--chloe-dialogue-scale:1;
+  translate:calc(var(--chloe-dialogue-x) * var(--chloe-dialogue-scale)) calc(var(--chloe-dialogue-y) * var(--chloe-dialogue-scale));
+  transition:translate 650ms cubic-bezier(.22,.68,.28,1);
+}
+.chloe-dialogue[data-dialogue-version] .chloe-dialogue-deck{
+  display:grid;grid-template-columns:minmax(0,1fr);margin:0;padding:0 15px 0 0;
+  min-width:0;font:inherit;color:inherit;white-space:normal;
+}
+.chloe-dialogue[data-dialogue-version] .chloe-dialogue-copy{
+  grid-area:1/1;display:block;min-width:0;margin:0;padding:0;font:inherit;color:inherit;
+  opacity:0;visibility:hidden;pointer-events:none;word-break:keep-all;overflow-wrap:anywhere;
+  transition:opacity 220ms ease;
+}
+.chloe-dialogue[data-dialogue-version] .chloe-dialogue-copy.is-active{opacity:1;visibility:visible;pointer-events:auto}
+.chloe-dialogue[data-dialogue-version] .chloe-dialogue-copy.is-leaving{opacity:0}
+.chloe-dialogue .chloe-dialogue-title{display:block;margin:0;font-weight:700}
+.chloe-dialogue .chloe-dialogue-body{display:block;white-space:pre-line;font-size:.85em}
+.chloe-dialogue[data-dialogue-version] .chloe-dialogue-title,
+.chloe-dialogue[data-dialogue-version] .chloe-dialogue-body{translate:0 3px;opacity:0;transition:opacity 260ms ease,translate 380ms ease}
+.chloe-dialogue[data-dialogue-version] .is-active .chloe-dialogue-title{translate:0 0;opacity:1}
+.chloe-dialogue[data-dialogue-version] .is-active .chloe-dialogue-body{translate:0 0;opacity:1;transition-delay:70ms}
+.chloe-dialogue[data-dialogue-version] .chloe-dialogue-title[hidden],
+.chloe-dialogue[data-dialogue-version] .chloe-dialogue-body[hidden]{display:none}
+.chloe-dialogue .chloe-dialogue-toggle{
+  position:absolute;right:3px;bottom:3px;display:grid;place-items:center;width:23px;height:23px;
+  margin:0;padding:0;border:0;border-radius:6px;background:transparent;color:inherit;
+  opacity:.48;cursor:pointer;line-height:1;touch-action:manipulation;box-shadow:none;
+}
+.chloe-dialogue .chloe-dialogue-toggle svg{display:block;width:12px;height:12px;fill:currentColor;pointer-events:none}
+.chloe-dialogue .chloe-dialogue-toggle:hover,.chloe-dialogue .chloe-dialogue-toggle:focus-visible{opacity:1;background:rgba(127,127,127,.13)}
+.chloe-dialogue .chloe-dialogue-toggle:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.chloe-dialogue .chloe-dialogue-toggle:disabled{opacity:.3;cursor:default}
+@media(max-width:899px){.chloe-dialogue{--chloe-dialogue-scale:.4}}
+@media(prefers-reduced-motion:reduce){
+  .chloe-dialogue{translate:0 0!important;transition:none!important}
+  .chloe-dialogue[data-dialogue-version] .chloe-dialogue-copy,
+  .chloe-dialogue[data-dialogue-version] .chloe-dialogue-title,
+  .chloe-dialogue[data-dialogue-version] .chloe-dialogue-body{translate:0 0;transition:none!important}
+}
