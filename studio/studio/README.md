@@ -176,3 +176,27 @@ capture.start({durationMs: 12000});
 - `../chloe-motion.js`: 캐릭터의 동일 정본. 저장소에서는 `/clo02-motion.js`
 
 수정은 저장소 정본에서 한 뒤 `python3 tools/build-chloe-motion-kit.py`로 다시 묶습니다. 웹사이트에 복사한 ZIP은 새 버전으로 직접 교체해야 합니다.
+
+
+## 모션 키트 페이지 ↔ 제작 스튜디오 연결 (2026-11-12)
+
+두 페이지는 하나의 원본과 ChloeMotion 실행 파일을 공유합니다.
+
+- 모션 키트 갤러리: `../index.html` (저장소 기준 `studio/index.html`)
+- 제작 스튜디오: `index.html` (저장소 기준 `studio/studio/index.html`)
+- 스튜디오 링크의 쿼리 파라미터는 **미리 등록된 이름만 허용**합니다. 임의 파일 경로/실행 코드를 해석하지 않습니다.
+- `?kit=homepage|compare|consult|shorts|energetic|reaction`: 스튜디오 초기 로드 후 해당 연출 자동 적용
+- `?pose=thumbs|compare|consultation`: 승인된 원본 포즈 선택. 저장된 아카이브 추가 5종도 `pose` 파라미터로 선택 가능하지만 모션 없이 정지 상태입니다.
+- `?still=front|greeting|point|proposal|phone|surprise|thumb|walk|run|nod`: 블로그 정지 장면 프리셋
+- 모션 키트 페이지의 각 항목은 편집 가능한 스튜디오 URL로 연결하고, 스튜디오 상단은 다시 키트 페이지로 돌아갈 수 있습니다.
+
+예시: `/studio/studio/?kit=shorts`, `/studio/studio/?still=point`, `/studio/studio/?pose=consultation`.
+
+### 점검 사항
+
+1. 키트 페이지의 6개 연출·3개 원본 포즈 링크가 각각 스튜디오에서 선택되는지 확인합니다.
+2. 스튜디오에서 키트 페이지 복귀 후 다른 항목을 다시 선택합니다.
+3. 정지 포즈를 PNG로 저장하고 녹화 가능한 원본 포즈에서는 MP4/WebM 녹화를 검증합니다.
+4. 모바일 360px 폭의 키트 카드/링크/모션 미리보기 잘림을 확인합니다.
+5. 다각도·앉은 자세·실제 손가락 리깅은 별도의 승인 원본과 관절 검증 전까지 미지원입니다.
+
