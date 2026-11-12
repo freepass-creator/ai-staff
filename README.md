@@ -40,6 +40,15 @@ AI 직원의 번호·이름·기준 이미지를 관리한다. 로봇 캐릭터�
 - 로컬 실행: 저장소 루트에서 python -m http.server 8000 → http://localhost:8000/studio/blog-stills/. file:// 직접 열기 대신 HTTP(S)에서 검수한다.
 - 회귀 검사: python -m unittest tests.test_blog_stills -v. 개발 단계에서 JS 구문 검사 및 DOM 모의 실행을 확인했으나, **실제 브라우저 PNG/ZIP 다운로드와 Vercel 프로덕션 동작은 배포 후 실기검수 필요**.
 
+## 기존 착한거래 클로이 다각도 10장 복구 (2026-11-12)
+
+- **새로 그린 이미지가 아니다.** 착한거래의 기존 작업 브랜치 `codex/chloe-pt-continuation-20261112`, 원본 Draft PR [#11](https://github.com/freepass-creator/chakhan-sales/pull/11)의 `motion-3d/assets/chloe-*.webp` 10장을 **바이트 그대로 복사**했다.
+- 8방향: `chloe-front.webp`, `chloe-front-left.webp`, `chloe-left.webp`, `chloe-back-left.webp`, `chloe-back.webp`, `chloe-back-right.webp`, `chloe-right.webp`, `chloe-front-right.webp`; 위·아래: `chloe-top.webp`, `chloe-bottom.webp`.
+- 보관 위치: `robots/CLO-02/chakhan-sales/motion-3d/assets/` (각각 Git blob SHA 일치 확인). **[다각도 10장 뷰어](studio/turnaround/index.html)** 에서 클릭 전환·원본 저장 가능. [출처 및 SHA 목록](studio/turnaround/reference-index.json).
+- 원본 PT 코드, 손가락 관절·17.5초 영상 검증은 착한거래 브랜치의 `motion-3d/PT-HANDOFF.md`에 있다. 기존 PT 페이지는 해당 브랜치의 `/motion-3d/pt.html`이며 AI Staff에 임의로 재구현하지 않았다.
+- **검수 범위:** 원본 보존과 이미지 10장 확보는 확인. 다각도 생성 이미지끼리 일부 손목 자세 차이가 있으므로 하나의 완전 일치 3D 스캔/모델은 아니다. 3D PT 외형은 여전히 검수 대상이다.
+- 기존 착한거래 홈페이지·원본 브랜치는 변경하지 않았으며, AI Staff main 병합과 배포는 검토 후 별도 진행한다.
+
 ## AI Staff 캐릭터 이미지·모션 스튜디오 (2026-11-12)
 
 착한거래에서 사용한 CLO-02 자산과 검증된 **정면 2D 모션 키트 1.5.0**을 AI Staff로 복사하여 별도 실행할 수 있게 구성했다. **착한거래 홈페이지 소스는 수정하지 않는다.**
@@ -56,7 +65,7 @@ AI 직원의 번호·이름·기준 이미지를 관리한다. 로봇 캐릭터�
 ### 다각도 이미지의 미세 모션 (간단한 방식)
 
 - [다각도 자연 모션 시연](gentle-motion/index.html): 원본 이미지를 새로 그리지 않고 **이미지 전체**에 작은 호흡·좌우 기울임·위치 이동을 적용. 앞/옆/뒤 각도 선택과 로컬 이미지 불러오기 지원.
-- 현재 저장소에 검증된 옆모습·뒷모습 CLO-02 이미지는 연결되어 있지 않다. 해당 각도는 외형을 추측하지 않으며 해당 사진을 선택해야 표시한다.
+- 별도 [다각도 10장 뷰어](studio/turnaround/index.html)에 착한거래 브랜드 변형의 옆모습·뒷모습·상하 10장을 보존했다. 이 미세 모션 시연 화면에 자동 연결된 3D 관절 모델은 여전히 없으며, 캐릭터 원본을 임의로 재구성하지 않는다. 해당 각도는 외형을 추측하지 않으며 해당 사진을 선택해야 표시한다.
 - 기존 `studio/`의 정면 관절 모션은 보존한다. 정밀 파츠 트레이서는 별도 실험 경로이며 기본 제작 흐름에서는 필수가 아니다.
 - 이 화면에서 불러온 이미지는 브라우저에서만 사용되며 AI Staff 저장소에 자동 저장되지 않는다.
 
