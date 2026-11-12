@@ -29,7 +29,7 @@
       "brand_variants": [
         {
           "variant_id": "CLO-02-CHAKHAN",
-          "display_name_ko": "착한거래 클로이",
+          "display_name_ko": "착한 클로이",
           "brand": "착한거래",
           "parent_id": "CLO-02",
           "identity_status": "owner_confirmed_brand_variant",
@@ -98,7 +98,8 @@
             "chloe-bottom.webp"
           ],
           "legacy_pose_usage": "archive_and_experiment_only; not_authorized_for_chakhan_brand_output",
-          "derived_motion_rule": "Match character appearance to all applicable reference views and require review before branded export. A 2D motion rig made from older pose assets is not an approved substitute."
+          "derived_motion_rule": "Match character appearance to all applicable reference views and require review before branded export. A 2D motion rig made from older pose assets is not an approved substitute.",
+          "previous_display_name_ko": "착한거래 클로이"
         }
       ]
     },
