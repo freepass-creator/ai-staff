@@ -338,13 +338,59 @@
 
   // Small public directing API: scripts can reuse the same controls as the UI.
   window.ChloeStudio = Object.freeze({
-    version: '1.1.0',
+    version: '1.2.0',
+    kits: Object.freeze(Object.keys(MOTION_KITS)),
+    useKit: applyMotionKit,
     act: changeAction,
     say: function (text) { state.text = String(text).slice(0, 90); $('speech-text').value = state.text; lastPhrase = -1; draw(); },
     play: function () { setPlayback(true); }, pause: function () { setPlayback(false); }, restart: restart,
     getState: function () { return { action: currentScene().action, time: state.time, playing: state.playing, ratio: state.ratio, ready: !!actor }; }
   });
   setPlayback(state.playing); setRatio('portrait'); raf = requestAnimationFrame(frame);
+
+  // Reusable direction presets, using the existing verified ChloeMotion rig.
+  var MOTION_KITS = Object.freeze({
+    homepage: { label: '홈페이지 환영', action: 'greet', speed: .8, intensity: .45, background: 'paper', ratio: 'portrait', speech: '안녕하세요!\\n계약 전, 비교부터 해 보세요.' },
+    compare: { label: '비교 설명', action: 'explain', speed: .7, intensity: .58, background: 'paper', ratio: 'landscape', speech: '같은 차도 조건에 따라 대여료가 달라요.\\n차근차근 비교해 드릴게요.' },
+    consult: { label: '상담 유도', action: 'nod', speed: .65, intensity: .38, background: 'paper', ratio: 'portrait', speech: '계약하지 않으셔도 괜찮아요.\\n먼저 알아만 보세요.' },
+    shorts: { label: '쇼츠 PT', action: 'explain', speed: 1.05, intensity: .8, background: 'yellow', ratio: 'portrait', speech: '장기렌트, 어디가 저렴할까요?\\n조건을 비교하면 보입니다.' },
+    energetic: { label: '활기찬 등장', action: 'walk', speed: 1.15, intensity: .75, background: 'paper', ratio: 'portrait', speech: '오늘의 차량 비교, 시작해 볼까요?' },
+    reaction: { label: '리액션', action: 'nod', speed: .9, intensity: .5, background: 'paper', ratio: 'portrait', speech: '맞아요!\\n이 조건도 꼭 확인하세요.' }
+  });
+  var selectedMotionKit = null;
+  function applyMotionKit(id) {
+    var kit = MOTION_KITS[id];
+    if (!kit || (recorder && recorder.state.busy)) return false;
+    selectedMotionKit = id;
+    state.speed = state.appliedSpeed = kit.speed;
+    state.intensity = state.appliedIntensity = kit.intensity;
+    state.background = kit.background;
+    state.text = kit.speech;
+    state.speech = true;
+    state.demo = false;
+    $('demo-toggle').checked = false;
+    $('speech-toggle').checked = true;
+    $('speech-text').value = kit.speech;
+    $('speed').value = String(kit.speed);
+    $('speed-value').textContent = kit.speed.toFixed(2) + '×';
+    $('intensity').value = String(kit.intensity);
+    $('intensity-value').textContent = Math.round(kit.intensity * 100) + '%';
+    selected('data-background', kit.background);
+    setRatio(kit.ratio);
+    state.previousPose = null;
+    state.transitionStart = -TRANSITION_SECONDS;
+    state.action = state.resolvedAction = kit.action;
+    state.actionMotionStart = state.motionTime = state.time = 0;
+    selected('data-action', kit.action);
+    setPlayback(true);
+    lastPhrase = -1;
+    document.querySelectorAll('[data-motion-kit]').forEach(function (button) {
+      button.setAttribute('aria-pressed', String(button.dataset.motionKit === id));
+    });
+    $('motion-kit-status').textContent = kit.label + ' 키트를 적용했습니다. 기존 버튼으로 세부 동작을 조정할 수 있습니다.';
+    draw();
+    return true;
+  }
 
   var STILL_PRESETS = {
     front: { source: 'front', label: '정면 소개' },
@@ -411,6 +457,15 @@
     }).catch(function () { unsupported(); draw(); });
   };
   image.onerror = function () { $('studio-status').textContent = '클로이 이미지를 불러오지 못했어요. 새로고침해 주세요.'; };
+  document.querySelectorAll('[data-motion-kit]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      if (!state.ready || !actor) {
+        $('motion-kit-status').textContent = '움직임 원본이 준비된 상태에서 키트를 선택하세요.';
+        return;
+      }
+      applyMotionKit(button.dataset.motionKit);
+    });
+  });
   document.querySelectorAll('[data-still-preset]').forEach(function (button) {
     button.addEventListener('click', function () {
       var id = button.dataset.stillPreset, preset = STILL_PRESETS[id];
