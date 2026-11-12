@@ -37,6 +37,10 @@
 5. 파일명, 문서의 이름·번호, 이미지 안 명찰을 각각 확인한다. 파일명만 바꾸고 완료로 처리하지 않는다.
 6. 웹페이지에서 쓰는 파일 경로를 바꿀 때에는 해당 참조도 함께 수정하고 실제 화면을 검증한다.
 
+## 기존 착한거래용 10방향 원본 위치 (2026-11-12 회수)
+
+대표가 이미 제작했다고 언급한 8방향+상·하 10장은 **착한거래 Draft PR #11**의 `motion-3d/assets/chloe-*.webp`에 있다. 당시 main이 아닌 `codex/chloe-pt-continuation-20261112` 브랜치에 있어 main만 조회하면 보이지 않았다. AI Staff 작업 브랜치에는 `robots/CLO-02/chakhan-sales/motion-3d/assets/`로 **원본 바이트 그대로** 10장 복사했으며 `studio/turnaround/reference-index.json`에 SHA 기록했다. 참조 영상/손가락 PT는 원래 착한거래 브랜치의 `motion-3d/PT-HANDOFF.md`를 확인한다. 새 이미지 생성이나 공식 보라색 기본 원본 대체 작업이 아니다.
+
 ## 새 이미지 주문서에 넣을 정보
 
 - 캐릭터: 공식 번호와 한국어 이름.
