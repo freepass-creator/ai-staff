@@ -102,15 +102,8 @@
       points:['차량 조건과 견적 비교','보증금·기간·주행거리 확인','궁금한 내용부터 AI 상담']
     }
   };
+  // 착한거래 클로이로 출력 가능한 내장 이미지는 확인된 10방향 원본뿐입니다.
   const IMAGE_FILES={
-    thumbs:'../assets/clo02-thumbs-up-master.webp',
-    compare:'../assets/clo02-compare-640.webp',
-    consult:'../assets/clo02-consultation-640.webp',
-    front:'../../robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-front.png',
-    point:'../../robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-point.png',
-    phone:'../../robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-phone.png',
-    surprise:'../../robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-surprise.png',
-    thumbsup:'../../robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-thumbsup.png',
     angleFront:'../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-front.webp',
     angleFrontLeft:'../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-front-left.webp',
     angleLeft:'../../robots/CLO-02/chakhan-sales/motion-3d/assets/chloe-left.webp',
@@ -328,7 +321,7 @@
     actorStatus('대표가 확인한 착한거래 클로이 브랜드 변형을 불러오는 중입니다.');
     const image=new Image();image.onload=()=>{
       if(request!==loadVersion)return;
-      photo=image;actorStatus('착한거래 클로이(CLO-02-CHAKHAN) 브랜드 변형입니다. 기본 보라색 원본과 다른 외형으로 보존합니다.');schedule();
+      photo=image;actorStatus('착한거래 클로이(CLO-02-CHAKHAN) 기준 10방향 원본입니다. 다른 클로이 외형으로 자동 대체하지 않습니다.');schedule();
     };
     image.onerror=()=>{
       if(request!==loadVersion)return;
