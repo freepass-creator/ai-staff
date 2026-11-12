@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "updated_on": "2026-11-12",
+  "policy": "Do not infer identity from filename; preserve originals; derivatives require review.",
+  "characters": [
+    {
+      "id": "CLO-02",
+      "display_name": "클로이",
+      "identity_reference": "robots/registry.json",
+      "identity_source_status": "verified_reference_not_present_in_repo",
+      "verified_reference_filename": "clo02-true.png",
+      "source_archive": "robots/CLO-02/chakhan-sales",
+      "motion_studio": "studio/studio/index.html",
+      "motion_engine": "studio/chloe-motion.js",
+      "asset_identity_status": "needs_visual_review_against_verified_purple_reference",
+      "image_generation": {
+        "human_generator_compatible": false,
+        "robot_identity_preserving_generation": "not_implemented",
+        "still_frame_export": true
+      },
+      "actions": {
+        "idle": "supported_2d_front",
+        "greet": "supported_2d_front",
+        "explain": "supported_2d_front",
+        "nod": "supported_2d_front",
+        "walk": "in_place_front_only",
+        "run": "in_place_front_only",
+        "true_3d": "not_implemented",
+        "side_back": "not_verified"
+      },
+      "production": {
+        "stills": [
+          "png"
+        ],
+        "video": [
+          "mp4_if_browser_supported",
+          "webm_fallback"
+        ],
+        "audio": "not_supported"
+      },
+      "constraints": [
+        "no unverified identity promotion",
+        "no automatic replacement of source website",
+        "no artificial face reconstruction"
+      ]
+    },
+    {
+      "id": "CLO-04",
+      "display_name": "클로아",
+      "identity_source_status": "reference_missing",
+      "motion_studio": null,
+      "image_generation": {
+        "robot_identity_preserving_generation": "blocked_pending_reference"
+      }
+    }
+  ]
+}
