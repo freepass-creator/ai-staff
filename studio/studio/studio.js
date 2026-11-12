@@ -6,10 +6,16 @@
   var POSES = {
     thumbs: { file: 'clo02-thumbs-up-master.webp', pose: 'thumbs' },
     compare: { file: 'clo02-compare-640.webp', pose: 'compare' },
-    consultation: { file: 'clo02-consultation-640.webp', pose: 'consultation' }
+    consultation: { file: 'clo02-consultation-640.webp', pose: 'consultation' },
+    front: { file: 'clo02-front.png', pose: null, archived: true },
+    point: { file: 'clo02-point.png', pose: null, archived: true },
+    phone: { file: 'clo02-phone.png', pose: null, archived: true },
+    surprise: { file: 'clo02-surprise.png', pose: null, archived: true },
+    thumbsup: { file: 'clo02-thumbsup.png', pose: null, archived: true }
   };
   var selectedPose = 'thumbs', poseRequest = 0;
   var assetBase = new URL('../assets/', document.currentScript.src);
+  var archiveBase = new URL('../../robots/CLO-02/chakhan-sales/marketing/assets/character/', document.currentScript.src);
   var source = new URL(POSES.thumbs.file, assetBase).href;
   var image = new Image(), actor = null, recorder = null, downloadURL = '', raf = 0;
   var lastNow = 0, lastSecond = -1, lastPhrase = -1, lastScene = null;
@@ -221,7 +227,14 @@
           unsupported();
         }
       }
-      ctx.drawImage(drawable, rect.x, rect.y, rect.width, rect.height);
+      if (POSES[selectedPose].archived && image.naturalWidth && image.naturalHeight) {
+        // Archive images may have a different aspect ratio from the rig master.
+        var fit = Math.min(rect.width / image.naturalWidth, rect.height / image.naturalHeight);
+        var dw = image.naturalWidth * fit, dh = image.naturalHeight * fit;
+        ctx.drawImage(image, rect.center - dw / 2, rect.y + rect.height - dh, dw, dh);
+      } else {
+        ctx.drawImage(drawable, rect.x, rect.y, rect.width, rect.height);
+      }
     }
     speech(rect);
     lastScene = { action: scene.action, seconds: scene.seconds };
@@ -335,14 +348,25 @@
   image.onload = function () {
     var request = poseRequest;
     state.ready = true;
-    var creation = window.ChloeMotion && window.ChloeMotion.createActor
+    var creation = POSES[selectedPose].pose && window.ChloeMotion && window.ChloeMotion.createActor
       ? window.ChloeMotion.createActor({ src: source, pose: POSES[selectedPose].pose, width: 1024, height: 1536 })
       : Promise.resolve(null);
     creation.then(function (created) {
       if (request !== poseRequest) { if (created) created.destroy(); return; }
       if (actor) actor.destroy();
       actor = created; if (!recorder) initializeRecording();
+      if (!actor && POSES[selectedPose].archived) {
+        canvas.dataset.renderer = 'original-still';
+        document.querySelectorAll('[data-action]').forEach(function (item) { item.disabled = true; });
+        $('demo-toggle').disabled = true;
+        $('record-button').disabled = true;
+        $('studio-status').textContent = '아카이브 원본 이미지입니다. 정지 포즈로 확인하며, 관절 모션은 지원하지 않습니다.';
+        $('capture-status').textContent = '이 포즈는 PNG 정지 이미지로 내보내세요.';
+        draw();
+        return;
+      }
       if (!actor) { unsupported(); return; }
+      $('demo-toggle').disabled = false;
       canvas.dataset.renderer = 'connected-rig';
       document.querySelectorAll('button[data-action]').forEach(function (button) { button.disabled = actor.supportedActions.indexOf(button.dataset.action) < 0; });
       $('studio-status').textContent = reduced.matches ? '동작 줄이기 설정에 따라 멈춰 있어요. 재생을 누르면 연출할 수 있어요.' : '준비됐어요. 동작을 골라 클로이를 움직여 보세요.';
@@ -362,7 +386,7 @@
       document.querySelectorAll('[data-chloe-source]').forEach(function (item) { item.setAttribute('aria-pressed', String(item === button)); });
       document.querySelectorAll('[data-action]').forEach(function (item) { item.disabled = true; });
       $('studio-status').textContent = '선택한 원본 포즈를 불러오는 중입니다.';
-      source = new URL(POSES[next].file, assetBase).href;
+      source = new URL(POSES[next].file, POSES[next].archived ? archiveBase : assetBase).href;
       image.src = source;
     });
   });
