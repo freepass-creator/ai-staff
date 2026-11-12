@@ -84,7 +84,12 @@
         "source_pull_request": 11,
         "source_handoff": "motion-3d/PT-HANDOFF.md",
         "original_sha_verified": true,
-        "limitation": "Images are angle reference stills, not proof of identical 3D geometry or production motion approval."
+        "limitation": "Images are angle reference stills, not proof of identical 3D geometry or production motion approval.",
+        "in_studio_selector": "studio/studio/index.html#chloe-angles-title",
+        "example_deep_link": "studio/studio/index.html?angle=front",
+        "blog_still_selector": "studio/blog-stills/index.html#editing",
+        "static_png_and_original_webp": true,
+        "animated_on_side_back": false
       }
     },
     {
