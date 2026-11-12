@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "updated_on": "2026-11-11",
+  "updated_on": "2026-11-12",
   "timezone": "Asia/Seoul",
-  "authority": "대표 직접 확정: 보라색 CLO-02 클로이, CLO-04 클로아",
+  "authority": "대표 직접 확정: CLO-02 클로이의 공식 보라색 원본과 착한거래용 노란색 브랜드 변형은 같은 캐릭터의 구별되는 자산이다. CLO-04 클로아는 별도.",
   "characters": [
     {
       "id": "CLO-02",
@@ -25,7 +25,31 @@
         "sha256": "30f415209c0d9bd1fd637f9a2fecf49f7708551288300c0ae7cb4dfaaad9a714",
         "repository_path": null,
         "notes": "보라색 눈·속눈썹, 중앙이 파인 검은 얼굴 화면, 귀 옆 핀, 머리 위 고리 안테나 없음. 원본은 불투명 배경이며 투명 납품본으로 취급하지 않는다."
-      }
+      },
+      "brand_variants": [
+        {
+          "variant_id": "CLO-02-CHAKHAN",
+          "display_name_ko": "착한거래 클로이",
+          "brand": "착한거래",
+          "parent_id": "CLO-02",
+          "identity_status": "owner_confirmed_brand_variant",
+          "confirmed_on": "2026-11-12",
+          "observed_design": "흰색·은색 외장, 노란 눈과 발광 부위, 이마 착한거래 로고 및 가슴 CLO-02 계열 마킹",
+          "source_repository": "freepass-creator/chakhan-sales",
+          "source_paths": [
+            "assets/clo02/clo02-thumbs-up-master.webp",
+            "assets/clo02/clo02-compare-640.webp",
+            "assets/clo02/clo02-consultation-640.webp",
+            "marketing/assets/character/clo02-front.png",
+            "marketing/assets/character/clo02-point.png",
+            "marketing/assets/character/clo02-phone.png"
+          ],
+          "studio_repository": "freepass-creator/ai-staff",
+          "studio_path": "studio/studio/index.html",
+          "usage": "착한거래 홈페이지·블로그·모션 스튜디오",
+          "note": "대표가 착한거래 전용으로 변경한 클로이라고 직접 확인. 공식 보라색 이미지의 외관·파일 해시가 동일하다는 의미는 아니며 두 외형/원본은 별개로 보존한다."
+        }
+      ]
     },
     {
       "id": "CLO-04",
@@ -58,7 +82,11 @@
     "preserve_original_images": true,
     "unresolved_asset_identity": "review_before_reuse",
     "existing_human_characters": "characters/클로운, characters/클로담 자료와 별도 관리",
-    "generator_support": "registry_only; existing SDXL/SFace human generator unchanged"
+    "generator_support": "registry_only; existing SDXL/SFace human generator unchanged",
+    "brand_variant_inherits_canonical_id": true,
+    "purple_master_and_chakhan_variant_are_distinct_assets": true,
+    "new_generated_candidates_require_review": true,
+    "remote_pc_control_transport": "AI Link; RDC 사용하지 않음"
   },
   "superseded_name_pairs": [
     {
