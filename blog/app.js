@@ -25,5 +25,5 @@ async function busy(button,fn){button.disabled=true;try{await fn()}catch(err){me
  $('export').onclick=()=>busy($('export'),async()=>{if(rendered?.id!==id||rendered.token!==renderToken)throw Error('이미지를 먼저 만들어 주세요.');const v=C.validate(a,state),p=await C.handoff(a,job,v,rendered.imageFiles,{renderReport:rendered.reports}),z=await C.zip(p.files);download(z,id+'-ailink.zip');message('AI 링크 전달 묶음을 내려받았습니다. 발행 승인은 별도입니다.')});
  }
  $('demo').onclick=()=>busy($('demo'),async()=>{const r=await fetch('demos.json');const demos=await r.json();for(const item of demos){if(!state.jobs.some(j=>j.job_id===item.job.job_id))state.jobs.push(item.job)}await importArticles(demos.map(x=>x.article));message('여섯 가지 구성의 시연 원고를 불러왔습니다.')});
- try{state=await api('state');draw()}catch(err){$('connection').textContent='로컬 서버를 실행해 주세요 · node blog/server.cjs';message(err.message)}
+ try{state=await api('state');draw();const campaign=new URLSearchParams(location.search).get('campaign');if(campaign){const j=state.jobs.find(j=>j.campaign_id===campaign);if(j)document.querySelector('[data-job=\"'+j.job_id+'\"]')?.click()}}catch(err){$('connection').textContent='로컬 서버를 실행해 주세요 · node blog/server.cjs';message(err.message)}
 })();
