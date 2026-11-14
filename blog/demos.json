@@ -1,0 +1,492 @@
+[
+  {
+    "job": {
+      "schema_version": 1,
+      "job_id": "DEMO-explain",
+      "topic": "[시연] 비교 메모를 처음 만드는 순서",
+      "topic_key": "시연비교메모를처음만드는순서",
+      "template": "explain",
+      "audience": "신차 장기렌트를 비교하려는 독자",
+      "source_snapshot_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_snapshot_state": "unavailable",
+      "source_snapshot_checked_at": null,
+      "created_at": "2026-11-14T13:40:13.717Z",
+      "pose": "intro",
+      "variant": 0,
+      "demo": true
+    },
+    "article": {
+      "schema_version": 1,
+      "job_id": "DEMO-explain",
+      "topic_key": "시연비교메모를처음만드는순서",
+      "source_snapshot_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "title": "[시연] 비교 메모를 처음 만드는 순서",
+      "cover_headline": "처음 비교할 때\n이 메모부터",
+      "deck": "확인할 내용을 한 번에 읽는 비교 메모",
+      "template": "explain",
+      "audience": "신차 장기렌트를 비교하려는 독자",
+      "search_intent": "독자가 검색한 질문과 필요한 답을 구체적으로 씁니다.",
+      "intro": [
+        "이 원고는 블로그 제작소의 글 구성과 이미지 배치를 살펴보는 시연입니다. 실제 견적이나 상품의 약관을 설명하는 게시용 원고가 아닙니다.",
+        "차를 비교할 때 궁금한 점을 먼저 적으면 상담 중 빠뜨리는 항목을 줄일 수 있습니다. 막연하게 좋은 조건을 찾기보다 내 사용 계획을 구체적으로 정리해 보세요."
+      ],
+      "sections": [
+        {
+          "id": "s01",
+          "kind": "explain",
+          "heading": "먼저 확인할 기준",
+          "text": [
+            "차를 주로 누가 쓰는지, 어디로 이동하는지, 얼마나 오래 사용할 계획인지 한 장에 적습니다. 아직 정하지 못한 조건은 추측해서 확정하지 말고 질문으로 남겨 두세요.",
+            "이 메모는 선택을 대신하지 않습니다. 서로 다른 설명을 들었을 때 무엇이 다른지 확인하기 위한 출발점으로 활용합니다."
+          ],
+          "visual": false,
+          "source_ids": []
+        },
+        {
+          "id": "s02",
+          "kind": "checklist",
+          "heading": "같은 기준으로 정리하기",
+          "text": [
+            "각 항목의 답을 같은 순서로 적습니다. 숫자만 옮겨 적지 말고 어떤 조건을 전제로 한 설명인지 함께 기록하세요."
+          ],
+          "items": [
+            "평일과 주말에 주로 이동하는 경로 적기",
+            "아직 정하지 못한 사용 기간 표시하기",
+            "계약서에서 직접 확인할 질문 남기기"
+          ],
+          "visual": true,
+          "source_ids": []
+        },
+        {
+          "id": "s03",
+          "kind": "explain",
+          "heading": "다음 질문 정리하기",
+          "text": [
+            "메모를 만든 뒤에는 확실한 내용과 확인이 필요한 내용을 구분합니다. 상담 중 들은 답을 메모에 추가하고, 상품마다 달라질 수 있는 내용은 실제 안내문과 계약서에서 다시 확인하세요.",
+            "두 설명이 다르면 같은 조건으로 물어봤는지 먼저 살펴봅니다. 개인의 사용 계획과 계약 조건이 함께 있어야 비교의 의미를 이해하기 쉽습니다."
+          ],
+          "visual": false,
+          "source_ids": []
+        }
+      ],
+      "closing": [
+        "다음 비교에서는 질문 메모를 옆에 두고 답이 빠진 부분부터 확인해 보세요. 이 시연의 표현과 구성은 제작 방법을 보여주며, 실제 게시 전에는 주제에 맞는 근거와 내용을 채워야 합니다."
+      ],
+      "sources": [],
+      "claims": [],
+      "image_briefs": [],
+      "demo": true
+    }
+  },
+  {
+    "job": {
+      "schema_version": 1,
+      "job_id": "DEMO-compare",
+      "topic": "[시연] 견적서 두 장을 나란히 읽는 방법",
+      "topic_key": "시연견적서두장을나란히읽는방법",
+      "template": "compare",
+      "audience": "신차 장기렌트를 비교하려는 독자",
+      "source_snapshot_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_snapshot_state": "unavailable",
+      "source_snapshot_checked_at": null,
+      "created_at": "2026-11-14T13:40:13.717Z",
+      "pose": "point-right",
+      "variant": 1,
+      "demo": true
+    },
+    "article": {
+      "schema_version": 1,
+      "job_id": "DEMO-compare",
+      "topic_key": "시연견적서두장을나란히읽는방법",
+      "source_snapshot_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "title": "[시연] 견적서 두 장을 나란히 읽는 방법",
+      "cover_headline": "두 견적을\n같은 기준으로",
+      "deck": "확인할 내용을 한 번에 읽는 비교 메모",
+      "template": "compare",
+      "audience": "신차 장기렌트를 비교하려는 독자",
+      "search_intent": "독자가 검색한 질문과 필요한 답을 구체적으로 씁니다.",
+      "intro": [
+        "이 원고는 블로그 제작소의 글 구성과 이미지 배치를 살펴보는 시연입니다. 실제 견적이나 상품의 약관을 설명하는 게시용 원고가 아닙니다.",
+        "차를 비교할 때 궁금한 점을 먼저 적으면 상담 중 빠뜨리는 항목을 줄일 수 있습니다. 막연하게 좋은 조건을 찾기보다 내 사용 계획을 구체적으로 정리해 보세요."
+      ],
+      "sections": [
+        {
+          "id": "s01",
+          "kind": "explain",
+          "heading": "먼저 확인할 기준",
+          "text": [
+            "차를 주로 누가 쓰는지, 어디로 이동하는지, 얼마나 오래 사용할 계획인지 한 장에 적습니다. 아직 정하지 못한 조건은 추측해서 확정하지 말고 질문으로 남겨 두세요.",
+            "이 메모는 선택을 대신하지 않습니다. 서로 다른 설명을 들었을 때 무엇이 다른지 확인하기 위한 출발점으로 활용합니다."
+          ],
+          "visual": false,
+          "source_ids": []
+        },
+        {
+          "id": "s02",
+          "kind": "compare",
+          "heading": "두 설명을 같은 항목으로",
+          "text": [
+            "각 항목의 답을 같은 순서로 적습니다. 숫자만 옮겨 적지 말고 어떤 조건을 전제로 한 설명인지 함께 기록하세요."
+          ],
+          "visual": true,
+          "source_ids": [],
+          "pairs": [
+            {
+              "label": "첫 번째 메모",
+              "value": "사용 계획부터 적기",
+              "note": "평일·주말의 사용 목적을 구체적으로 기록합니다."
+            },
+            {
+              "label": "두 번째 메모",
+              "value": "확인 질문을 남기기",
+              "note": "아직 모르는 내용을 추측해 채우지 않습니다."
+            }
+          ]
+        },
+        {
+          "id": "s03",
+          "kind": "explain",
+          "heading": "다음 질문 정리하기",
+          "text": [
+            "메모를 만든 뒤에는 확실한 내용과 확인이 필요한 내용을 구분합니다. 상담 중 들은 답을 메모에 추가하고, 상품마다 달라질 수 있는 내용은 실제 안내문과 계약서에서 다시 확인하세요.",
+            "두 설명이 다르면 같은 조건으로 물어봤는지 먼저 살펴봅니다. 개인의 사용 계획과 계약 조건이 함께 있어야 비교의 의미를 이해하기 쉽습니다."
+          ],
+          "visual": false,
+          "source_ids": []
+        }
+      ],
+      "closing": [
+        "다음 비교에서는 질문 메모를 옆에 두고 답이 빠진 부분부터 확인해 보세요. 이 시연의 표현과 구성은 제작 방법을 보여주며, 실제 게시 전에는 주제에 맞는 근거와 내용을 채워야 합니다."
+      ],
+      "sources": [],
+      "claims": [],
+      "image_briefs": [],
+      "demo": true
+    }
+  },
+  {
+    "job": {
+      "schema_version": 1,
+      "job_id": "DEMO-checklist",
+      "topic": "[시연] 출퇴근 거리를 적기 전 체크할 항목",
+      "topic_key": "시연출퇴근거리를적기전체크할항목",
+      "template": "checklist",
+      "audience": "신차 장기렌트를 비교하려는 독자",
+      "source_snapshot_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_snapshot_state": "unavailable",
+      "source_snapshot_checked_at": null,
+      "created_at": "2026-11-14T13:40:13.717Z",
+      "pose": "point-left",
+      "variant": 2,
+      "demo": true
+    },
+    "article": {
+      "schema_version": 1,
+      "job_id": "DEMO-checklist",
+      "topic_key": "시연출퇴근거리를적기전체크할항목",
+      "source_snapshot_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "title": "[시연] 출퇴근 거리를 적기 전 체크할 항목",
+      "cover_headline": "출퇴근 거리\n먼저 적어보기",
+      "deck": "확인할 내용을 한 번에 읽는 비교 메모",
+      "template": "checklist",
+      "audience": "신차 장기렌트를 비교하려는 독자",
+      "search_intent": "독자가 검색한 질문과 필요한 답을 구체적으로 씁니다.",
+      "intro": [
+        "이 원고는 블로그 제작소의 글 구성과 이미지 배치를 살펴보는 시연입니다. 실제 견적이나 상품의 약관을 설명하는 게시용 원고가 아닙니다.",
+        "차를 비교할 때 궁금한 점을 먼저 적으면 상담 중 빠뜨리는 항목을 줄일 수 있습니다. 막연하게 좋은 조건을 찾기보다 내 사용 계획을 구체적으로 정리해 보세요."
+      ],
+      "sections": [
+        {
+          "id": "s01",
+          "kind": "explain",
+          "heading": "먼저 확인할 기준",
+          "text": [
+            "차를 주로 누가 쓰는지, 어디로 이동하는지, 얼마나 오래 사용할 계획인지 한 장에 적습니다. 아직 정하지 못한 조건은 추측해서 확정하지 말고 질문으로 남겨 두세요.",
+            "이 메모는 선택을 대신하지 않습니다. 서로 다른 설명을 들었을 때 무엇이 다른지 확인하기 위한 출발점으로 활용합니다."
+          ],
+          "visual": false,
+          "source_ids": []
+        },
+        {
+          "id": "s02",
+          "kind": "checklist",
+          "heading": "같은 기준으로 정리하기",
+          "text": [
+            "각 항목의 답을 같은 순서로 적습니다. 숫자만 옮겨 적지 말고 어떤 조건을 전제로 한 설명인지 함께 기록하세요."
+          ],
+          "items": [
+            "평일과 주말에 주로 이동하는 경로 적기",
+            "아직 정하지 못한 사용 기간 표시하기",
+            "계약서에서 직접 확인할 질문 남기기"
+          ],
+          "visual": true,
+          "source_ids": []
+        },
+        {
+          "id": "s03",
+          "kind": "explain",
+          "heading": "다음 질문 정리하기",
+          "text": [
+            "메모를 만든 뒤에는 확실한 내용과 확인이 필요한 내용을 구분합니다. 상담 중 들은 답을 메모에 추가하고, 상품마다 달라질 수 있는 내용은 실제 안내문과 계약서에서 다시 확인하세요.",
+            "두 설명이 다르면 같은 조건으로 물어봤는지 먼저 살펴봅니다. 개인의 사용 계획과 계약 조건이 함께 있어야 비교의 의미를 이해하기 쉽습니다."
+          ],
+          "visual": false,
+          "source_ids": []
+        }
+      ],
+      "closing": [
+        "다음 비교에서는 질문 메모를 옆에 두고 답이 빠진 부분부터 확인해 보세요. 이 시연의 표현과 구성은 제작 방법을 보여주며, 실제 게시 전에는 주제에 맞는 근거와 내용을 채워야 합니다."
+      ],
+      "sources": [],
+      "claims": [],
+      "image_briefs": [],
+      "demo": true
+    }
+  },
+  {
+    "job": {
+      "schema_version": 1,
+      "job_id": "DEMO-qna",
+      "topic": "[시연] 장기렌트 비교를 시작할 때 자주 하는 질문",
+      "topic_key": "시연장기렌트비교를시작할때자주하는질문",
+      "template": "qna",
+      "audience": "신차 장기렌트를 비교하려는 독자",
+      "source_snapshot_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_snapshot_state": "unavailable",
+      "source_snapshot_checked_at": null,
+      "created_at": "2026-11-14T13:40:13.717Z",
+      "pose": "thumbs-up",
+      "variant": 3,
+      "demo": true
+    },
+    "article": {
+      "schema_version": 1,
+      "job_id": "DEMO-qna",
+      "topic_key": "시연장기렌트비교를시작할때자주하는질문",
+      "source_snapshot_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "title": "[시연] 장기렌트 비교를 시작할 때 자주 하는 질문",
+      "cover_headline": "비교 전 질문\n세 가지만",
+      "deck": "확인할 내용을 한 번에 읽는 비교 메모",
+      "template": "qna",
+      "audience": "신차 장기렌트를 비교하려는 독자",
+      "search_intent": "독자가 검색한 질문과 필요한 답을 구체적으로 씁니다.",
+      "intro": [
+        "이 원고는 블로그 제작소의 글 구성과 이미지 배치를 살펴보는 시연입니다. 실제 견적이나 상품의 약관을 설명하는 게시용 원고가 아닙니다.",
+        "차를 비교할 때 궁금한 점을 먼저 적으면 상담 중 빠뜨리는 항목을 줄일 수 있습니다. 막연하게 좋은 조건을 찾기보다 내 사용 계획을 구체적으로 정리해 보세요."
+      ],
+      "sections": [
+        {
+          "id": "s01",
+          "kind": "explain",
+          "heading": "먼저 확인할 기준",
+          "text": [
+            "차를 주로 누가 쓰는지, 어디로 이동하는지, 얼마나 오래 사용할 계획인지 한 장에 적습니다. 아직 정하지 못한 조건은 추측해서 확정하지 말고 질문으로 남겨 두세요.",
+            "이 메모는 선택을 대신하지 않습니다. 서로 다른 설명을 들었을 때 무엇이 다른지 확인하기 위한 출발점으로 활용합니다."
+          ],
+          "visual": false,
+          "source_ids": []
+        },
+        {
+          "id": "s02",
+          "kind": "qna",
+          "heading": "먼저 정리할 세 가지 질문",
+          "text": [
+            "각 항목의 답을 같은 순서로 적습니다. 숫자만 옮겨 적지 말고 어떤 조건을 전제로 한 설명인지 함께 기록하세요."
+          ],
+          "visual": true,
+          "source_ids": [],
+          "questions": [
+            {
+              "question": "처음부터 모든 조건을 정해야 하나요?",
+              "answer": "아직 모르는 내용은 질문으로 남겨 두고, 확실한 사용 계획부터 적어 봅니다."
+            },
+            {
+              "question": "서로 다른 답을 들으면 어떻게 하나요?",
+              "answer": "같은 조건으로 물어봤는지 확인하고 실제 안내 자료를 함께 살펴봅니다."
+            },
+            {
+              "question": "메모는 언제 다시 보나요?",
+              "answer": "새 답을 받거나 사용 계획이 달라졌을 때 비교 메모를 갱신합니다."
+            }
+          ]
+        },
+        {
+          "id": "s03",
+          "kind": "explain",
+          "heading": "다음 질문 정리하기",
+          "text": [
+            "메모를 만든 뒤에는 확실한 내용과 확인이 필요한 내용을 구분합니다. 상담 중 들은 답을 메모에 추가하고, 상품마다 달라질 수 있는 내용은 실제 안내문과 계약서에서 다시 확인하세요.",
+            "두 설명이 다르면 같은 조건으로 물어봤는지 먼저 살펴봅니다. 개인의 사용 계획과 계약 조건이 함께 있어야 비교의 의미를 이해하기 쉽습니다."
+          ],
+          "visual": false,
+          "source_ids": []
+        }
+      ],
+      "closing": [
+        "다음 비교에서는 질문 메모를 옆에 두고 답이 빠진 부분부터 확인해 보세요. 이 시연의 표현과 구성은 제작 방법을 보여주며, 실제 게시 전에는 주제에 맞는 근거와 내용을 채워야 합니다."
+      ],
+      "sources": [],
+      "claims": [],
+      "image_briefs": [],
+      "demo": true
+    }
+  },
+  {
+    "job": {
+      "schema_version": 1,
+      "job_id": "DEMO-scenario",
+      "topic": "[시연] 가족의 주행 계획을 함께 정리하는 상황",
+      "topic_key": "시연가족의주행계획을함께정리하는상황",
+      "template": "scenario",
+      "audience": "신차 장기렌트를 비교하려는 독자",
+      "source_snapshot_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_snapshot_state": "unavailable",
+      "source_snapshot_checked_at": null,
+      "created_at": "2026-11-14T13:40:13.717Z",
+      "pose": "think",
+      "variant": 0,
+      "demo": true
+    },
+    "article": {
+      "schema_version": 1,
+      "job_id": "DEMO-scenario",
+      "topic_key": "시연가족의주행계획을함께정리하는상황",
+      "source_snapshot_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "title": "[시연] 가족의 주행 계획을 함께 정리하는 상황",
+      "cover_headline": "가족의 계획을\n한 장에 정리",
+      "deck": "확인할 내용을 한 번에 읽는 비교 메모",
+      "template": "scenario",
+      "audience": "신차 장기렌트를 비교하려는 독자",
+      "search_intent": "독자가 검색한 질문과 필요한 답을 구체적으로 씁니다.",
+      "intro": [
+        "이 원고는 블로그 제작소의 글 구성과 이미지 배치를 살펴보는 시연입니다. 실제 견적이나 상품의 약관을 설명하는 게시용 원고가 아닙니다.",
+        "차를 비교할 때 궁금한 점을 먼저 적으면 상담 중 빠뜨리는 항목을 줄일 수 있습니다. 막연하게 좋은 조건을 찾기보다 내 사용 계획을 구체적으로 정리해 보세요."
+      ],
+      "sections": [
+        {
+          "id": "s01",
+          "kind": "explain",
+          "heading": "가상의 가족이 메모를 펼칩니다",
+          "text": [
+            "가상의 가족이 주말 이동 계획을 함께 적는 상황입니다. 실제 고객의 후기나 상담 기록을 재현한 이야기가 아닙니다. 서로 생각한 사용 목적이 같은지 먼저 대화합니다.",
+            "이 메모는 선택을 대신하지 않습니다. 서로 다른 설명을 들었을 때 무엇이 다른지 확인하기 위한 출발점으로 활용합니다."
+          ],
+          "visual": false,
+          "source_ids": []
+        },
+        {
+          "id": "s02",
+          "kind": "checklist",
+          "heading": "같은 기준으로 정리하기",
+          "text": [
+            "각 항목의 답을 같은 순서로 적습니다. 숫자만 옮겨 적지 말고 어떤 조건을 전제로 한 설명인지 함께 기록하세요."
+          ],
+          "items": [
+            "평일과 주말에 주로 이동하는 경로 적기",
+            "아직 정하지 못한 사용 기간 표시하기",
+            "계약서에서 직접 확인할 질문 남기기"
+          ],
+          "visual": true,
+          "source_ids": []
+        },
+        {
+          "id": "s03",
+          "kind": "explain",
+          "heading": "다음 질문 정리하기",
+          "text": [
+            "메모를 만든 뒤에는 확실한 내용과 확인이 필요한 내용을 구분합니다. 상담 중 들은 답을 메모에 추가하고, 상품마다 달라질 수 있는 내용은 실제 안내문과 계약서에서 다시 확인하세요.",
+            "두 설명이 다르면 같은 조건으로 물어봤는지 먼저 살펴봅니다. 개인의 사용 계획과 계약 조건이 함께 있어야 비교의 의미를 이해하기 쉽습니다."
+          ],
+          "visual": false,
+          "source_ids": []
+        }
+      ],
+      "closing": [
+        "다음 비교에서는 질문 메모를 옆에 두고 답이 빠진 부분부터 확인해 보세요. 이 시연의 표현과 구성은 제작 방법을 보여주며, 실제 게시 전에는 주제에 맞는 근거와 내용을 채워야 합니다."
+      ],
+      "sources": [],
+      "claims": [],
+      "image_briefs": [],
+      "demo": true
+    }
+  },
+  {
+    "job": {
+      "schema_version": 1,
+      "job_id": "DEMO-myth",
+      "topic": "[시연] 월 대여료 한 줄만 보면 생기는 오해",
+      "topic_key": "시연월대여료한줄만보면생기는오해",
+      "template": "myth",
+      "audience": "신차 장기렌트를 비교하려는 독자",
+      "source_snapshot_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "source_snapshot_state": "unavailable",
+      "source_snapshot_checked_at": null,
+      "created_at": "2026-11-14T13:40:13.717Z",
+      "pose": "present",
+      "variant": 1,
+      "demo": true
+    },
+    "article": {
+      "schema_version": 1,
+      "job_id": "DEMO-myth",
+      "topic_key": "시연월대여료한줄만보면생기는오해",
+      "source_snapshot_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "title": "[시연] 월 대여료 한 줄만 보면 생기는 오해",
+      "cover_headline": "월 대여료만\n보면 놓치는 것",
+      "deck": "확인할 내용을 한 번에 읽는 비교 메모",
+      "template": "myth",
+      "audience": "신차 장기렌트를 비교하려는 독자",
+      "search_intent": "독자가 검색한 질문과 필요한 답을 구체적으로 씁니다.",
+      "intro": [
+        "이 원고는 블로그 제작소의 글 구성과 이미지 배치를 살펴보는 시연입니다. 실제 견적이나 상품의 약관을 설명하는 게시용 원고가 아닙니다.",
+        "차를 비교할 때 궁금한 점을 먼저 적으면 상담 중 빠뜨리는 항목을 줄일 수 있습니다. 막연하게 좋은 조건을 찾기보다 내 사용 계획을 구체적으로 정리해 보세요."
+      ],
+      "sections": [
+        {
+          "id": "s01",
+          "kind": "explain",
+          "heading": "먼저 확인할 기준",
+          "text": [
+            "차를 주로 누가 쓰는지, 어디로 이동하는지, 얼마나 오래 사용할 계획인지 한 장에 적습니다. 아직 정하지 못한 조건은 추측해서 확정하지 말고 질문으로 남겨 두세요.",
+            "이 메모는 선택을 대신하지 않습니다. 서로 다른 설명을 들었을 때 무엇이 다른지 확인하기 위한 출발점으로 활용합니다."
+          ],
+          "visual": false,
+          "source_ids": []
+        },
+        {
+          "id": "s02",
+          "kind": "checklist",
+          "heading": "낮은 월 금액이면 항상 같을까요?",
+          "text": [
+            "각 항목의 답을 같은 순서로 적습니다. 숫자만 옮겨 적지 말고 어떤 조건을 전제로 한 설명인지 함께 기록하세요."
+          ],
+          "items": [
+            "표시된 금액에 어떤 전제가 있는지 확인하기",
+            "기간·초기 비용 등 조건을 함께 기록하기",
+            "기록한 질문을 실제 계약 자료와 대조하기"
+          ],
+          "visual": true,
+          "source_ids": []
+        },
+        {
+          "id": "s03",
+          "kind": "explain",
+          "heading": "다음 질문 정리하기",
+          "text": [
+            "메모를 만든 뒤에는 확실한 내용과 확인이 필요한 내용을 구분합니다. 상담 중 들은 답을 메모에 추가하고, 상품마다 달라질 수 있는 내용은 실제 안내문과 계약서에서 다시 확인하세요.",
+            "두 설명이 다르면 같은 조건으로 물어봤는지 먼저 살펴봅니다. 개인의 사용 계획과 계약 조건이 함께 있어야 비교의 의미를 이해하기 쉽습니다."
+          ],
+          "visual": false,
+          "source_ids": []
+        }
+      ],
+      "closing": [
+        "다음 비교에서는 질문 메모를 옆에 두고 답이 빠진 부분부터 확인해 보세요. 이 시연의 표현과 구성은 제작 방법을 보여주며, 실제 게시 전에는 주제에 맞는 근거와 내용을 채워야 합니다."
+      ],
+      "sources": [],
+      "claims": [],
+      "image_briefs": [],
+      "demo": true
+    }
+  }
+]
