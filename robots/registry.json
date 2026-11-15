@@ -5,6 +5,18 @@
   "authority": "대표 직접 확정: 보라색 CLO-02 클로이, CLO-04 클로아",
   "characters": [
     {
+      "id": "COD-01",
+      "name_ko": null,
+      "type": "robot",
+      "identity_status": "existing_reference_located",
+      "reference": {
+        "catalog": "robots/revisions/existing-references.json",
+        "notes": "Existing FREEPASS identity; no PC role change."
+      },
+      "number": 1,
+      "presentation": "male"
+    },
+    {
       "id": "CLO-02",
       "name_ko": "클로이",
       "type": "robot",
@@ -30,7 +42,21 @@
       "current_variants": {
         "chakhan": "chakhan-white-v1",
         "basic": "basic-purple-v1"
-      }
+      },
+      "number": 2,
+      "presentation": "female"
+    },
+    {
+      "id": "COD-03",
+      "name_ko": null,
+      "type": "robot",
+      "identity_status": "existing_reference_located",
+      "reference": {
+        "catalog": "robots/revisions/existing-references.json",
+        "notes": "Existing FREEPASS identity; no PC role change."
+      },
+      "number": 3,
+      "presentation": "male"
     },
     {
       "id": "CLO-04",
@@ -53,27 +79,9 @@
         "sha256": null,
         "repository_path": null,
         "notes": "이름·번호만 확정. 과거 주황 원본이나 착한거래 노랑 파생본을 파일명만 보고 자동 지정하지 않는다."
-      }
-    },
-    {
-      "id": "COD-01",
-      "name_ko": null,
-      "type": "robot",
-      "identity_status": "existing_reference_located",
-      "reference": {
-        "catalog": "robots/revisions/existing-references.json",
-        "notes": "Existing FREEPASS identity; no PC role change."
-      }
-    },
-    {
-      "id": "COD-03",
-      "name_ko": null,
-      "type": "robot",
-      "identity_status": "existing_reference_located",
-      "reference": {
-        "catalog": "robots/revisions/existing-references.json",
-        "notes": "Existing FREEPASS identity; no PC role change."
-      }
+      },
+      "number": 4,
+      "presentation": "female"
     }
   ],
   "rules": {
@@ -142,5 +150,35 @@
     }
   },
   "family_revision_catalog": "robots/revisions/current.json",
-  "family_revision_policy": "Existing COD-01/COD-03/CLO-04 visual identities first. Previous invented CLO-01/CLO-03 candidates withdrawn. Match frontal camera/pose, preserve original face and helmet distinctions; do not auto-promote candidates."
+  "family_revision_policy": "Existing COD-01/COD-03/CLO-04 visual identities first. Previous invented CLO-01/CLO-03 candidates withdrawn. Match frontal camera/pose, preserve original face and helmet distinctions; do not auto-promote candidates.",
+  "family_identity": {
+    "authority": "2026-11-15 대표 직접 정정",
+    "members": [
+      {
+        "number": 1,
+        "id": "COD-01",
+        "presentation": "male"
+      },
+      {
+        "number": 2,
+        "id": "CLO-02",
+        "presentation": "female"
+      },
+      {
+        "number": 3,
+        "id": "COD-03",
+        "presentation": "male"
+      },
+      {
+        "number": 4,
+        "id": "CLO-04",
+        "presentation": "female"
+      }
+    ],
+    "invalid_character_ids": [
+      "CLO-01",
+      "CLO-03"
+    ],
+    "policy": "Four existing characters numbered 1,2,3,4. Reuse each existing identity; no new replacement characters. Presentation describes fictional robot design, not PC role."
+  }
 }

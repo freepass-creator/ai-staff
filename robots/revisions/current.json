@@ -79,7 +79,8 @@
       "source_sha256": "a72033f3e880b9ded7e3defbfe52928daf468552f797e3bc6616762081354e9b",
       "identity_reference_sha256": "82f6815cd97fb914126890cd8687b3a169a34a2e049ea6e4100c094793d4614c",
       "identity_reference_catalog": "robots/revisions/existing-references.json",
-      "approval_note": "기존 프로필 정체성을 참조한 정면 파생 시안. 전신 하체는 추정 구조이며 정본/3D 설계도로 승격하지 않음."
+      "approval_note": "기존 프로필 정체성을 참조한 정면 파생 시안. 전신 하체는 추정 구조이며 정본/3D 설계도로 승격하지 않음.",
+      "presentation": "male"
     },
     {
       "character_id": "COD-03",
@@ -95,7 +96,8 @@
       "source_sha256": "8f32e9d2ae48f89c9c4d24fa8c8d55006302805bf3e5268141384753c997b8f8",
       "identity_reference_sha256": "f3f1b2a52df20166e774844ec24ec71001446c088701a8e8fc3246c54e5d33ca",
       "identity_reference_catalog": "robots/revisions/existing-references.json",
-      "approval_note": "기존 프로필 정체성을 참조한 정면 파생 시안. 전신 하체는 추정 구조이며 정본/3D 설계도로 승격하지 않음."
+      "approval_note": "기존 프로필 정체성을 참조한 정면 파생 시안. 전신 하체는 추정 구조이며 정본/3D 설계도로 승격하지 않음.",
+      "presentation": "male"
     },
     {
       "character_id": "CLO-04",
@@ -111,8 +113,31 @@
       "source_sha256": "fca5542e5719feb3636f966458988660086c660c5e90bbf784ff91f6be5ebe3d",
       "identity_reference_sha256": "5a4537405ad38e7e23abdf3cd849e8299204c90218f1f64db2d788191cdbe616",
       "identity_reference_catalog": "robots/revisions/existing-references.json",
-      "approval_note": "기존 프로필 정체성을 참조한 정면 파생 시안. 전신 하체는 추정 구조이며 정본/3D 설계도로 승격하지 않음."
+      "approval_note": "기존 프로필 정체성을 참조한 정면 파생 시안. 전신 하체는 추정 구조이며 정본/3D 설계도로 승격하지 않음.",
+      "presentation": "female"
     }
   ],
-  "owner_correction": "Preserve existing COD-01 and COD-03 identities; prior CLO-01/03 inventions withdrawn. Existing source reference must be provided to generation."
+  "owner_correction": "Preserve existing COD-01 and COD-03 identities; prior CLO-01/03 inventions withdrawn. Existing source reference must be provided to generation.",
+  "family_identity": [
+    {
+      "number": 1,
+      "id": "COD-01",
+      "presentation": "male"
+    },
+    {
+      "number": 2,
+      "id": "CLO-02",
+      "presentation": "female"
+    },
+    {
+      "number": 3,
+      "id": "COD-03",
+      "presentation": "male"
+    },
+    {
+      "number": 4,
+      "id": "CLO-04",
+      "presentation": "female"
+    }
+  ]
 }

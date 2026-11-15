@@ -2164,5 +2164,34 @@
       "sha256": "5a4537405ad38e7e23abdf3cd849e8299204c90218f1f64db2d788191cdbe616",
       "usage": "existing profile identity reference; not current production canonical"
     }
-  ]
+  ],
+  "family_identity": {
+    "members": [
+      {
+        "number": 1,
+        "id": "COD-01",
+        "presentation": "male"
+      },
+      {
+        "number": 2,
+        "id": "CLO-02",
+        "presentation": "female"
+      },
+      {
+        "number": 3,
+        "id": "COD-03",
+        "presentation": "male"
+      },
+      {
+        "number": 4,
+        "id": "CLO-04",
+        "presentation": "female"
+      }
+    ],
+    "invalid_character_ids": [
+      "CLO-01",
+      "CLO-03"
+    ],
+    "policy": "Use existing identities. Male COD-01/COD-03; female CLO-02/CLO-04. Do not invent replacements."
+  }
 }
