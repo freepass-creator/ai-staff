@@ -123,7 +123,7 @@
       "character_number": "02",
       "file": "cutouts/Chakhan-CLO-02-cover-confident.png",
       "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-cover-confident.png",
-      "sha256": "9e1d5d9cb02874c2038eedabeafdee304491487f86c49490fe171b25492fedfc",
+      "sha256": "78bafda7a873ecae3b12f7c2c7350020c31bf08e32347127735e30a472f7962b",
       "width": 1254,
       "height": 1254,
       "transparent_background": true,
@@ -152,8 +152,8 @@
       ],
       "usage": "조건을 이해한 뒤 정리·확신을 전달하는 표지. 팔짱을 낀 안정적인 자세를 크게 쓰고 체크리스트형 제목이나 짧은 결론을 배치한다.",
       "cover_placement": "왼쪽 캐릭터·상단 제목·오른쪽 보조 문구",
-      "hand_review": "両手: four long fingers plus one separate opposing thumb; upper hand rebuilt with distinct dorsal plate and chest-facing thumb; user correction supersedes earlier count review.",
-      "thumbnail": "chakhan/thumbs/cover-confident-9e1d5d9cb0.webp"
+      "hand_review": "실사 팔짱 자세 대조: 오른쪽 전완·손목·손등을 함께 교정. 엄지와 네 긴손가락 구분, 손가락은 반대 상완을 따라 대각선으로 놓임.",
+      "thumbnail": "chakhan/thumbs/cover-confident-78bafda7a8.webp"
     },
     {
       "id": "phone",
@@ -377,8 +377,8 @@
       "width": 1200,
       "height": 1200,
       "file": "Chakhan-Cover-Example-Confident.png",
-      "sha256": "f8f8691082fdabfdfda2f8a50498ed69f8830c17457c2437fdd88fab8dd77e67",
-      "character_source_sha256": "9e1d5d9cb02874c2038eedabeafdee304491487f86c49490fe171b25492fedfc",
+      "sha256": "1092623f509cb2311308964adb8bf484f3f84bf1defd6db4d345f2a4f4f923e1",
+      "character_source_sha256": "78bafda7a873ecae3b12f7c2c7350020c31bf08e32347127735e30a472f7962b",
       "headline": "조건을 알고\n선택하면 든든!",
       "qa": {
         "issues": [],
@@ -396,7 +396,7 @@
         "선택하면 든든!"
       ],
       "purpose": "문구·배치 예시. 원고 내용에 맞춰 cover-jobs.json을 수정하고 고정 PNG로 재조판한다.",
-      "thumbnail": "chakhan/thumbs/chakhan-cover-example-confident-f8f8691082.webp"
+      "thumbnail": "chakhan/thumbs/chakhan-cover-example-confident-1092623f50.webp"
     }
   ],
   "hand_grip_policy": "hand-grip-policy.json",
@@ -418,8 +418,8 @@
   "downloads": {
     "zip": {
       "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-Cover-Kit-v2.zip",
-      "sha256": "fdac002e9c277a225fb9be6e4eb983601b3447cac2d9d7c90bf42fa224d5d167",
-      "bytes": 13610244
+      "sha256": "4b85384743ec6fe2d2e34a6ca50448e95610e44fa25f39c8effe136ee99405f2",
+      "bytes": 13729586
     },
     "previous_batch": {
       "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-Use-Cuts-Batch01.zip",
