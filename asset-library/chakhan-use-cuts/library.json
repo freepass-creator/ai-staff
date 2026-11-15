@@ -1,0 +1,17 @@
+{
+  "schema": "ai-staff/chakhan-use-cuts-entry/v1",
+  "brand": "착한거래",
+  "variant": "chakhan-white-v1",
+  "catalog": "../../public-release/site/chakhan-use-cuts.json",
+  "public_catalog": "https://ai-staff-two.vercel.app/chakhan-use-cuts.json",
+  "viewer": "https://ai-staff-two.vercel.app/chakhan/",
+  "brand_fallback_allowed": false,
+  "assets": 3,
+  "downloads": {
+    "zip": {
+      "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-Use-Cuts-Batch01.zip",
+      "sha256": "8608ca6c9511b50cc926d0bd5c51323415239dd005520d1bce213d862b703280",
+      "bytes": 4264087
+    }
+  }
+}
