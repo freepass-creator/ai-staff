@@ -1,0 +1,29 @@
+{
+  "form": "human",
+  "format": "PNG raster; SVG and rigging not implemented",
+  "archive_root": "D:/large/ai-staff/클로이/human-v1-20261115",
+  "latest_candidate": "refs/human-age20-candidate-v3.png",
+  "current_status": "owner-review-pending",
+  "assets": [
+    {
+      "status": "superseded-owner-rejected",
+      "sha256": "e5a4741033f3e66dc55c4d9b996a365c284fb847d8d82d8686a072e1772b8099",
+      "file": "D:\\large\\ai-staff\\클로이\\human-v1-20261115\\concept-v1-superseded.png",
+      "bytes": 2044238
+    },
+    {
+      "status": "superseded-face-reference",
+      "sha256": "2643381796bb16286b1c661f0a2737229bb5bbde751292cb07c800884b324e78",
+      "file": "D:\\large\\ai-staff\\클로이\\human-v1-20261115\\wardrobe-v1-superseded.png",
+      "bytes": 1738052
+    },
+    {
+      "status": "latest-owner-review-pending",
+      "sha256": "02a9e1656ef24b1134fac6176f1a4a62eda5c1920f977ede5179df1dd8cc3361",
+      "file": "D:\\large\\ai-staff\\클로이\\human-v1-20261115\\human-age20-candidate-v3.png",
+      "bytes": 2473871
+    }
+  ],
+  "schema": "ai-staff/character-assets/v1",
+  "character_id": "CLO-02"
+}

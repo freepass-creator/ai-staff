@@ -1,11 +1,17 @@
 {
   "schema_version": 1,
-  "updated_on": "2026-11-12",
+  "updated_on": "2026-11-15",
   "policy": "Visual identity and publication require human review. Static registry; no production publishing.",
   "staff": [
     {
       "id": "CLO-02",
       "name": "클로이",
+      "human_form": {
+        "source": "characters/클로이/character.json",
+        "status": "owner-review-pending",
+        "latest_direction": "스무 살 앳된 성인 얼굴, 지식 많은 AI 안내자. 첫 얼굴은 거절됨",
+        "preserve_robot": true
+      },
       "role": "착한거래 AI 안내 캐릭터",
       "kind": "robot",
       "status": "identity-review",
