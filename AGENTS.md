@@ -2,7 +2,7 @@
 
 ## 최신 클로이 진입점 (대표 정정, 2026-11-15)
 
-- **공개 배포와 R1**: public-release/README.md와 robots/revisions/current.json을 읽는다. CLO-02 정본은 보존,01/03/04는같은정면·자세·눈매기준의R1제안으로분리.01/03이름은지정하지않음.02/04는가까운컨셉,04어깨는좁고절제한다.플레이트외형과분할/겹침은각기다르게.배경은따로생성하고고정캐릭터를합성한다.
+- **공개 배포와 R1**: public-release/README.md와 robots/revisions/current.json을 읽는다. CLO-02 정본은 보존. 기존 캐릭터는 COD-01·COD-03·CLO-04이며 기존 프로필을 직접 참조해 같은 정면 자세로 맞춘다. COD-01 파랑 원형눈/양옆핀, COD-03 청록 네모눈/중앙능선은 보존. 잘못 만든 CLO-01/CLO-03 새 캐릭터 시안은 철회한다.02/04는가까운컨셉,04어깨는좁고절제한다.플레이트외형과분할/겹침은각기다르게.배경은따로생성하고고정캐릭터를합성한다.
 
 - **다른 PC·AI 공유**: `sharing/README.md` → `/share/`·`/share/share.json`. PC별 고정 파일 `D:/dev-artifacts/ai-staff/shared/current.json`에서 커밋/패키지/설치 경로를 읽는다. 코드만 clone해서 자산이 준비됐다고 하지 않는다. 후속 대표 직접 지시로 공개 push/릴리스·웹 배포가 승인됐다. 공개는 public-release의 선별 카탈로그·현재 PNG/키트만 사용하고 내부복원 source.bundle/PC인수 원문/과거 자산은 올리지 않는다. 과거 파일은 이력으로 보존하되 반려 01·구 /motion/·레거시 자산은 현재 선택/서빙/공유에서 제외한다.
 

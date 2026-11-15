@@ -114,4 +114,4 @@ CREATE_NEW_JUSTIFIED(2026-10-03): `reuse:check` 후보인 character.json과 cast
 블로그 포스터 템플릿은 `asset-library/blog-templates/library.json`과 `/templates/`에서 조회합니다. 6형식·6배경·11시안과 반복 출력 엔진을 제공합니다. 등록된 캐릭터 자산을 재사용하며 얼굴을 매번 생성하지 않습니다.
 
 
-공개 자산 빌드: `public-release/README.md`. CLO-01/03/04 R1은 정면/눈매 기준을 맞춘 새 제안이며 CLO-02 정본과 구분합니다. 새 환경 컷은 고정 캐릭터를 별도 생성 배경에 합성하므로 반복 출력에서 얼굴을 다시 그리지 않습니다.
+공개 자산 빌드: `public-release/README.md`. COD-01/COD-03/CLO-04 R1은 기존 프로필의 얼굴·머리 구조를 보존해 정면으로 맞춘 파생 제안이며 CLO-02 정본과 구분합니다. 새 환경 컷은 고정 캐릭터를 별도 생성 배경에 합성하므로 반복 출력에서 얼굴을 다시 그리지 않습니다.

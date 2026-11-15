@@ -54,6 +54,26 @@
         "repository_path": null,
         "notes": "이름·번호만 확정. 과거 주황 원본이나 착한거래 노랑 파생본을 파일명만 보고 자동 지정하지 않는다."
       }
+    },
+    {
+      "id": "COD-01",
+      "name_ko": null,
+      "type": "robot",
+      "identity_status": "existing_reference_located",
+      "reference": {
+        "catalog": "robots/revisions/existing-references.json",
+        "notes": "Existing FREEPASS identity; no PC role change."
+      }
+    },
+    {
+      "id": "COD-03",
+      "name_ko": null,
+      "type": "robot",
+      "identity_status": "existing_reference_located",
+      "reference": {
+        "catalog": "robots/revisions/existing-references.json",
+        "notes": "Existing FREEPASS identity; no PC role change."
+      }
     }
   ],
   "rules": {
@@ -122,5 +142,5 @@
     }
   },
   "family_revision_catalog": "robots/revisions/current.json",
-  "family_revision_policy": "01/03/04 R1 제안. 승인 정면02를 공통 정면/눈매 기준으로 비교,플레이트구조만캐릭터별차별화.01/03이름미확정.04어깨는좁고절제.후보를정본으로자동승격하지않음."
+  "family_revision_policy": "Existing COD-01/COD-03/CLO-04 visual identities first. Previous invented CLO-01/CLO-03 candidates withdrawn. Match frontal camera/pose, preserve original face and helmet distinctions; do not auto-promote candidates."
 }

@@ -96,7 +96,7 @@ def main():
         if p.get('camera_angle') != 'front' or not p.get('public_eligible'):
             raise ValueError('Only the corrected frontal R1 may be collected')
         add(p['source_png'], 'revision-' + p['character_id'].lower() + '-r1', (p.get('name_ko') or p['character_id']) + ' · R1 제안', 'revision', p['source_sha256'],
-            status='design_proposal', production=False, usage=p['plate_design'], tags=[p['character_id'], p['proposed_emission_color'], '견갑'], extra={'character_id': p['character_id'], 'plate_design': p['plate_design']})
+            status='design_proposal', production=False, usage=p['plate_design'], tags=[p['character_id'], p['proposed_emission_color'], '기존 캐릭터 정면 파생'], extra={'character_id': p['character_id'], 'plate_design': p['plate_design'], 'identity_reference_sha256':p['identity_reference_sha256']})
     scene_link = ROOT / 'public-release/scenes.json'
     if scene_link.exists():
         for p in read(scene_link)['scenes']:
@@ -131,7 +131,7 @@ def main():
     ref_dir.mkdir()
     ref = ROOT / 'characters/클로이/refs/proportion-options-owner-selected-B.png'
     shutil.copy2(ref, ref_dir / 'human-selected-B-sheet.png')
-    (assets_dir / 'AI-START-HERE.md').write_text('''# AI Staff 공개 자산\n\n카탈로그에서 문단의 행동·대상·구도에 맞는 PNG를 고른다. production_usable=false인 CLO-01/03/04 R1 제안은 검토용이며 업무용 정본으로 자동 선택하지 않는다. CLO-02 정본 두 종은 canonical, 그 외 승인된 활용 컷은 usage다. 장면 합성은 고정된 캐릭터 픽셀을 배경 위에 배치했으며 실제 차량·직원·계약 증빙 사진이 아니다.\n\n캐릭터를 출력마다 다시 그리지 않는다. 선택한 PNG의 SHA256를 확인하고 문구·배경·배치만 바꾼다. 새 포즈 후보는 기준 얼굴·체형·장갑·소재·브랜드를 대조 후 고정 등록한다. 같은 참조로 생성해도 매번 동일 기하구조가 보장되는 것은 아니다. 사람형 기준 시트는 references/human-selected-B-sheet.png의 가운데 B안이다.\n\n벡터 폴더의 SVG는 원본 해상도 픽셀 경로다. PNG를 내장하지 않지만 의미별 곡선 벡터/3D/관절 리그가 아니며 용량이 크다. 일반 블로그/웹에는 PNG를 쓴다. SVG의 비표시 제작 metadata만 제거했으며 경로는 보존했다. 폰트·CI·조판 엔진은 별도 포스터 키트에 있다.\n''', encoding='utf-8')
+    (assets_dir / 'AI-START-HERE.md').write_text('''# AI Staff 공개 자산\n\n카탈로그에서 문단의 행동·대상·구도에 맞는 PNG를 고른다. production_usable=false인 COD-01/COD-03/CLO-04 R1 정면 파생 제안은 검토용이며 업무용 정본으로 자동 선택하지 않는다. CLO-02 정본 두 종은 canonical, 그 외 승인된 활용 컷은 usage다. 장면 합성은 고정된 캐릭터 픽셀을 배경 위에 배치했으며 실제 차량·직원·계약 증빙 사진이 아니다.\n\n캐릭터를 출력마다 다시 그리지 않는다. 선택한 PNG의 SHA256를 확인하고 문구·배경·배치만 바꾼다. 새 포즈 후보는 기준 얼굴·체형·장갑·소재·브랜드를 대조 후 고정 등록한다. 같은 참조로 생성해도 매번 동일 기하구조가 보장되는 것은 아니다. 사람형 기준 시트는 references/human-selected-B-sheet.png의 가운데 B안이다.\n\n벡터 폴더의 SVG는 원본 해상도 픽셀 경로다. PNG를 내장하지 않지만 의미별 곡선 벡터/3D/관절 리그가 아니며 용량이 크다. 일반 블로그/웹에는 PNG를 쓴다. SVG의 비표시 제작 metadata만 제거했으며 경로는 보존했다. 폰트·CI·조판 엔진은 별도 포스터 키트에 있다.\n''', encoding='utf-8')
     self_manifest = {'files': [{'file': p.relative_to(assets_dir).as_posix(), 'sha256': sha(p), 'bytes': p.stat().st_size} for p in assets_dir.rglob('*') if p.is_file()]}
     (assets_dir / 'manifest.json').write_text(json.dumps(self_manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     with zipfile.ZipFile(uploads / 'AI-Staff-Assets.zip', 'w', zipfile.ZIP_DEFLATED) as z:

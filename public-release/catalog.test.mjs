@@ -6,6 +6,8 @@ test('public catalog contains current identities and keeps new R1 designs as pro
  const ids=catalog.assets.map(a=>a.id);assert.equal(new Set(ids).size,ids.length);assert.ok(ids.length>=90);
  assert.equal(catalog.assets.filter(a=>a.status==='canonical').length,2);
  const proposals=catalog.assets.filter(a=>a.category==='revision');assert.equal(proposals.length,3);assert.ok(proposals.every(a=>a.status==='design_proposal'&&a.production_usable===false));
+ assert.deepEqual(proposals.map(a=>a.character_id).sort(),['CLO-04','COD-01','COD-03']);
+ assert.ok(!ids.some(id=>/^revision-clo-0[13]-/.test(id)));
  assert.ok(!ids.includes('robot-01-welcome'));assert.equal(catalog.assets.filter(a=>a.category==='scene').length,30);
 });
 test('all scene composites bind to a registered unchanged human image',()=>{
