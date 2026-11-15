@@ -134,6 +134,7 @@ def main():
         shutil.copy2(ROOT / 'public-release/compose.mjs', assets_dir / 'compose.mjs')
         (assets_dir / 'package.json').write_text(json.dumps({'private': True, 'type': 'module', 'dependencies': {'@resvg/resvg-js': '2.6.2'}}, indent=2) + '\n', encoding='utf-8')
     catalog = {'schema': 'ai-staff/public-assets/v1', 'release_tag': args.tag, 'source_commit': subprocess.check_output(['git', '-C', str(ROOT), 'rev-parse', 'HEAD'], text=True).strip(),
+               'family_identity':read(ROOT / 'robots/registry.json')['family_identity'],
                'identity_policy': 'Reuse registered PNG bytes. No character generation at render time. New poses are reviewed derivatives, not identical 3D geometry.',
                'downloads': {'assets': release_url + 'AI-Staff-Assets.zip', 'templates': release_url + 'Chakhan-Poster-Templates.zip'}, 'assets': records, 'backgrounds': backgrounds, 'design_references':design_references}
     (site / 'catalog.json').write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')

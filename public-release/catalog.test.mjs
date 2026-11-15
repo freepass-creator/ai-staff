@@ -14,6 +14,10 @@ test('all scene composites bind to a registered unchanged human image',()=>{
  const humans=new Set(catalog.assets.filter(a=>a.category==='human').map(a=>a.png_sha256));
  for(const scene of catalog.assets.filter(a=>a.category==='scene'))assert.ok(humans.has(scene.character_source_sha256),scene.id);
 });
+test('four existing robot identities retain number and male/female presentation',()=>{
+ assert.deepEqual(catalog.family_identity.members.map(a=>[a.number,a.id,a.presentation]),[[1,'COD-01','male'],[2,'CLO-02','female'],[3,'COD-03','male'],[4,'CLO-04','female']]);
+ assert.deepEqual(catalog.family_identity.invalid_character_ids,['CLO-01','CLO-03']);
+});
 test('public URLs, checksums, tiny previews, and metadata remain safe to publish',async()=>{
  const text=JSON.stringify(catalog);assert.ok(!/(?:["\s])[A-Za-z]:[/\\]|incoming-pc1|source_thread|source\.bundle|PRIVATE KEY/.test(text));
  for(const a of catalog.assets){assert.match(a.png_sha256,/^[a-f0-9]{64}$/);assert.ok(a.png_url.startsWith('https://github.com/freepass-creator/ai-staff/releases/download/'));assert.ok(a.thumbnail.startsWith('thumbs/'));assert.ok(!a.thumbnail.includes('..'));const s=await stat(new URL(a.thumbnail,site));assert.ok(s.size<150000,a.id);}
