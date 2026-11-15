@@ -180,5 +180,6 @@
       "CLO-03"
     ],
     "policy": "Four existing characters numbered 1,2,3,4. Reuse each existing identity; no new replacement characters. Presentation describes fictional robot design, not PC role."
-  }
+  },
+  "new_pose_hand_grip_policy": "robots/hand-grip-policy.json"
 }

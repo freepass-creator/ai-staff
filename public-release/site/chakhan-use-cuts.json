@@ -1,17 +1,165 @@
 {
-  "schema": "ai-staff/chakhan-use-cuts/v1",
-  "batch": "01",
-  "identity_reference": {
-    "status": "owner_selected",
-    "sha256": "49b6f9ae899afc64271aac75e0705b192316053d32ff85c6c316f20d02774352",
-    "number": "02"
-  },
+  "schema": "ai-staff/chakhan-use-cuts/v2",
+  "brand": "착한거래",
+  "current_batch": "02",
   "assets": [
+    {
+      "id": "cover-think",
+      "label": "고민하며 비교",
+      "character_number": "02",
+      "file": "cutouts/Chakhan-CLO-02-cover-think.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-cover-think.png",
+      "sha256": "3ee35ac277c9b5202691e197932b7cb94ff0d6ce21c097550de06b4baedb3eea",
+      "width": 1254,
+      "height": 1254,
+      "transparent_background": true,
+      "brand": "착한거래",
+      "variant": "chakhan-white-v1",
+      "nameplate": "착한거래",
+      "emission_color": "yellow",
+      "body_color": "white",
+      "framing": "waist_up",
+      "group": "cover_emotion",
+      "emotion": "think",
+      "status": "prepared_cover_derivative",
+      "production_usable": true,
+      "profile_usable": false,
+      "canonical_replacement": false,
+      "palm_revision": "grip-pads-v1",
+      "identity_reference_sha256": "49b6f9ae899afc64271aac75e0705b192316053d32ff85c6c316f20d02774352",
+      "brand_pose_reference_sha256": "60c44eec60cdf7b2857a34acfc80a66dc36b309b9135c35e43d213841da80522",
+      "tags": [
+        "착한거래",
+        "메인표지",
+        "고민",
+        "비교",
+        "선택",
+        "판단"
+      ],
+      "usage": "비교 기준을 고민하거나 선택을 망설이는 표지. 머리 기울기와 턱을 짚는 동작을 크게 보여주고 반대편에 질문형 제목을 배치한다.",
+      "cover_placement": "오른쪽 캐릭터·왼쪽 질문형 제목",
+      "hand_review": "확대 PNG 대조: 네 긴손가락+엄지, 별도 엄지 밑/바깥 패드, 중앙면과 관절 연결 확인",
+      "thumbnail": "chakhan/thumbs/cover-think-3ee35ac277.webp"
+    },
+    {
+      "id": "cover-aha",
+      "label": "깨달음",
+      "character_number": "02",
+      "file": "cutouts/Chakhan-CLO-02-cover-aha.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-cover-aha.png",
+      "sha256": "f2af4d2b7f438462e7f42c3057a2ba90a474e43b71c0551863526346f9c3b744",
+      "width": 1254,
+      "height": 1254,
+      "transparent_background": true,
+      "brand": "착한거래",
+      "variant": "chakhan-white-v1",
+      "nameplate": "착한거래",
+      "emission_color": "yellow",
+      "body_color": "white",
+      "framing": "waist_up",
+      "group": "cover_emotion",
+      "emotion": "aha",
+      "status": "prepared_cover_derivative",
+      "production_usable": true,
+      "profile_usable": false,
+      "canonical_replacement": false,
+      "palm_revision": "grip-pads-v1",
+      "identity_reference_sha256": "49b6f9ae899afc64271aac75e0705b192316053d32ff85c6c316f20d02774352",
+      "brand_pose_reference_sha256": "60c44eec60cdf7b2857a34acfc80a66dc36b309b9135c35e43d213841da80522",
+      "tags": [
+        "착한거래",
+        "메인표지",
+        "깨달음",
+        "발견",
+        "체크포인트",
+        "이해"
+      ],
+      "usage": "처음 알게 된 조건이나 놓친 체크 항목을 설명하는 표지. 위로 든 검지와 밝은 LCD 표정을 살려 발견형 제목과 함께 사용한다.",
+      "cover_placement": "제목 상단·캐릭터 중앙 또는 오른쪽",
+      "hand_review": "확대 PNG 대조: 네 긴손가락+엄지, 별도 엄지 밑/바깥 패드, 중앙면과 관절 연결 확인",
+      "thumbnail": "chakhan/thumbs/cover-aha-f2af4d2b7f.webp"
+    },
+    {
+      "id": "cover-dejected",
+      "label": "시무룩함",
+      "character_number": "02",
+      "file": "cutouts/Chakhan-CLO-02-cover-dejected.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-cover-dejected.png",
+      "sha256": "baf83fe576c94371f873c9fae5040208f0fd5b9555e9814439587e118577d1f4",
+      "width": 1254,
+      "height": 1254,
+      "transparent_background": true,
+      "brand": "착한거래",
+      "variant": "chakhan-white-v1",
+      "nameplate": "착한거래",
+      "emission_color": "yellow",
+      "body_color": "white",
+      "framing": "waist_up",
+      "group": "cover_emotion",
+      "emotion": "dejected",
+      "status": "prepared_cover_derivative",
+      "production_usable": true,
+      "profile_usable": false,
+      "canonical_replacement": false,
+      "palm_revision": "grip-pads-v1",
+      "identity_reference_sha256": "49b6f9ae899afc64271aac75e0705b192316053d32ff85c6c316f20d02774352",
+      "brand_pose_reference_sha256": "60c44eec60cdf7b2857a34acfc80a66dc36b309b9135c35e43d213841da80522",
+      "tags": [
+        "착한거래",
+        "메인표지",
+        "시무룩",
+        "아쉬움",
+        "숨은조건",
+        "주의"
+      ],
+      "usage": "기대와 다른 조건이나 아쉬운 선택을 짚는 표지. 내려간 어깨와 펼친 손이 보이도록 배치하고 과도한 공포·불안 조장 문구는 쓰지 않는다.",
+      "cover_placement": "제목 상단·오른쪽 캐릭터",
+      "hand_review": "확대 PNG 대조: 네 긴손가락+엄지, 별도 엄지 밑/바깥 패드, 중앙면과 관절 연결 확인",
+      "thumbnail": "chakhan/thumbs/cover-dejected-baf83fe576.webp"
+    },
+    {
+      "id": "cover-confident",
+      "label": "차분한 자신감",
+      "character_number": "02",
+      "file": "cutouts/Chakhan-CLO-02-cover-confident.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-cover-confident.png",
+      "sha256": "fb9747188cb85cd4599ff8cf1cb5db856e9235b78e7985bd5718190bf9f79f74",
+      "width": 1254,
+      "height": 1254,
+      "transparent_background": true,
+      "brand": "착한거래",
+      "variant": "chakhan-white-v1",
+      "nameplate": "착한거래",
+      "emission_color": "yellow",
+      "body_color": "white",
+      "framing": "waist_up",
+      "group": "cover_emotion",
+      "emotion": "confident",
+      "status": "prepared_cover_derivative",
+      "production_usable": true,
+      "profile_usable": false,
+      "canonical_replacement": false,
+      "palm_revision": "grip-pads-v1",
+      "identity_reference_sha256": "49b6f9ae899afc64271aac75e0705b192316053d32ff85c6c316f20d02774352",
+      "brand_pose_reference_sha256": "60c44eec60cdf7b2857a34acfc80a66dc36b309b9135c35e43d213841da80522",
+      "tags": [
+        "착한거래",
+        "메인표지",
+        "자신감",
+        "확신",
+        "정리",
+        "선택완료"
+      ],
+      "usage": "조건을 이해한 뒤 정리·확신을 전달하는 표지. 팔짱을 낀 안정적인 자세를 크게 쓰고 체크리스트형 제목이나 짧은 결론을 배치한다.",
+      "cover_placement": "왼쪽 캐릭터·상단 제목·오른쪽 보조 문구",
+      "hand_review": "両手: four long fingers plus one separate opposing thumb; upper hand rebuilt with distinct dorsal plate and chest-facing thumb; user correction supersedes earlier count review.",
+      "thumbnail": "chakhan/thumbs/cover-confident-fb9747188c.webp"
+    },
     {
       "id": "phone",
       "label": "전화 상담",
       "character_number": "02",
-      "file": "Chakhan-CLO-02-use-phone.png",
+      "file": "cutouts/Chakhan-CLO-02-use-phone.png",
       "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-use-phone.png",
       "sha256": "60c44eec60cdf7b2857a34acfc80a66dc36b309b9135c35e43d213841da80522",
       "width": 1254,
@@ -37,13 +185,15 @@
       "variant": "chakhan-white-v1",
       "nameplate": "착한거래",
       "emission_color": "yellow",
+      "group": "consultation",
+      "palm_revision": "earlier-closed-hand-pose",
       "thumbnail": "chakhan/thumbs/phone-60c44eec60.webp"
     },
     {
       "id": "tablet",
       "label": "태블릿으로 설명",
       "character_number": "02",
-      "file": "Chakhan-CLO-02-use-tablet.png",
+      "file": "cutouts/Chakhan-CLO-02-use-tablet.png",
       "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-use-tablet.png",
       "sha256": "1ea53feeb3a24e08675d747238c867c7f630f3bd1b5bf0aaa6d847229e45a7ee",
       "width": 1221,
@@ -69,13 +219,15 @@
       "variant": "chakhan-white-v1",
       "nameplate": "착한거래",
       "emission_color": "yellow",
+      "group": "consultation",
+      "palm_revision": "earlier-closed-hand-pose",
       "thumbnail": "chakhan/thumbs/tablet-1ea53feeb3.webp"
     },
     {
       "id": "guide-right",
       "label": "오른쪽 대상 안내",
       "character_number": "02",
-      "file": "Chakhan-CLO-02-use-guide-right.png",
+      "file": "cutouts/Chakhan-CLO-02-use-guide-right.png",
       "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-use-guide-right.png",
       "sha256": "9083c41c95064172b8b61caad88261fab86c1883534535fde30e394d5663caae",
       "width": 1448,
@@ -101,29 +253,178 @@
       "variant": "chakhan-white-v1",
       "nameplate": "착한거래",
       "emission_color": "yellow",
+      "group": "consultation",
+      "palm_revision": "earlier-closed-hand-pose",
       "thumbnail": "chakhan/thumbs/guide-right-9083c41c95.webp"
     }
   ],
-  "reuse_policy": "Reuse exact PNG bytes after verifying SHA. Do not redraw the character at layout time. Current approved profile remains the separate single allowlist.",
-  "evidence_policy": "Illustrations are not real employee, vehicle delivery or signed-contract evidence.",
-  "brand": "착한거래",
-  "brand_reference_variant": "chakhan-white-v1",
-  "brand_reference_sha256": "fecf6ba56d9381cbf21b6fe3f9e963224f73013e897141911da6c522b7603f07",
-  "brand_lock": "착한거래 명찰, 노란 발광, 흰색 외장. 프리패스 명찰/보라 발광 컷을 착한거래용으로 대체하지 않는다.",
+  "runtime_assets": [
+    {
+      "file": "assets/fonts/SUITE-Heavy.woff2",
+      "sha256": "40b44d4cf9eaf2f4dbb4e9a96d713a0bed5db78e5d0097e50e7d2c751747125e"
+    },
+    {
+      "file": "assets/fonts/NotoSansKR-400.woff2",
+      "sha256": "3aa0d1d63f3b5b2a33053a41a34512eac63abfb1dc2112aeda04733656a1a6d9"
+    },
+    {
+      "file": "assets/fonts/NotoSansKR-700.woff2",
+      "sha256": "dab3d492daa687386292cff1499225db580f931f800ee0d124eb0636378c6020"
+    },
+    {
+      "file": "assets/fonts/LICENSE-SUITE.txt",
+      "sha256": "4511d445dd33512b573bcb7bea8a690538f46c04f3e72f002fdad7987c8286fa"
+    },
+    {
+      "file": "assets/fonts/LICENSE-NOTO.txt",
+      "sha256": "b5c524a2a2b265ad6c40f12183ec481969fe6543100a577700d3fab97021b9c0"
+    },
+    {
+      "file": "assets/brand/ci-P2.svg",
+      "sha256": "ea27c3c9d5df3af955f3da72b4a6d0ac21ca2498e9f06e66b8e3a632051cd0ad"
+    }
+  ],
+  "covers": [
+    {
+      "id": "Chakhan-Cover-Example-Think",
+      "pose_id": "cover-think",
+      "layout": "cream-side",
+      "width": 1200,
+      "height": 1200,
+      "file": "Chakhan-Cover-Example-Think.png",
+      "sha256": "abbe2083027a13a02da615c6b99aeccf031528b9f21cc1b8fbd3e13c7ab1175f",
+      "character_source_sha256": "3ee35ac277c9b5202691e197932b7cb94ff0d6ce21c097550de06b4baedb3eea",
+      "headline": "장기렌트,\n무엇부터\n비교할까?",
+      "qa": {
+        "issues": [],
+        "fonts": [
+          true,
+          true,
+          true
+        ],
+        "images": true
+      },
+      "label": "고민하며 비교 · 표지 예시",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-Cover-Example-Think.png",
+      "headline_lines": [
+        "장기렌트,",
+        "무엇부터",
+        "비교할까?"
+      ],
+      "purpose": "문구·배치 예시. 원고 내용에 맞춰 cover-jobs.json을 수정하고 고정 PNG로 재조판한다.",
+      "thumbnail": "chakhan/thumbs/chakhan-cover-example-think-abbe208302.webp"
+    },
+    {
+      "id": "Chakhan-Cover-Example-Aha",
+      "pose_id": "cover-aha",
+      "layout": "midnight-top",
+      "width": 1200,
+      "height": 1200,
+      "file": "Chakhan-Cover-Example-Aha.png",
+      "sha256": "1e845ea37083224485206ed5591d0c306e9dd501faaa21ada66ee3f03c55d4ab",
+      "character_source_sha256": "f2af4d2b7f438462e7f42c3057a2ba90a474e43b71c0551863526346f9c3b744",
+      "headline": "아, 이 조건을\n놓쳤네요!",
+      "qa": {
+        "issues": [],
+        "fonts": [
+          true,
+          true,
+          true
+        ],
+        "images": true
+      },
+      "label": "깨달음 · 표지 예시",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-Cover-Example-Aha.png",
+      "headline_lines": [
+        "아, 이 조건을",
+        "놓쳤네요!"
+      ],
+      "purpose": "문구·배치 예시. 원고 내용에 맞춰 cover-jobs.json을 수정하고 고정 PNG로 재조판한다.",
+      "thumbnail": "chakhan/thumbs/chakhan-cover-example-aha-1e845ea370.webp"
+    },
+    {
+      "id": "Chakhan-Cover-Example-Dejected",
+      "pose_id": "cover-dejected",
+      "layout": "apricot-top",
+      "width": 1200,
+      "height": 1200,
+      "file": "Chakhan-Cover-Example-Dejected.png",
+      "sha256": "661a8faf6c533d6d1f54c8483fd8f17a4374be3f9198eb62f3df00713a6ee455",
+      "character_source_sha256": "baf83fe576c94371f873c9fae5040208f0fd5b9555e9814439587e118577d1f4",
+      "headline": "싸다고 골랐는데,\n왜 아쉬울까요?",
+      "qa": {
+        "issues": [],
+        "fonts": [
+          true,
+          true,
+          true
+        ],
+        "images": true
+      },
+      "label": "시무룩함 · 표지 예시",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-Cover-Example-Dejected.png",
+      "headline_lines": [
+        "싸다고 골랐는데,",
+        "왜 아쉬울까요?"
+      ],
+      "purpose": "문구·배치 예시. 원고 내용에 맞춰 cover-jobs.json을 수정하고 고정 PNG로 재조판한다.",
+      "thumbnail": "chakhan/thumbs/chakhan-cover-example-dejected-661a8faf6c.webp"
+    },
+    {
+      "id": "Chakhan-Cover-Example-Confident",
+      "pose_id": "cover-confident",
+      "layout": "sage-left",
+      "width": 1200,
+      "height": 1200,
+      "file": "Chakhan-Cover-Example-Confident.png",
+      "sha256": "093a57cecf8367a4125103816d82fe383104b9a12953e8bc64519e26acb048df",
+      "character_source_sha256": "fb9747188cb85cd4599ff8cf1cb5db856e9235b78e7985bd5718190bf9f79f74",
+      "headline": "조건을 알고\n선택하면 든든!",
+      "qa": {
+        "issues": [],
+        "fonts": [
+          true,
+          true,
+          true
+        ],
+        "images": true
+      },
+      "label": "차분한 자신감 · 표지 예시",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-Cover-Example-Confident.png",
+      "headline_lines": [
+        "조건을 알고",
+        "선택하면 든든!"
+      ],
+      "purpose": "문구·배치 예시. 원고 내용에 맞춰 cover-jobs.json을 수정하고 고정 PNG로 재조판한다.",
+      "thumbnail": "chakhan/thumbs/chakhan-cover-example-confident-093a57cecf.webp"
+    }
+  ],
+  "hand_grip_policy": "hand-grip-policy.json",
+  "render_policy": "고정 PNG/CI/폰트 SHA를 확인해 조판하며 출력 시 캐릭터를 재생성하지 않는다.",
+  "selection_policy": {
+    "brand_required": "착한거래",
+    "brand_fallback_allowed": false,
+    "profile_use_allowed": false,
+    "main_cover_priority": "제목의 의미에 맞는 감정 포즈를 우선한다. 가리키기만 반복하지 않는다."
+  },
+  "format": {
+    "cutouts": "RGBA transparent PNG",
+    "covers": "1200x1200 square PNG",
+    "title_font": "SUITE Heavy 900",
+    "body_font": "Noto Sans KR 400/700",
+    "CI": "original P2 SVG",
+    "minimum_outer_margin_px": 64
+  },
   "downloads": {
     "zip": {
+      "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-Cover-Kit-v2.zip",
+      "sha256": "6445d85889591f155cd15399337bcb6480f92616f5922129f7965cf253c9b4fe",
+      "bytes": 13634877
+    },
+    "previous_batch": {
       "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-Use-Cuts-Batch01.zip",
       "sha256": "8608ca6c9511b50cc926d0bd5c51323415239dd005520d1bce213d862b703280",
       "bytes": 4264087
     }
-  },
-  "selection_policy": {
-    "brand_required": "착한거래",
-    "nameplate_required": "착한거래",
-    "emission_color_required": "yellow",
-    "body_color_required": "white",
-    "brand_fallback_allowed": false,
-    "reuse_registered_png_without_regeneration": true,
-    "profile_use_allowed": false
   }
 }
