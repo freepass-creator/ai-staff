@@ -1,0 +1,161 @@
+{
+  "kind": "read_only_inventory_baseline",
+  "verified_by": "existing AI Link owner record; public RSS independently read by PC0",
+  "checked_at": "2026-11-14T13:14:39.261Z",
+  "existing_final_batches": [
+    "C:/dev/blog-output/pilot10-20261111-final",
+    "C:/dev/blog-output/batch02-11-20-20261111-final"
+  ],
+  "existing_articles": 20,
+  "existing_images": 40,
+  "scope": "Owner reports all20 published URLs matched. This engine has not imported their bodies. Never recreate or republish them merely because the local library is empty.",
+  "recent_public_titles": [
+    {
+      "title": "월 4만원 더 싼 장기렌트, 48개월 총액은 오히려 48만원 비싼 이유 (가상 예시)",
+      "url": "https://blog.naver.com/chakhandeal_ai/224477183979",
+      "publishedAt": "Sat, 14 Nov 2026 21:08:50 +0900"
+    },
+    {
+      "title": "신차 장기렌트 연 2만km vs 3만km, 월 2만원 차이와 초과요금 비교",
+      "url": "https://blog.naver.com/chakhandeal_ai/224475048610",
+      "publishedAt": "Fri, 13 Nov 2026 01:36:45 +0900"
+    },
+    {
+      "title": "완충 주행거리가 줄었는데, 배터리가 그만큼 닳은 걸까요?",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473840449",
+      "publishedAt": "Thu, 12 Nov 2026 07:58:56 +0900"
+    },
+    {
+      "title": "차량 무선충전, 휴대폰이 뜨겁고 충전이 멈추는 이유",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473840295",
+      "publishedAt": "Thu, 12 Nov 2026 07:58:45 +0900"
+    },
+    {
+      "title": "오토하이빔과 지능형 헤드램프, 같은 기능일까요?",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473840154",
+      "publishedAt": "Thu, 12 Nov 2026 07:58:34 +0900"
+    },
+    {
+      "title": "루프박스가 크면 짐도 많이 실어도 될까요?",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473839996",
+      "publishedAt": "Thu, 12 Nov 2026 07:58:24 +0900"
+    },
+    {
+      "title": "트렁크의 펑크 수리 키트, 모든 타이어 손상에 쓸 수 있을까요?",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473839864",
+      "publishedAt": "Thu, 12 Nov 2026 07:58:13 +0900"
+    },
+    {
+      "title": "미러 경고등이 꺼져 있으면, 옆 차로로 들어가도 될까요?",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473839663",
+      "publishedAt": "Thu, 12 Nov 2026 07:57:54 +0900"
+    },
+    {
+      "title": "앞유리만 갈았는데, 운전 보조 카메라도 확인해야 할까요?",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473839540",
+      "publishedAt": "Thu, 12 Nov 2026 07:57:43 +0900"
+    },
+    {
+      "title": "겨울에 히터를 켰는데 A/C도 켜지는 이유",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473839404",
+      "publishedAt": "Thu, 12 Nov 2026 07:57:33 +0900"
+    },
+    {
+      "title": "오토스톱, 어제는 됐는데 오늘은 왜 안 될까요?",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473839266",
+      "publishedAt": "Thu, 12 Nov 2026 07:57:21 +0900"
+    },
+    {
+      "title": "엔진오일, 얼마 안 탔는데 벌써 교환하라고요?",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473839130",
+      "publishedAt": "Thu, 12 Nov 2026 07:57:10 +0900"
+    },
+    {
+      "title": "리콜 조회, 차종명만 검색하면 놓치는 것",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473838886",
+      "publishedAt": "Thu, 12 Nov 2026 07:56:50 +0900"
+    },
+    {
+      "title": "360도 카메라 화면의 빈 공간, 실제로도 비어 있을까요?",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473838741",
+      "publishedAt": "Thu, 12 Nov 2026 07:56:39 +0900"
+    },
+    {
+      "title": "전기차, 100% 충전한 날 회생제동 느낌이 다른 이유",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473838607",
+      "publishedAt": "Thu, 12 Nov 2026 07:56:28 +0900"
+    },
+    {
+      "title": "차선 보조 켜놨는데, 공사 구간에서 왜 달라질까요?",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473838500",
+      "publishedAt": "Thu, 12 Nov 2026 07:56:18 +0900"
+    },
+    {
+      "title": "큰 휠이 더 좋은 옵션일까요? 승차감·전비 같이 보기",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473838126",
+      "publishedAt": "Thu, 12 Nov 2026 07:55:51 +0900"
+    },
+    {
+      "title": "AWD 타이어 한 짝 펑크, 네 짝을 모두 바꿔야 할까요?",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473837995",
+      "publishedAt": "Thu, 12 Nov 2026 07:55:41 +0900"
+    },
+    {
+      "title": "타이어 옆면 MAX, 그 숫자까지 공기를 넣어도 될까요?",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473837859",
+      "publishedAt": "Thu, 12 Nov 2026 07:55:30 +0900"
+    },
+    {
+      "title": "전기차 충전은 충분한데 전원이 이상하다면, 12V도 보세요",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473836750",
+      "publishedAt": "Thu, 12 Nov 2026 07:54:01 +0900"
+    },
+    {
+      "title": "하이브리드인데 짧은 출퇴근 연비가 기대보다 낮은 이유",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473836084",
+      "publishedAt": "Thu, 12 Nov 2026 07:53:07 +0900"
+    },
+    {
+      "title": "충전기에는 350kW, 왜 내 차는 그만큼 못 받을까요?",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473833942",
+      "publishedAt": "Thu, 12 Nov 2026 07:50:11 +0900"
+    },
+    {
+      "title": "하이브리드, 300만원 더 쓰면 기름값으로 언제 회수할까?",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473457345",
+      "publishedAt": "Wed, 11 Nov 2026 21:36:27 +0900"
+    },
+    {
+      "title": "장기렌트 반납할 때 문콕 하나도 돈 낼까? 수리 전 확인할 3가지",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473426095",
+      "publishedAt": "Wed, 11 Nov 2026 21:07:14 +0900"
+    },
+    {
+      "title": "장기렌트 보험료 포함, 사고 비용도 무료일까요?",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473406217",
+      "publishedAt": "Wed, 11 Nov 2026 20:47:35 +0900"
+    },
+    {
+      "title": "장기렌트 보증금 30% vs 선납금 30%, 같은 돈이 아닙니다",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473355768",
+      "publishedAt": "Wed, 11 Nov 2026 19:58:14 +0900"
+    },
+    {
+      "title": "왕복 40km 출퇴근, 연 1만km면 충분할까요?",
+      "url": "https://blog.naver.com/chakhandeal_ai/224473306845",
+      "publishedAt": "Wed, 11 Nov 2026 19:06:27 +0900"
+    },
+    {
+      "title": "장기렌터카 AI 비교견적, 같은 차인데 왜 금액이 다를까요?",
+      "url": "https://blog.naver.com/chakhandeal_ai/224472998318",
+      "publishedAt": "Wed, 11 Nov 2026 14:54:11 +0900"
+    }
+  ],
+  "later_confirmed_public_url": "https://blog.naver.com/chakhandeal_ai/224477254403",
+  "later_confirmation": "PC1 publish receipt and PC/mobile readback, 2026-11-14; no duplicate publish",
+  "missing_coverage": [
+    "full historical article bodies",
+    "current private drafts"
+  ],
+  "canonical_brand_source": "D:/dev/chakhan-sales/marketing"
+}
