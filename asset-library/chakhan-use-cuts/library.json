@@ -6,12 +6,19 @@
   "public_catalog": "https://ai-staff-two.vercel.app/chakhan-use-cuts.json",
   "viewer": "https://ai-staff-two.vercel.app/chakhan/",
   "brand_fallback_allowed": false,
-  "assets": 3,
+  "assets": 7,
   "downloads": {
     "zip": {
+      "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-Cover-Kit-v2.zip",
+      "sha256": "fdac002e9c277a225fb9be6e4eb983601b3447cac2d9d7c90bf42fa224d5d167",
+      "bytes": 13610244
+    },
+    "previous_batch": {
       "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-Use-Cuts-Batch01.zip",
       "sha256": "8608ca6c9511b50cc926d0bd5c51323415239dd005520d1bce213d862b703280",
       "bytes": 4264087
     }
-  }
+  },
+  "cover_emotion_assets": 4,
+  "cover_examples": 4
 }
