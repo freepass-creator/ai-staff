@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_on": "2026-11-11",
+  "updated_on": "2026-11-15",
   "timezone": "Asia/Seoul",
   "authority": "대표 직접 확정: 보라색 CLO-02 클로이, CLO-04 클로아",
   "characters": [
@@ -20,11 +20,16 @@
         "status": "confirmed_name_only"
       },
       "reference": {
-        "status": "existing_candidate_visually_checked",
-        "source_basename": "clo02-true.png",
-        "sha256": "30f415209c0d9bd1fd637f9a2fecf49f7708551288300c0ae7cb4dfaaad9a714",
-        "repository_path": null,
-        "notes": "보라색 눈·속눈썹, 중앙이 파인 검은 얼굴 화면, 귀 옆 핀, 머리 위 고리 안테나 없음. 원본은 불투명 배경이며 투명 납품본으로 취급하지 않는다."
+        "status": "use_current_variant_catalog",
+        "catalog": "robots/current.json",
+        "variant_required_for_generic_name": true,
+        "approved_brand_lookup": "착한클로이",
+        "basic_variant_lookup": "기본클로이",
+        "notes": "매끈한 표면·은은한 발광 V1 기본형과 착한거래형 모두 대표 확정. current catalog 외 이미지 검색·구버전 fallback 금지."
+      },
+      "current_variants": {
+        "chakhan": "chakhan-white-v1",
+        "basic": "basic-purple-v1"
       }
     },
     {
@@ -49,6 +54,26 @@
         "repository_path": null,
         "notes": "이름·번호만 확정. 과거 주황 원본이나 착한거래 노랑 파생본을 파일명만 보고 자동 지정하지 않는다."
       }
+    },
+    {
+      "id": "COD-01",
+      "name_ko": null,
+      "type": "robot",
+      "identity_status": "existing_reference_located",
+      "reference": {
+        "catalog": "robots/revisions/existing-references.json",
+        "notes": "Existing FREEPASS identity; no PC role change."
+      }
+    },
+    {
+      "id": "COD-03",
+      "name_ko": null,
+      "type": "robot",
+      "identity_status": "existing_reference_located",
+      "reference": {
+        "catalog": "robots/revisions/existing-references.json",
+        "notes": "Existing FREEPASS identity; no PC role change."
+      }
     }
   ],
   "rules": {
@@ -71,5 +96,51 @@
       "name_ko": "클로이",
       "status": "superseded_on_2026-11-11"
     }
-  ]
+  ],
+  "latest_owner_correction": "robots/OWNER-CORRECTION-20261114.md",
+  "latest_owner_relationship_correction": "2026-11-14: 보라색 클로이에서 착한 클로이로 파생; 기존 개별 폐기 판정은 유지, 노란색만으로 CLO-04 판정 금지",
+  "current_variant_catalog": "robots/current.json",
+  "owner_brand": "프리패스",
+  "nameplate_policy": {
+    "default_character_nameplate": "프리패스",
+    "character_names_are_identity_not_owner_brand": true,
+    "existing_chakhan_variant_nameplate": "착한거래",
+    "scope": "기본형 프리패스, 착한거래형 착한거래. 두 형태 모두 최신 정본."
+  },
+  "mini_monitor_policy": {
+    "surface": "black cover glass, subtly emitted white brand text",
+    "default_brand": "프리패스",
+    "brand_variant_text": "착한거래",
+    "no_dot_matrix": false,
+    "no_scanlines": true,
+    "review_view": "/characters/?review=materials",
+    "letter_dot_policy": "fine emitted dots inside glyphs only, not coarse billboard grid",
+    "dot_pitch_px": 1.05,
+    "dot_diameter_px": 0.9
+  },
+  "material_policy": {
+    "paint": "white painted metal with clearcoat reflections, not matte",
+    "lights": "emissive lens with hot core, color edges and restrained spill",
+    "scope": "2D appearance study preserving source geometry; no measured PBR reconstruction",
+    "owner_review_required": false
+  },
+  "canonical_design": {
+    "catalog": "robots/current.json",
+    "appearance_revision": "smooth-subtle-0.1",
+    "status": "canonical",
+    "production_usable": true,
+    "variant_ids": [
+      "chakhan-white-v1",
+      "basic-purple-v1"
+    ],
+    "search_policy": {
+      "canonical_only": true,
+      "legacy_asset_access": "410",
+      "no_legacy_fallback": true,
+      "archive_excluded": true,
+      "generic_name_requires_brand_variant": true
+    }
+  },
+  "family_revision_catalog": "robots/revisions/current.json",
+  "family_revision_policy": "Existing COD-01/COD-03/CLO-04 visual identities first. Previous invented CLO-01/CLO-03 candidates withdrawn. Match frontal camera/pose, preserve original face and helmet distinctions; do not auto-promote candidates."
 }

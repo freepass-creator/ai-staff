@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ai-staff/blog-templates/content/v1",
+  "title": "Batch of blog poster jobs",
+  "type": "array",
+  "minItems": 1,
+  "maxItems": 100,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "template",
+      "title"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+      },
+      "template": {
+        "enum": [
+          "cover",
+          "comparison",
+          "checklist",
+          "process",
+          "caution",
+          "faq"
+        ]
+      },
+      "theme": {
+        "enum": [
+          "paper",
+          "peach",
+          "sky",
+          "sage",
+          "lilac",
+          "ink"
+        ]
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 35,
+        "pattern": "^[^\\n]*(\\n[^\\n]*)?$"
+      },
+      "eyebrow": {
+        "type": "string",
+        "maxLength": 26
+      },
+      "subtitle": {
+        "type": "string",
+        "maxLength": 67
+      },
+      "note": {
+        "type": "string",
+        "maxLength": 67
+      },
+      "character": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "scene": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "title",
+            "body"
+          ],
+          "properties": {
+            "title": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 24
+            },
+            "body": {
+              "type": "string",
+              "maxLength": 48
+            }
+          }
+        }
+      },
+      "columns": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "items": {
+          "type": "string",
+          "maxLength": 12
+        }
+      },
+      "rows": {
+        "type": "array",
+        "minItems": 4,
+        "maxItems": 4,
+        "items": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "string",
+            "maxLength": 14
+          }
+        }
+      }
+    },
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "template": {
+              "const": "checklist"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "items"
+          ],
+          "properties": {
+            "items": {
+              "minItems": 4,
+              "maxItems": 4
+            }
+          }
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "template": {
+              "const": "process"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "items"
+          ],
+          "properties": {
+            "items": {
+              "minItems": 4,
+              "maxItems": 4
+            }
+          }
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "template": {
+              "const": "caution"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "items"
+          ],
+          "properties": {
+            "items": {
+              "minItems": 3,
+              "maxItems": 3
+            }
+          }
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "template": {
+              "const": "faq"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "items"
+          ],
+          "properties": {
+            "items": {
+              "minItems": 3,
+              "maxItems": 3
+            }
+          }
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "template": {
+              "const": "comparison"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "columns",
+            "rows"
+          ]
+        }
+      }
+    ]
+  }
+}

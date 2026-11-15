@@ -1,0 +1,115 @@
+{
+  "form": "human",
+  "format": "PNG originals and fixed-view native-resolution path SVG usage poses; semantic rig not implemented",
+  "archive_root": "D:\\large\\ai-staff\\클로이\\human-pc1-import-20261115\\images",
+  "latest_candidate": "refs/proportion-options-owner-selected-B.png",
+  "current_status": "owner-selected-panel-B",
+  "assets": [
+    {
+      "status": "superseded-owner-rejected",
+      "sha256": "e5a4741033f3e66dc55c4d9b996a365c284fb847d8d82d8686a072e1772b8099",
+      "file": "D:\\large\\ai-staff\\클로이\\human-pc1-import-20261115\\images\\concept-v1-superseded.png",
+      "bytes": 2044238,
+      "source_pc1_file": "D:\\large\\ai-staff\\클로이\\human-v1-20261115\\concept-v1-superseded.png"
+    },
+    {
+      "status": "superseded-face-reference",
+      "sha256": "2643381796bb16286b1c661f0a2737229bb5bbde751292cb07c800884b324e78",
+      "file": "D:\\large\\ai-staff\\클로이\\human-pc1-import-20261115\\images\\wardrobe-v1-superseded.png",
+      "bytes": 1738052,
+      "source_pc1_file": "D:\\large\\ai-staff\\클로이\\human-v1-20261115\\wardrobe-v1-superseded.png"
+    },
+    {
+      "status": "previous-candidate",
+      "sha256": "02a9e1656ef24b1134fac6176f1a4a62eda5c1920f977ede5179df1dd8cc3361",
+      "file": "D:\\large\\ai-staff\\클로이\\human-pc1-import-20261115\\images\\human-age20-candidate-v3.png",
+      "bytes": 2473871,
+      "source_pc1_file": "D:\\large\\ai-staff\\클로이\\human-v1-20261115\\human-age20-candidate-v3.png"
+    },
+    {
+      "file": "D:\\large\\ai-staff\\클로이\\human-pc1-import-20261115\\images\\human-age20-round-v4.png",
+      "bytes": 2309290,
+      "sha256": "a5f2a8ee314bd64626a148065b678553a5783d40abe983737a92419a9260d0a7",
+      "status": "intermediate-face-rounding",
+      "source_pc1_file": "D:\\large\\ai-staff\\클로이\\human-v1-20261115\\human-age20-round-v4.png"
+    },
+    {
+      "file": "D:\\large\\ai-staff\\클로이\\human-pc1-import-20261115\\images\\human-age20-white-suit-v5.png",
+      "bytes": 2209856,
+      "sha256": "1d57f6ee9ad76c960e3f4768099f03489ffaf269c627bc3b5528c0d80d8b2c90",
+      "status": "latest-owner-review-pending",
+      "source_pc1_file": "D:\\large\\ai-staff\\클로이\\human-v1-20261115\\human-age20-white-suit-v5.png"
+    },
+    {
+      "prompt": "Side-by-side full-body robot and human Chloe; preserve each identity; same warm ivory background, lighting and thumb-up pose; white-charcoal-yellow accents, human white suit trousers and pumps; no height specification",
+      "file": "D:\\large\\ai-staff\\클로이\\human-pc1-import-20261115\\images\\robot-human-fullbody-compare-v1.png",
+      "status": "withdrawn-wrong-legacy-robot",
+      "sha256": "3493a59a99955e3715ca93493fc6e12664b151eff6bb3928fde2b07664a9b773",
+      "references": [
+        "studio/assets/clo02-thumbs-up-master.webp",
+        "characters/클로이/refs/human-age20-white-suit-v5.png"
+      ],
+      "bytes": 1800321,
+      "source_pc1_file": "D:/large/ai-staff/클로이/human-v1-20261115/robot-human-fullbody-compare-v1.png"
+    },
+    {
+      "file": "D:\\large\\ai-staff\\클로이\\human-pc1-import-20261115\\images\\robot-human-fullbody-compare-v2-pc0.png",
+      "status": "corrected-comparison-only-not-canonical",
+      "prompt": "Use only PC0 current robot, preserve angular shell and proportions; front neutral arms-down full-body comparison with same human v5 white suit; no legacy thumbs-up robot. Reference-based generated study, not pixel-identical canonical replacement.",
+      "robot_png_sha256": "fecf6ba56d9381cbf21b6fe3f9e963224f73013e897141911da6c522b7603f07",
+      "references": [
+        "refs/pc0-CLO-02-chakhan-smooth-subtle-0.1.png",
+        "refs/human-age20-white-suit-v5.png"
+      ],
+      "bytes": 1729248,
+      "sha256": "b44eb9371470aeff5988c881576e38a1298d37c8e40d222b6c15b4fa65a1b2cc",
+      "robot_source": "PC0 D:/dev/ai-staff/robots/current.json variants.chakhan-white-v1",
+      "robot_appearance_revision": "smooth-subtle-0.1",
+      "source_pc1_file": "D:/large/ai-staff/클로이/human-v1-20261115/robot-human-fullbody-compare-v2-pc0.png"
+    },
+    {
+      "file": "D:\\large\\ai-staff\\클로이\\human-pc1-import-20261115\\images\\robot-human-fullbody-compare-v3-proportions-badge.png",
+      "proportion_review": "Visual estimate: crown y150/chin y260/sole y965, approximately7.4 heads. Manual visual estimate, not calibrated anatomical measurement.",
+      "robot_source_sha256": "fecf6ba56d9381cbf21b6fe3f9e963224f73013e897141911da6c522b7603f07",
+      "bytes": 1705688,
+      "prompt": "Edit corrected PC0 comparison: human over 7 heads tall target7.5, reduce whole head about23-25percent, preserve compact round face and white suit; add matching white-charcoal-yellow pin to robot upper chest, keep central nameplate; canonical robot original unchanged",
+      "sha256": "906700c905d6b7778134e3442ee31c9c736e21c8a19f13ca6d3a623d462cf362",
+      "status": "owner-rejected-stretched-leg-proportions",
+      "source_pc1_file": "D:/large/ai-staff/클로이/human-v1-20261115/robot-human-fullbody-compare-v3-proportions-badge.png"
+    },
+    {
+      "prompt": "Keep rounded adult face, white suit, shared chest badge and PC0 robot; lower human waist, shorten overlong legs, balance torso and leg lengths; do not force same display height as robot",
+      "file": "D:\\large\\ai-staff\\클로이\\human-pc1-import-20261115\\images\\robot-human-fullbody-compare-v4-natural.png",
+      "bytes": 1715740,
+      "sha256": "bbbdf0b8aa3ef6f9199f5ce1b136fae7032c76eb275d947f682feb320ef95498",
+      "verification": "Natural proportion revision candidate. Seven-head ratio not certified; do not claim numerical proportion completion.",
+      "status": "natural-proportion-comparison-owner-review-pending",
+      "source_pc1_file": "D:/large/ai-staff/클로이/human-v1-20261115/robot-human-fullbody-compare-v4-natural.png"
+    },
+    {
+      "bytes": 1448049,
+      "owner_quote": "7등신으로 가자",
+      "file": "D:\\large\\ai-staff\\클로이\\human-pc1-import-20261115\\images\\human-proportion-options-6p5-7-7p5.png",
+      "verification": "Owner selected visual center panel B as seven-head design direction. Generated ruler marks are illustrative; not calibrated anatomical measurement.",
+      "status": "owner-selected-panel-B",
+      "selected_panel": "B",
+      "sha256": "10e303f3e36bc094eb8a36998467e494dd455ba3024ad06319748a077788d004",
+      "prompt": "Same Chloe face, white suit, pose; A6.5 B7 C7.5 target head-proportion options with shared baseline",
+      "target_heads": 7,
+      "source_pc1_file": "D:/large/ai-staff/클로이/human-v1-20261115/human-proportion-options-6p5-7-7p5.png"
+    }
+  ],
+  "schema": "ai-staff/character-assets/v1",
+  "character_id": "CLO-02",
+  "selected_fullbody": {
+    "panel": "B",
+    "reference": "refs/proportion-options-owner-selected-B.png",
+    "status": "owner-selected",
+    "target_heads": 7,
+    "sha256": "10e303f3e36bc094eb8a36998467e494dd455ba3024ad06319748a077788d004",
+    "measurement_status": "visual design selection; generated ruler is not calibrated"
+  },
+  "source_pc1_archive_root": "D:/large/ai-staff/클로이/human-v1-20261115",
+  "svg_library": "svg-library.json",
+  "wardrobe_library": "wardrobe-library.json"
+}

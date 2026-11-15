@@ -1,0 +1,19 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "refs/proportion-options-owner-selected-B.png",
+  "selected_panel": "B",
+  "transparent_background": true,
+  "prompts": [
+    {
+      "id": 1,
+      "prompt": "Create ONE transparent-background standalone full-body character asset, not a comparison sheet. Reference image is an identity and proportion reference; ONLY the CENTER B figure is selected, ignore A and C and all ruler marks/text. Preserve the exact recognizable rounded short oval adult Korean woman's face, dark brown chin/shoulder bob and bangs, small yellow hair clip, tiny white/yellow earpiece, warm brown eyes and gentle friendly expression of B. Fictional Chloe, clearly adult age20. Preserve the B silhouette target seven-head natural proportions, balanced torso/legs, do not elongate legs. White tailored pantsuit, charcoal button blouse, fine yellow lapel/pocket piping, tiny white-black-yellow geometric lapel pin, white closed-toe low pumps. Natural soft skin and beautifully shaded semi-realistic editorial illustration with dimensional cloth, subtle gloss and natural details, same style as reference, not anime. Pose: full body front neutral welcoming stance, both arms naturally resting at sides, hands relaxed with anatomically correct five fingers and natural thickness. Whole head and both complete shoes inside generous transparent margins. No text, ruler, labels, watermark, floor, scenery, frame or cast shadow. Output real transparent alpha, single figure."
+    },
+    {
+      "id": 2,
+      "prompt": "Produce ONE standalone transparent character cutout of the SAME adult Korean human Chloe as ONLY the center panel B of the reference. This is an identity-preserving new pose, not a comparison sheet. Same youthful but clearly ADULT age20 short rounded oval face, warm brown natural eyes, dark brown bob with bangs, yellow geometric hair clip and small white/yellow earpiece. Same semi-realistic dimensional editorial illustration, natural skin, detailed shaded cloth. White tailored blazer and trousers, charcoal button blouse, fine yellow lapel/pocket trim, tiny white-black-yellow lapel pin. Pose 02 CONSULTATION: natural three-quarter angle, framed head to upper thighs, facing slightly viewer-left. Left arm holds a thin charcoal tablet at waist, right hand gestures toward the blank tablet screen with a natural open relaxed hand, separate thumb and four naturally proportioned fingers. Calm knowledgeable friendly expression, looking toward viewer as if explaining rental quotation conditions. No text on tablet, no scenery, no table, no floating icons. Do not change facial identity or make eyes anime. Entire head/hair/arms/hands/tablet within generous margins, intentional crop at mid-thigh only. Real transparent alpha background, crisp clean silhouette, no halo, haze, black gradient or backdrop, no cast shadow; opaque skin and clothing. No headings, rulers, letters, watermarks."
+    },
+    {
+      "id": 3
+    }
+  ]
+}

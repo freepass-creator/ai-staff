@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "status": "limited_2d_svg_release",
+  "production_usable": true,
+  "production_scope": "Fixed-front subtle 2D gestures, strength <= 0.45; no 3D or full finger grasp",
+  "max_supported_strength": 0.45,
+  "color_optimization": {
+    "channel_step": 8,
+    "max_source_rgba_channel_error": 4,
+    "scope": "Motion asset only. Exact canonical SVGs are unchanged."
+  },
+  "vector_palm": "Native gradient paths replace the prior flat palm, preserving source fingers and thumb; practical owner closeout",
+  "waist_hand": {
+    "long_fingers": 4,
+    "thumb": 1,
+    "digits": 5,
+    "detail_source": "D:\\large\\ai-staff\\클로이\\svg-release-v1-1-20261115\\waist-hand-four-fingers-source.png",
+    "detail_sha256": "09ca5d284954d164e49fd94476e1c8231ebf8c1921374ba09d61eb4564c6c344",
+    "placement": [
+      548,
+      748,
+      204,
+      177
+    ],
+    "control": "Static corrected detail moves with body; not separately articulated waist fingers",
+    "correction": "Four visible long curled fingers and a separate shorter thumb, local material-preserving edit"
+  },
+  "source_asset_id": "chloe-closeout-fullbody",
+  "source_png": "D:\\large\\ai-staff\\클로이\\svg-release-v1-20261115\\chloe-greeting-body-reference.png",
+  "source_sha256": "eac460b75ae135cd4098194f0c067b9679a0cd4af85463df85cf2821be44ccd2",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "canonical_catalog": "robots/current.json",
+  "canonical_modified": false,
+  "parts": [
+    {
+      "id": "body",
+      "parent": null,
+      "pivot": [
+        512,
+        1460
+      ]
+    },
+    {
+      "id": "head",
+      "parent": "body",
+      "pivot": [
+        512,
+        506
+      ]
+    },
+    {
+      "id": "upper-arm",
+      "parent": "body",
+      "pivot": [
+        319,
+        581
+      ]
+    },
+    {
+      "id": "forearm",
+      "parent": "upper-arm",
+      "pivot": [
+        248,
+        697
+      ]
+    },
+    {
+      "id": "palm",
+      "parent": "forearm",
+      "pivot": [
+        187,
+        552
+      ]
+    },
+    {
+      "id": "little-1",
+      "parent": "palm",
+      "pivot": [
+        128,
+        475
+      ]
+    },
+    {
+      "id": "little-2",
+      "parent": "little-1",
+      "pivot": [
+        119,
+        449
+      ]
+    },
+    {
+      "id": "little-3",
+      "parent": "little-2",
+      "pivot": [
+        111,
+        427
+      ]
+    },
+    {
+      "id": "ring-1",
+      "parent": "palm",
+      "pivot": [
+        155,
+        468
+      ]
+    },
+    {
+      "id": "ring-2",
+      "parent": "ring-1",
+      "pivot": [
+        149,
+        431
+      ]
+    },
+    {
+      "id": "ring-3",
+      "parent": "ring-2",
+      "pivot": [
+        141,
+        399
+      ]
+    },
+    {
+      "id": "middle-1",
+      "parent": "palm",
+      "pivot": [
+        181,
+        468
+      ]
+    },
+    {
+      "id": "middle-2",
+      "parent": "middle-1",
+      "pivot": [
+        178,
+        427
+      ]
+    },
+    {
+      "id": "middle-3",
+      "parent": "middle-2",
+      "pivot": [
+        176,
+        389
+      ]
+    },
+    {
+      "id": "index-1",
+      "parent": "palm",
+      "pivot": [
+        212,
+        465
+      ]
+    },
+    {
+      "id": "index-2",
+      "parent": "index-1",
+      "pivot": [
+        214,
+        426
+      ]
+    },
+    {
+      "id": "index-3",
+      "parent": "index-2",
+      "pivot": [
+        214,
+        391
+      ]
+    },
+    {
+      "id": "thumb-1",
+      "parent": "palm",
+      "pivot": [
+        235,
+        506
+      ]
+    },
+    {
+      "id": "thumb-2",
+      "parent": "thumb-1",
+      "pivot": [
+        253,
+        481
+      ]
+    },
+    {
+      "id": "thumb-3",
+      "parent": "thumb-2",
+      "pivot": [
+        270,
+        455
+      ]
+    }
+  ],
+  "hand_materials": {
+    "palm": "deep graphite gray",
+    "back": "white",
+    "leds": false
+  },
+  "palm_structure_reference": {
+    "schema_version": 1,
+    "authority": "2026-11-15 representative specifically directed BACK 45 and BACK inner-hand reference",
+    "reference_file": "D:\\large\\ai-staff\\클로이\\canonical-white-v1-20261115\\CLO-02-chakhan-turnaround-6views-v1-reference.png",
+    "reference_sha256": "aba9cda2454cda75bf99bca618ff765f457b8e86733b9dbd1585411f93f01eac",
+    "reference_views": [
+      "BACK 45",
+      "BACK"
+    ],
+    "inspection_crops_px": {
+      "BACK 45": [
+        1100,
+        422,
+        1168,
+        524
+      ],
+      "BACK": [
+        1410,
+        423,
+        1476,
+        524
+      ]
+    },
+    "observed_features": [
+      "dark sculpted inner-hand volume visible in BACK45 and BACK",
+      "thumb-base and finger-root shapes flow into the palm",
+      "white outer finger shells and separate hand-back armor"
+    ],
+    "rejected_derivative": "01-welcome-graphite-palm: broad featureless polygon is inconsistent with the requested reference",
+    "scope": "Visual reference for this inner-hand correction only. Does not promote the entire generated angle sheet into an approved 3D engineering design. Tiny exact topology outside visible regions is not measured.",
+    "latest_owner_correction": "엄지가분명히있어야하고손바닥의통통한부분은따로구분되어있다. 별도볼륨까지평평하게지우지않는다.",
+    "design_interpretation": [
+      "visible separate thumb digit with its own root",
+      "plump thumb-base palm volume is distinct from central palm and physically continues into thumb",
+      "central palm remains relatively recessed",
+      "do not confuse anatomical thumb-base volume with an arbitrary centered oval plate",
+      "do not flatten the plump region or hide the thumb to remove the pad look"
+    ],
+    "rejected_derivatives": [
+      "01-welcome-graphite-palm: flat polygon",
+      "01-welcome-structured-palm: attached outlined oval pad"
+    ]
+  },
+  "capabilities": {
+    "hierarchical_2d_joints": true,
+    "small_head_arm_wrist_gestures": true,
+    "finger_planar_rotation_and_foreshortening": "experimental",
+    "full_fist": false,
+    "hand_front_back_turn": false,
+    "blink": "not_included_requires_screen_layers",
+    "3d": false
+  },
+  "limits": "Small front-view motions only. Hidden surfaces and joint fillers are illustrative. Finger foreshortening is a 2D approximation, not depth-correct grasping.",
+  "representation": "20 articulated SVG path subdocuments plus one static waist-hand correction SVG; no PNG inside SVG",
+  "svg_file": "D:\\large\\ai-staff\\클로이\\svg-release-v1-1-20261115\\chloe-jointed.svg",
+  "path_master_file": "D:\\large\\ai-staff\\클로이\\svg-release-v1-1-20261115\\chloe-jointed-paths.svg",
+  "loop_seconds": 6,
+  "fast_svg_file": "D:\\large\\ai-staff\\클로이\\svg-release-v1-1-20261115\\chloe-web-jointed.svg",
+  "fast_representation": "Web playback: 20 original-pixel PNG textures plus one static waist-hand correction texture inside SVG joints; native vector palm. Pure path versions are separate.",
+  "svg_sha256": "9451242d8632b68bb79ee7019ebb0e31c4253010b6f206241e2ca47b2037d567",
+  "path_master_sha256": "04e86b327deb6fbc275423c6392fb45300be2c015a8c2518cb39279680abb8ec",
+  "fast_svg_sha256": "041139cc823f69e75e3b71588f13adf4b5b72b912919fb95288542dbf8ae76b0",
+  "preview_file": "D:\\large\\ai-staff\\클로이\\svg-release-v1-1-20261115\\chloe-greeting-6s.mp4",
+  "preview_sha256": "95db1f963e6f43dc00560b546acb301f17162be2f22a9d0a589edd745cb28862",
+  "animated_svg_file": "D:\\large\\ai-staff\\클로이\\svg-release-v1-1-20261115\\chloe-greeting-animated.svg",
+  "animated_svg_sha256": "913693de3df92315fd46d7169321e1e6da2493a7b674aaf13975389251ea2ee7",
+  "path_animated_file": "D:\\large\\ai-staff\\클로이\\svg-release-v1-1-20261115\\chloe-greeting-path-motion.svg",
+  "path_animated_sha256": "d1d40aef38475811145140a2019bf5451e668e1a0026c8b874d3267049b84401",
+  "validation": "D:\\dev-artifacts\\ai-staff\\chloe-svg-release-v1-1-20261115\\validation.json",
+  "code_sha256": {
+    "build.py": "869b485f5cd261e136d3392bf26b5934f43101bdc80160db5eb393802d4fca6f",
+    "animation.js": "a8e555c5a8e9af8352a1fafa630d1db5af4c825bdba6c85accc3c691b622c802",
+    "app.js": "e9ed296a17ce2d816822763c90d07cac377da28d22e6d34e9add367514798c0d",
+    "index.html": "d4666944172c5953453a9b203dba14575e1c42e12bd0acbde2f11a909299b2f1",
+    "server.mjs": "fe7e49be455c6cbde5a61ffe2c6f2ad637f5966cb6bb3d6962eb2abae9e939c3"
+  },
+  "bundle_file": "D:\\dev-artifacts\\ai-staff\\chloe-svg-release-v1-1-20261115\\Chloe-SVG-V1.1-Kit.zip",
+  "bundle_sha256": "1fd68863b128eab29185c4d9391e65b14d685a5573718ba407cf42e7edc8596b"
+}

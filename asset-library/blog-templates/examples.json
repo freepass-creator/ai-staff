@@ -1,0 +1,184 @@
+[
+  {
+    "id": "01-cover",
+    "template": "cover",
+    "eyebrow": "착한거래 AI · 비교 가이드",
+    "title": "장기렌터카,\n비교부터 차근차근",
+    "subtitle": "조건을 정리하면\n궁금한 점이 더 선명해져요.",
+    "character": "human/02-tablet-consultation",
+    "theme": "peach"
+  },
+  {
+    "id": "02-comparison",
+    "template": "comparison",
+    "title": "같은 조건으로\n나란히 비교해요",
+    "character": "human/02-tablet-consultation",
+    "columns": [
+      "견적 A",
+      "견적 B"
+    ],
+    "rows": [
+      [
+        "계약 기간",
+        "같은 기간",
+        "같은 기간"
+      ],
+      [
+        "연간 주행거리",
+        "같은 거리",
+        "같은 거리"
+      ],
+      [
+        "보증금·선납금",
+        "구분해 입력",
+        "구분해 입력"
+      ],
+      [
+        "포함 항목",
+        "범위 확인",
+        "범위 확인"
+      ]
+    ],
+    "theme": "sky"
+  },
+  {
+    "id": "03-checklist",
+    "template": "checklist",
+    "title": "계약 전,\n네 가지만 확인",
+    "subtitle": "확인한 내용은\n질문 목록으로 남겨주세요.",
+    "character": "human/02-tablet-consultation",
+    "items": [
+      {
+        "title": "이용 기간",
+        "body": "원하는 계약 기간을 정리해요."
+      },
+      {
+        "title": "예상 주행거리",
+        "body": "평소 이용 거리를 생각해요."
+      },
+      {
+        "title": "초기 비용 구분",
+        "body": "견적서의 항목을 구분해 적어요."
+      },
+      {
+        "title": "포함되는 서비스",
+        "body": "어디까지 포함되는지 확인해요."
+      }
+    ],
+    "theme": "paper"
+  },
+  {
+    "id": "04-process",
+    "template": "process",
+    "title": "문의부터 차량 안내까지",
+    "character": "human/04-phone-consultation",
+    "items": [
+      {
+        "title": "희망 조건 정리",
+        "body": "차종과 이용 목적을 적어요."
+      },
+      {
+        "title": "문의 내용 전달",
+        "body": "궁금한 조건을 함께 보내요."
+      },
+      {
+        "title": "자료 나란히 확인",
+        "body": "같은 기준으로 살펴봐요."
+      },
+      {
+        "title": "다음 단계 확인",
+        "body": "필요한 절차를 안내받아요."
+      }
+    ],
+    "note": "구성 예시 · 실제 진행 순서는 상담 시 확인하세요.",
+    "theme": "sage"
+  },
+  {
+    "id": "05-caution",
+    "template": "caution",
+    "title": "이 조건은\n한 번 더 확인",
+    "character": null,
+    "items": [
+      {
+        "title": "중도 해지 조건",
+        "body": "계약서에서 해당 항목을 찾아봐요."
+      },
+      {
+        "title": "사고·반납 관련 항목",
+        "body": "적용 기준과 확인할 점을 정리해요."
+      },
+      {
+        "title": "서비스 적용 범위",
+        "body": "견적과 계약 자료의 표현을 확인해요."
+      }
+    ],
+    "theme": "ink"
+  },
+  {
+    "id": "06-faq",
+    "template": "faq",
+    "title": "궁금한 점,\n미리 정리해요",
+    "subtitle": "궁금한 조건은\n질문 목록으로 남겨주세요.",
+    "character": "human/04-phone-consultation",
+    "items": [
+      {
+        "title": "무엇부터 준비하나요?",
+        "body": "희망 차종과 이용 조건을 적어주세요."
+      },
+      {
+        "title": "어떤 기준으로 비교하나요?",
+        "body": "같은 차량과 조건을 나란히 살펴봐요."
+      },
+      {
+        "title": "문의할 때 무엇을 물어보나요?",
+        "body": "확인할 항목을 질문 목록으로 준비해요."
+      }
+    ],
+    "theme": "lilac"
+  },
+  {
+    "id": "07-robot-cover",
+    "template": "cover",
+    "eyebrow": "착한거래 AI · 설명 예시",
+    "title": "복잡한 조건,\n차근차근 살펴봐요",
+    "subtitle": "사람형과 로봇형을\n글의 주제에 맞게 골라 써요.",
+    "character": "robot/chakhan-current",
+    "theme": "lilac"
+  },
+  {
+    "id": "08-scene-cover",
+    "template": "cover",
+    "eyebrow": "착한거래 AI · 차량 안내",
+    "title": "공간부터 보고\n차량을 골라요",
+    "subtitle": "이용 목적과 필요한 공간을\n함께 생각해요.",
+    "scene": "robot/11-show-car",
+    "note": "설명용 가상 차량\n실제 차종·사양은 자료로 확인하세요."
+  },
+  {
+    "id": "09-navy-portrait",
+    "template": "cover",
+    "theme": "sky",
+    "eyebrow": "착한거래 AI · 조건 안내",
+    "title": "궁금한 조건,\n하나씩 물어봐요",
+    "subtitle": "확인할 내용을 정리해\n차근차근 비교해요.",
+    "character": "human/10-navy-present"
+  },
+  {
+    "id": "10-casual-portrait",
+    "template": "cover",
+    "theme": "sage",
+    "eyebrow": "착한거래 AI · 생활 가이드",
+    "title": "내 생활에 맞는\n이용 조건 찾기",
+    "subtitle": "출퇴근과 주말 이동,\n평소 이용 방식을 생각해요.",
+    "character": "human/11-cardigan-notebook"
+  },
+  {
+    "id": "11-secretary-poster",
+    "template": "cover",
+    "theme": "lilac",
+    "eyebrow": "착한거래 AI · 상담 안내",
+    "title": "확인할 내용,\n꼼꼼하게 정리해요",
+    "subtitle": "궁금한 조건을 모아\n차분하게 살펴봐요.",
+    "character": "human/12-secretary-skirt-glasses"
+  }
+]

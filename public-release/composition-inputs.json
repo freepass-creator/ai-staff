@@ -1,0 +1,265 @@
+{
+  "schema": "ai-staff/fixed-scene-inputs/v1",
+  "characters": [
+    {
+      "id": "01-front-welcome",
+      "file": "D:\\large\\ai-staff\\클로이\\human-svg-starter-v1-20261115\\01-front-welcome.png",
+      "sha256": "eb9c69bc8d3a228fb3af4d558f5845bfa3ed79c375e463a30c6c2f942b8fa5ab",
+      "label": "정면 전신 · 기본 안내",
+      "usage": "블로그 도입, 소개, 홈페이지 안내",
+      "framing": "full_body",
+      "outfit": "흰 수트",
+      "width": 1024,
+      "height": 1536,
+      "alpha_bounds": [
+        0,
+        17,
+        1010,
+        1501
+      ]
+    },
+    {
+      "id": "02-tablet-consultation",
+      "file": "D:\\large\\ai-staff\\클로이\\human-svg-starter-v1-20261115\\02-tablet-consultation.png",
+      "sha256": "70a41ef99ef20ba2de4af9ee8f2c77f84266088be1f2b99f58ed36d93afdf768",
+      "label": "태블릿 상담 · 사선 상반신",
+      "usage": "비교 조건, 상담 절차, 계약 전 확인사항 설명",
+      "framing": "head_to_upper_thigh",
+      "outfit": "흰 수트",
+      "width": 1024,
+      "height": 1536,
+      "alpha_bounds": [
+        0,
+        14,
+        1006,
+        1522
+      ]
+    },
+    {
+      "id": "03-present-right",
+      "file": "D:\\large\\ai-staff\\클로이\\human-svg-starter-v1-20261115\\03-present-right.png",
+      "sha256": "c7529997f994c48ce2f0ac9bb5f25b30b767e0cd4b14ff35319ef902df490a3e",
+      "label": "오른쪽 제시 · 사선 전신",
+      "usage": "차량 소개, 비교표 또는 설명 대상을 제시하는 문단",
+      "framing": "full_body",
+      "outfit": "흰 수트",
+      "width": 1024,
+      "height": 1536,
+      "alpha_bounds": [
+        113,
+        17,
+        889,
+        1502
+      ]
+    },
+    {
+      "id": "04-phone-consultation",
+      "file": "D:\\large\\ai-staff\\클로이\\human-svg-library-v1-20261115\\04-phone-consultation.png",
+      "sha256": "f75954a93ee999d14a9926827db9bfcf58230f2429161efd39f8b7cdff84b827",
+      "label": "전화 상담 · 상반신",
+      "usage": "전화 문의, 상담 예약, 연락 방법 안내",
+      "framing": "head_to_hip",
+      "outfit": "흰 수트",
+      "width": 1086,
+      "height": 1448,
+      "alpha_bounds": [
+        0,
+        0,
+        1070,
+        1448
+      ]
+    },
+    {
+      "id": "05-seated-contract",
+      "file": "D:\\large\\ai-staff\\클로이\\human-svg-library-v1-20261115\\05-seated-contract.png",
+      "sha256": "5a62fdde3a31973cb22e5a9946cfcdf268d1def801d687e0db347876054630c3",
+      "label": "앉아서 서류 확인",
+      "usage": "계약서 확인, 서류 준비, 약관 읽기",
+      "framing": "full_seated_with_desk",
+      "outfit": "흰 수트",
+      "width": 1024,
+      "height": 1536,
+      "alpha_bounds": [
+        0,
+        33,
+        1018,
+        1503
+      ]
+    },
+    {
+      "id": "06-key-guidance",
+      "file": "D:\\large\\ai-staff\\클로이\\human-svg-library-v1-20261115\\06-key-guidance.png",
+      "sha256": "08776b9f4a172ba5cdce3687928e6e6e5c910f847df7efb22fb223a36061844c",
+      "label": "열쇠 안내 · 전신",
+      "usage": "출고 절차, 차량 인도, 키 수령 안내",
+      "framing": "full_body",
+      "outfit": "흰 수트",
+      "width": 1024,
+      "height": 1536,
+      "alpha_bounds": [
+        35,
+        9,
+        973,
+        1511
+      ]
+    },
+    {
+      "id": "07-rear-walking",
+      "file": "D:\\large\\ai-staff\\클로이\\human-svg-library-v1-20261115\\07-rear-walking.png",
+      "sha256": "ddca36f47eecd0a1a7f509d1ba6afdcfd2ddf9f2931a809d5ad5a168c2f9e22d",
+      "label": "뒤쪽 사선 · 이동",
+      "usage": "차량 보러 이동, 다음 단계 안내, 방문 동선 설명",
+      "framing": "full_body",
+      "outfit": "흰 수트",
+      "width": 1024,
+      "height": 1536,
+      "alpha_bounds": [
+        65,
+        21,
+        939,
+        1492
+      ]
+    },
+    {
+      "id": "08-maintenance-checklist",
+      "file": "D:\\large\\ai-staff\\클로이\\human-svg-library-v1-20261115\\08-maintenance-checklist.png",
+      "sha256": "892da6079d9557ae54863731f0488ed1785323baf1fa4dcfec6a991cc450ec95",
+      "label": "정비복 · 점검표 확인",
+      "usage": "정기 점검, 차량 관리, 점검 항목 안내",
+      "framing": "head_to_below_knees",
+      "outfit": "차콜 정비복",
+      "width": 1024,
+      "height": 1536,
+      "alpha_bounds": [
+        0,
+        24,
+        1010,
+        1512
+      ]
+    },
+    {
+      "id": "09-gentle-thanks",
+      "file": "D:\\large\\ai-staff\\클로이\\human-svg-library-v1-20261115\\09-gentle-thanks.png",
+      "sha256": "2096c00990703c0b6bad76eb5c12ea1ac28f94be0e77588b5f493bec698f607f",
+      "label": "가벼운 감사 인사 · 전신",
+      "usage": "글 마무리, 감사 인사, 문의 안내 끝맺음",
+      "framing": "full_body",
+      "outfit": "흰 수트",
+      "width": 1024,
+      "height": 1536,
+      "alpha_bounds": [
+        0,
+        27,
+        986,
+        1474
+      ]
+    },
+    {
+      "id": "10-navy-present",
+      "file": "D:\\large\\ai-staff\\클로이\\human-wardrobe-v1-20261115\\10-navy-present.png",
+      "sha256": "e9b20f3bbe3cb62c5ca8166de94d63d2db8b1881f31ea3f3aeb3b533100839d3",
+      "label": "네이비 수트 · 상반신 제시",
+      "usage": "블로그 포스터 표지·소개·안내",
+      "framing": "upper_body",
+      "outfit": "navy-suit",
+      "width": 1312,
+      "height": 1199,
+      "alpha_bounds": [
+        82,
+        24,
+        1230,
+        1175
+      ]
+    },
+    {
+      "id": "11-cardigan-notebook",
+      "file": "D:\\large\\ai-staff\\클로이\\human-wardrobe-v1-20261115\\11-cardigan-notebook.png",
+      "sha256": "bd35ea34b8ffc7e35e7fdacf79ae78490f6f9164bc1c54e8a8d2a14d30d59fdb",
+      "label": "카디건 출근복 · 노트",
+      "usage": "블로그 포스터 표지·소개·안내",
+      "framing": "upper_body",
+      "outfit": "cardigan-commute",
+      "width": 1024,
+      "height": 1536,
+      "alpha_bounds": [
+        0,
+        19,
+        988,
+        1517
+      ]
+    },
+    {
+      "id": "12-secretary-skirt-glasses",
+      "file": "D:\\large\\ai-staff\\클로이\\human-wardrobe-v1-20261115\\12-secretary-skirt-glasses.png",
+      "sha256": "df5144f5437f9f2fc335e16f870b7181e3096ed0e750d1ee879bcbe0ae870b91",
+      "label": "비서형 · 동그란 안경 · 스커트·펌프스",
+      "usage": "차분한 비서형 안내·복장 소개·포스터",
+      "framing": "full_body",
+      "outfit": "charcoal fitted above-knee pencil-skirt suit, black pumps, thin round glasses",
+      "width": 1024,
+      "height": 1536,
+      "alpha_bounds": [
+        89,
+        14,
+        889,
+        1490
+      ]
+    }
+  ],
+  "backgrounds": [
+    {
+      "id": "showroom",
+      "label": "쇼룸 안내",
+      "file": "D:\\large\\ai-staff\\environment-backgrounds-v1-20261115\\showroom.png",
+      "sha256": "3bcc7bc62ce64c763ed3210909e9d1eab3242457233ede85f7567680dc62a24d",
+      "character_ids": [
+        "01-front-welcome",
+        "02-tablet-consultation",
+        "03-present-right",
+        "04-phone-consultation",
+        "05-seated-contract",
+        "06-key-guidance",
+        "07-rear-walking",
+        "08-maintenance-checklist",
+        "09-gentle-thanks",
+        "10-navy-present",
+        "11-cardigan-notebook",
+        "12-secretary-skirt-glasses"
+      ]
+    },
+    {
+      "id": "office",
+      "label": "상담실",
+      "file": "D:\\large\\ai-staff\\environment-backgrounds-v1-20261115\\office.png",
+      "sha256": "984a86dbc2a77f0c9ee1cc5eaee4c2611f48d5d2fd21f0b39368f0813334b590",
+      "character_ids": [
+        "01-front-welcome",
+        "02-tablet-consultation",
+        "03-present-right",
+        "04-phone-consultation",
+        "05-seated-contract",
+        "09-gentle-thanks",
+        "10-navy-present",
+        "11-cardigan-notebook",
+        "12-secretary-skirt-glasses"
+      ]
+    },
+    {
+      "id": "outdoor",
+      "label": "야외 차량 안내",
+      "file": "D:\\large\\ai-staff\\environment-backgrounds-v1-20261115\\outdoor.png",
+      "sha256": "5700572cfe3fecd4d32480e3354803af5d2b396dd70bbdd14e77d0b90b3dc176",
+      "character_ids": [
+        "01-front-welcome",
+        "03-present-right",
+        "04-phone-consultation",
+        "06-key-guidance",
+        "07-rear-walking",
+        "08-maintenance-checklist",
+        "09-gentle-thanks",
+        "11-cardigan-notebook",
+        "12-secretary-skirt-glasses"
+      ]
+    }
+  ]
+}

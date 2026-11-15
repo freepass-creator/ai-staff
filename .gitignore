@@ -10,3 +10,4 @@ out/
 !characters/*/thumbs/*.jpg
 !templates/**/*.png
 !templates/**/*.jpg
+characters/클로이/refs/human-age20-candidate-v3.png

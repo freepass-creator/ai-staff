@@ -1,0 +1,118 @@
+{
+  "schema": "ai-staff/robot-family-revision/v1",
+  "family_reference": "robots/current.json basic-purple-v1",
+  "owner_brand": "프리패스",
+  "shared_language": [
+    "기존 캐릭터의 눈매·머리·귀 구조 보존",
+    "같은 정면 자세와 표시 높이",
+    "매끈한 흰 도장과 은은한 발광",
+    "손등LED 없음"
+  ],
+  "comparison_policy": {
+    "view": "front",
+    "pose": "standing, arms relaxed",
+    "display": "common subject height and foot baseline; source images remain unchanged",
+    "related_pair": [
+      "CLO-02",
+      "CLO-04"
+    ],
+    "eyes": "Preserve each existing character: COD-01 round blue, COD-03 squared teal. CLO-02/CLO-04 related family, not identical cloned face.",
+    "canonical_CLO02": "unchanged",
+    "CLO04_shoulders": "compact, reduced projection"
+  },
+  "withdrawn_proposals": [
+    {
+      "character_id": "CLO-01",
+      "name_ko": null,
+      "revision": "R1-front-proposal",
+      "status": "withdrawn_wrong_identity",
+      "production_usable": false,
+      "plate_design": "넓은 2겹 견갑 · 육각 중심 흉갑",
+      "proposed_emission_color": "cyan",
+      "source_png": "D:\\large\\ai-staff\\robot-family-r1-front-20261115\\CLO-01-R1-front.png",
+      "source_sha256": "2e5ee227fd17c2fb56583ba0f5303ee239a6c622a855c7cd1bae77e023babb11",
+      "approval_note": "새 리비전 제안. 현재 CLO-02 정본을 대체하지 않으며 01/03 이름·색상은 확정 아님.",
+      "camera_angle": "front",
+      "public_eligible": false
+    },
+    {
+      "character_id": "CLO-03",
+      "name_ko": null,
+      "revision": "R1-front-proposal",
+      "status": "withdrawn_wrong_identity",
+      "production_usable": false,
+      "plate_design": "세 겹 적층 견갑 · 쉐브론 분할 흉갑",
+      "proposed_emission_color": "mint",
+      "source_png": "D:\\large\\ai-staff\\robot-family-r1-front-20261115\\CLO-03-R1-front.png",
+      "source_sha256": "8d6c2c81785803db104aeb95641d0236be6f6141a87b6eaa4186c1bce705ec3e",
+      "approval_note": "새 리비전 제안. 현재 CLO-02 정본을 대체하지 않으며 01/03 이름·색상은 확정 아님.",
+      "camera_angle": "front",
+      "public_eligible": false
+    },
+    {
+      "character_id": "CLO-04",
+      "name_ko": "클로아",
+      "revision": "R1-front-proposal",
+      "status": "withdrawn_wrong_identity",
+      "production_usable": false,
+      "plate_design": "작고 절제된 2피스 견갑 · 좁은 이중 V 흉갑",
+      "proposed_emission_color": "coral",
+      "source_png": "D:\\large\\ai-staff\\robot-family-r1-front-20261115\\CLO-04-R1-front.png",
+      "source_sha256": "d3e209ce0406a462baafa369018c770d019ea144e04a50c820490330bd796a1b",
+      "approval_note": "새 리비전 제안. 현재 CLO-02 정본을 대체하지 않으며 01/03 이름·색상은 확정 아님.",
+      "camera_angle": "front",
+      "public_eligible": false
+    }
+  ],
+  "proposals": [
+    {
+      "character_id": "COD-01",
+      "name_ko": null,
+      "revision": "existing-front-R1-proposal",
+      "status": "design_proposal",
+      "production_usable": false,
+      "public_eligible": true,
+      "camera_angle": "front",
+      "plate_design": "원본의 뾰족한 양옆 핀 · 원형 눈/곡선 눈썹 · 둥근 어깨 관절과 분할 흉갑",
+      "proposed_emission_color": "blue",
+      "source_png": "D:\\large\\ai-staff\\robot-existing-front-r1-20261115\\COD-01-existing-front-R1.png",
+      "source_sha256": "a72033f3e880b9ded7e3defbfe52928daf468552f797e3bc6616762081354e9b",
+      "identity_reference_sha256": "82f6815cd97fb914126890cd8687b3a169a34a2e049ea6e4100c094793d4614c",
+      "identity_reference_catalog": "robots/revisions/existing-references.json",
+      "approval_note": "기존 프로필 정체성을 참조한 정면 파생 시안. 전신 하체는 추정 구조이며 정본/3D 설계도로 승격하지 않음."
+    },
+    {
+      "character_id": "COD-03",
+      "name_ko": null,
+      "revision": "existing-front-R1-proposal",
+      "status": "design_proposal",
+      "production_usable": false,
+      "public_eligible": true,
+      "camera_angle": "front",
+      "plate_design": "원본의 낮은 중앙 머리 능선 · 네모 U형 눈/직선 눈썹 · 적층 외장",
+      "proposed_emission_color": "teal",
+      "source_png": "D:\\large\\ai-staff\\robot-existing-front-r1-20261115\\COD-03-existing-front-R1.png",
+      "source_sha256": "8f32e9d2ae48f89c9c4d24fa8c8d55006302805bf3e5268141384753c997b8f8",
+      "identity_reference_sha256": "f3f1b2a52df20166e774844ec24ec71001446c088701a8e8fc3246c54e5d33ca",
+      "identity_reference_catalog": "robots/revisions/existing-references.json",
+      "approval_note": "기존 프로필 정체성을 참조한 정면 파생 시안. 전신 하체는 추정 구조이며 정본/3D 설계도로 승격하지 않음."
+    },
+    {
+      "character_id": "CLO-04",
+      "name_ko": "클로아",
+      "revision": "existing-front-R1-proposal",
+      "status": "design_proposal",
+      "production_usable": false,
+      "public_eligible": true,
+      "camera_angle": "front",
+      "plate_design": "원본의 고리 안테나 · 세 줄 볼 표시/열린 미소 · 작은 견갑",
+      "proposed_emission_color": "orange",
+      "source_png": "D:\\large\\ai-staff\\robot-existing-front-r1-20261115\\CLO-04-existing-front-R1.png",
+      "source_sha256": "fca5542e5719feb3636f966458988660086c660c5e90bbf784ff91f6be5ebe3d",
+      "identity_reference_sha256": "5a4537405ad38e7e23abdf3cd849e8299204c90218f1f64db2d788191cdbe616",
+      "identity_reference_catalog": "robots/revisions/existing-references.json",
+      "approval_note": "기존 프로필 정체성을 참조한 정면 파생 시안. 전신 하체는 추정 구조이며 정본/3D 설계도로 승격하지 않음."
+    }
+  ],
+  "owner_correction": "Preserve existing COD-01 and COD-03 identities; prior CLO-01/03 inventions withdrawn. Existing source reference must be provided to generation."
+}

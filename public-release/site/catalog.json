@@ -1,0 +1,2168 @@
+{
+  "schema": "ai-staff/public-assets/v1",
+  "release_tag": "ai-staff-r1-20261115",
+  "source_commit": "04d6737197df4d1fb73e086bb2a685cf460aa81c",
+  "identity_policy": "Reuse registered PNG bytes. No character generation at render time. New poses are reviewed derivatives, not identical 3D geometry.",
+  "downloads": {
+    "assets": {
+      "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/AI-Staff-Assets.zip",
+      "sha256": "32eba928fbb92411b6478f4477ae80ba90b303544b6a93ac41e9c3ebe47af8ca",
+      "bytes": 231648720
+    },
+    "templates": {
+      "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-Poster-Templates.zip",
+      "sha256": "e40d2f2c528f2405d4f592f6f5cee8d07a3d4bb56e7b3254c9ee81ce4f54b235",
+      "bytes": 32793881
+    }
+  },
+  "assets": [
+    {
+      "id": "canonical-chakhan-white-v1",
+      "title": "착한 클로이",
+      "category": "canonical",
+      "status": "canonical",
+      "production_usable": true,
+      "usage": "CLO-02 최신 정면 디자인 참조",
+      "tags": [
+        "CLO-02",
+        "정본",
+        "chakhan"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/canonical-chakhan-white-v1.png",
+      "png_sha256": "fecf6ba56d9381cbf21b6fe3f9e963224f73013e897141911da6c522b7603f07",
+      "png_file": "png/canonical-chakhan-white-v1.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/canonical-chakhan-white-v1-fecf6ba56d.webp",
+      "vector": {
+        "file": "vectors/canonical-chakhan-white-v1.svg",
+        "sha256": "90debca7dfcd81d16853d842919933c23c3dc70a694c0bd91a4bc1eb3fe50674",
+        "kind": "fixed-view native-resolution pixel paths; no semantic rig"
+      }
+    },
+    {
+      "id": "canonical-basic-purple-v1",
+      "title": "기본 클로이",
+      "category": "canonical",
+      "status": "canonical",
+      "production_usable": true,
+      "usage": "CLO-02 최신 정면 디자인 참조",
+      "tags": [
+        "CLO-02",
+        "정본",
+        "basic"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/canonical-basic-purple-v1.png",
+      "png_sha256": "dd9261752fdcdb5b71b8161d66f94ccbaff9517fc8f617fa15da0f8c0434da35",
+      "png_file": "png/canonical-basic-purple-v1.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/canonical-basic-purple-v1-dd9261752f.webp",
+      "vector": {
+        "file": "vectors/canonical-basic-purple-v1.svg",
+        "sha256": "7bc7bf398233457d3f51afe7d424ea0daf03164b7d4f2bd9b06a697ac3881ae8",
+        "kind": "fixed-view native-resolution pixel paths; no semantic rig"
+      }
+    },
+    {
+      "id": "human-01-front-welcome",
+      "title": "정면 전신 · 기본 안내",
+      "category": "human",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "블로그 도입, 소개, 홈페이지 안내",
+      "tags": [
+        "front",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/human-01-front-welcome.png",
+      "png_sha256": "eb9c69bc8d3a228fb3af4d558f5845bfa3ed79c375e463a30c6c2f942b8fa5ab",
+      "png_file": "png/human-01-front-welcome.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/human-01-front-welcome-eb9c69bc8d.webp",
+      "vector": {
+        "file": "vectors/human-01-front-welcome.svg",
+        "sha256": "19bb0a69eb5130d84ddd6671320cff87a6a05b5066f9991341ef32a98a714cf8",
+        "kind": "fixed-view native-resolution pixel paths; no semantic rig"
+      },
+      "form": "human",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "human-02-tablet-consultation",
+      "title": "태블릿 상담 · 사선 상반신",
+      "category": "human",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "비교 조건, 상담 절차, 계약 전 확인사항 설명",
+      "tags": [
+        "three_quarter",
+        "head_to_upper_thigh",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/human-02-tablet-consultation.png",
+      "png_sha256": "70a41ef99ef20ba2de4af9ee8f2c77f84266088be1f2b99f58ed36d93afdf768",
+      "png_file": "png/human-02-tablet-consultation.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/human-02-tablet-consultation-70a41ef99e.webp",
+      "vector": {
+        "file": "vectors/human-02-tablet-consultation.svg",
+        "sha256": "14e48fe81663c905f4e5d5daeff6d18914e1749dc427c6ac474de7402ef7b21e",
+        "kind": "fixed-view native-resolution pixel paths; no semantic rig"
+      },
+      "form": "human",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "human-03-present-right",
+      "title": "오른쪽 제시 · 사선 전신",
+      "category": "human",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "차량 소개, 비교표 또는 설명 대상을 제시하는 문단",
+      "tags": [
+        "three_quarter_right",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/human-03-present-right.png",
+      "png_sha256": "c7529997f994c48ce2f0ac9bb5f25b30b767e0cd4b14ff35319ef902df490a3e",
+      "png_file": "png/human-03-present-right.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/human-03-present-right-c7529997f9.webp",
+      "vector": {
+        "file": "vectors/human-03-present-right.svg",
+        "sha256": "0fc416a2b46109685e58399c6628a208a1a42bcd7cce553cc5ef7606c69ce3de",
+        "kind": "fixed-view native-resolution pixel paths; no semantic rig"
+      },
+      "form": "human",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "human-04-phone-consultation",
+      "title": "전화 상담 · 상반신",
+      "category": "human",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "전화 문의, 상담 예약, 연락 방법 안내",
+      "tags": [
+        "three_quarter",
+        "head_to_hip",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/human-04-phone-consultation.png",
+      "png_sha256": "f75954a93ee999d14a9926827db9bfcf58230f2429161efd39f8b7cdff84b827",
+      "png_file": "png/human-04-phone-consultation.png",
+      "width": 1086,
+      "height": 1448,
+      "thumbnail": "thumbs/human-04-phone-consultation-f75954a93e.webp",
+      "vector": {
+        "file": "vectors/human-04-phone-consultation.svg",
+        "sha256": "0daa8f9530bcfa21b8e28f9e99175f4ee2f2bc398af146286680be3db582a69b",
+        "kind": "fixed-view native-resolution pixel paths; no semantic rig"
+      },
+      "form": "human",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "human-05-seated-contract",
+      "title": "앉아서 서류 확인",
+      "category": "human",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "계약서 확인, 서류 준비, 약관 읽기",
+      "tags": [
+        "side_three_quarter",
+        "full_seated_with_desk",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/human-05-seated-contract.png",
+      "png_sha256": "5a62fdde3a31973cb22e5a9946cfcdf268d1def801d687e0db347876054630c3",
+      "png_file": "png/human-05-seated-contract.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/human-05-seated-contract-5a62fdde3a.webp",
+      "vector": {
+        "file": "vectors/human-05-seated-contract.svg",
+        "sha256": "f49cb5ddf0ff3a70fae7182e4fdeddf1605b296d3b8b7ceadd52862c3328596d",
+        "kind": "fixed-view native-resolution pixel paths; no semantic rig"
+      },
+      "form": "human",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "human-06-key-guidance",
+      "title": "열쇠 안내 · 전신",
+      "category": "human",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "출고 절차, 차량 인도, 키 수령 안내",
+      "tags": [
+        "three_quarter",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/human-06-key-guidance.png",
+      "png_sha256": "08776b9f4a172ba5cdce3687928e6e6e5c910f847df7efb22fb223a36061844c",
+      "png_file": "png/human-06-key-guidance.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/human-06-key-guidance-08776b9f4a.webp",
+      "vector": {
+        "file": "vectors/human-06-key-guidance.svg",
+        "sha256": "b47bb05a49064f25e3abfb6ed47b2a40346d5039d7a03deec892fb0917cb7a1b",
+        "kind": "fixed-view native-resolution pixel paths; no semantic rig"
+      },
+      "form": "human",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "human-07-rear-walking",
+      "title": "뒤쪽 사선 · 이동",
+      "category": "human",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "차량 보러 이동, 다음 단계 안내, 방문 동선 설명",
+      "tags": [
+        "rear_three_quarter",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/human-07-rear-walking.png",
+      "png_sha256": "ddca36f47eecd0a1a7f509d1ba6afdcfd2ddf9f2931a809d5ad5a168c2f9e22d",
+      "png_file": "png/human-07-rear-walking.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/human-07-rear-walking-ddca36f47e.webp",
+      "vector": {
+        "file": "vectors/human-07-rear-walking.svg",
+        "sha256": "2fb9231bd8567d1eabeefc201696b733d137ad86f9f08cc33c114a19ed5abb9b",
+        "kind": "fixed-view native-resolution pixel paths; no semantic rig"
+      },
+      "form": "human",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "human-08-maintenance-checklist",
+      "title": "정비복 · 점검표 확인",
+      "category": "human",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "정기 점검, 차량 관리, 점검 항목 안내",
+      "tags": [
+        "three_quarter",
+        "head_to_below_knees",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/human-08-maintenance-checklist.png",
+      "png_sha256": "892da6079d9557ae54863731f0488ed1785323baf1fa4dcfec6a991cc450ec95",
+      "png_file": "png/human-08-maintenance-checklist.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/human-08-maintenance-checklist-892da6079d.webp",
+      "vector": {
+        "file": "vectors/human-08-maintenance-checklist.svg",
+        "sha256": "898b38fa8d738474746fcda3acfac9edb507cdd38b4b48a9c13a76290ba29b10",
+        "kind": "fixed-view native-resolution pixel paths; no semantic rig"
+      },
+      "form": "human",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "human-09-gentle-thanks",
+      "title": "가벼운 감사 인사 · 전신",
+      "category": "human",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "글 마무리, 감사 인사, 문의 안내 끝맺음",
+      "tags": [
+        "front_three_quarter",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/human-09-gentle-thanks.png",
+      "png_sha256": "2096c00990703c0b6bad76eb5c12ea1ac28f94be0e77588b5f493bec698f607f",
+      "png_file": "png/human-09-gentle-thanks.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/human-09-gentle-thanks-2096c00990.webp",
+      "vector": {
+        "file": "vectors/human-09-gentle-thanks.svg",
+        "sha256": "eafd91c752b696e37b3e153305cba61c9b98139e33d75cc98d23606b3ba25bf8",
+        "kind": "fixed-view native-resolution pixel paths; no semantic rig"
+      },
+      "form": "human",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "human-10-navy-present",
+      "title": "네이비 수트 · 상반신 제시",
+      "category": "human",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "블로그 포스터 표지·소개·안내",
+      "tags": [
+        "three_quarter",
+        "upper_body",
+        "navy-suit"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/human-10-navy-present.png",
+      "png_sha256": "e9b20f3bbe3cb62c5ca8166de94d63d2db8b1881f31ea3f3aeb3b533100839d3",
+      "png_file": "png/human-10-navy-present.png",
+      "width": 1312,
+      "height": 1199,
+      "thumbnail": "thumbs/human-10-navy-present-e9b20f3bbe.webp",
+      "vector": {
+        "file": "vectors/human-10-navy-present.svg",
+        "sha256": "924fd71dd320df54c21a5349b252f2f93864c854fa55e7f6594d5645b60fe29e",
+        "kind": "fixed-view native-resolution pixel paths; no semantic rig"
+      },
+      "form": "human",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "human-11-cardigan-notebook",
+      "title": "카디건 출근복 · 노트",
+      "category": "human",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "블로그 포스터 표지·소개·안내",
+      "tags": [
+        "three_quarter",
+        "upper_body",
+        "cardigan-commute"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/human-11-cardigan-notebook.png",
+      "png_sha256": "bd35ea34b8ffc7e35e7fdacf79ae78490f6f9164bc1c54e8a8d2a14d30d59fdb",
+      "png_file": "png/human-11-cardigan-notebook.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/human-11-cardigan-notebook-bd35ea34b8.webp",
+      "vector": {
+        "file": "vectors/human-11-cardigan-notebook.svg",
+        "sha256": "e1c03cc69214dd5b82716e27a49586a1a7aba16218000a54bbb75f7971ad36f9",
+        "kind": "fixed-view native-resolution pixel paths; no semantic rig"
+      },
+      "form": "human",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "human-12-secretary-skirt-glasses",
+      "title": "비서형 · 동그란 안경 · 스커트·펌프스",
+      "category": "human",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "차분한 비서형 안내·복장 소개·포스터",
+      "tags": [
+        "three_quarter",
+        "full_body",
+        "charcoal fitted above-knee pencil-skirt suit, black pumps, thin round glasses"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/human-12-secretary-skirt-glasses.png",
+      "png_sha256": "df5144f5437f9f2fc335e16f870b7181e3096ed0e750d1ee879bcbe0ae870b91",
+      "png_file": "png/human-12-secretary-skirt-glasses.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/human-12-secretary-skirt-glasses-df5144f543.webp",
+      "vector": {
+        "file": "vectors/human-12-secretary-skirt-glasses.svg",
+        "sha256": "2dd7a04abe061a95251e881654e88bb263309597b02fc8df991a11e3aa697845",
+        "kind": "fixed-view native-resolution pixel paths; no semantic rig"
+      },
+      "form": "human",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-02-compare",
+      "title": "비교견적 설명",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "견적 비교·선택 기준 본문",
+      "tags": [
+        "정면·앞쪽 사선",
+        "가리키기",
+        "설명란"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-02-compare.png",
+      "png_sha256": "17aea39b33d324674860d45b34a66d1c1a5667dbb47ef62aba8f28439af0e06e",
+      "png_file": "png/robot-02-compare.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/robot-02-compare-17aea39b33.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-03-checklist",
+      "title": "조건 체크",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "계약 전 체크리스트·준비 서류",
+      "tags": [
+        "정면·앞쪽 사선",
+        "체크하기",
+        "서류"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-03-checklist.png",
+      "png_sha256": "81000d2adf3fd3d7f47cb0030b5657e4122e0947b6837f24df3bf9a8be0fe944",
+      "png_file": "png/robot-03-checklist.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/robot-03-checklist-81000d2adf.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-04-caution",
+      "title": "주의사항 안내",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "약정 거리·중도해지·면책 조건 설명",
+      "tags": [
+        "정면·앞쪽 사선",
+        "설명하기",
+        "독자"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-04-caution.png",
+      "png_sha256": "3c69aed8ae88ac8cea7183941d0bcb4f0535684e7b523d9862290ff0684ea0db",
+      "png_file": "png/robot-04-caution.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/robot-04-caution-3c69aed8ae.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-05-consult",
+      "title": "상담 안내",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "문의·상담 절차·FAQ",
+      "tags": [
+        "정면·앞쪽 사선",
+        "설명하기",
+        "고객"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-05-consult.png",
+      "png_sha256": "c02cd78df520b20dcf332e286657addc250d2916591cb59970843f0c612fcd8e",
+      "png_file": "png/robot-05-consult.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-05-consult-c02cd78df5.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-06-thanks",
+      "title": "마무리 인사",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "글 마무리·견적 확인 후 감사",
+      "tags": [
+        "정면·앞쪽 사선",
+        "인사하기",
+        "독자"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-06-thanks.png",
+      "png_sha256": "e27d7abeac37d4b5a3c22fd3a8a2a2750d0016f60cdae9bdab6b0090e6baa4e6",
+      "png_file": "png/robot-06-thanks.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/robot-06-thanks-e27d7abeac.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-07-phone",
+      "title": "전화 응대",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "전화 상담·연락 안내",
+      "tags": [
+        "정면·앞쪽 사선",
+        "통화하기",
+        "고객"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-07-phone.png",
+      "png_sha256": "eddb610499b0087d3381ab455449a610e9568071d7dfb87d0a18e33c89f91520",
+      "png_file": "png/robot-07-phone.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/robot-07-phone-eddb610499.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-08-headset",
+      "title": "헤드셋 상담",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "상담 연결·고객 문의",
+      "tags": [
+        "정면·앞쪽 사선",
+        "통화하기",
+        "고객"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-08-headset.png",
+      "png_sha256": "00dd1bfef79b730a37a9aeece009221ea2307d91d5953b1f136ab4971feec74c",
+      "png_file": "png/robot-08-headset.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-08-headset-00dd1bfef7.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-09-sign-contract",
+      "title": "계약서 작성",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "장기렌터카 계약·전자서명 준비",
+      "tags": [
+        "정면·앞쪽 사선",
+        "작성하기",
+        "서류"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-09-sign-contract.png",
+      "png_sha256": "847dba805edeea9d86b0749a615f21c706904d756b0fb9312769f835bac4e5a9",
+      "png_file": "png/robot-09-sign-contract.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/robot-09-sign-contract-847dba805e.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-10-explain-contract",
+      "title": "계약 조건 설명",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "계약 내용·필수 확인 사항",
+      "tags": [
+        "정면·앞쪽 사선",
+        "설명하기",
+        "서류"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-10-explain-contract.png",
+      "png_sha256": "34fd731d08bb8bd6064308036ecdd77811b908a10ff056c53ea9487b44f762c8",
+      "png_file": "png/robot-10-explain-contract.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/robot-10-explain-contract-34fd731d08.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-11-show-car",
+      "title": "차량 외관 소개",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "차종 소개·차량 선택",
+      "tags": [
+        "정면·앞쪽 사선",
+        "가리키기",
+        "차량"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-11-show-car.png",
+      "png_sha256": "a543c576781692b34383858c1e4c6a30f66a14d1b08732792fcbe7a3d3d94ae3",
+      "png_file": "png/robot-11-show-car.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-11-show-car-a543c57678.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-12-interior",
+      "title": "차량 실내 안내",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "실내 공간·편의 사양 소개",
+      "tags": [
+        "정면·앞쪽 사선",
+        "가리키기",
+        "차량"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-12-interior.png",
+      "png_sha256": "e38b2fe5118c6fe84452c44e28ae65220166a70221a951c109c1b3cb153fdfaa",
+      "png_file": "png/robot-12-interior.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-12-interior-e38b2fe511.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-13-key-handover",
+      "title": "차 키 전달",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "차량 인수·키 수령 안내",
+      "tags": [
+        "정면·앞쪽 사선",
+        "전달하기",
+        "고객"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-13-key-handover.png",
+      "png_sha256": "dcb5d768782a4a7f8bce858e047f65533c746024b53ace5b4ebdb68ba69c3c76",
+      "png_file": "png/robot-13-key-handover.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/robot-13-key-handover-dcb5d76878.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-14-inspect",
+      "title": "출고 차량 점검",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "인수 전 외관 점검·사진 기록",
+      "tags": [
+        "정면·앞쪽 사선",
+        "점검하기",
+        "차량"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-14-inspect.png",
+      "png_sha256": "fcb4655552a38430ad80479f387f0c68472b8ad61cbaaa3cc9446727da27a9bf",
+      "png_file": "png/robot-14-inspect.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-14-inspect-fcb4655552.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-15-delivery",
+      "title": "차량 인도 안내",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "출고 완료·차량 인도 절차",
+      "tags": [
+        "정면·앞쪽 사선",
+        "안내하기",
+        "차량"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-15-delivery.png",
+      "png_sha256": "a83a9eb4821273f679c28eed940b4c6c0beb87d73b619997331d1113734eb69d",
+      "png_file": "png/robot-15-delivery.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-15-delivery-a83a9eb482.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-16-return",
+      "title": "차량 반납 확인",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "만기 반납·반납 전 확인",
+      "tags": [
+        "정면·앞쪽 사선",
+        "확인하기",
+        "차량"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-16-return.png",
+      "png_sha256": "99f248331fa35fb0a5aff2debcea8faba407a85e6d94242797e81b2f3d47dea2",
+      "png_file": "png/robot-16-return.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-16-return-99f248331f.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-17-calculator",
+      "title": "비용 비교 계산",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "월 납입료·총비용 비교",
+      "tags": [
+        "정면·앞쪽 사선",
+        "계산하기",
+        "견적 자료"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-17-calculator.png",
+      "png_sha256": "2e7ea41a3b9dc92522d25a901b171ffc9eab9f47b05a077119f25430d498eed6",
+      "png_file": "png/robot-17-calculator.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/robot-17-calculator-2e7ea41a3b.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-18-schedule",
+      "title": "출고·반납 일정 안내",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "출고 예약·만기 일정 확인",
+      "tags": [
+        "정면·앞쪽 사선",
+        "안내하기",
+        "일정"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-18-schedule.png",
+      "png_sha256": "9e2739bc016cb620e9d7fe6dd082183331a22fe7ac4f61f017f95617d2231107",
+      "png_file": "png/robot-18-schedule.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/robot-18-schedule-9e2739bc01.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-19-profile-phone",
+      "title": "측면 전화 상담",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "전화 상담·옆모습·상반신",
+      "tags": [
+        "측면",
+        "통화하기",
+        "고객"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-19-profile-phone.png",
+      "png_sha256": "056485cce85886cf7b2adc68b8c733e1896f2b94ae05eebc029ec2604f48f1df",
+      "png_file": "png/robot-19-profile-phone.png",
+      "width": 1086,
+      "height": 1448,
+      "thumbnail": "thumbs/robot-19-profile-phone-056485cce8.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-20-side-contract",
+      "title": "옆에서 본 계약서 작성",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "계약서 작성·측면·앉은 자세",
+      "tags": [
+        "측면",
+        "작성하기",
+        "서류"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-20-side-contract.png",
+      "png_sha256": "7d1811c31d63210073a5ee79781fc98d2b7fd7648d2f2dcf91e4689c6718b03c",
+      "png_file": "png/robot-20-side-contract.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-20-side-contract-7d1811c31d.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-21-handshake",
+      "title": "고객과 자연스러운 악수",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "계약 상담·악수·고객 응대",
+      "tags": [
+        "사선",
+        "악수하기",
+        "고객"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-21-handshake.png",
+      "png_sha256": "bb6c20f4a731e1a04a5777eb085fe963b006ece22d80439864a30e8552e07eb5",
+      "png_file": "png/robot-21-handshake.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-21-handshake-bb6c20f4a7.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-22-back-walk",
+      "title": "차량으로 걸어가는 뒷모습",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "차량 안내·뒷모습·걷기",
+      "tags": [
+        "후면",
+        "걷기",
+        "차량"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-22-back-walk.png",
+      "png_sha256": "3a5e49043d74abd11998a39bd65777d321b70f215f28b661fdbf714d69d1779d",
+      "png_file": "png/robot-22-back-walk.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-22-back-walk-3a5e49043d.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-23-rear-trunk",
+      "title": "뒤쪽 사선에서 트렁크 확인",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "트렁크·적재 공간·뒤쪽 사선",
+      "tags": [
+        "뒤쪽 사선",
+        "확인하기",
+        "차량"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-23-rear-trunk.png",
+      "png_sha256": "4513c0303d6192bf1d3b1d3b72f09edd461da8d7691e2b666291e9a108479ff8",
+      "png_file": "png/robot-23-rear-trunk.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-23-rear-trunk-4513c0303d.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-24-over-shoulder",
+      "title": "어깨 너머로 보는 견적 확인",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "견적 비교·어깨 너머·클로즈업",
+      "tags": [
+        "어깨 너머",
+        "확인하기",
+        "견적 자료"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-24-over-shoulder.png",
+      "png_sha256": "fd4d388e73f6f75a662c049b01d42e08d0b61fe7d63b30b6170d0748f60abcef",
+      "png_file": "png/robot-24-over-shoulder.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-24-over-shoulder-fd4d388e73.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-25-side-cabin",
+      "title": "옆에서 보는 차량 조작 안내",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "차량 실내·운전석·조작 안내",
+      "tags": [
+        "측면",
+        "설명하기",
+        "차량"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-25-side-cabin.png",
+      "png_sha256": "d8bf161b546723c65733252754fa27093f30b2feaa334b4b338ca6f103b61a12",
+      "png_file": "png/robot-25-side-cabin.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-25-side-cabin-d8bf161b54.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-26-low-inspect",
+      "title": "낮은 옆 시점의 타이어 점검",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "타이어 점검·낮은 시점·쪼그린 자세",
+      "tags": [
+        "낮은 옆 시점",
+        "점검하기",
+        "차량"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-26-low-inspect.png",
+      "png_sha256": "9cf4c6837d5711bf1c29ce90b6d908d5b0fcfa80aaee53ddab94e6a43da2d075",
+      "png_file": "png/robot-26-low-inspect.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-26-low-inspect-9cf4c6837d.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-27-headlamp-guide",
+      "title": "차량 부위를 짚어 설명",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "차량 부위·헤드램프·설명",
+      "tags": [
+        "앞쪽 사선",
+        "가리키기",
+        "차량"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-27-headlamp-guide.png",
+      "png_sha256": "1f01fea23a91a55c5af53496de7d60ca6bca4ad5d56e7905d153fda3504da0d2",
+      "png_file": "png/robot-27-headlamp-guide.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-27-headlamp-guide-1f01fea23a.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-28-customer-introduce",
+      "title": "고객 쪽으로 안내",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "고객 소개·사람을 가리키기·안내",
+      "tags": [
+        "앞쪽 사선",
+        "안내하기",
+        "고객"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-28-customer-introduce.png",
+      "png_sha256": "b97ca44f6d37f3ca889a5b762bc9a273d2bc6300e1a91ea39d744f9256e285cd",
+      "png_file": "png/robot-28-customer-introduce.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-28-customer-introduce-b97ca44f6d.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-29-caption-point",
+      "title": "설명란을 가리키기",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "본문 설명·왼쪽 설명란·강조",
+      "tags": [
+        "앞쪽 사선",
+        "가리키기",
+        "설명란"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-29-caption-point.png",
+      "png_sha256": "5bcc9daa7c126f68bde2d4e5f4526effd6458611f8223a366ecf208fbbc492f2",
+      "png_file": "png/robot-29-caption-point.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-29-caption-point-5bcc9daa7c.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-30-listen-customer",
+      "title": "고객 설명을 듣는 장면",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "고객 요구·경청·상담",
+      "tags": [
+        "사선",
+        "듣기",
+        "고객"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-30-listen-customer.png",
+      "png_sha256": "6055a5117304a4c625ec7094c668c7042f2f095bad66c8f24838d7db842e5f5c",
+      "png_file": "png/robot-30-listen-customer.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-30-listen-customer-6055a51173.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-31-joint-document",
+      "title": "서류를 함께 확인",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "계약서 함께 보기·항목 확인",
+      "tags": [
+        "높은 사선",
+        "함께 확인",
+        "서류"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-31-joint-document.png",
+      "png_sha256": "082d269d66644e5a33d844cf2e59e9ee5c9d6bf49096fac9f46d5ad94319e201",
+      "png_file": "png/robot-31-joint-document.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-31-joint-document-082d269d66.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-32-two-quotes",
+      "title": "두 견적을 나란히 비교",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "견적 비교·선택·두 서류",
+      "tags": [
+        "앞쪽 사선",
+        "비교하기",
+        "견적 자료"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-32-two-quotes.png",
+      "png_sha256": "954feac556ee18c075937edfc38a0e5cf527de04f46a957a227e962507a12632",
+      "png_file": "png/robot-32-two-quotes.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-32-two-quotes-954feac556.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-33-think-choice",
+      "title": "선택을 고민하는 표정",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "조건 선택·고민·생각",
+      "tags": [
+        "앞쪽 사선",
+        "생각하기",
+        "독자"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-33-think-choice.png",
+      "png_sha256": "2955bc70886ce660c2b01468de2bb90051993c7a3df81c0ae79b5b280db22b45",
+      "png_file": "png/robot-33-think-choice.png",
+      "width": 1199,
+      "height": 1312,
+      "thumbnail": "thumbs/robot-33-think-choice-2955bc7088.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-34-confirm-happy",
+      "title": "확인하고 기뻐하는 표정",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "확인 완료·기쁜 반응·좋아요",
+      "tags": [
+        "정면",
+        "반응하기",
+        "독자"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-34-confirm-happy.png",
+      "png_sha256": "3a66023c6254adfb708b4283ba20976bae83e5b545de08457cf35566dacdb7bc",
+      "png_file": "png/robot-34-confirm-happy.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-34-confirm-happy-3a66023c62.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-35-calm-explain",
+      "title": "차분하게 다시 설명",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "주의사항·재안내·공감",
+      "tags": [
+        "사선",
+        "설명하기",
+        "고객"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-35-calm-explain.png",
+      "png_sha256": "d7b1cbe9fb10a5c982f66ec694999234bb3738f0b7422a8075082eaa011e49e6",
+      "png_file": "png/robot-35-calm-explain.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-35-calm-explain-d7b1cbe9fb.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-36-load-bag",
+      "title": "트렁크에 짐을 싣기",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "적재 공간·짐 싣기·실용성",
+      "tags": [
+        "뒤쪽 사선",
+        "짐 싣기",
+        "차량"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-36-load-bag.png",
+      "png_sha256": "1d77a9edb6b78565df34327be8cd9fd0cfa2c3545b9cbe688a3adb73d6bc8db4",
+      "png_file": "png/robot-36-load-bag.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-36-load-bag-1d77a9edb6.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-37-follow-customer",
+      "title": "고객이 가리킨 차량 보기",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "고객 선택·차량 안내·함께 보기",
+      "tags": [
+        "뒤쪽 사선",
+        "함께 바라보기",
+        "고객과 차량"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-37-follow-customer.png",
+      "png_sha256": "d78d2968a2cd9466ce30aaa37f5d6a76368b918257e0b2620dc18171c4e29835",
+      "png_file": "png/robot-37-follow-customer.png",
+      "width": 1536,
+      "height": 1024,
+      "thumbnail": "thumbs/robot-37-follow-customer-d78d2968a2.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "robot-38-gentle-thanks",
+      "title": "가볍게 고개 숙여 인사",
+      "category": "robot",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "글 마무리·감사 인사·정중한 안내",
+      "tags": [
+        "정면",
+        "인사하기",
+        "독자"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/robot-38-gentle-thanks.png",
+      "png_sha256": "f5c9db4454b99fc854c3e799a4cbaf1d11308e13359206ae7ee1666e6781c429",
+      "png_file": "png/robot-38-gentle-thanks.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/robot-38-gentle-thanks-f5c9db4454.webp",
+      "form": "robot",
+      "character_id": "CLO-02"
+    },
+    {
+      "id": "poster-01-cover",
+      "title": "장기렌터카, 비교부터 차근차근",
+      "category": "template",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "cover",
+      "tags": [
+        "cover",
+        "peach",
+        "human/02-tablet-consultation"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/poster-01-cover.png",
+      "png_sha256": "4db9dc70158a8fcaa38338f4fc3cadbcd25bb923bda83b2cb78363ce9e2c129c",
+      "png_file": "png/poster-01-cover.png",
+      "width": 1200,
+      "height": 675,
+      "thumbnail": "thumbs/poster-01-cover-4db9dc7015.webp"
+    },
+    {
+      "id": "poster-02-comparison",
+      "title": "같은 조건으로 나란히 비교해요",
+      "category": "template",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "comparison",
+      "tags": [
+        "comparison",
+        "sky",
+        "human/02-tablet-consultation"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/poster-02-comparison.png",
+      "png_sha256": "95dcdc1ca20d02d56a905f60a5e429dc20af8fb3d3c2292080846b072ab111b0",
+      "png_file": "png/poster-02-comparison.png",
+      "width": 1080,
+      "height": 1080,
+      "thumbnail": "thumbs/poster-02-comparison-95dcdc1ca2.webp"
+    },
+    {
+      "id": "poster-03-checklist",
+      "title": "계약 전, 네 가지만 확인",
+      "category": "template",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "checklist",
+      "tags": [
+        "checklist",
+        "paper",
+        "human/02-tablet-consultation"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/poster-03-checklist.png",
+      "png_sha256": "5b7e6fda1002336d9bed646ade9fb4bc2d099982c732eb1efcff0fb3ab081609",
+      "png_file": "png/poster-03-checklist.png",
+      "width": 1080,
+      "height": 1350,
+      "thumbnail": "thumbs/poster-03-checklist-5b7e6fda10.webp"
+    },
+    {
+      "id": "poster-04-process",
+      "title": "문의부터 차량 안내까지",
+      "category": "template",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "process",
+      "tags": [
+        "process",
+        "sage",
+        "human/04-phone-consultation"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/poster-04-process.png",
+      "png_sha256": "74f5a8ba033b3ee05f46547979f09b57c3ed75713a631a6391fb0ecaf7bde985",
+      "png_file": "png/poster-04-process.png",
+      "width": 1200,
+      "height": 900,
+      "thumbnail": "thumbs/poster-04-process-74f5a8ba03.webp"
+    },
+    {
+      "id": "poster-05-caution",
+      "title": "이 조건은 한 번 더 확인",
+      "category": "template",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "caution",
+      "tags": [
+        "caution",
+        "ink",
+        null
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/poster-05-caution.png",
+      "png_sha256": "09e3550459bb673a3ccb43340629990937e884b8f36c89e7b95c60474ff376e7",
+      "png_file": "png/poster-05-caution.png",
+      "width": 1080,
+      "height": 1080,
+      "thumbnail": "thumbs/poster-05-caution-09e3550459.webp"
+    },
+    {
+      "id": "poster-06-faq",
+      "title": "궁금한 점, 미리 정리해요",
+      "category": "template",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "faq",
+      "tags": [
+        "faq",
+        "lilac",
+        "human/04-phone-consultation"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/poster-06-faq.png",
+      "png_sha256": "d1cb9137e0999c0f245ba850e565f58aca5c0c117474013aaa32365deee53422",
+      "png_file": "png/poster-06-faq.png",
+      "width": 1080,
+      "height": 1350,
+      "thumbnail": "thumbs/poster-06-faq-d1cb9137e0.webp"
+    },
+    {
+      "id": "poster-07-robot-cover",
+      "title": "복잡한 조건, 차근차근 살펴봐요",
+      "category": "template",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "cover",
+      "tags": [
+        "cover",
+        "lilac",
+        "robot/chakhan-current"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/poster-07-robot-cover.png",
+      "png_sha256": "7c28078106e2a1d764d2a9351b021813789be58efc66ff4057baa2727041aa11",
+      "png_file": "png/poster-07-robot-cover.png",
+      "width": 1200,
+      "height": 675,
+      "thumbnail": "thumbs/poster-07-robot-cover-7c28078106.webp"
+    },
+    {
+      "id": "poster-08-scene-cover",
+      "title": "공간부터 보고 차량을 골라요",
+      "category": "template",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "cover",
+      "tags": [
+        "cover",
+        "",
+        ""
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/poster-08-scene-cover.png",
+      "png_sha256": "2b0bcaba6123a6c86fadbd4644ed1a3f397e29fbbc11c5fea64137a82310b43d",
+      "png_file": "png/poster-08-scene-cover.png",
+      "width": 1200,
+      "height": 675,
+      "thumbnail": "thumbs/poster-08-scene-cover-2b0bcaba61.webp"
+    },
+    {
+      "id": "poster-09-navy-portrait",
+      "title": "궁금한 조건, 하나씩 물어봐요",
+      "category": "template",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "cover",
+      "tags": [
+        "cover",
+        "sky",
+        "human/10-navy-present"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/poster-09-navy-portrait.png",
+      "png_sha256": "7b327023e4e31c95d28894f09635e159be74728f47ed58bf640386bea776c918",
+      "png_file": "png/poster-09-navy-portrait.png",
+      "width": 1200,
+      "height": 675,
+      "thumbnail": "thumbs/poster-09-navy-portrait-7b327023e4.webp"
+    },
+    {
+      "id": "poster-10-casual-portrait",
+      "title": "내 생활에 맞는 이용 조건 찾기",
+      "category": "template",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "cover",
+      "tags": [
+        "cover",
+        "sage",
+        "human/11-cardigan-notebook"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/poster-10-casual-portrait.png",
+      "png_sha256": "6429a858306afa260ee6b57622c2358e46b006ab3e227b91f7f83fc3530d2ec6",
+      "png_file": "png/poster-10-casual-portrait.png",
+      "width": 1200,
+      "height": 675,
+      "thumbnail": "thumbs/poster-10-casual-portrait-6429a85830.webp"
+    },
+    {
+      "id": "poster-11-secretary-poster",
+      "title": "확인할 내용, 꼼꼼하게 정리해요",
+      "category": "template",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "cover",
+      "tags": [
+        "cover",
+        "lilac",
+        "human/12-secretary-skirt-glasses"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/poster-11-secretary-poster.png",
+      "png_sha256": "ead43b0ed696c73b56d3383aa5e1d0e5a9615c2121fbaf63966bf2dc07b3fab4",
+      "png_file": "png/poster-11-secretary-poster.png",
+      "width": 1200,
+      "height": 675,
+      "thumbnail": "thumbs/poster-11-secretary-poster-ead43b0ed6.webp"
+    },
+    {
+      "id": "revision-cod-01-r1",
+      "title": "COD-01 · R1 제안",
+      "category": "revision",
+      "status": "design_proposal",
+      "production_usable": false,
+      "usage": "원본의 뾰족한 양옆 핀 · 원형 눈/곡선 눈썹 · 둥근 어깨 관절과 분할 흉갑",
+      "tags": [
+        "COD-01",
+        "blue",
+        "기존 캐릭터 정면 파생"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/revision-cod-01-r1.png",
+      "png_sha256": "a72033f3e880b9ded7e3defbfe52928daf468552f797e3bc6616762081354e9b",
+      "png_file": "png/revision-cod-01-r1.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/revision-cod-01-r1-a72033f3e8.webp",
+      "character_id": "COD-01",
+      "plate_design": "원본의 뾰족한 양옆 핀 · 원형 눈/곡선 눈썹 · 둥근 어깨 관절과 분할 흉갑",
+      "identity_reference_sha256": "82f6815cd97fb914126890cd8687b3a169a34a2e049ea6e4100c094793d4614c"
+    },
+    {
+      "id": "revision-cod-03-r1",
+      "title": "COD-03 · R1 제안",
+      "category": "revision",
+      "status": "design_proposal",
+      "production_usable": false,
+      "usage": "원본의 낮은 중앙 머리 능선 · 네모 U형 눈/직선 눈썹 · 적층 외장",
+      "tags": [
+        "COD-03",
+        "teal",
+        "기존 캐릭터 정면 파생"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/revision-cod-03-r1.png",
+      "png_sha256": "8f32e9d2ae48f89c9c4d24fa8c8d55006302805bf3e5268141384753c997b8f8",
+      "png_file": "png/revision-cod-03-r1.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/revision-cod-03-r1-8f32e9d2ae.webp",
+      "character_id": "COD-03",
+      "plate_design": "원본의 낮은 중앙 머리 능선 · 네모 U형 눈/직선 눈썹 · 적층 외장",
+      "identity_reference_sha256": "f3f1b2a52df20166e774844ec24ec71001446c088701a8e8fc3246c54e5d33ca"
+    },
+    {
+      "id": "revision-clo-04-r1",
+      "title": "클로아 · R1 제안",
+      "category": "revision",
+      "status": "design_proposal",
+      "production_usable": false,
+      "usage": "원본의 고리 안테나 · 세 줄 볼 표시/열린 미소 · 작은 견갑",
+      "tags": [
+        "CLO-04",
+        "orange",
+        "기존 캐릭터 정면 파생"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/revision-clo-04-r1.png",
+      "png_sha256": "fca5542e5719feb3636f966458988660086c660c5e90bbf784ff91f6be5ebe3d",
+      "png_file": "png/revision-clo-04-r1.png",
+      "width": 1024,
+      "height": 1536,
+      "thumbnail": "thumbs/revision-clo-04-r1-fca5542e57.webp",
+      "character_id": "CLO-04",
+      "plate_design": "원본의 고리 안테나 · 세 줄 볼 표시/열린 미소 · 작은 견갑",
+      "identity_reference_sha256": "5a4537405ad38e7e23abdf3cd849e8299204c90218f1f64db2d788191cdbe616"
+    },
+    {
+      "id": "scene-showroom-01-front-welcome",
+      "title": "쇼룸 안내 · 정면 전신 · 기본 안내",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "블로그 도입, 소개, 홈페이지 안내",
+      "tags": [
+        "쇼룸 안내",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-showroom-01-front-welcome.png",
+      "png_sha256": "2b184b6b66a023699b062533577a51fd28c7843ef00b22bbd4ce5407d4b8728e",
+      "png_file": "png/scene-showroom-01-front-welcome.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-showroom-01-front-welcome-2b184b6b66.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "eb9c69bc8d3a228fb3af4d558f5845bfa3ed79c375e463a30c6c2f942b8fa5ab",
+      "background_sha256": "3bcc7bc62ce64c763ed3210909e9d1eab3242457233ede85f7567680dc62a24d",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-showroom-02-tablet-consultation",
+      "title": "쇼룸 안내 · 태블릿 상담 · 사선 상반신",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "비교 조건, 상담 절차, 계약 전 확인사항 설명",
+      "tags": [
+        "쇼룸 안내",
+        "head_to_upper_thigh",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-showroom-02-tablet-consultation.png",
+      "png_sha256": "4c93ce8d8d8fbe495a897b46a0ccf634ee396a4f0cb9aee051797e7da400e8fc",
+      "png_file": "png/scene-showroom-02-tablet-consultation.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-showroom-02-tablet-consultation-4c93ce8d8d.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "70a41ef99ef20ba2de4af9ee8f2c77f84266088be1f2b99f58ed36d93afdf768",
+      "background_sha256": "3bcc7bc62ce64c763ed3210909e9d1eab3242457233ede85f7567680dc62a24d",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-showroom-03-present-right",
+      "title": "쇼룸 안내 · 오른쪽 제시 · 사선 전신",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "차량 소개, 비교표 또는 설명 대상을 제시하는 문단",
+      "tags": [
+        "쇼룸 안내",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-showroom-03-present-right.png",
+      "png_sha256": "145f9909209127ccdfbb1288c94bd399bee41fb5756ce253fe15554989fa8d81",
+      "png_file": "png/scene-showroom-03-present-right.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-showroom-03-present-right-145f990920.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "c7529997f994c48ce2f0ac9bb5f25b30b767e0cd4b14ff35319ef902df490a3e",
+      "background_sha256": "3bcc7bc62ce64c763ed3210909e9d1eab3242457233ede85f7567680dc62a24d",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-showroom-04-phone-consultation",
+      "title": "쇼룸 안내 · 전화 상담 · 상반신",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "전화 문의, 상담 예약, 연락 방법 안내",
+      "tags": [
+        "쇼룸 안내",
+        "head_to_hip",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-showroom-04-phone-consultation.png",
+      "png_sha256": "99a6c81f31b28467519a34dadd33351bfe1d4534da54a79dc893af22714bbe5c",
+      "png_file": "png/scene-showroom-04-phone-consultation.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-showroom-04-phone-consultation-99a6c81f31.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "f75954a93ee999d14a9926827db9bfcf58230f2429161efd39f8b7cdff84b827",
+      "background_sha256": "3bcc7bc62ce64c763ed3210909e9d1eab3242457233ede85f7567680dc62a24d",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-showroom-05-seated-contract",
+      "title": "쇼룸 안내 · 앉아서 서류 확인",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "계약서 확인, 서류 준비, 약관 읽기",
+      "tags": [
+        "쇼룸 안내",
+        "full_seated_with_desk",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-showroom-05-seated-contract.png",
+      "png_sha256": "d082ef9546b945cf0f5b52305b65d9845cd18e97a62431050427bee7b5305199",
+      "png_file": "png/scene-showroom-05-seated-contract.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-showroom-05-seated-contract-d082ef9546.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "5a62fdde3a31973cb22e5a9946cfcdf268d1def801d687e0db347876054630c3",
+      "background_sha256": "3bcc7bc62ce64c763ed3210909e9d1eab3242457233ede85f7567680dc62a24d",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-showroom-06-key-guidance",
+      "title": "쇼룸 안내 · 열쇠 안내 · 전신",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "출고 절차, 차량 인도, 키 수령 안내",
+      "tags": [
+        "쇼룸 안내",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-showroom-06-key-guidance.png",
+      "png_sha256": "e6799f05f6e584065f91b0d1f96ce7b3e86b3442c312bd5d70e710ca26c868c1",
+      "png_file": "png/scene-showroom-06-key-guidance.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-showroom-06-key-guidance-e6799f05f6.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "08776b9f4a172ba5cdce3687928e6e6e5c910f847df7efb22fb223a36061844c",
+      "background_sha256": "3bcc7bc62ce64c763ed3210909e9d1eab3242457233ede85f7567680dc62a24d",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-showroom-07-rear-walking",
+      "title": "쇼룸 안내 · 뒤쪽 사선 · 이동",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "차량 보러 이동, 다음 단계 안내, 방문 동선 설명",
+      "tags": [
+        "쇼룸 안내",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-showroom-07-rear-walking.png",
+      "png_sha256": "437d0152af6b07a6c3df6929b4c6a729d93247f2e6c59c132fd3b26ff9e30667",
+      "png_file": "png/scene-showroom-07-rear-walking.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-showroom-07-rear-walking-437d0152af.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "ddca36f47eecd0a1a7f509d1ba6afdcfd2ddf9f2931a809d5ad5a168c2f9e22d",
+      "background_sha256": "3bcc7bc62ce64c763ed3210909e9d1eab3242457233ede85f7567680dc62a24d",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-showroom-08-maintenance-checklist",
+      "title": "쇼룸 안내 · 정비복 · 점검표 확인",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "정기 점검, 차량 관리, 점검 항목 안내",
+      "tags": [
+        "쇼룸 안내",
+        "head_to_below_knees",
+        "차콜 정비복"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-showroom-08-maintenance-checklist.png",
+      "png_sha256": "5579ecd7c97cc3fb97729dd193029f7a2fe00784441d2e689d615e3ce3e89c30",
+      "png_file": "png/scene-showroom-08-maintenance-checklist.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-showroom-08-maintenance-checklist-5579ecd7c9.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "892da6079d9557ae54863731f0488ed1785323baf1fa4dcfec6a991cc450ec95",
+      "background_sha256": "3bcc7bc62ce64c763ed3210909e9d1eab3242457233ede85f7567680dc62a24d",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-showroom-09-gentle-thanks",
+      "title": "쇼룸 안내 · 가벼운 감사 인사 · 전신",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "글 마무리, 감사 인사, 문의 안내 끝맺음",
+      "tags": [
+        "쇼룸 안내",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-showroom-09-gentle-thanks.png",
+      "png_sha256": "19136a749e06b51fcab4c5931972a2573058e659b8c8e0443e3dde7596fbe003",
+      "png_file": "png/scene-showroom-09-gentle-thanks.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-showroom-09-gentle-thanks-19136a749e.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "2096c00990703c0b6bad76eb5c12ea1ac28f94be0e77588b5f493bec698f607f",
+      "background_sha256": "3bcc7bc62ce64c763ed3210909e9d1eab3242457233ede85f7567680dc62a24d",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-showroom-10-navy-present",
+      "title": "쇼룸 안내 · 네이비 수트 · 상반신 제시",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "블로그 포스터 표지·소개·안내",
+      "tags": [
+        "쇼룸 안내",
+        "upper_body",
+        "navy-suit"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-showroom-10-navy-present.png",
+      "png_sha256": "43bd9c0ffe6e97b7a775cfc25678c36b93f9d68d5af08c0883c29baa7ab0e967",
+      "png_file": "png/scene-showroom-10-navy-present.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-showroom-10-navy-present-43bd9c0ffe.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "e9b20f3bbe3cb62c5ca8166de94d63d2db8b1881f31ea3f3aeb3b533100839d3",
+      "background_sha256": "3bcc7bc62ce64c763ed3210909e9d1eab3242457233ede85f7567680dc62a24d",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-showroom-11-cardigan-notebook",
+      "title": "쇼룸 안내 · 카디건 출근복 · 노트",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "블로그 포스터 표지·소개·안내",
+      "tags": [
+        "쇼룸 안내",
+        "upper_body",
+        "cardigan-commute"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-showroom-11-cardigan-notebook.png",
+      "png_sha256": "8fb1ee5b836bf6aa60494b4186a33618a458c9a640a0231df9a0a81700c25507",
+      "png_file": "png/scene-showroom-11-cardigan-notebook.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-showroom-11-cardigan-notebook-8fb1ee5b83.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "bd35ea34b8ffc7e35e7fdacf79ae78490f6f9164bc1c54e8a8d2a14d30d59fdb",
+      "background_sha256": "3bcc7bc62ce64c763ed3210909e9d1eab3242457233ede85f7567680dc62a24d",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-showroom-12-secretary-skirt-glasses",
+      "title": "쇼룸 안내 · 비서형 · 동그란 안경 · 스커트·펌프스",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "차분한 비서형 안내·복장 소개·포스터",
+      "tags": [
+        "쇼룸 안내",
+        "full_body",
+        "charcoal fitted above-knee pencil-skirt suit, black pumps, thin round glasses"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-showroom-12-secretary-skirt-glasses.png",
+      "png_sha256": "2d0b0bae6e433f9237324fdceb228a1be64a1da6ea0e1356dbf3476cde1c8186",
+      "png_file": "png/scene-showroom-12-secretary-skirt-glasses.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-showroom-12-secretary-skirt-glasses-2d0b0bae6e.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "df5144f5437f9f2fc335e16f870b7181e3096ed0e750d1ee879bcbe0ae870b91",
+      "background_sha256": "3bcc7bc62ce64c763ed3210909e9d1eab3242457233ede85f7567680dc62a24d",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-office-01-front-welcome",
+      "title": "상담실 · 정면 전신 · 기본 안내",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "블로그 도입, 소개, 홈페이지 안내",
+      "tags": [
+        "상담실",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-office-01-front-welcome.png",
+      "png_sha256": "dfc71872622c2efaccbb6b333ec5bcb6de23074d73ea703935b667ea18a050f5",
+      "png_file": "png/scene-office-01-front-welcome.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-office-01-front-welcome-dfc7187262.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "eb9c69bc8d3a228fb3af4d558f5845bfa3ed79c375e463a30c6c2f942b8fa5ab",
+      "background_sha256": "984a86dbc2a77f0c9ee1cc5eaee4c2611f48d5d2fd21f0b39368f0813334b590",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-office-02-tablet-consultation",
+      "title": "상담실 · 태블릿 상담 · 사선 상반신",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "비교 조건, 상담 절차, 계약 전 확인사항 설명",
+      "tags": [
+        "상담실",
+        "head_to_upper_thigh",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-office-02-tablet-consultation.png",
+      "png_sha256": "78ea96699efae5de573118352cbb11090f240bcab24e73bf80df94149da2d9fc",
+      "png_file": "png/scene-office-02-tablet-consultation.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-office-02-tablet-consultation-78ea96699e.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "70a41ef99ef20ba2de4af9ee8f2c77f84266088be1f2b99f58ed36d93afdf768",
+      "background_sha256": "984a86dbc2a77f0c9ee1cc5eaee4c2611f48d5d2fd21f0b39368f0813334b590",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-office-03-present-right",
+      "title": "상담실 · 오른쪽 제시 · 사선 전신",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "차량 소개, 비교표 또는 설명 대상을 제시하는 문단",
+      "tags": [
+        "상담실",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-office-03-present-right.png",
+      "png_sha256": "0956708f88166444ddd8e225846efd9539b70f7ae01dadb8b94168ce50789447",
+      "png_file": "png/scene-office-03-present-right.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-office-03-present-right-0956708f88.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "c7529997f994c48ce2f0ac9bb5f25b30b767e0cd4b14ff35319ef902df490a3e",
+      "background_sha256": "984a86dbc2a77f0c9ee1cc5eaee4c2611f48d5d2fd21f0b39368f0813334b590",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-office-04-phone-consultation",
+      "title": "상담실 · 전화 상담 · 상반신",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "전화 문의, 상담 예약, 연락 방법 안내",
+      "tags": [
+        "상담실",
+        "head_to_hip",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-office-04-phone-consultation.png",
+      "png_sha256": "235f73bd072356dc8cefa2a42b9e3de393a8d20fa0d58a4e7a2782ddd5446973",
+      "png_file": "png/scene-office-04-phone-consultation.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-office-04-phone-consultation-235f73bd07.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "f75954a93ee999d14a9926827db9bfcf58230f2429161efd39f8b7cdff84b827",
+      "background_sha256": "984a86dbc2a77f0c9ee1cc5eaee4c2611f48d5d2fd21f0b39368f0813334b590",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-office-05-seated-contract",
+      "title": "상담실 · 앉아서 서류 확인",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "계약서 확인, 서류 준비, 약관 읽기",
+      "tags": [
+        "상담실",
+        "full_seated_with_desk",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-office-05-seated-contract.png",
+      "png_sha256": "4c54e8650755d59ef0a4dcefb24de6eed5fa48cde1072a5acd02cccad522c062",
+      "png_file": "png/scene-office-05-seated-contract.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-office-05-seated-contract-4c54e86507.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "5a62fdde3a31973cb22e5a9946cfcdf268d1def801d687e0db347876054630c3",
+      "background_sha256": "984a86dbc2a77f0c9ee1cc5eaee4c2611f48d5d2fd21f0b39368f0813334b590",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-office-09-gentle-thanks",
+      "title": "상담실 · 가벼운 감사 인사 · 전신",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "글 마무리, 감사 인사, 문의 안내 끝맺음",
+      "tags": [
+        "상담실",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-office-09-gentle-thanks.png",
+      "png_sha256": "f64ab834a3ca118ed69c06e94e89ac1d89d078e8d3ac6322374233bc3bd2a9fd",
+      "png_file": "png/scene-office-09-gentle-thanks.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-office-09-gentle-thanks-f64ab834a3.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "2096c00990703c0b6bad76eb5c12ea1ac28f94be0e77588b5f493bec698f607f",
+      "background_sha256": "984a86dbc2a77f0c9ee1cc5eaee4c2611f48d5d2fd21f0b39368f0813334b590",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-office-10-navy-present",
+      "title": "상담실 · 네이비 수트 · 상반신 제시",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "블로그 포스터 표지·소개·안내",
+      "tags": [
+        "상담실",
+        "upper_body",
+        "navy-suit"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-office-10-navy-present.png",
+      "png_sha256": "e1d6500ccddaf30e0918913128fdfb5476a28a1e7d62b65bf546f6a019199163",
+      "png_file": "png/scene-office-10-navy-present.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-office-10-navy-present-e1d6500ccd.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "e9b20f3bbe3cb62c5ca8166de94d63d2db8b1881f31ea3f3aeb3b533100839d3",
+      "background_sha256": "984a86dbc2a77f0c9ee1cc5eaee4c2611f48d5d2fd21f0b39368f0813334b590",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-office-11-cardigan-notebook",
+      "title": "상담실 · 카디건 출근복 · 노트",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "블로그 포스터 표지·소개·안내",
+      "tags": [
+        "상담실",
+        "upper_body",
+        "cardigan-commute"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-office-11-cardigan-notebook.png",
+      "png_sha256": "330bcfb7855ca54f00c79d994d636a4a085339ff0e5dc193e7ea54963d2294b9",
+      "png_file": "png/scene-office-11-cardigan-notebook.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-office-11-cardigan-notebook-330bcfb785.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "bd35ea34b8ffc7e35e7fdacf79ae78490f6f9164bc1c54e8a8d2a14d30d59fdb",
+      "background_sha256": "984a86dbc2a77f0c9ee1cc5eaee4c2611f48d5d2fd21f0b39368f0813334b590",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-office-12-secretary-skirt-glasses",
+      "title": "상담실 · 비서형 · 동그란 안경 · 스커트·펌프스",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "차분한 비서형 안내·복장 소개·포스터",
+      "tags": [
+        "상담실",
+        "full_body",
+        "charcoal fitted above-knee pencil-skirt suit, black pumps, thin round glasses"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-office-12-secretary-skirt-glasses.png",
+      "png_sha256": "d46f153b1cc73b94bdb74c74b6edb076d2783197c7abef977db2a653cb1fb32a",
+      "png_file": "png/scene-office-12-secretary-skirt-glasses.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-office-12-secretary-skirt-glasses-d46f153b1c.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "df5144f5437f9f2fc335e16f870b7181e3096ed0e750d1ee879bcbe0ae870b91",
+      "background_sha256": "984a86dbc2a77f0c9ee1cc5eaee4c2611f48d5d2fd21f0b39368f0813334b590",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-outdoor-01-front-welcome",
+      "title": "야외 차량 안내 · 정면 전신 · 기본 안내",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "블로그 도입, 소개, 홈페이지 안내",
+      "tags": [
+        "야외 차량 안내",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-outdoor-01-front-welcome.png",
+      "png_sha256": "abe098be41002e632a162d1fd41d60bfcbc1cd4270686a55a9db1e6f66a905bb",
+      "png_file": "png/scene-outdoor-01-front-welcome.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-outdoor-01-front-welcome-abe098be41.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "eb9c69bc8d3a228fb3af4d558f5845bfa3ed79c375e463a30c6c2f942b8fa5ab",
+      "background_sha256": "5700572cfe3fecd4d32480e3354803af5d2b396dd70bbdd14e77d0b90b3dc176",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-outdoor-03-present-right",
+      "title": "야외 차량 안내 · 오른쪽 제시 · 사선 전신",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "차량 소개, 비교표 또는 설명 대상을 제시하는 문단",
+      "tags": [
+        "야외 차량 안내",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-outdoor-03-present-right.png",
+      "png_sha256": "64081bd7094df80f40b9dc9f614aab5ef5548f403f5ad886f22b1079b2cb7682",
+      "png_file": "png/scene-outdoor-03-present-right.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-outdoor-03-present-right-64081bd709.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "c7529997f994c48ce2f0ac9bb5f25b30b767e0cd4b14ff35319ef902df490a3e",
+      "background_sha256": "5700572cfe3fecd4d32480e3354803af5d2b396dd70bbdd14e77d0b90b3dc176",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-outdoor-04-phone-consultation",
+      "title": "야외 차량 안내 · 전화 상담 · 상반신",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "전화 문의, 상담 예약, 연락 방법 안내",
+      "tags": [
+        "야외 차량 안내",
+        "head_to_hip",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-outdoor-04-phone-consultation.png",
+      "png_sha256": "1dc57f36f426b5f33212d126c6868d7bae5f182d0c4c2d1a569d67abc0d40e32",
+      "png_file": "png/scene-outdoor-04-phone-consultation.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-outdoor-04-phone-consultation-1dc57f36f4.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "f75954a93ee999d14a9926827db9bfcf58230f2429161efd39f8b7cdff84b827",
+      "background_sha256": "5700572cfe3fecd4d32480e3354803af5d2b396dd70bbdd14e77d0b90b3dc176",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-outdoor-06-key-guidance",
+      "title": "야외 차량 안내 · 열쇠 안내 · 전신",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "출고 절차, 차량 인도, 키 수령 안내",
+      "tags": [
+        "야외 차량 안내",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-outdoor-06-key-guidance.png",
+      "png_sha256": "9492ec5a655d2ae20379942af1d7ab43693e2516376ea32b09d40529b8f8dfb3",
+      "png_file": "png/scene-outdoor-06-key-guidance.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-outdoor-06-key-guidance-9492ec5a65.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "08776b9f4a172ba5cdce3687928e6e6e5c910f847df7efb22fb223a36061844c",
+      "background_sha256": "5700572cfe3fecd4d32480e3354803af5d2b396dd70bbdd14e77d0b90b3dc176",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-outdoor-07-rear-walking",
+      "title": "야외 차량 안내 · 뒤쪽 사선 · 이동",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "차량 보러 이동, 다음 단계 안내, 방문 동선 설명",
+      "tags": [
+        "야외 차량 안내",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-outdoor-07-rear-walking.png",
+      "png_sha256": "7db631d98e67b3e7777a5f6579f8d5939250395386fb0008384dd3d3d5849be4",
+      "png_file": "png/scene-outdoor-07-rear-walking.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-outdoor-07-rear-walking-7db631d98e.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "ddca36f47eecd0a1a7f509d1ba6afdcfd2ddf9f2931a809d5ad5a168c2f9e22d",
+      "background_sha256": "5700572cfe3fecd4d32480e3354803af5d2b396dd70bbdd14e77d0b90b3dc176",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-outdoor-08-maintenance-checklist",
+      "title": "야외 차량 안내 · 정비복 · 점검표 확인",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "정기 점검, 차량 관리, 점검 항목 안내",
+      "tags": [
+        "야외 차량 안내",
+        "head_to_below_knees",
+        "차콜 정비복"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-outdoor-08-maintenance-checklist.png",
+      "png_sha256": "d7cdc39fe12f4a8512724ea8cc11f868c34e5fdc4d0415528ce10c9fa7d2f2e1",
+      "png_file": "png/scene-outdoor-08-maintenance-checklist.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-outdoor-08-maintenance-checklist-d7cdc39fe1.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "892da6079d9557ae54863731f0488ed1785323baf1fa4dcfec6a991cc450ec95",
+      "background_sha256": "5700572cfe3fecd4d32480e3354803af5d2b396dd70bbdd14e77d0b90b3dc176",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-outdoor-09-gentle-thanks",
+      "title": "야외 차량 안내 · 가벼운 감사 인사 · 전신",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "글 마무리, 감사 인사, 문의 안내 끝맺음",
+      "tags": [
+        "야외 차량 안내",
+        "full_body",
+        "흰 수트"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-outdoor-09-gentle-thanks.png",
+      "png_sha256": "3bb3ec53a4ee834ee79e95baeea6bfc00a3418de55177732989f70c46818a493",
+      "png_file": "png/scene-outdoor-09-gentle-thanks.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-outdoor-09-gentle-thanks-3bb3ec53a4.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "2096c00990703c0b6bad76eb5c12ea1ac28f94be0e77588b5f493bec698f607f",
+      "background_sha256": "5700572cfe3fecd4d32480e3354803af5d2b396dd70bbdd14e77d0b90b3dc176",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-outdoor-11-cardigan-notebook",
+      "title": "야외 차량 안내 · 카디건 출근복 · 노트",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "블로그 포스터 표지·소개·안내",
+      "tags": [
+        "야외 차량 안내",
+        "upper_body",
+        "cardigan-commute"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-outdoor-11-cardigan-notebook.png",
+      "png_sha256": "5f33a594906b6d7939019e8c58815a0ee719a48c305422048e26f59e7e534b83",
+      "png_file": "png/scene-outdoor-11-cardigan-notebook.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-outdoor-11-cardigan-notebook-5f33a59490.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "bd35ea34b8ffc7e35e7fdacf79ae78490f6f9164bc1c54e8a8d2a14d30d59fdb",
+      "background_sha256": "5700572cfe3fecd4d32480e3354803af5d2b396dd70bbdd14e77d0b90b3dc176",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    },
+    {
+      "id": "scene-outdoor-12-secretary-skirt-glasses",
+      "title": "야외 차량 안내 · 비서형 · 동그란 안경 · 스커트·펌프스",
+      "category": "scene",
+      "status": "usage",
+      "production_usable": true,
+      "usage": "차분한 비서형 안내·복장 소개·포스터",
+      "tags": [
+        "야외 차량 안내",
+        "full_body",
+        "charcoal fitted above-knee pencil-skirt suit, black pumps, thin round glasses"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/scene-outdoor-12-secretary-skirt-glasses.png",
+      "png_sha256": "6349d67b61f6c24a151eb7e26b4f67c33127f1d63e890b1e32b2c599a5a1488a",
+      "png_file": "png/scene-outdoor-12-secretary-skirt-glasses.png",
+      "width": 1600,
+      "height": 1000,
+      "thumbnail": "thumbs/scene-outdoor-12-secretary-skirt-glasses-6349d67b61.webp",
+      "character_id": "CLO-02",
+      "character_source_sha256": "df5144f5437f9f2fc335e16f870b7181e3096ed0e750d1ee879bcbe0ae870b91",
+      "background_sha256": "5700572cfe3fecd4d32480e3354803af5d2b396dd70bbdd14e77d0b90b3dc176",
+      "image_kind": "fixed character composited on a fictional generated environment"
+    }
+  ],
+  "backgrounds": [
+    {
+      "id": "showroom",
+      "title": "쇼룸 안내",
+      "png_file": "backgrounds/showroom.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/background-showroom.png",
+      "sha256": "3bcc7bc62ce64c763ed3210909e9d1eab3242457233ede85f7567680dc62a24d"
+    },
+    {
+      "id": "office",
+      "title": "상담실",
+      "png_file": "backgrounds/office.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/background-office.png",
+      "sha256": "984a86dbc2a77f0c9ee1cc5eaee4c2611f48d5d2fd21f0b39368f0813334b590"
+    },
+    {
+      "id": "outdoor",
+      "title": "야외 차량 안내",
+      "png_file": "backgrounds/outdoor.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/background-outdoor.png",
+      "sha256": "5700572cfe3fecd4d32480e3354803af5d2b396dd70bbdd14e77d0b90b3dc176"
+    }
+  ],
+  "design_references": [
+    {
+      "character_id": "COD-01",
+      "file": "references/reference-cod-01.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/reference-cod-01.png",
+      "sha256": "82f6815cd97fb914126890cd8687b3a169a34a2e049ea6e4100c094793d4614c",
+      "usage": "existing profile identity reference; not current production canonical"
+    },
+    {
+      "character_id": "COD-03",
+      "file": "references/reference-cod-03.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/reference-cod-03.png",
+      "sha256": "f3f1b2a52df20166e774844ec24ec71001446c088701a8e8fc3246c54e5d33ca",
+      "usage": "existing profile identity reference; not current production canonical"
+    },
+    {
+      "character_id": "CLO-04",
+      "file": "references/reference-clo-04.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/reference-clo-04.png",
+      "sha256": "5a4537405ad38e7e23abdf3cd849e8299204c90218f1f64db2d788191cdbe616",
+      "usage": "existing profile identity reference; not current production canonical"
+    }
+  ]
+}

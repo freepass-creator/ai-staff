@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_on": "2026-11-12",
+  "updated_on": "2026-11-15",
   "policy": "Visual identity and publication require human review. Static registry; no production publishing.",
   "staff": [
     {
@@ -8,14 +8,14 @@
       "name": "클로이",
       "role": "착한거래 AI 안내 캐릭터",
       "kind": "robot",
-      "status": "identity-review",
-      "status_label": "원본 동일성 검수 필요",
-      "description": "착한거래 블로그·가격 비교 안내·쇼츠에 사용할 로봇 캐릭터. 보라색 승인 정본과 보관된 홈페이지 이미지의 동일성을 최종 검수해야 함.",
-      "avatar": "../studio/assets/clo02-compare-320.webp",
-      "avatar_note": "착한거래 보관 이미지·공식 정본 여부 미확인",
-      "source": "robots/registry.json",
-      "studio": "../studio/studio/",
-      "kit": "../studio/",
+      "status": "canonical-front-ready",
+      "status_label": "착한 클로이 V1 정본 연결",
+      "description": "매끈한 흰 외장·은은한 발광 V1 정본. 기본형은 보라색, 착한거래형은 노란색입니다.",
+      "avatar": "/character-assets/chakhan-white-v1/png?sha=fecf6ba56d9381cbf21b6fe3f9e963224f73013e897141911da6c522b7603f07",
+      "avatar_note": "대표 확정 정면. 손등 LED 없음. 이전 노란 폐기본과 별도.",
+      "source": "robots/current.json",
+      "studio": "/characters/?variant=chakhan-white-v1",
+      "kit": "/characters/",
       "formats": [
         "블로그",
         "홈페이지",
@@ -29,7 +29,26 @@
         "쇼츠 PT"
       ],
       "contentVoice": "쉬운 말로 사실과 견적 조건을 설명하고 계약을 재촉하지 않는다.",
-      "approval": "캐릭터 외형 동일성 검증 전 외부 광고용 확정 이미지로 사용 금지"
+      "approval": "2026-11-15 대표 확정: 기본형·착한거래형 smooth-subtle-0.1. 이전 시안 검색·자동 대체 금지. 새 포즈·3D는 별도 제작 필요.",
+      "owner_brand": "프리패스",
+      "human_form": {
+        "id": "chloe-human",
+        "source": "characters/클로이/character.json",
+        "assets": "characters/클로이/assets.json",
+        "status": "owner-selected-panel-B",
+        "selected_panel": "B",
+        "target_heads": 7,
+        "measurement_certified": false,
+        "reference": "characters/클로이/refs/proportion-options-owner-selected-B.png",
+        "format": "PNG",
+        "svg_rig_implemented": false,
+        "owner_brand": "프리패스",
+        "usage_brand": "착한거래",
+        "svg_library": "characters/클로이/svg-library.json",
+        "static_svg_poses": 9,
+        "viewer": "/human/",
+        "library": "asset-library/chloe-human/library.json"
+      }
     },
     {
       "id": "CLO-04",
@@ -38,7 +57,7 @@
       "kind": "robot",
       "status": "source-needed",
       "status_label": "이미지 정본 필요",
-      "description": "번호와 명칭은 확정, 원본 외형 및 역할은 미확정.",
+      "description": "대표 2026-11-14 정정: 기존 노란 착한거래 이미지 묶음은 CLO-04이나 해당 묶음은 폐기·사용 중단. 다른 올바른 원본 위치 확인 중.",
       "avatar": null,
       "avatar_note": "원본 미등록",
       "source": "robots/registry.json",
@@ -49,7 +68,8 @@
       ],
       "presets": [],
       "contentVoice": "역할·말투 미확정",
-      "approval": "원본 이미지 확정 전 제작·홍보 사용 보류"
+      "approval": "기존 노란 착한거래 이미지 묶음 사용 금지. 대체 원본 확인 전 제작 보류.",
+      "owner_brand": "프리패스"
     },
     {
       "id": "chloun",
@@ -73,7 +93,8 @@
         "차분한 브리핑"
       ],
       "contentVoice": "간결하고 판단 근거를 분명히 전달",
-      "approval": "인물 동일성 검수 후 외부 콘텐츠 제작"
+      "approval": "인물 동일성 검수 후 외부 콘텐츠 제작",
+      "owner_brand": "프리패스"
     },
     {
       "id": "chlodam",
@@ -97,7 +118,8 @@
         "친절한 상담"
       ],
       "contentVoice": "친절하고 부담 없이 필요한 정보를 확인",
-      "approval": "인물 동일성 검수 후 외부 콘텐츠 제작"
+      "approval": "인물 동일성 검수 후 외부 콘텐츠 제작",
+      "owner_brand": "프리패스"
     }
   ]
 }

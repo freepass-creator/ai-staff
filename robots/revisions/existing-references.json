@@ -1,0 +1,29 @@
+{
+  "owner_correction": "2026-11-15: current characters COD-01 and COD-03, not invented CLO-01/CLO-03",
+  "references": [
+    {
+      "character_id": "COD-01",
+      "file": "D:\\large\\ai-staff\\robot-existing-reference-20261115\\FREEPASS-COD-01.png",
+      "sha256": "82f6815cd97fb914126890cd8687b3a169a34a2e049ea6e4100c094793d4614c",
+      "source": "existing FREEPASS robot profile set 2026-10-19",
+      "status": "existing_identity_reference",
+      "scope": "visual reference only; full-body lower structure is not measured"
+    },
+    {
+      "character_id": "COD-03",
+      "file": "D:\\large\\ai-staff\\robot-existing-reference-20261115\\FREEPASS-COD-03.png",
+      "sha256": "f3f1b2a52df20166e774844ec24ec71001446c088701a8e8fc3246c54e5d33ca",
+      "source": "existing FREEPASS robot profile set 2026-10-19",
+      "status": "existing_identity_reference",
+      "scope": "visual reference only; full-body lower structure is not measured"
+    },
+    {
+      "character_id": "CLO-04",
+      "file": "D:\\large\\ai-staff\\robot-existing-reference-20261115\\FREEPASS-CLO-04.png",
+      "sha256": "5a4537405ad38e7e23abdf3cd849e8299204c90218f1f64db2d788191cdbe616",
+      "source": "existing FREEPASS robot profile set 2026-10-19",
+      "status": "existing_identity_reference",
+      "scope": "visual reference only; full-body lower structure is not measured"
+    }
+  ]
+}

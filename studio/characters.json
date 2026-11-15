@@ -1,48 +1,57 @@
 {
   "schema_version": 1,
-  "updated_on": "2026-11-12",
+  "updated_on": "2026-11-15",
   "policy": "Do not infer identity from filename; preserve originals; derivatives require review.",
   "characters": [
     {
       "id": "CLO-02",
       "display_name": "클로이",
-      "identity_reference": "robots/registry.json",
-      "identity_source_status": "verified_reference_not_present_in_repo",
-      "verified_reference_filename": "clo02-true.png",
-      "source_archive": "robots/CLO-02/chakhan-sales",
-      "motion_studio": "studio/studio/index.html",
-      "motion_engine": "studio/chloe-motion.js",
-      "asset_identity_status": "needs_visual_review_against_verified_purple_reference",
+      "identity_reference": "robots/current.json",
+      "identity_source_status": "current_variant_catalog_connected",
+      "motion_studio": "/characters/",
+      "motion_engine": null,
+      "asset_identity_status": "canonical_smooth_subtle_v1_both_variants",
       "image_generation": {
         "human_generator_compatible": false,
-        "robot_identity_preserving_generation": "not_implemented",
+        "robot_identity_preserving_generation": "approved_fixed_front_native_svg",
         "still_frame_export": true
       },
       "actions": {
-        "idle": "supported_2d_front",
-        "greet": "supported_2d_front",
-        "explain": "supported_2d_front",
-        "nod": "supported_2d_front",
-        "walk": "in_place_front_only",
-        "run": "in_place_front_only",
-        "true_3d": "not_implemented",
-        "side_back": "not_verified"
+        "idle": "canonical_front_static",
+        "new_pose": "not_pixel_verified",
+        "true_3d": "not_implemented"
       },
       "production": {
         "stills": [
-          "png"
+          "png",
+          "svg"
         ],
-        "video": [
-          "mp4_if_browser_supported",
-          "webm_fallback"
-        ],
+        "video": [],
         "audio": "not_supported"
       },
       "constraints": [
         "no unverified identity promotion",
         "no automatic replacement of source website",
         "no artificial face reconstruction"
-      ]
+      ],
+      "human_form": {
+        "id": "chloe-human",
+        "source": "characters/클로이/character.json",
+        "assets": "characters/클로이/assets.json",
+        "status": "owner-selected-panel-B",
+        "selected_panel": "B",
+        "target_heads": 7,
+        "measurement_certified": false,
+        "reference": "characters/클로이/refs/proportion-options-owner-selected-B.png",
+        "format": "PNG",
+        "svg_rig_implemented": false,
+        "owner_brand": "프리패스",
+        "usage_brand": "착한거래",
+        "svg_library": "characters/클로이/svg-library.json",
+        "static_svg_poses": 9,
+        "viewer": "/human/",
+        "library": "asset-library/chloe-human/library.json"
+      }
     },
     {
       "id": "CLO-04",

@@ -1,5 +1,33 @@
 # ai-staff — 작업 규칙 (Codex·Claude 공통)
 
+## 최신 클로이 진입점 (대표 정정, 2026-11-15)
+
+- **공개 배포와 R1**: public-release/README.md와 robots/revisions/current.json을 읽는다. CLO-02 정본은 보존. 기존 캐릭터는 COD-01·COD-03·CLO-04이며 기존 프로필을 직접 참조해 같은 정면 자세로 맞춘다. COD-01 파랑 원형눈/양옆핀, COD-03 청록 네모눈/중앙능선은 보존. 잘못 만든 CLO-01/CLO-03 새 캐릭터 시안은 철회한다.02/04는가까운컨셉,04어깨는좁고절제한다.플레이트외형과분할/겹침은각기다르게.배경은따로생성하고고정캐릭터를합성한다.
+
+- **다른 PC·AI 공유**: `sharing/README.md` → `/share/`·`/share/share.json`. PC별 고정 파일 `D:/dev-artifacts/ai-staff/shared/current.json`에서 커밋/패키지/설치 경로를 읽는다. 코드만 clone해서 자산이 준비됐다고 하지 않는다. 후속 대표 직접 지시로 공개 push/릴리스·웹 배포가 승인됐다. 공개는 public-release의 선별 카탈로그·현재 PNG/키트만 사용하고 내부복원 source.bundle/PC인수 원문/과거 자산은 올리지 않는다. 과거 파일은 이력으로 보존하되 반려 01·구 /motion/·레거시 자산은 현재 선택/서빙/공유에서 제외한다.
+
+- **블로그 포스터 템플릿**: `asset-library/blog-templates/library.json` → `/templates/` → `STYLE-GUIDE.html`·`README.md`·`content.schema.json`. 전단지/포스터형 6레이아웃·6배경·11시안. P2 CI·SUITE Heavy 제목·Noto Sans KR 본문 고정, 배경/복장/상반신·사선 포즈는 순환한다. 가장 중요한 기준은 반복 출력 시 같은 캐릭터 유지: 등록된 PNG·폰트·CI와 B안 참조 SHA를 검증하고 출력에서 얼굴/몸을 재생성하지 않는다. 새 포즈/복장은 대조 후 고정 등록하며 SVG는 필수 형식이 아니다. 비서형 최신은 무릎 위 차콜 펜슬스커트·검정 펌프스·동그란 안경이다.
+
+- **사람형 클로이**: `characters/클로이/character.json` → `assets.json` → 선택 시트 가운데 **B안(목표 7등신)**을 읽는다. PC1 인계 수령본이며 A/C·거절된 v1 얼굴·키다리 비교 v3는 선택하지 않는다. 소속 프리패스/활용 착한거래. 생성 눈금은 실측이 아니며 사람형 정적 SVG 9종은 `characters/클로이/svg-library.json`에서 조회한다. 고정 시점 픽셀 경로이며 의미별 벡터·리그는 미구현이다. 실제 PC0 경로는 해당 README의 매핑을 따른다. 로봇 정본·클로운·클로담은 별도 유지한다.
+- **사람형 이미지 활용**: `asset-library/chloe-human/library.json` → `/human/` → `AI-WRITER-USAGE.md`를 읽는다. 기존 세 컷 포함 9컷 사용 가능. 행동·사용 문단·배치·각도·촬영 범위로 고르고 규칙 검색 `/api/characters/human/select?q=문단설명`의 약한 일치/일치 없음/실제 증빙 필요를 구분한다. PC1은 `D:/dev/ai-staff/asset-library/chloe-human/library.json`의 그 PC에 맞춘 패키지 경로로 읽는다. 블로그·웹에는 투명 PNG를 쓰고 큰 정적 경로 SVG는 보관·합성용으로 구분한다.
+
+- **SVG 납품·제스처**: `robots/svg-release.json`을 진입점으로 삼고 `robots/SVG-RELEASE.md`를 읽는다. 승인 정면 두 종과 PNG 없는 관절 경로 SVG, 질감을 내장한 가벼운 웹 모션 SVG를 구분한다. `/gestures/`에서 6개 프리셋을 선택해 저장한다. 작은 정면 2D 동작 범위이며 3D 리그나 완전한 손 쥐기를 뜻하지 않는다.
+
+- **블로그 이미지 재사용**: `asset-library/chloe-blog/library.json` → 최신 라이브러리 `manifest.json`을 읽고 상황 태그로 고른다. 보기 `/library/`. `poses`는 정본을 참조한 활용 포즈이며 정본을 대체하지 않는다. 다른 AI 제작은 패키지의 `AI-START-HERE.md`, `identity-lock.json`, `prompts.json`과 실제 정본 참조 PNG를 함께 사용한다. 과거 아카이브를 다시 검색하지 않는다.
+
+- **구도 다양성(대표 정정)**: 전신 정면만 반복하지 않는다. `camera_angle`과 `framing`으로 측면·후면·뒤쪽 사선·어깨 너머, 상반신·앉기·걷기·악수 등을 고른다. 정본 정면 사진은 디자인 참조이며 카메라 고정 지시가 아니다. 새 구도 8종은 `series:natural-angles`로 조회한다. 뒤쪽의 추정 구조를 정본·3D 설계도로 승격하지 않는다.
+
+- **글 상황에 맞는 이미지 선택(대표 추가 정정)**: 특정 각도만 늘리지 말고 행동·대상·시선·표정·촬영 범위를 섞는다. `usage-index.json` 또는 `AI-WRITER-USAGE.md`의 실제 장면·사용 문단·환경·배치 설명을 읽고 기존 PNG를 먼저 재사용한다. 차량·고객·자료·설명란을 가리키는 대상을 구분한다. `/api/characters/library/select?q=문단설명`은 규칙 기반 후보 검색이다. 약한 일치·맞는 그림 없음·실제 증빙 필요를 구분하고 그림을 억지 배정하지 않는다. 지속 제작 기준과 대기 장면은 `production-plan.json`에 기록한다. 자동 생성·예약·게시는 별도 설치하지 않는다.
+
+- 모든 직원 캐릭터의 소속 브랜드는 **프리패스**이며 기본 이마 명찰도 프리패스다. 캐릭터 이름과 구분한다. 기본 보라 정본의 얼굴은 검은 유리 디스플레이 안에서 표정이 발광하는 방식이다.
+
+- **착한 클로이**를 요청하면 먼저 `robots/current.json`의 `chakhan-white-v1`을 조회한다. 흰색 V1 정면 정본이며 손등 LED는 없다.
+- **기본 클로이 / 보라색 클로이**는 `basic-purple-v1`을 조회한다. 매끈한 표면·은은한 발광 V1 정본이며 `production_usable:true`다. 착한거래형도 같은 최신 재질 정본으로 확정했다.
+- `클로이` 또는 `CLO-02`만으로 변형을 임의 선택하지 않는다. 이름·번호·PC 역할은 별도다.
+- 이전 `clo02-true.png`, source-needed 상태, 2d-master-kit-v1, 모션 키트 자산을 최신 정본으로 추적하거나 fallback하지 않는다. 파일은 이력으로 보존하되 검색·선택·서빙에서 제외한다. 최신 정본은 smooth-subtle-0.1 하나이며 robots/current.json만 조회한다.
+- 확인: `node robots/current.mjs resolve 착한클로이 --production`. 보기: `http://127.0.0.1:54640/characters/`. API는 별칭과 승인 상태·해시를 함께 반환한다.
+
+
 목적: AI 직원 캐릭터의 번호·이름·이미지 기준을 일관되게 관리한다.
 
 ## 로봇 최신 정본 (대표 확정, 2026-11-11)

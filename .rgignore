@@ -1,0 +1,5 @@
+# Preserve retired character history, exclude it from ordinary search.
+robots/CLO-02/
+studio/assets/
+studio/studio/assets/
+characters/클로이/refs/human-age20-candidate-v3.png
