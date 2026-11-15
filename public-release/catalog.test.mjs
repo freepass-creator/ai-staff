@@ -23,3 +23,8 @@ test('public URLs, checksums, tiny previews, and metadata remain safe to publish
  for(const a of catalog.assets){assert.match(a.png_sha256,/^[a-f0-9]{64}$/);assert.ok(a.png_url.startsWith('https://github.com/freepass-creator/ai-staff/releases/download/'));assert.ok(a.thumbnail.startsWith('thumbs/'));assert.ok(!a.thumbnail.includes('..'));const s=await stat(new URL(a.thumbnail,site));assert.ok(s.size<150000,a.id);}
  assert.equal(catalog.backgrounds.length,3);
 });
+
+test('profile selection admits exactly the selected02 and forbids all fallback',async()=>{
+ const p=JSON.parse(await readFile(new URL('../asset-library/kakao-profiles/library.json',import.meta.url),'utf8'));
+ assert.equal(p.profiles.length,1);assert.equal(p.profiles[0].number,'02');assert.equal(p.profiles[0].sha256,'49b6f9ae899afc64271aac75e0705b192316053d32ff85c6c316f20d02774352');assert.equal(p.selection_policy.fallback_allowed,false);assert.equal(p.selection_policy.search_generated_or_archive_images,false);
+});

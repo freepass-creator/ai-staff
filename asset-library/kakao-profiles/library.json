@@ -1,0 +1,25 @@
+{
+  "schema": "ai-staff/profile-allowlist/v1",
+  "scope": "KakaoTalk and avatar profile images only",
+  "owner_instruction": "선택한 02 한 장만 사용. 나머지 프로필 사진 전부 폐기.",
+  "selection_policy": {
+    "allowlist_only": true,
+    "fallback_allowed": false,
+    "search_generated_or_archive_images": false,
+    "reuse_original_png_without_redrawing": true,
+    "unlisted_profile_status": "owner_rejected_do_not_use",
+    "character_design_references_are_not_profile_fallbacks": true
+  },
+  "profiles": [
+    {
+      "number": "02",
+      "display_code": "CLO-02",
+      "status": "owner_selected",
+      "production_usable": true,
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/CLO-02-kakao-profile-selected.png",
+      "sha256": "49b6f9ae899afc64271aac75e0705b192316053d32ff85c6c316f20d02774352",
+      "width": 1254,
+      "height": 1254
+    }
+  ]
+}
