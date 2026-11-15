@@ -123,7 +123,7 @@
       "character_number": "02",
       "file": "cutouts/Chakhan-CLO-02-cover-confident.png",
       "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-cover-confident.png",
-      "sha256": "fb9747188cb85cd4599ff8cf1cb5db856e9235b78e7985bd5718190bf9f79f74",
+      "sha256": "9e1d5d9cb02874c2038eedabeafdee304491487f86c49490fe171b25492fedfc",
       "width": 1254,
       "height": 1254,
       "transparent_background": true,
@@ -153,7 +153,7 @@
       "usage": "조건을 이해한 뒤 정리·확신을 전달하는 표지. 팔짱을 낀 안정적인 자세를 크게 쓰고 체크리스트형 제목이나 짧은 결론을 배치한다.",
       "cover_placement": "왼쪽 캐릭터·상단 제목·오른쪽 보조 문구",
       "hand_review": "両手: four long fingers plus one separate opposing thumb; upper hand rebuilt with distinct dorsal plate and chest-facing thumb; user correction supersedes earlier count review.",
-      "thumbnail": "chakhan/thumbs/cover-confident-fb9747188c.webp"
+      "thumbnail": "chakhan/thumbs/cover-confident-9e1d5d9cb0.webp"
     },
     {
       "id": "phone",
@@ -377,8 +377,8 @@
       "width": 1200,
       "height": 1200,
       "file": "Chakhan-Cover-Example-Confident.png",
-      "sha256": "093a57cecf8367a4125103816d82fe383104b9a12953e8bc64519e26acb048df",
-      "character_source_sha256": "fb9747188cb85cd4599ff8cf1cb5db856e9235b78e7985bd5718190bf9f79f74",
+      "sha256": "f8f8691082fdabfdfda2f8a50498ed69f8830c17457c2437fdd88fab8dd77e67",
+      "character_source_sha256": "9e1d5d9cb02874c2038eedabeafdee304491487f86c49490fe171b25492fedfc",
       "headline": "조건을 알고\n선택하면 든든!",
       "qa": {
         "issues": [],
@@ -396,7 +396,7 @@
         "선택하면 든든!"
       ],
       "purpose": "문구·배치 예시. 원고 내용에 맞춰 cover-jobs.json을 수정하고 고정 PNG로 재조판한다.",
-      "thumbnail": "chakhan/thumbs/chakhan-cover-example-confident-093a57cecf.webp"
+      "thumbnail": "chakhan/thumbs/chakhan-cover-example-confident-f8f8691082.webp"
     }
   ],
   "hand_grip_policy": "hand-grip-policy.json",
@@ -418,8 +418,8 @@
   "downloads": {
     "zip": {
       "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-Cover-Kit-v2.zip",
-      "sha256": "6445d85889591f155cd15399337bcb6480f92616f5922129f7965cf253c9b4fe",
-      "bytes": 13634877
+      "sha256": "fdac002e9c277a225fb9be6e4eb983601b3447cac2d9d7c90bf42fa224d5d167",
+      "bytes": 13610244
     },
     "previous_batch": {
       "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-Use-Cuts-Batch01.zip",
