@@ -1,0 +1,15 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "characters/클로이/refs/proportion-options-owner-selected-B.png",
+  "selected_panel": "B",
+  "prompts": [
+    {
+      "id": "10-navy-present",
+      "prompt": "ONE transparent-background cutout of the SAME human Chloe as selected CENTER B ONLY in reference sheet. Preserve adult20 Korean woman's recognizable short rounded oval face, soft cheeks/jaw, natural brown eyes, dark brown bob/bangs, yellow geometric hairclip and tiny white/yellow earpiece. SAME semi-realistic dimensional editorial illustration style, natural skin and material details. NEW OUTFIT: tailored dark NAVY pantsuit jacket over an ivory blouse, tiny white-black-yellow geometric lapel pin, restrained yellow pocket detail, professional yet warm. HEADER PORTRAIT pose: waist-up three-quarter view facing and looking gently toward viewer LEFT, one hand open and naturally presenting toward empty area on left, the other relaxed near waist. Friendly knowledgeable closed-mouth smile, naturally substantial fingers, exactly four long fingers and a thumb with natural occlusion. Head, hair, elbow and all hands fully within generous margins, intentional waist crop only. SINGLE FIGURE on real transparent alpha, opaque figure, no backdrop gradients/halos/shadows/floor, no text, logos beyond abstract badge, rulers or comparison panels. For a poster layout where text is on the LEFT and character on the RIGHT. No doll/anime face, no photo of real person, do not redesign face."
+    },
+    {
+      "id": "11-cardigan-notebook",
+      "prompt": "Create ONE standalone transparent-background human Chloe portrait, preserving the SAME fictional adult20 Korean woman as selected CENTER B ONLY in reference: short rounded oval face, soft cheeks/jaw, natural brown eyes, dark brown bob and bangs, yellow geometric hair clip, tiny white/yellow earpiece. Same semi-realistic dimensional editorial illustration, natural skin and cloth, not an anime or actual-person photograph. NEW COMMUTE OUTFIT: soft IVORY CARDIGAN over a LIGHT BLUE shirt, charcoal trousers partially visible, small white-black-yellow pin on cardigan. Pose different from white-suit and navy presentation: waist-to-upper-thigh crop, body turned slightly toward viewer LEFT, looking warmly toward viewer with a relaxed friendly smile; holding a small closed plain sage notebook comfortably against waist with one hand, other hand rests naturally across forearm/notebook, coherent wrists and exactly five natural fingers per hand with normal occlusion. No presentation open palm and no phone. Entire head/hair/arms/hands/notebook inside generous margins, intentional upper-thigh crop only. Genuine transparent alpha, opaque body, no background/shadow/haze/gradient, no readable text/labels/logos/rulers/comparison panels. Keep recognizable face and natural body proportions; suitable for inviting editorial blog poster, not glamorous fashion."
+    }
+  ]
+}

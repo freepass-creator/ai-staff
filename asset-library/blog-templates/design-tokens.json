@@ -1,0 +1,191 @@
+{
+  "schema": "ai-staff/blog-poster-design/v1",
+  "style": "editorial flyer and poster",
+  "colors": {
+    "ink": "#0B0B0C",
+    "marker": "#F6FD00"
+  },
+  "themes": {
+    "paper": {
+      "name": "크림",
+      "bg": "#F7F6F1",
+      "panel": "#EBEDE2"
+    },
+    "peach": {
+      "name": "살구",
+      "bg": "#FBE7D8",
+      "panel": "#F2D4BE"
+    },
+    "sky": {
+      "name": "하늘",
+      "bg": "#E9F0F8",
+      "panel": "#D7E3F0"
+    },
+    "sage": {
+      "name": "세이지",
+      "bg": "#E5EDE6",
+      "panel": "#CDDCD0"
+    },
+    "lilac": {
+      "name": "라일락",
+      "bg": "#F0EAF8",
+      "panel": "#E0D7EE"
+    },
+    "ink": {
+      "name": "짙은 바탕",
+      "bg": "#18201E",
+      "panel": "#29332B"
+    }
+  },
+  "fonts": {
+    "title": {
+      "family": "SUITE",
+      "weight": 900,
+      "size_px": [
+        64,
+        76
+      ],
+      "line_height": 1.18
+    },
+    "body": {
+      "family": "Noto Sans KR",
+      "weights": [
+        400,
+        700
+      ],
+      "size_px": [
+        27,
+        40
+      ],
+      "line_height": [
+        1.5,
+        1.55
+      ]
+    },
+    "note": {
+      "size_px": 25
+    }
+  },
+  "safe_margin_px": 64,
+  "ci": {
+    "source": "assets/brand/ci-P2.svg",
+    "box": [
+      64,
+      44,
+      202,
+      66
+    ],
+    "preserve_aspect": true,
+    "no_recolor": true
+  },
+  "title_limits": {
+    "characters_excluding_linebreaks": 34,
+    "max_lines": 2,
+    "no_auto_shrink": true
+  },
+  "layouts": {
+    "cover": {
+      "name": "표지 · 캐릭터 중심",
+      "width": 1200,
+      "height": 675,
+      "titleSize": 76,
+      "titleWidth": 660,
+      "titleTop": 162,
+      "characterBox": [
+        760,
+        138,
+        376,
+        473
+      ],
+      "defaultTheme": "peach",
+      "role": "글의 도입과 대표 이미지",
+      "itemCount": 0
+    },
+    "comparison": {
+      "name": "두 견적 비교표",
+      "width": 1080,
+      "height": 1080,
+      "titleSize": 66,
+      "titleWidth": 730,
+      "titleTop": 150,
+      "characterBox": [
+        846,
+        142,
+        170,
+        180
+      ],
+      "defaultTheme": "sky",
+      "role": "같은 기준으로 두 대상을 비교",
+      "rows": 4,
+      "itemCount": 0
+    },
+    "checklist": {
+      "name": "네 가지 체크리스트",
+      "width": 1080,
+      "height": 1350,
+      "titleSize": 70,
+      "titleWidth": 940,
+      "titleTop": 158,
+      "characterBox": [
+        794,
+        1054,
+        222,
+        232
+      ],
+      "defaultTheme": "paper",
+      "role": "준비 사항·계약 전 확인 목록",
+      "itemCount": 4
+    },
+    "process": {
+      "name": "네 단계 흐름",
+      "width": 1200,
+      "height": 900,
+      "titleSize": 66,
+      "titleWidth": 1060,
+      "titleTop": 156,
+      "characterBox": [
+        940,
+        354,
+        196,
+        412
+      ],
+      "defaultTheme": "sage",
+      "role": "문의·확인·안내 등 순서 설명",
+      "itemCount": 4
+    },
+    "caution": {
+      "name": "조건·주의사항 강조",
+      "width": 1080,
+      "height": 1080,
+      "titleSize": 70,
+      "titleWidth": 940,
+      "titleTop": 158,
+      "characterBox": [
+        834,
+        850,
+        182,
+        166
+      ],
+      "defaultTheme": "ink",
+      "role": "놓치기 쉬운 조건과 재확인 사항",
+      "itemCount": 3
+    },
+    "faq": {
+      "name": "세 가지 FAQ",
+      "width": 1080,
+      "height": 1350,
+      "titleSize": 70,
+      "titleWidth": 940,
+      "titleTop": 158,
+      "characterBox": [
+        64,
+        1080,
+        208,
+        172
+      ],
+      "defaultTheme": "lilac",
+      "role": "본문의 자주 묻는 질문",
+      "itemCount": 3
+    }
+  }
+}

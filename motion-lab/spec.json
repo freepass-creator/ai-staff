@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "character_id": "CLO-02",
+  "status": "prototype_not_canonical",
+  "production_usable": false,
+  "source_kind": "current_library_derivative",
+  "source_asset_id": "01-welcome",
+  "source_url": "/library/poses/01-welcome-structured-palm.png",
+  "source_file": "D:\\large\\ai-staff\\클로이\\blog-library-v1-contexts-20261115\\poses\\01-welcome-structured-palm.png",
+  "source_sha256": "f3030ca788af248e51dc79257ec0e4727e34a24b92f28289727c76a71911dc20",
+  "canonical_variant": "chakhan-white-v1",
+  "canonical_png_sha256": "fecf6ba56d9381cbf21b6fe3f9e963224f73013e897141911da6c522b7603f07",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "loop_seconds": 6,
+  "fps": 24,
+  "eyes": {
+    "center_y": 370.5,
+    "centers_x": [
+      430,
+      594
+    ],
+    "inner_half_height": 40,
+    "outer_half_height": 46,
+    "outer_half_width": 54,
+    "minimum_scale": 0.035,
+    "protected_frame_brows_mouth": true,
+    "method": "compressed_emission_with_neighbor_row_glass_approximation",
+    "glass_sample_row": 324,
+    "reflection_exact": false
+  },
+  "eye_allowed_boxes_px": [
+    [
+      376,
+      320,
+      484,
+      421
+    ],
+    [
+      540,
+      320,
+      648,
+      421
+    ]
+  ],
+  "sway": {
+    "anchor": [
+      512,
+      1460
+    ],
+    "max_radians": 0.0055,
+    "max_translation": [
+      1.8,
+      0.6
+    ]
+  },
+  "capabilities": {
+    "body_micro_sway_2d": "prototype",
+    "eye_blink_2d": "technical_trial_requires_screen_layers",
+    "independent_arm_wrist": "not_ready",
+    "finger_joint_articulation": "not_ready",
+    "3d_mesh_rig": "not_available"
+  },
+  "preview_file": "D:\\large\\ai-staff\\클로이\\motion-check-v1-20261115\\chloe-sway-structured-palm-6s.mp4",
+  "code_sha256": {
+    "motion.js": "7dd8f2dfe9674c7ac58c278ef35c5b81adcc163fbaed8862c2069aa83d5bc56e",
+    "app.js": "505b9fe077008195b7030b9cfec6fa9161eefa87c94ac8c4a562de4c4347fe44",
+    "index.html": "238c75dc327ec1f62addc2c6306ae98d46a5fad17a7175b2eb269c583bd721d8"
+  },
+  "preview_sha256": "c60105691abbc60c1d6e044984dea9693c8405c10dd718dad94df7b8fd0f9822",
+  "preview_includes_blink": false
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "character_id": "CLO-02",
+  "status": "ready_limited_2d",
+  "asset_revision": "1.1",
+  "owner_direction": "손 디테일 적당히 마무리하고 캐릭터 SVG 제작",
+  "canonical_catalog": "robots/current.json",
+  "spec": "motion-lab/gestures/spec.json",
+  "viewer_url": "http://127.0.0.1:54640/gestures/",
+  "bundle": {
+    "file": "D:\\dev-artifacts\\ai-staff\\chloe-svg-release-v1-1-20261115\\Chloe-SVG-V1.1-Kit.zip",
+    "sha256": "1fd68863b128eab29185c4d9391e65b14d685a5573718ba407cf42e7edc8596b",
+    "url": "/gestures/download.zip"
+  },
+  "assets": {
+    "svg_file": "D:\\large\\ai-staff\\클로이\\svg-release-v1-1-20261115\\chloe-jointed.svg",
+    "svg_sha256": "9451242d8632b68bb79ee7019ebb0e31c4253010b6f206241e2ca47b2037d567",
+    "path_master_file": "D:\\large\\ai-staff\\클로이\\svg-release-v1-1-20261115\\chloe-jointed-paths.svg",
+    "path_master_sha256": "04e86b327deb6fbc275423c6392fb45300be2c015a8c2518cb39279680abb8ec",
+    "fast_svg_file": "D:\\large\\ai-staff\\클로이\\svg-release-v1-1-20261115\\chloe-web-jointed.svg",
+    "fast_svg_sha256": "041139cc823f69e75e3b71588f13adf4b5b72b912919fb95288542dbf8ae76b0",
+    "path_animated_file": "D:\\large\\ai-staff\\클로이\\svg-release-v1-1-20261115\\chloe-greeting-path-motion.svg",
+    "path_animated_sha256": "d1d40aef38475811145140a2019bf5451e668e1a0026c8b874d3267049b84401",
+    "animated_svg_file": "D:\\large\\ai-staff\\클로이\\svg-release-v1-1-20261115\\chloe-greeting-animated.svg",
+    "animated_svg_sha256": "913693de3df92315fd46d7169321e1e6da2493a7b674aaf13975389251ea2ee7",
+    "preview_file": "D:\\large\\ai-staff\\클로이\\svg-release-v1-1-20261115\\chloe-greeting-6s.mp4",
+    "preview_sha256": "95db1f963e6f43dc00560b546acb301f17162be2f22a9d0a589edd745cb28862"
+  },
+  "guide": "robots/SVG-RELEASE.md",
+  "validation": "D:\\dev-artifacts\\ai-staff\\chloe-svg-release-v1-1-20261115\\validation.json"
+}

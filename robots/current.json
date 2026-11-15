@@ -1,0 +1,150 @@
+{
+  "schema_version": "1.0",
+  "updated_on": "2026-11-15",
+  "authority": "2026-11-15 owner approved smooth-subtle-0.1 for basic and Chakhan Chloe. Earlier artwork is archive-only and excluded from current lookup.",
+  "variants": {
+    "chakhan-white-v1": {
+      "character_id": "CLO-02",
+      "design_family": "chloe-white-metal-v1",
+      "variant": "chakhan",
+      "display_name": "착한 클로이",
+      "lookup_alias": "착한클로이",
+      "design_version": "1.0",
+      "status": "canonical",
+      "production_usable": true,
+      "owner_brand": "프리패스",
+      "appearance_revision": "smooth-subtle-0.1",
+      "nameplate_text": "착한거래",
+      "nameplate_surface": "black glass mini monitor with fine emitted dots inside text",
+      "description": "착한거래형 · 매끈한 흰 도장 · 은은한 발광 · 대표 확정",
+      "assets": {
+        "png": {
+          "file": "D:\\large\\ai-staff\\클로이\\canonical-smooth-v1-20261115\\CLO-02-chakhan-front-v1.png",
+          "sha256": "fecf6ba56d9381cbf21b6fe3f9e963224f73013e897141911da6c522b7603f07"
+        },
+        "svg": {
+          "file": "D:\\large\\ai-staff\\클로이\\svg-source-matched-v1-20261115\\chakhan-white-v1-source-matched.svg",
+          "sha256": "8549ed3580643ba7714b0dd5b81642abc06ba7d1b022a0e1807defcaea79e8d6"
+        },
+        "manifest": {
+          "file": "D:\\large\\ai-staff\\클로이\\svg-source-matched-v1-20261115\\chakhan-white-v1-master.json",
+          "sha256": "25981a097b2bff2c03ee0f6b7548d092f6b05ee486d5de2bfed2c1f501cfeab9"
+        }
+      },
+      "owner_approved_on": "2026-11-15",
+      "owner_quote": "이제 이 AI를 정본으로 하고 다른 거 검색 아예 안 되게 해.",
+      "canonical_note": "代表 확정 V1 정면. 원본 대조 SVG: 1024×1536 RGBA 차이 0. 고정 픽셀 경로이며 관절 리그가 아닙니다. 손 LED 없음.",
+      "svg_representation": {
+        "type": "native-resolution pixel-grid paths",
+        "rgba_error": 0,
+        "semantic_parts": false,
+        "rig": false,
+        "verification": "D:\\dev-artifacts\\ai-staff\\chloe-svg-source-check-20261115\\validation.json"
+      }
+    },
+    "basic-purple-v1": {
+      "character_id": "CLO-02",
+      "design_family": "chloe-white-metal-v1",
+      "variant": "basic",
+      "display_name": "기본 클로이",
+      "lookup_alias": "기본클로이",
+      "design_version": "1.0",
+      "status": "canonical",
+      "production_usable": true,
+      "description": "프리패스 기본형 · 매끈한 흰 도장 · 은은한 발광 · 대표 확정",
+      "assets": {
+        "png": {
+          "file": "D:\\large\\ai-staff\\클로이\\canonical-smooth-v1-20261115\\CLO-02-freepass-front-v1.png",
+          "sha256": "dd9261752fdcdb5b71b8161d66f94ccbaff9517fc8f617fa15da0f8c0434da35"
+        },
+        "svg": {
+          "file": "D:\\large\\ai-staff\\클로이\\svg-source-matched-v1-20261115\\basic-purple-v1-source-matched.svg",
+          "sha256": "a2d3667f965e691561061c7df4be9dea579b7709a55693a47a20ecb3dbf607e8"
+        },
+        "manifest": {
+          "file": "D:\\large\\ai-staff\\클로이\\svg-source-matched-v1-20261115\\basic-purple-v1-master.json",
+          "sha256": "ea256c71ef4c905ad24aa569639d2d6698e351f926486f1dbf1528cba37ffd49"
+        }
+      },
+      "owner_brand": "프리패스",
+      "face_rendering": "emissive digital expression behind black cover glass",
+      "nameplate_text": "프리패스",
+      "appearance_revision": "smooth-subtle-0.1",
+      "nameplate_surface": "black glass mini monitor with fine emitted dots inside text",
+      "owner_approved_on": "2026-11-15",
+      "owner_quote": "이제 이 AI를 정본으로 하고 다른 거 검색 아예 안 되게 해.",
+      "canonical_note": "代表 확정 V1 정면. 원본 대조 SVG: 1024×1536 RGBA 차이 0. 고정 픽셀 경로이며 관절 리그가 아닙니다. 손 LED 없음.",
+      "svg_representation": {
+        "type": "native-resolution pixel-grid paths",
+        "rgba_error": 0,
+        "semantic_parts": false,
+        "rig": false,
+        "verification": "D:\\dev-artifacts\\ai-staff\\chloe-svg-source-check-20261115\\validation.json"
+      }
+    }
+  },
+  "aliases": {
+    "착한클로이": "chakhan-white-v1",
+    "착한거래클로이": "chakhan-white-v1",
+    "착한거래ai로봇": "chakhan-white-v1",
+    "chakhanwhitev1": "chakhan-white-v1",
+    "chakhanchloe": "chakhan-white-v1",
+    "clo02:chakhan": "chakhan-white-v1",
+    "기본클로이": "basic-purple-v1",
+    "보라클로이": "basic-purple-v1",
+    "보라색클로이": "basic-purple-v1",
+    "basicchloe": "basic-purple-v1",
+    "basicpurplev1": "basic-purple-v1",
+    "clo02:basic": "basic-purple-v1",
+    "aistaff착한클로이": "chakhan-white-v1",
+    "ai스태프착한클로이": "chakhan-white-v1",
+    "aistaff기본클로이": "basic-purple-v1",
+    "ai스태프기본클로이": "basic-purple-v1"
+  },
+  "ambiguous_aliases": [
+    "클로이",
+    "clo02",
+    "chloe"
+  ],
+  "legacy_policy": "Never fallback to earlier source-needed files or old motion assets. History is preserved, not current.",
+  "local_viewer": "http://127.0.0.1:54640/characters/",
+  "cli": "node robots/current.mjs resolve 착한클로이 --production",
+  "owner_brand": "프리패스",
+  "default_nameplate": "프리패스",
+  "mini_monitor_policy": {
+    "surface": "black cover glass, subtly emitted white brand text",
+    "default_brand": "프리패스",
+    "brand_variant_text": "착한거래",
+    "no_dot_matrix": false,
+    "no_scanlines": true,
+    "review_view": "/characters/?review=materials",
+    "letter_dot_policy": "fine emitted dots inside glyphs only, not coarse billboard grid",
+    "dot_pitch_px": 1.05,
+    "dot_diameter_px": 0.9
+  },
+  "material_policy": {
+    "hand_materials": {
+      "palm": "deep graphite gray, no LED",
+      "hand_back": "white clearcoat painted armor, no LED",
+      "finger_outer_shells": "white painted armor",
+      "joint_gaps": "dark graphite gray",
+      "owner_correction": "손바닥이 원래는 진한 회색같은거엿는데"
+    },
+    "paint": "white painted metal with clearcoat reflections, not matte",
+    "lights": "emissive lens with hot core, color edges and restrained spill",
+    "scope": "2D appearance study preserving source geometry; no measured PBR reconstruction",
+    "owner_review_required": false,
+    "added_reflection_gain": 0.45,
+    "mask_feather_px": 1.5,
+    "emission_style": "subtle light blended into existing lens",
+    "no_whole_image_blur": true,
+    "revision": "smooth-subtle-0.1"
+  },
+  "search_policy": {
+    "canonical_only": true,
+    "legacy_asset_access": "410",
+    "no_legacy_fallback": true,
+    "archive_excluded": true,
+    "generic_name_requires_brand_variant": true
+  }
+}

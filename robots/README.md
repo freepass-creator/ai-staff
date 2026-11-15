@@ -1,5 +1,16 @@
 # 로봇 캐릭터 기준과 기존 이미지 정리
 
+## 최신 클로이 진입점 (대표 정정, 2026-11-15)
+
+- 모든 직원 캐릭터의 소속 브랜드는 **프리패스**이며 기본 이마 명찰도 프리패스다. 캐릭터 이름과 구분한다. 기본 보라 정본의 얼굴은 검은 유리 디스플레이 안에서 표정이 발광하는 방식이다.
+
+- **착한 클로이**를 요청하면 먼저 `robots/current.json`의 `chakhan-white-v1`을 조회한다. 흰색 V1 정면 정본이며 손등 LED는 없다.
+- **기본 클로이 / 보라색 클로이**는 `basic-purple-v1`을 조회한다. 매끈한 표면·은은한 발광 V1 정본이며 `production_usable:true`다. 착한거래형도 같은 최신 재질 정본으로 확정했다.
+- `클로이` 또는 `CLO-02`만으로 변형을 임의 선택하지 않는다. 이름·번호·PC 역할은 별도다.
+- 이전 `clo02-true.png`, source-needed 상태, 2d-master-kit-v1, 모션 키트 자산을 최신 정본으로 추적하거나 fallback하지 않는다. 파일은 이력으로 보존하되 검색·선택·서빙에서 제외한다. 최신 정본은 smooth-subtle-0.1 하나이며 robots/current.json만 조회한다.
+- 확인: `node robots/current.mjs resolve 착한클로이 --production`. 보기: `http://127.0.0.1:54640/characters/`. API는 별칭과 승인 상태·해시를 함께 반환한다.
+
+
 ## 이름·번호
 
 대표의 2026-11-11 확정이 이전 이름표보다 우선한다. 정본은 [registry.json](registry.json)이다.

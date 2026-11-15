@@ -1,0 +1,73 @@
+{
+  "schema": "ai-staff/human-production-plan/v1",
+  "mode": "manual bounded production, no scheduler",
+  "current_batch": {
+    "target_total": 9,
+    "first_3": "usable-and-copied-to-PC1",
+    "additional": [
+      "전화 상담",
+      "앉아서 계약서 확인",
+      "열쇠 안내",
+      "뒤쪽 사선 이동",
+      "정비 점검",
+      "감사 인사"
+    ],
+    "status": "complete-9-usable",
+    "completed_ids": [
+      "01-front-welcome",
+      "02-tablet-consultation",
+      "03-present-right",
+      "04-phone-consultation",
+      "05-seated-contract",
+      "06-key-guidance",
+      "07-rear-walking",
+      "08-maintenance-checklist",
+      "09-gentle-thanks"
+    ]
+  },
+  "next_candidates": [
+    {
+      "scene": "악수",
+      "status": "planned-not-generated"
+    },
+    {
+      "scene": "차량 실내 설명",
+      "status": "planned-not-generated"
+    },
+    {
+      "scene": "트렁크 적재",
+      "status": "planned-not-generated"
+    },
+    {
+      "scene": "두 견적 비교",
+      "status": "planned-not-generated"
+    },
+    {
+      "scene": "계약 주의사항",
+      "status": "planned-not-generated"
+    },
+    {
+      "scene": "정비 예약",
+      "status": "planned-not-generated"
+    },
+    {
+      "scene": "반납 점검",
+      "status": "planned-not-generated"
+    },
+    {
+      "scene": "고객 이야기 경청",
+      "status": "planned-not-generated"
+    },
+    {
+      "scene": "주말 드라이브 복장",
+      "status": "planned-not-generated"
+    }
+  ],
+  "quality_gates": [
+    "B안 얼굴과 액세서리 대조",
+    "손/발/자연스러운 관절",
+    "실제 SVG 렌더 대조",
+    "SHA와 패키지 무결성",
+    "usage/layout/camera/framing 기록"
+  ]
+}

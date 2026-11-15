@@ -1,0 +1,73 @@
+{
+  "schema": "ai-staff/chloe-human-wardrobe/v1",
+  "selected_reference": "D:\\dev\\ai-staff\\characters\\클로이\\refs\\proportion-options-owner-selected-B.png",
+  "selected_reference_sha256": "10e303f3e36bc094eb8a36998467e494dd455ba3024ad06319748a077788d004",
+  "selected_panel": "B",
+  "character_id": "CLO-02",
+  "form": "human",
+  "poses": [
+    {
+      "id": "10-navy-present",
+      "label": "네이비 수트 · 상반신 제시",
+      "source_png": "D:\\large\\ai-staff\\클로이\\human-wardrobe-v1-20261115\\10-navy-present.png",
+      "source_sha256": "e9b20f3bbe3cb62c5ca8166de94d63d2db8b1881f31ea3f3aeb3b533100839d3",
+      "camera_angle": "three_quarter",
+      "framing": "upper_body",
+      "outfit": "navy-suit",
+      "usage": "블로그 포스터 표지·소개·안내",
+      "layout": "오른쪽 인물 슬롯에 배치, 왼쪽 제목과 분리",
+      "status": "usage-wardrobe-derivative-not-canonical",
+      "svg_file": "D:\\large\\ai-staff\\클로이\\human-wardrobe-v1-20261115\\svg\\10-navy-present.svg",
+      "svg_sha256": "aba18d91f9959d01c2bc5fa60a8f28bbd47e6f20136caa8a264846b3bf79abdd",
+      "svg_bytes": 15790495,
+      "color_paths": 100951,
+      "dimensions": [
+        1312,
+        1199
+      ]
+    },
+    {
+      "id": "11-cardigan-notebook",
+      "label": "카디건 출근복 · 노트",
+      "source_png": "D:\\large\\ai-staff\\클로이\\human-wardrobe-v1-20261115\\11-cardigan-notebook.png",
+      "source_sha256": "bd35ea34b8ffc7e35e7fdacf79ae78490f6f9164bc1c54e8a8d2a14d30d59fdb",
+      "camera_angle": "three_quarter",
+      "framing": "upper_body",
+      "outfit": "cardigan-commute",
+      "usage": "블로그 포스터 표지·소개·안내",
+      "layout": "오른쪽 인물 슬롯에 배치, 왼쪽 제목과 분리",
+      "status": "usage-wardrobe-derivative-not-canonical",
+      "svg_file": "D:\\large\\ai-staff\\클로이\\human-wardrobe-v1-20261115\\svg\\11-cardigan-notebook.svg",
+      "svg_sha256": "51804d6719f971d6a15578eb6577e1d96e3920b6b3f846bfe654e8f6cc3275f8",
+      "svg_bytes": 19987855,
+      "color_paths": 133671,
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "12-secretary-skirt-glasses",
+      "label": "비서형 · 동그란 안경 · 스커트·펌프스",
+      "source_png": "D:\\large\\ai-staff\\클로이\\human-wardrobe-v1-20261115\\12-secretary-skirt-glasses.png",
+      "source_sha256": "df5144f5437f9f2fc335e16f870b7181e3096ed0e750d1ee879bcbe0ae870b91",
+      "camera_angle": "three_quarter",
+      "framing": "full_body",
+      "outfit": "charcoal fitted above-knee pencil-skirt suit, black pumps, thin round glasses",
+      "usage": "차분한 비서형 안내·복장 소개·포스터",
+      "layout": "전신은 복장과 구두를 보여줄 때 사용; 얼굴 안내는 별도 상반신 슬롯 활용",
+      "status": "usage-wardrobe-derivative-not-canonical",
+      "svg_file": "D:\\large\\ai-staff\\클로이\\human-wardrobe-v1-20261115\\svg-secretary\\12-secretary-skirt-glasses.svg",
+      "svg_sha256": "1832869ec88d4eb7926dd4c5bd40ca0fd989f99cfb20163dad71e50ebc648a81",
+      "svg_bytes": 8727594,
+      "color_paths": 68444,
+      "dimensions": [
+        1024,
+        1536
+      ]
+    }
+  ],
+  "validation": "D:\\dev-artifacts\\ai-staff\\blog-templates-20261115\\wardrobe-validation.json",
+  "template_assets": "D:\\large\\ai-staff\\blog-templates-v1-20261115\\assets.json",
+  "identity_policy": "fixed registered character pixels at output; no runtime generation"
+}

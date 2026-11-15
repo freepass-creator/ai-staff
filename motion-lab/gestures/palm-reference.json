@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "authority": "2026-11-15 representative specifically directed BACK 45 and BACK inner-hand reference",
+  "reference_file": "D:\\large\\ai-staff\\클로이\\canonical-white-v1-20261115\\CLO-02-chakhan-turnaround-6views-v1-reference.png",
+  "reference_sha256": "aba9cda2454cda75bf99bca618ff765f457b8e86733b9dbd1585411f93f01eac",
+  "reference_views": [
+    "BACK 45",
+    "BACK"
+  ],
+  "inspection_crops_px": {
+    "BACK 45": [
+      1100,
+      422,
+      1168,
+      524
+    ],
+    "BACK": [
+      1410,
+      423,
+      1476,
+      524
+    ]
+  },
+  "observed_features": [
+    "dark sculpted inner-hand volume visible in BACK45 and BACK",
+    "thumb-base and finger-root shapes flow into the palm",
+    "white outer finger shells and separate hand-back armor"
+  ],
+  "rejected_derivative": "01-welcome-graphite-palm: broad featureless polygon is inconsistent with the requested reference",
+  "scope": "Visual reference for this inner-hand correction only. Does not promote the entire generated angle sheet into an approved 3D engineering design. Tiny exact topology outside visible regions is not measured.",
+  "latest_owner_correction": "엄지가분명히있어야하고손바닥의통통한부분은따로구분되어있다. 별도볼륨까지평평하게지우지않는다.",
+  "design_interpretation": [
+    "visible separate thumb digit with its own root",
+    "plump thumb-base palm volume is distinct from central palm and physically continues into thumb",
+    "central palm remains relatively recessed",
+    "do not confuse anatomical thumb-base volume with an arbitrary centered oval plate",
+    "do not flatten the plump region or hide the thumb to remove the pad look"
+  ],
+  "rejected_derivatives": [
+    "01-welcome-graphite-palm: flat polygon",
+    "01-welcome-structured-palm: attached outlined oval pad"
+  ]
+}
