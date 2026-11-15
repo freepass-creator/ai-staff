@@ -38,13 +38,27 @@
     {
       "prompt": "Side-by-side full-body robot and human Chloe; preserve each identity; same warm ivory background, lighting and thumb-up pose; white-charcoal-yellow accents, human white suit trousers and pumps; no height specification",
       "file": "D:/large/ai-staff/클로이/human-v1-20261115/robot-human-fullbody-compare-v1.png",
-      "status": "comparison-only-not-canonical",
+      "status": "withdrawn-wrong-legacy-robot",
       "sha256": "3493a59a99955e3715ca93493fc6e12664b151eff6bb3928fde2b07664a9b773",
       "references": [
         "studio/assets/clo02-thumbs-up-master.webp",
         "characters/클로이/refs/human-age20-white-suit-v5.png"
       ],
       "bytes": 1800321
+    },
+    {
+      "file": "D:/large/ai-staff/클로이/human-v1-20261115/robot-human-fullbody-compare-v2-pc0.png",
+      "status": "corrected-comparison-only-not-canonical",
+      "prompt": "Use only PC0 current robot, preserve angular shell and proportions; front neutral arms-down full-body comparison with same human v5 white suit; no legacy thumbs-up robot. Reference-based generated study, not pixel-identical canonical replacement.",
+      "robot_png_sha256": "fecf6ba56d9381cbf21b6fe3f9e963224f73013e897141911da6c522b7603f07",
+      "references": [
+        "refs/pc0-CLO-02-chakhan-smooth-subtle-0.1.png",
+        "refs/human-age20-white-suit-v5.png"
+      ],
+      "bytes": 1729248,
+      "sha256": "b44eb9371470aeff5988c881576e38a1298d37c8e40d222b6c15b4fa65a1b2cc",
+      "robot_source": "PC0 D:/dev/ai-staff/robots/current.json variants.chakhan-white-v1",
+      "robot_appearance_revision": "smooth-subtle-0.1"
     }
   ],
   "schema": "ai-staff/character-assets/v1",
