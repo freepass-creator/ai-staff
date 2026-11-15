@@ -59,6 +59,15 @@
       "sha256": "b44eb9371470aeff5988c881576e38a1298d37c8e40d222b6c15b4fa65a1b2cc",
       "robot_source": "PC0 D:/dev/ai-staff/robots/current.json variants.chakhan-white-v1",
       "robot_appearance_revision": "smooth-subtle-0.1"
+    },
+    {
+      "file": "D:/large/ai-staff/클로이/human-v1-20261115/robot-human-fullbody-compare-v3-proportions-badge.png",
+      "proportion_review": "Visual estimate: crown y150/chin y260/sole y965, approximately7.4 heads. Manual visual estimate, not calibrated anatomical measurement.",
+      "robot_source_sha256": "fecf6ba56d9381cbf21b6fe3f9e963224f73013e897141911da6c522b7603f07",
+      "bytes": 1705688,
+      "prompt": "Edit corrected PC0 comparison: human over 7 heads tall target7.5, reduce whole head about23-25percent, preserve compact round face and white suit; add matching white-charcoal-yellow pin to robot upper chest, keep central nameplate; canonical robot original unchanged",
+      "sha256": "906700c905d6b7778134e3442ee31c9c736e21c8a19f13ca6d3a623d462cf362",
+      "status": "proportion-badge-comparison-owner-review-pending"
     }
   ],
   "schema": "ai-staff/character-assets/v1",
