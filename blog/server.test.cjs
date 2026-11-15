@@ -3,7 +3,7 @@ const DATA='D:/dev-artifacts/ai-staff/blog-engine-20261114/server-test-'+Date.no
 const C=require('./core.js');
 test('unchanged legacy jobs remain history while new jobs use current poses; encoded old routes are blocked',async()=>{
  await fs.mkdir(DATA,{recursive:true});const old=await C.createJob('기존 보관 원고 이력 테스트');old.pose='intro';const saved={revision:8,jobs:[old],documents:[],campaigns:[],channelDocuments:[],snapshot:{state:'unavailable',posts:[]}};await fs.writeFile(path.join(DATA,'state.json'),JSON.stringify(saved));const s=await start();try{
-  for(const route of ['/robot%73/CLO-02/old.png','/motion%2dlab/gestures/rig.svg','/Robots/CLO-02/old.png'])assert.equal((await fetch(s.url+route)).status,410);
+  for(const route of ['/%2frobots/registry.json','/%2fmotion-lab/gestures/rig.svg','/blog%2f..%2frobots/registry.json','/robot%73/CLO-02/old.png','/motion%2dlab/gestures/rig.svg','/Robots/CLO-02/old.png'])assert.equal((await fetch(s.url+route)).status,410);
   const current=await C.createJob('최신 캐릭터 새 원고 추가 테스트',{jobs:[old]});const next={...saved,jobs:[old,current]},post=d=>fetch(s.url+'/api/save',{method:'POST',headers:{'Content-Type':'application/json',Origin:s.url},body:JSON.stringify(d)});
   assert.equal((await post(next)).status,200);const state=await(await fetch(s.url+'/api/state')).json();assert.deepEqual(state.jobs[0],old);assert.ok(C.POSES.includes(state.jobs[1].pose));
   state.jobs[0].topic='변경된 과거 작업은 새 규격 필요';assert.equal((await post(state)).status,400);
