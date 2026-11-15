@@ -76,8 +76,25 @@
       "sha256": "bbbdf0b8aa3ef6f9199f5ce1b136fae7032c76eb275d947f682feb320ef95498",
       "verification": "Natural proportion revision candidate. Seven-head ratio not certified; do not claim numerical proportion completion.",
       "status": "natural-proportion-comparison-owner-review-pending"
+    },
+    {
+      "bytes": 1448049,
+      "owner_quote": "7등신으로 가자",
+      "file": "D:/large/ai-staff/클로이/human-v1-20261115/human-proportion-options-6p5-7-7p5.png",
+      "verification": "Owner selected visual center panel B as seven-head design direction. Generated ruler marks are illustrative; not calibrated anatomical measurement.",
+      "status": "owner-selected-panel-B",
+      "selected_panel": "B",
+      "sha256": "10e303f3e36bc094eb8a36998467e494dd455ba3024ad06319748a077788d004",
+      "prompt": "Same Chloe face, white suit, pose; A6.5 B7 C7.5 target head-proportion options with shared baseline",
+      "target_heads": 7
     }
   ],
   "schema": "ai-staff/character-assets/v1",
-  "character_id": "CLO-02"
+  "character_id": "CLO-02",
+  "selected_fullbody": {
+    "panel": "B",
+    "reference": "refs/proportion-options-owner-selected-B.png",
+    "status": "owner-selected",
+    "target_heads": 7
+  }
 }

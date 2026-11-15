@@ -8,8 +8,8 @@
       "name": "클로이",
       "human_form": {
         "source": "characters/클로이/character.json",
-        "status": "owner-review-pending",
-        "latest_direction": "스무 살 앳된 성인, 짧고 동근 계란형 얼굴, 흰 수트와 옷핀·노랑 포인트 통일 v5 검토 대기. 첫 얼굴은 거절됨",
+        "status": "owner-selected-body-proportion",
+        "latest_direction": "가운데 B안 7등신 선택. 둥근 계란형 얼굴·흰수트·차콜이너·흰검노랑 옷핀과 이어피스 유지. 로봇 PC0 정본은 별도 보존",
         "preserve_robot": true
       },
       "role": "착한거래 AI 안내 캐릭터",
