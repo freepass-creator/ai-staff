@@ -25,11 +25,11 @@
 
 - **SVG 납품·제스처**: `robots/svg-release.json`을 진입점으로 삼고 `robots/SVG-RELEASE.md`를 읽는다. 승인 정면 두 종과 PNG 없는 관절 경로 SVG, 질감을 내장한 가벼운 웹 모션 SVG를 구분한다. `/gestures/`에서 6개 프리셋을 선택해 저장한다. 작은 정면 2D 동작 범위이며 3D 리그나 완전한 손 쥐기를 뜻하지 않는다.
 
-- **블로그 이미지 재사용**: `asset-library/chloe-blog/library.json` → 최신 라이브러리 `manifest.json`을 읽고 상황 태그로 고른다. 보기 `/library/`. `poses`는 정본을 참조한 활용 포즈이며 정본을 대체하지 않는다. 다른 AI 제작은 패키지의 `AI-START-HERE.md`, `identity-lock.json`, `prompts.json`과 실제 정본 참조 PNG를 함께 사용한다. 과거 아카이브를 다시 검색하지 않는다.
+- **온라인 캐릭터 단일 진입점(2026-11-16 대표 직접 정정)**: `https://ai-staff-two.vercel.app/api/characters/current` → 현재 ID/revision/url만 사용. `/api/characters/resolve?id=cover-confident` 후 반환된 PNG URL을 사용한다. 구 로봇37컷·옛 포스터/전체ZIP·각도연구는 공개 철회. `asset-library/chloe-blog/library.json`은 retired이며 이력/폴더/생성캐시 검색 fallback 금지. 현재 착한거래7컷은 `asset-library/chakhan-use-cuts/library.json`. 손가락은 엄지 외4개, 길이/두께/손목 연결을 실제 PNG로 검수.
 
 - **구도 다양성(대표 정정)**: 전신 정면만 반복하지 않는다. `camera_angle`과 `framing`으로 측면·후면·뒤쪽 사선·어깨 너머, 상반신·앉기·걷기·악수 등을 고른다. 정본 정면 사진은 디자인 참조이며 카메라 고정 지시가 아니다. 새 구도 8종은 `series:natural-angles`로 조회한다. 뒤쪽의 추정 구조를 정본·3D 설계도로 승격하지 않는다.
 
-- **글 상황에 맞는 이미지 선택(대표 추가 정정)**: 특정 각도만 늘리지 말고 행동·대상·시선·표정·촬영 범위를 섞는다. `usage-index.json` 또는 `AI-WRITER-USAGE.md`의 실제 장면·사용 문단·환경·배치 설명을 읽고 기존 PNG를 먼저 재사용한다. 차량·고객·자료·설명란을 가리키는 대상을 구분한다. `/api/characters/library/select?q=문단설명`은 규칙 기반 후보 검색이다. 약한 일치·맞는 그림 없음·실제 증빙 필요를 구분하고 그림을 억지 배정하지 않는다. 지속 제작 기준과 대기 장면은 `production-plan.json`에 기록한다. 자동 생성·예약·게시는 별도 설치하지 않는다.
+- **글 상황에 맞는 이미지 선택(대표 추가 정정)**: 특정 각도만 늘리지 말고 행동·대상·시선·표정·촬영 범위를 섞는다. `usage-index.json` 또는 `AI-WRITER-USAGE.md`의 실제 장면·사용 문단·환경·배치 설명을 읽고 기존 PNG를 먼저 재사용한다. 차량·고객·자료·설명란을 가리키는 대상을 구분한다. 현재 온라인 API의 usage·tags로 후보를 고른다. 구 `/api/characters/library/select`는 410이다. 약한 일치·맞는 그림 없음·실제 증빙 필요를 구분하고 그림을 억지 배정하지 않는다. 지속 제작 기준과 대기 장면은 `production-plan.json`에 기록한다. 자동 생성·예약·게시는 별도 설치하지 않는다.
 
 - 모든 직원 캐릭터의 소속 브랜드는 **프리패스**이며 기본 이마 명찰도 프리패스다. 캐릭터 이름과 구분한다. 기본 보라 정본의 얼굴은 검은 유리 디스플레이 안에서 표정이 발광하는 방식이다.
 

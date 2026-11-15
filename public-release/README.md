@@ -1,26 +1,11 @@
-# AI Staff 공개 자산 배포
+# AI Staff 현재 자산과 캐릭터 API
 
-2026-11-15 대표 후속 직접 요청으로 공개 push·배포를 진행한다. 내부 PC 복원용 `sharing/` 묶음과 공개 배포를 구분한다. 공개 사이트에는 허용한 현재 자산 목록과 작은 미리보기만 넣고 큰 원본은 GitHub Release로 제공한다.
+단일 진입점은 https://ai-staff-two.vercel.app/api/characters/current 이다. [연동 규격](site/CHARACTER-API.md)과 character-client.mjs를 사용한다. 캐릭터를 새로 출력할 때마다 현재 ID/SHA를 확인하고 API PNG를 그대로 받는다. 미등록·폐기 자산으로 fallback하지 않는다.
 
-## 공개 내용
+2026-11-16 대표 직접 요청으로 구 로봇37컷, 옛 로봇표지와 이를 담은 전체/포스터 ZIP, 각도연구 공개 파일42개를 철회한다. 대상은 robots/retired-public-assets.json. 다른 직원·사람형·승인정면2종과 프로필1장은 보존한다. 기존 collect.py는 재공개 방지를 위해 중단했다.
 
-- CLO-02 승인 정면 2종, 사람형 9포즈와 3복장, 사용 가능한 로봇 37장면, 포스터 11예시.
-- 고정된 사람형 PNG를 별도 생성한 쇼룸·상담실·야외 배경에 합성한 30장면. 생성은 배경에만 적용하고 출력에서 얼굴/몸은 재생성하지 않는다.
-- COD-01·COD-03·CLO-04 R1은 `design_proposal`/`production_usable:false`. 같은 정면 시점·자세에서 비교하되 기존 캐릭터의 눈매와 머리 장식은 보존한다. 01은 파랑 원형눈/양옆핀,03은 청록 네모눈/중앙능선.04이름은클로아다.04어깨는컴팩트하고절제한다.
+현재 일반갤러리64자산은 기존 사람형/장면/다른직원자료와 최신착한거래7컷을 포함한다. 캐릭터 API의 자동생산허용은 정면2+포즈7+승인프로필1만이다. 다른직원R1제안은 API생산선택에 노출하지 않는다.
 
-`site/catalog.json`은 공개 데이터다. 원본 URL·SHA·용도·태그·승인 상태만 명시적으로 옮긴다. 원래 PC 경로·인수 원문·비밀·고객 자료·source.bundle·사용 중단 이미지는 공개하지 않는다. `collect.py`가 이 원칙으로 현재 원본 해시를 검증해 새 공개 ZIP과 미리보기를 만든다.
+배포: node public-release/build.mjs 새빈폴더. 정적갤러리와 현재allowlist전용Node API를 생성한다. curated폴더만 기존Vercel ai-staff로 배포·검증·승격한다. Cache-Control:no-store/CORS/SHA검증, 옛revision410. 임의외부URL과파일경로입력은없다.
 
-## 제작과 검증
-
-1. 작업 PC의 현재 자산 등록부를 읽어 `collect.py --output 새폴더 --tag 릴리스태그`를 실행한다. 출력 폴더를 덮어쓰지 않는다. Python/Pillow와 실제 등록 자산이 필요하다.
-2. 산출물의 PNG는 원본 바이트 그대로다. SVG는 비표시 metadata만 제거한 고정 시점 픽셀 경로이며 public catalog에 새 해시를 기록한다. 의미별 벡터나 3D로 소개하지 않는다.
-3. `node build.mjs 새배포폴더`로 `site/`의 HTML·CSS·JS·카탈로그·폰트·작은 썸네일만 복사한다. 배포 폴더에 로컬 서버/이력/인수자료를 복사하지 않는다.
-4. 게시 전 ZIP·원본 해시·로컬 경로 제외·반려 01 제외·폰트 라이선스·모바일 화면·원본 다운로드를 검증한다. 루트의 기존 삭제 변경과 다른 worktree는 보존한다.
-
-태그의 모든 PNG와 `AI-Staff-Assets.zip`, `Chakhan-Poster-Templates.zip`을 공개 GitHub Release에 올린다. 미리보기는 최대420×360px WebP로 Git에 허용한 작은 썸네일 예외이며, 큰 원본은 Git에 넣지 않는다. 첫 공개 사이트는 의도한 Vercel 팀/project를 확인해 별도 정적 배포한다. 서비스는 읽기 전용이다.
-
-## 재사용
-
-외부 AI는 공개 사이트 `catalog.json` 또는 `/api/assets.json`에서 시작한다. 사용 목적·태그·카메라·파일 성격을 보고 후보를 고르고 `png_sha256`로 확인한다. 제안 상태는 정본으로 취급하지 않는다. 실제 계약·직원·출고 증빙은 연출 이미지로 대체하지 않는다.
-
-배경과 인물은 별개다. 공개 묶음의 `compose.mjs`와 `composition-inputs.json`은 원본 PNG를 위치/크기만 정해 배치하는 재현 가능한 조합이다. 새 이미지를 반복 생성해서 동일성을 추측하는 흐름을 쓰지 않는다. 새 포즈/복장은 별도 후보를 검토해 고정 등록한다.
+새원본이나포즈가바뀌면 SHA·현재목록·썸네일·키트·배포를 함께 갱신해야한다. 구사이트와Release다운로드는별도로철회·검증한다. 이미복사된외부사본이나공개Git이력까지없어졌다고주장하지않는다.

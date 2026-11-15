@@ -1,8 +1,2 @@
-import {readFile} from 'node:fs/promises';
-import path from 'node:path';
-import {serveHumanLibrary} from '../asset-library/chloe-human/library.mjs';
-export async function serveShare({root,...request}){
- const pointer=JSON.parse(await readFile(path.join(root,'sharing/config.json'),'utf8'));
- const catalog=JSON.parse(await readFile(pointer.current_file,'utf8'));
- return serveHumanLibrary({root,...request,catalog,prefix:'/share/',downloadFilename:'AI-Staff-Current-Kit.zip'});
-}
+// Old mixed download contains retired robot designs and is no longer served.
+export async function serveShare({res}){res.writeHead(410,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store'});res.end(JSON.stringify({error:'RETIRED_MIXED_CHARACTER_BUNDLE',current:'https://ai-staff-two.vercel.app/api/characters/current'}));}

@@ -15,6 +15,7 @@ read = lambda p: json.loads(p.read_text(encoding='utf-8'))
 
 
 def main():
+    raise SystemExit('RETIRED_COLLECTOR: old robot poses/ZIPs must not be republished; use public-release/build.mjs and current allowlist API.')
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', required=True)
     parser.add_argument('--tag', default='ai-staff-r1-20261115')
