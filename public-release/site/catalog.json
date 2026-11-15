@@ -1,17 +1,17 @@
 {
   "schema": "ai-staff/public-assets/v1",
   "release_tag": "ai-staff-r1-20261115",
-  "source_commit": "859b4a38f439bc87223d57f9cdef759825607300",
+  "source_commit": "04d6737197df4d1fb73e086bb2a685cf460aa81c",
   "identity_policy": "Reuse registered PNG bytes. No character generation at render time. New poses are reviewed derivatives, not identical 3D geometry.",
   "downloads": {
     "assets": {
       "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/AI-Staff-Assets.zip",
-      "sha256": "f9e35fa3519466d7018c003fdc8df875b83d474e4c660194cc27990b2c70f670",
-      "bytes": 225230983
+      "sha256": "32eba928fbb92411b6478f4477ae80ba90b303544b6a93ac41e9c3ebe47af8ca",
+      "bytes": 231648720
     },
     "templates": {
       "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-Poster-Templates.zip",
-      "sha256": "4033ec009c458c1af54788feac134ee01e0f450980d94f77e79cfa3809808d4a",
+      "sha256": "e40d2f2c528f2405d4f592f6f5cee8d07a3d4bb56e7b3254c9ee81ce4f54b235",
       "bytes": 32793881
     }
   },
@@ -1363,46 +1363,48 @@
       "thumbnail": "thumbs/poster-11-secretary-poster-ead43b0ed6.webp"
     },
     {
-      "id": "revision-clo-01-r1",
-      "title": "CLO-01 · R1 제안",
+      "id": "revision-cod-01-r1",
+      "title": "COD-01 · R1 제안",
       "category": "revision",
       "status": "design_proposal",
       "production_usable": false,
-      "usage": "넓은 2겹 견갑 · 육각 중심 흉갑",
+      "usage": "원본의 뾰족한 양옆 핀 · 원형 눈/곡선 눈썹 · 둥근 어깨 관절과 분할 흉갑",
       "tags": [
-        "CLO-01",
-        "cyan",
-        "견갑"
+        "COD-01",
+        "blue",
+        "기존 캐릭터 정면 파생"
       ],
-      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/revision-clo-01-r1.png",
-      "png_sha256": "2e5ee227fd17c2fb56583ba0f5303ee239a6c622a855c7cd1bae77e023babb11",
-      "png_file": "png/revision-clo-01-r1.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/revision-cod-01-r1.png",
+      "png_sha256": "a72033f3e880b9ded7e3defbfe52928daf468552f797e3bc6616762081354e9b",
+      "png_file": "png/revision-cod-01-r1.png",
       "width": 1024,
       "height": 1536,
-      "thumbnail": "thumbs/revision-clo-01-r1-2e5ee227fd.webp",
-      "character_id": "CLO-01",
-      "plate_design": "넓은 2겹 견갑 · 육각 중심 흉갑"
+      "thumbnail": "thumbs/revision-cod-01-r1-a72033f3e8.webp",
+      "character_id": "COD-01",
+      "plate_design": "원본의 뾰족한 양옆 핀 · 원형 눈/곡선 눈썹 · 둥근 어깨 관절과 분할 흉갑",
+      "identity_reference_sha256": "82f6815cd97fb914126890cd8687b3a169a34a2e049ea6e4100c094793d4614c"
     },
     {
-      "id": "revision-clo-03-r1",
-      "title": "CLO-03 · R1 제안",
+      "id": "revision-cod-03-r1",
+      "title": "COD-03 · R1 제안",
       "category": "revision",
       "status": "design_proposal",
       "production_usable": false,
-      "usage": "세 겹 적층 견갑 · 쉐브론 분할 흉갑",
+      "usage": "원본의 낮은 중앙 머리 능선 · 네모 U형 눈/직선 눈썹 · 적층 외장",
       "tags": [
-        "CLO-03",
-        "mint",
-        "견갑"
+        "COD-03",
+        "teal",
+        "기존 캐릭터 정면 파생"
       ],
-      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/revision-clo-03-r1.png",
-      "png_sha256": "8d6c2c81785803db104aeb95641d0236be6f6141a87b6eaa4186c1bce705ec3e",
-      "png_file": "png/revision-clo-03-r1.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/revision-cod-03-r1.png",
+      "png_sha256": "8f32e9d2ae48f89c9c4d24fa8c8d55006302805bf3e5268141384753c997b8f8",
+      "png_file": "png/revision-cod-03-r1.png",
       "width": 1024,
       "height": 1536,
-      "thumbnail": "thumbs/revision-clo-03-r1-8d6c2c8178.webp",
-      "character_id": "CLO-03",
-      "plate_design": "세 겹 적층 견갑 · 쉐브론 분할 흉갑"
+      "thumbnail": "thumbs/revision-cod-03-r1-8f32e9d2ae.webp",
+      "character_id": "COD-03",
+      "plate_design": "원본의 낮은 중앙 머리 능선 · 네모 U형 눈/직선 눈썹 · 적층 외장",
+      "identity_reference_sha256": "f3f1b2a52df20166e774844ec24ec71001446c088701a8e8fc3246c54e5d33ca"
     },
     {
       "id": "revision-clo-04-r1",
@@ -1410,20 +1412,21 @@
       "category": "revision",
       "status": "design_proposal",
       "production_usable": false,
-      "usage": "작고 절제된 2피스 견갑 · 좁은 이중 V 흉갑",
+      "usage": "원본의 고리 안테나 · 세 줄 볼 표시/열린 미소 · 작은 견갑",
       "tags": [
         "CLO-04",
-        "coral",
-        "견갑"
+        "orange",
+        "기존 캐릭터 정면 파생"
       ],
       "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/revision-clo-04-r1.png",
-      "png_sha256": "d3e209ce0406a462baafa369018c770d019ea144e04a50c820490330bd796a1b",
+      "png_sha256": "fca5542e5719feb3636f966458988660086c660c5e90bbf784ff91f6be5ebe3d",
       "png_file": "png/revision-clo-04-r1.png",
       "width": 1024,
       "height": 1536,
-      "thumbnail": "thumbs/revision-clo-04-r1-d3e209ce04.webp",
+      "thumbnail": "thumbs/revision-clo-04-r1-fca5542e57.webp",
       "character_id": "CLO-04",
-      "plate_design": "작고 절제된 2피스 견갑 · 좁은 이중 V 흉갑"
+      "plate_design": "원본의 고리 안테나 · 세 줄 볼 표시/열린 미소 · 작은 견갑",
+      "identity_reference_sha256": "5a4537405ad38e7e23abdf3cd849e8299204c90218f1f64db2d788191cdbe616"
     },
     {
       "id": "scene-showroom-01-front-welcome",
@@ -2137,6 +2140,29 @@
       "png_file": "backgrounds/outdoor.png",
       "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/background-outdoor.png",
       "sha256": "5700572cfe3fecd4d32480e3354803af5d2b396dd70bbdd14e77d0b90b3dc176"
+    }
+  ],
+  "design_references": [
+    {
+      "character_id": "COD-01",
+      "file": "references/reference-cod-01.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/reference-cod-01.png",
+      "sha256": "82f6815cd97fb914126890cd8687b3a169a34a2e049ea6e4100c094793d4614c",
+      "usage": "existing profile identity reference; not current production canonical"
+    },
+    {
+      "character_id": "COD-03",
+      "file": "references/reference-cod-03.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/reference-cod-03.png",
+      "sha256": "f3f1b2a52df20166e774844ec24ec71001446c088701a8e8fc3246c54e5d33ca",
+      "usage": "existing profile identity reference; not current production canonical"
+    },
+    {
+      "character_id": "CLO-04",
+      "file": "references/reference-clo-04.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/reference-clo-04.png",
+      "sha256": "5a4537405ad38e7e23abdf3cd849e8299204c90218f1f64db2d788191cdbe616",
+      "usage": "existing profile identity reference; not current production canonical"
     }
   ]
 }
