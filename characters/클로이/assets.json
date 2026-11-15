@@ -34,6 +34,17 @@
       "bytes": 2209856,
       "sha256": "1d57f6ee9ad76c960e3f4768099f03489ffaf269c627bc3b5528c0d80d8b2c90",
       "status": "latest-owner-review-pending"
+    },
+    {
+      "prompt": "Side-by-side full-body robot and human Chloe; preserve each identity; same warm ivory background, lighting and thumb-up pose; white-charcoal-yellow accents, human white suit trousers and pumps; no height specification",
+      "file": "D:/large/ai-staff/클로이/human-v1-20261115/robot-human-fullbody-compare-v1.png",
+      "status": "comparison-only-not-canonical",
+      "sha256": "3493a59a99955e3715ca93493fc6e12664b151eff6bb3928fde2b07664a9b773",
+      "references": [
+        "studio/assets/clo02-thumbs-up-master.webp",
+        "characters/클로이/refs/human-age20-white-suit-v5.png"
+      ],
+      "bytes": 1800321
     }
   ],
   "schema": "ai-staff/character-assets/v1",
