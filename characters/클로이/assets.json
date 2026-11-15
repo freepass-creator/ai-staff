@@ -67,7 +67,15 @@
       "bytes": 1705688,
       "prompt": "Edit corrected PC0 comparison: human over 7 heads tall target7.5, reduce whole head about23-25percent, preserve compact round face and white suit; add matching white-charcoal-yellow pin to robot upper chest, keep central nameplate; canonical robot original unchanged",
       "sha256": "906700c905d6b7778134e3442ee31c9c736e21c8a19f13ca6d3a623d462cf362",
-      "status": "proportion-badge-comparison-owner-review-pending"
+      "status": "owner-rejected-stretched-leg-proportions"
+    },
+    {
+      "prompt": "Keep rounded adult face, white suit, shared chest badge and PC0 robot; lower human waist, shorten overlong legs, balance torso and leg lengths; do not force same display height as robot",
+      "file": "D:/large/ai-staff/클로이/human-v1-20261115/robot-human-fullbody-compare-v4-natural.png",
+      "bytes": 1715740,
+      "sha256": "bbbdf0b8aa3ef6f9199f5ce1b136fae7032c76eb275d947f682feb320ef95498",
+      "verification": "Natural proportion revision candidate. Seven-head ratio not certified; do not claim numerical proportion completion.",
+      "status": "natural-proportion-comparison-owner-review-pending"
     }
   ],
   "schema": "ai-staff/character-assets/v1",
