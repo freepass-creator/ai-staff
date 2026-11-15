@@ -16,6 +16,9 @@ export function createCurrentServer({root,catalogFile}){
   const u=new URL(req.url,'http://'+req.headers.host);const pathname=decodeURIComponent(u.pathname);
   if(pathname.includes('\\')||pathname.includes('\0')||pathname.split('/').some(p=>p.startsWith('.')))return send(res,403,{error:'invalid path'});
   const c=await loadCatalog(catalogFile);
+  if(pathname==='/characters'||pathname.startsWith('/characters/')){res.writeHead(307,{Location:'https://ai-staff-two.vercel.app/?kind=canonical','Cache-Control':'no-store'});return res.end();}
+  if(['/library','/gestures','/share','/templates'].some(p=>pathname===p||pathname.startsWith(p+'/'))||pathname==='/api/characters/library/select')return send(res,410,{error:'RETIRED_CHARACTER_LIBRARY',current:'https://ai-staff-two.vercel.app/api/characters/current',viewer:'https://ai-staff-two.vercel.app/chakhan/'});
+  if(['/api/characters/current','/api/characters/resolve'].includes(pathname)||pathname.startsWith('/api/characters/assets/')){res.writeHead(307,{Location:'https://ai-staff-two.vercel.app'+pathname+u.search,'Cache-Control':'no-store'});return res.end();}
   if(pathname==='/share'){res.writeHead(302,{Location:'/share/','Cache-Control':'no-store'});return res.end();}
   if(pathname.startsWith('/share/'))return await serveShare({root,pathname,res,method:req.method});
   if(pathname==='/templates'){res.writeHead(302,{Location:'/templates/','Cache-Control':'no-store'});return res.end();}

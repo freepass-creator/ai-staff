@@ -20,5 +20,6 @@
     }
   },
   "cover_emotion_assets": 4,
-  "cover_examples": 4
+  "cover_examples": 4,
+  "current_api": "https://ai-staff-two.vercel.app/api/characters/current"
 }

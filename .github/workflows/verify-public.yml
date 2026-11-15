@@ -15,5 +15,5 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '24'
-      - run: node --test public-release/catalog.test.mjs public-release/chakhan.test.mjs asset-library/blog-templates/layouts.test.mjs
+      - run: node --test public-release/current-api.test.mjs public-release/catalog.test.mjs public-release/chakhan.test.mjs asset-library/blog-templates/layouts.test.mjs
       - run: node public-release/build.mjs "$RUNNER_TEMP/ai-staff-public-site"

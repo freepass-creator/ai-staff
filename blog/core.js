@@ -1,7 +1,7 @@
 /* AI Staff blog production contract. No account, publisher, shell or selector inputs. */
 (function(root){'use strict';
-const VERSION=1,BRAND={name:'착한거래',service:'AI 신차 장기렌터카 비교견적',website:'https://chakhan-sales.vercel.app/',ink:'#0B0B0C',lime:'#F6FD00',white:'#FFFFFF',font:'Pretendard',character:'CLO-02',characterVersion:'2.0'};
-const POSES=['intro','point-right','point-left','thumbs-up','think','present'];
+const VERSION=1,BRAND={name:'착한거래',service:'AI 신차 장기렌터카 비교견적',website:'https://chakhan-sales.vercel.app/',ink:'#0B0B0C',lime:'#F6FD00',white:'#FFFFFF',font:'Pretendard',character:'CLO-02',characterVersion:'current-api'};
+const POSES=['cover-think','cover-aha','cover-dejected','cover-confident','phone','tablet','guide-right'];
 const TEMPLATES={
  explain:{label:'차근차근 설명',hook:'독자가 해야 할 실제 행동에서 시작하고 원리와 예시로 설명합니다.',sections:'설명 → 확인 항목 → 바로 쓸 메모'},
  compare:{label:'기준별 비교',hook:'두 선택지의 차이를 같은 기준으로 나란히 정리합니다. 다른 기간의 합계를 유불리로 단정하지 않습니다.',sections:'비교 기준 → 선택지별 확인 → 질문 목록'},
