@@ -2,7 +2,7 @@
   "form": "human",
   "format": "PNG raster; SVG and rigging not implemented",
   "archive_root": "D:/large/ai-staff/클로이/human-v1-20261115",
-  "latest_candidate": "refs/human-age20-candidate-v3.png",
+  "latest_candidate": "refs/human-age20-white-suit-v5.png",
   "current_status": "owner-review-pending",
   "assets": [
     {
@@ -18,10 +18,22 @@
       "bytes": 1738052
     },
     {
-      "status": "latest-owner-review-pending",
+      "status": "previous-candidate",
       "sha256": "02a9e1656ef24b1134fac6176f1a4a62eda5c1920f977ede5179df1dd8cc3361",
       "file": "D:\\large\\ai-staff\\클로이\\human-v1-20261115\\human-age20-candidate-v3.png",
       "bytes": 2473871
+    },
+    {
+      "file": "D:\\large\\ai-staff\\클로이\\human-v1-20261115\\human-age20-round-v4.png",
+      "bytes": 2309290,
+      "sha256": "a5f2a8ee314bd64626a148065b678553a5783d40abe983737a92419a9260d0a7",
+      "status": "intermediate-face-rounding"
+    },
+    {
+      "file": "D:\\large\\ai-staff\\클로이\\human-v1-20261115\\human-age20-white-suit-v5.png",
+      "bytes": 2209856,
+      "sha256": "1d57f6ee9ad76c960e3f4768099f03489ffaf269c627bc3b5528c0d80d8b2c90",
+      "status": "latest-owner-review-pending"
     }
   ],
   "schema": "ai-staff/character-assets/v1",
