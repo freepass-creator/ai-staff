@@ -1,0 +1,129 @@
+{
+  "schema": "ai-staff/chakhan-use-cuts/v1",
+  "batch": "01",
+  "identity_reference": {
+    "status": "owner_selected",
+    "sha256": "49b6f9ae899afc64271aac75e0705b192316053d32ff85c6c316f20d02774352",
+    "number": "02"
+  },
+  "assets": [
+    {
+      "id": "phone",
+      "label": "전화 상담",
+      "character_number": "02",
+      "file": "Chakhan-CLO-02-use-phone.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-use-phone.png",
+      "sha256": "60c44eec60cdf7b2857a34acfc80a66dc36b309b9135c35e43d213841da80522",
+      "width": 1254,
+      "height": 1254,
+      "transparent_background": true,
+      "identity_reference_sha256": "49b6f9ae899afc64271aac75e0705b192316053d32ff85c6c316f20d02774352",
+      "framing": "waist_up",
+      "status": "prepared_brand_derivative",
+      "production_usable": true,
+      "usage_scope": "blog/website explanatory illustration",
+      "profile_usable": false,
+      "canonical_replacement": false,
+      "tags": [
+        "착한거래",
+        "상담문의",
+        "상담예약",
+        "연락방법"
+      ],
+      "usage": "전화로 상담하거나 문의하는 문단. 인물을 왼쪽에 놓고 오른쪽에 상담 안내를 배치한다. 스마트폰을 실제 직원/실제 통화 증빙으로 쓰지 않는다.",
+      "quality_review": "face and eye proportions, forehead/chest text, visible hand articulation, alpha on light/dark backgrounds checked",
+      "source_pose_sha256": "0c3a309fb835337dd58e4511258bb9330c81e4978c0a2a7326a8106448df9784",
+      "brand": "착한거래",
+      "variant": "chakhan-white-v1",
+      "nameplate": "착한거래",
+      "emission_color": "yellow",
+      "thumbnail": "chakhan/thumbs/phone-60c44eec60.webp"
+    },
+    {
+      "id": "tablet",
+      "label": "태블릿으로 설명",
+      "character_number": "02",
+      "file": "Chakhan-CLO-02-use-tablet.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-use-tablet.png",
+      "sha256": "1ea53feeb3a24e08675d747238c867c7f630f3bd1b5bf0aaa6d847229e45a7ee",
+      "width": 1221,
+      "height": 1289,
+      "transparent_background": true,
+      "identity_reference_sha256": "49b6f9ae899afc64271aac75e0705b192316053d32ff85c6c316f20d02774352",
+      "framing": "waist_up",
+      "status": "prepared_brand_derivative",
+      "production_usable": true,
+      "usage_scope": "blog/website explanatory illustration",
+      "profile_usable": false,
+      "canonical_replacement": false,
+      "tags": [
+        "착한거래",
+        "견적비교",
+        "조건설명",
+        "필요서류"
+      ],
+      "usage": "비교 방법이나 필요한 자료를 설명하는 문단. 태블릿에는 실제 견적 수치가 없으므로 정확한 내용은 별도 텍스트로 배치한다.",
+      "quality_review": "face and eye proportions, forehead/chest text, visible hand articulation, alpha on light/dark backgrounds checked",
+      "source_pose_sha256": "e8ef8c7b12cd460b931470c85dad47f0a502a5819b9438b14ab184691fc82578",
+      "brand": "착한거래",
+      "variant": "chakhan-white-v1",
+      "nameplate": "착한거래",
+      "emission_color": "yellow",
+      "thumbnail": "chakhan/thumbs/tablet-1ea53feeb3.webp"
+    },
+    {
+      "id": "guide-right",
+      "label": "오른쪽 대상 안내",
+      "character_number": "02",
+      "file": "Chakhan-CLO-02-use-guide-right.png",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-use-guide-right.png",
+      "sha256": "9083c41c95064172b8b61caad88261fab86c1883534535fde30e394d5663caae",
+      "width": 1448,
+      "height": 1086,
+      "transparent_background": true,
+      "identity_reference_sha256": "49b6f9ae899afc64271aac75e0705b192316053d32ff85c6c316f20d02774352",
+      "framing": "waist_up",
+      "status": "prepared_brand_derivative",
+      "production_usable": true,
+      "usage_scope": "blog/website explanatory illustration",
+      "profile_usable": false,
+      "canonical_replacement": false,
+      "tags": [
+        "착한거래",
+        "차량안내",
+        "설명란안내",
+        "가리키기"
+      ],
+      "usage": "캐릭터를 왼쪽에 놓고 손끝이 향하는 오른쪽에 차량 사진/표/설명 문구를 배치한다. 가리키는 대상과 문단 주제를 일치시킨다.",
+      "quality_review": "face and eye proportions, forehead/chest text, visible hand articulation, alpha on light/dark backgrounds checked",
+      "source_pose_sha256": "953e6ab549b3d400a073239c7b049103df0e6af9947e2b8470ac4dfc98b84a59",
+      "brand": "착한거래",
+      "variant": "chakhan-white-v1",
+      "nameplate": "착한거래",
+      "emission_color": "yellow",
+      "thumbnail": "chakhan/thumbs/guide-right-9083c41c95.webp"
+    }
+  ],
+  "reuse_policy": "Reuse exact PNG bytes after verifying SHA. Do not redraw the character at layout time. Current approved profile remains the separate single allowlist.",
+  "evidence_policy": "Illustrations are not real employee, vehicle delivery or signed-contract evidence.",
+  "brand": "착한거래",
+  "brand_reference_variant": "chakhan-white-v1",
+  "brand_reference_sha256": "fecf6ba56d9381cbf21b6fe3f9e963224f73013e897141911da6c522b7603f07",
+  "brand_lock": "착한거래 명찰, 노란 발광, 흰색 외장. 프리패스 명찰/보라 발광 컷을 착한거래용으로 대체하지 않는다.",
+  "downloads": {
+    "zip": {
+      "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-Use-Cuts-Batch01.zip",
+      "sha256": "8608ca6c9511b50cc926d0bd5c51323415239dd005520d1bce213d862b703280",
+      "bytes": 4264087
+    }
+  },
+  "selection_policy": {
+    "brand_required": "착한거래",
+    "nameplate_required": "착한거래",
+    "emission_color_required": "yellow",
+    "body_color_required": "white",
+    "brand_fallback_allowed": false,
+    "reuse_registered_png_without_regeneration": true,
+    "profile_use_allowed": false
+  }
+}
