@@ -29,7 +29,7 @@ export async function exportBatch({input,bundle,output,playwrightModule}){
  await cp(path.join(bundle,'assets'),path.join(output,'assets'),{recursive:true,errorOnExist:false});
  const imported=playwrightModule||process.env.AI_STAFF_PLAYWRIGHT_MODULE||'playwright';
  const {chromium}=await import(path.isAbsolute(imported)?pathToFileURL(imported).href:imported);
- const browser=await chromium.launch({channel:'msedge',headless:true,args:['--force-color-profile=srgb']});
+ const browser=await chromium.launch({channel:process.env.AI_STAFF_BROWSER_CHANNEL||(process.platform==='win32'?'msedge':undefined),headless:true,args:['--force-color-profile=srgb']});
  const receipt={status:'PASS',jobs:[]};
  try{
   for(const j of jobs){

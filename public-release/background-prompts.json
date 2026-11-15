@@ -1,0 +1,18 @@
+{
+  "tool": "built-in image_gen",
+  "scope": "fictional background only; character pixels are composited unchanged later",
+  "prompts": [
+    {
+      "id": "showroom",
+      "prompt": "Create a wide landscape BACKGROUND ONLY for compositing a separately supplied fictional AI employee later. Upscale but approachable modern Korean car showroom, warm ivory and light stone, tall daylight windows, soft realistic dimensional editorial/photo-style environment. One generic unbranded pearl-white midsize SUV parked in the RIGHT half, slightly turned front three-quarter, no readable plate or logo. LEFT third has open uncluttered light-gray floor and neutral wall/window space where a full-body person can be placed later. Floor perspective realistic, horizon around upper-middle, soft diffuse lighting from upper left, modest natural vehicle contact shadow. No people, robots, hands, human silhouettes, portraits, faces, printed text, signs, logos, numbers or watermarks. This is a fictional showroom scene, not an actual branded dealership or vehicle model. Clean elegant commercial illustration realism, not vector diagram, 16:10 style landscape composition."
+    },
+    {
+      "id": "office",
+      "prompt": "Create a wide landscape EMPTY contemporary Korean consultation office background for compositing a separately supplied fictional AI employee. Warm quiet welcoming editorial/photo realism with dimensional materials. Ivory walls, muted sage-gray accents, large softly lit window at left, a low cabinet and small meeting table/chairs far in the RIGHT BACKGROUND only, understated plants and wall panels, no posters or signage. LEFT third and near foreground are open uncluttered floor and soft neutral wall where a full standing figure or a separately rendered seated person with desk may be placed later. Perspective natural, horizon around upper-middle, diffuse daylight from upper left, soft shadows from room objects. No people, robots, silhouettes, faces, readable text, letters, numbers, computer screen content, logos, watermarks or foreground desk. Light sage and cream color atmosphere distinct from showroom, realistic but slightly polished commercial illustration, landscape 16:10 composition. A fictional office, not a real business location."
+    },
+    {
+      "id": "outdoor",
+      "prompt": "A wide landscape fictional outdoor vehicle viewing area, BACKGROUND ONLY for later compositing a separately supplied employee. Clean Korean urban parking forecourt outside a modern low-rise glass office, soft overcast daylight and muted autumn trees, pleasant light sage/gray environment. One generic unbranded white crossover SUV on the RIGHT half in natural front/side three-quarter view, no recognizable badge, blank unreadable plate. LEFT third has open uncluttered paved foreground where a full standing figure may later be placed, realistic perspective and diffuse lighting from upper-left. No people, robots, portraits, silhouettes, printed text, street signs, readable numbers, logos, watermark or litter. Calm professional but everyday atmosphere, dimensional editorial/photo-style illustration realism, landscape 16:10. The vehicle and location are fictional illustrations, not an actual manufacturer model or sales inventory."
+    }
+  ]
+}

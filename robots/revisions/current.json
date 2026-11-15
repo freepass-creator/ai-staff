@@ -1,0 +1,69 @@
+{
+  "schema": "ai-staff/robot-family-revision/v1",
+  "family_reference": "robots/current.json basic-purple-v1",
+  "owner_brand": "프리패스",
+  "shared_language": [
+    "흰 클리어코트 도장",
+    "검은 유리 표정 모니터",
+    "은은한 발광",
+    "견갑 계열 어깨",
+    "캐릭터별 다른 플레이트 구조",
+    "손등LED 없음"
+  ],
+  "proposals": [
+    {
+      "character_id": "CLO-01",
+      "name_ko": null,
+      "revision": "R1-front-proposal",
+      "status": "design_proposal",
+      "production_usable": false,
+      "plate_design": "넓은 2겹 견갑 · 육각 중심 흉갑",
+      "proposed_emission_color": "cyan",
+      "source_png": "D:\\large\\ai-staff\\robot-family-r1-front-20261115\\CLO-01-R1-front.png",
+      "source_sha256": "2e5ee227fd17c2fb56583ba0f5303ee239a6c622a855c7cd1bae77e023babb11",
+      "approval_note": "새 리비전 제안. 현재 CLO-02 정본을 대체하지 않으며 01/03 이름·색상은 확정 아님.",
+      "camera_angle": "front",
+      "public_eligible": true
+    },
+    {
+      "character_id": "CLO-03",
+      "name_ko": null,
+      "revision": "R1-front-proposal",
+      "status": "design_proposal",
+      "production_usable": false,
+      "plate_design": "세 겹 적층 견갑 · 쉐브론 분할 흉갑",
+      "proposed_emission_color": "mint",
+      "source_png": "D:\\large\\ai-staff\\robot-family-r1-front-20261115\\CLO-03-R1-front.png",
+      "source_sha256": "8d6c2c81785803db104aeb95641d0236be6f6141a87b6eaa4186c1bce705ec3e",
+      "approval_note": "새 리비전 제안. 현재 CLO-02 정본을 대체하지 않으며 01/03 이름·색상은 확정 아님.",
+      "camera_angle": "front",
+      "public_eligible": true
+    },
+    {
+      "character_id": "CLO-04",
+      "name_ko": "클로아",
+      "revision": "R1-front-proposal",
+      "status": "design_proposal",
+      "production_usable": false,
+      "plate_design": "작고 절제된 2피스 견갑 · 좁은 이중 V 흉갑",
+      "proposed_emission_color": "coral",
+      "source_png": "D:\\large\\ai-staff\\robot-family-r1-front-20261115\\CLO-04-R1-front.png",
+      "source_sha256": "d3e209ce0406a462baafa369018c770d019ea144e04a50c820490330bd796a1b",
+      "approval_note": "새 리비전 제안. 현재 CLO-02 정본을 대체하지 않으며 01/03 이름·색상은 확정 아님.",
+      "camera_angle": "front",
+      "public_eligible": true
+    }
+  ],
+  "comparison_policy": {
+    "view": "front",
+    "pose": "standing, arms relaxed",
+    "display": "common subject height and foot baseline; source images remain unchanged",
+    "related_pair": [
+      "CLO-02",
+      "CLO-04"
+    ],
+    "eyes": "shared Chloe screen-expression language; not measured identical geometry",
+    "canonical_CLO02": "unchanged",
+    "CLO04_shoulders": "compact, reduced projection"
+  }
+}

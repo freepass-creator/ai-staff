@@ -2,7 +2,9 @@
 
 ## 최신 클로이 진입점 (대표 정정, 2026-11-15)
 
-- **다른 PC·AI 공유**: `sharing/README.md` → `/share/`·`/share/share.json`. PC별 고정 파일 `D:/dev-artifacts/ai-staff/shared/current.json`에서 커밋/패키지/설치 경로를 읽는다. 코드만 clone해서 자산이 준비됐다고 하지 않는다. 공개 저장소 push/릴리스·웹 배포는 이번 로컬 커밋/PC1 내부 공유와 별도다. 과거 파일은 이력으로 보존하되 반려 01·구 /motion/·레거시 자산은 현재 선택/서빙/공유에서 제외한다.
+- **공개 배포와 R1**: public-release/README.md와 robots/revisions/current.json을 읽는다. CLO-02 정본은 보존,01/03/04는같은정면·자세·눈매기준의R1제안으로분리.01/03이름은지정하지않음.02/04는가까운컨셉,04어깨는좁고절제한다.플레이트외형과분할/겹침은각기다르게.배경은따로생성하고고정캐릭터를합성한다.
+
+- **다른 PC·AI 공유**: `sharing/README.md` → `/share/`·`/share/share.json`. PC별 고정 파일 `D:/dev-artifacts/ai-staff/shared/current.json`에서 커밋/패키지/설치 경로를 읽는다. 코드만 clone해서 자산이 준비됐다고 하지 않는다. 후속 대표 직접 지시로 공개 push/릴리스·웹 배포가 승인됐다. 공개는 public-release의 선별 카탈로그·현재 PNG/키트만 사용하고 내부복원 source.bundle/PC인수 원문/과거 자산은 올리지 않는다. 과거 파일은 이력으로 보존하되 반려 01·구 /motion/·레거시 자산은 현재 선택/서빙/공유에서 제외한다.
 
 - **블로그 포스터 템플릿**: `asset-library/blog-templates/library.json` → `/templates/` → `STYLE-GUIDE.html`·`README.md`·`content.schema.json`. 전단지/포스터형 6레이아웃·6배경·11시안. P2 CI·SUITE Heavy 제목·Noto Sans KR 본문 고정, 배경/복장/상반신·사선 포즈는 순환한다. 가장 중요한 기준은 반복 출력 시 같은 캐릭터 유지: 등록된 PNG·폰트·CI와 B안 참조 SHA를 검증하고 출력에서 얼굴/몸을 재생성하지 않는다. 새 포즈/복장은 대조 후 고정 등록하며 SVG는 필수 형식이 아니다. 비서형 최신은 무릎 위 차콜 펜슬스커트·검정 펌프스·동그란 안경이다.
 

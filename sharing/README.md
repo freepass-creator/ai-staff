@@ -2,7 +2,7 @@
 
 현재 보기와 내려받기: `/share/`. 기계가 읽는 시작점은 `/share/share.json`이다. 이 화면은 PC0 localhost 전용이고 공개 배포가 아니다. PC1의 고정 시작 파일은 `D:/dev-artifacts/ai-staff/shared/current.json`이다. 실제 설치 경로와 소스 커밋·패키지 SHA를 여기서 조회한다.
 
-이번 커밋은 공개 GitHub에 push/PR/릴리스하지 않는다. 저장소가 공개이므로 로컬 가지 커밋과 기존 LAN PC1 전달까지만 한다. 웹 공개가 필요한 경우 접근 범위와 자산 호스팅을 별도 구성한다. 일반 정적 서버/Vercel로 저장소 전체를 배포하지 않는다.
+후속 대표 지시(2026-11-15)로 공개 push/배포가 승인됐다. 공개용은 public-release/README.md의 선별된 카탈로그와 GitHub Release 자산을 사용한다. 아래 source.bundle/설치 영수증/PC 경로가 있는 묶음은 PC 간 내부 복원용으로 보존하며 공개 웹에 올리지 않는다. 저장소 전체를 정적 서버로 배포하지 않는다.
 
 ## 필요한 것만 사용
 
