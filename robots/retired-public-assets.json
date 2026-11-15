@@ -87,5 +87,25 @@
     "CLO-02-angle-comparison-v1.png"
   ],
   "current_api": "https://ai-staff-two.vercel.app/api/characters/current",
-  "archive_is_production_source": false
+  "archive_is_production_source": false,
+  "retired_source_files": [
+    "robots/CLO-02/chakhan-sales/assets/clo02/clo02-compare-320.webp",
+    "robots/CLO-02/chakhan-sales/assets/clo02/clo02-compare-640.webp",
+    "robots/CLO-02/chakhan-sales/assets/clo02/clo02-consultation-320.webp",
+    "robots/CLO-02/chakhan-sales/assets/clo02/clo02-consultation-640.webp",
+    "robots/CLO-02/chakhan-sales/assets/clo02/clo02-thumbs-up-320.webp",
+    "robots/CLO-02/chakhan-sales/assets/clo02/clo02-thumbs-up-640.webp",
+    "robots/CLO-02/chakhan-sales/assets/clo02/clo02-thumbs-up-master.webp",
+    "robots/CLO-02/chakhan-sales/hero-art-wide.webp",
+    "robots/CLO-02/chakhan-sales/hero-art.webp",
+    "robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-front.png",
+    "robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-original.png",
+    "robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-phone.png",
+    "robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-point.png",
+    "robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-surprise.png",
+    "robots/CLO-02/chakhan-sales/marketing/assets/character/clo02-thumbsup.png",
+    "robots/CLO-02/chakhan-sales/marketing/assets/character/hero-art-clo02.webp",
+    "robots/CLO-02/chakhan-sales/marketing/assets/character/홈페이지-히어로-시안-미리보기.png",
+    "robots/CLO-02/chakhan-sales/motion-3d/original-preview.webp"
+  ]
 }
