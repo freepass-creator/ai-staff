@@ -3,6 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
+import {validateCurrentAssets} from './current-api.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),site=path.join(root,'public-release/site');
 const out=path.resolve(process.argv[2]||path.join(root,'public-site'));
 try{if((await readdir(out)).length)throw Error('OUTPUT_NOT_EMPTY');}catch(e){if(e.code!=='ENOENT')throw e;await mkdir(out,{recursive:true});}
@@ -36,9 +37,11 @@ apiAssets.push(...chakhan.assets.map(a=>({id:a.id,character_id:'CLO-02',kind:'po
 apiAssets.push(...c.assets.filter(a=>a.category==='human'&&a.production_usable).map(a=>({id:a.id,character_id:'HUMAN-CHLOE',kind:'human_pose',variant:'human-chloe-v1',brand:'착한거래',label:a.title,usage:a.usage,tags:a.tags,sha256:a.png_sha256,upstream_url:a.png_url,width:a.width,height:a.height})));
 for(const a of hands.assets){if(!c.assets.some(g=>g.id===a.id&&g.png_sha256===a.sha256)||a.total_digits!==5||a.long_fingers!==4||a.thumbs!==1)throw Error('HAND_MASTER_CATALOG_DRIFT');apiAssets.push({id:a.id,character_id:'ROBOT-HAND-V1',kind:'hand_master',variant:hands.revision,label:a.label,usage:a.usage,side:a.side,surface:a.surface,topology:hands.topology,master_revision:hands.revision,scope:hands.scope,sha256:a.sha256,upstream_url:a.png_url,width:a.width,height:a.height});}
 if(apiAssets.filter(a=>a.kind==='human_pose').length!==12)throw Error('HUMAN_API_CATALOG_INCOMPLETE');
+for(const a of chakhan.assets)if(!c.assets.some(g=>g.id===a.id&&g.png_sha256===a.sha256))throw Error('POSE_CATALOG_DRIFT');
 const profile=profiles.profiles[0];apiAssets.push({id:'profile-selected-02',character_id:'CLO-02',kind:'profile',label:'승인 프로필 02',sha256:profile.sha256,upstream_url:profile.png_url,width:profile.width,height:profile.height});
+validateCurrentAssets(apiAssets,{ids:retired.asset_ids,sha256:retired.retired_asset_sha256||[]});
 const revision=createHash('sha256').update(JSON.stringify(apiAssets)).digest('hex');
-const apiData={revision,assets:apiAssets,hand_master_revision:hands.revision,retired_ids:retired.asset_ids,aliases:{착한클로이:'canonical-chakhan-white-v1',착한거래클로이:'canonical-chakhan-white-v1',기본클로이:'canonical-basic-purple-v1',보라색클로이:'canonical-basic-purple-v1',사람형클로이:'human-01-front-welcome',사람클로이:'human-01-front-welcome',인간형클로이:'human-01-front-welcome',왼손바닥:'hand-left-palm-v1',오른손바닥:'hand-right-palm-v1'}};
+const apiData={revision,assets:apiAssets,hand_master_revision:hands.revision,retired_ids:retired.asset_ids,retired_sha256:retired.retired_asset_sha256||[],aliases:{착한클로이:'canonical-chakhan-white-v1',착한거래클로이:'canonical-chakhan-white-v1',기본클로이:'canonical-basic-purple-v1',보라색클로이:'canonical-basic-purple-v1',사람형클로이:'human-01-front-welcome',사람클로이:'human-01-front-welcome',인간형클로이:'human-01-front-welcome',왼손바닥:'hand-left-palm-v1',오른손바닥:'hand-right-palm-v1'}};
 await mkdir(path.join(out,'runtime'));await cp(path.join(root,'public-release/current-api.mjs'),path.join(out,'runtime/current-api.mjs'));
 await writeFile(path.join(out,'api/character.mjs'),`import {createCharacterApi} from '../runtime/current-api.mjs';\nexport default createCharacterApi(${JSON.stringify(apiData)});\n`);
 await writeFile(path.join(out,'package.json'),JSON.stringify({private:true,type:'module',engines:{node:'24.x'}}));

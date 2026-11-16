@@ -1,6 +1,10 @@
 import {createHash} from 'node:crypto';
 const normalize=s=>String(s).normalize('NFKC').replace(/[\s_·-]/g,'').toLowerCase();
+export function validateCurrentAssets(assets,{ids=[],sha256=[]}={}){
+ const seen=new Set();for(const a of assets){if(ids.includes(a.id)||sha256.includes(a.sha256))throw Error('RETIRED_ASSET_REINTRODUCED');if(seen.has(a.id))throw Error('DUPLICATE_CURRENT_ASSET');seen.add(a.id);if(!/^[a-f0-9]{64}$/.test(a.sha256))throw Error('INVALID_CURRENT_ASSET_HASH');}return assets;
+}
 export function createCharacterApi(data,{fetchAsset=fetch}={}){
+ validateCurrentAssets(data.assets,{ids:data.retired_ids,sha256:data.retired_sha256||[]});
  const byId=new Map(data.assets.map(a=>[a.id,a])),retired=new Set(data.retired_ids);
  const publicAsset=a=>{const {upstream_url,...safe}=a;return {...safe,url:`/api/characters/assets/${a.id}`,revision:a.sha256};};
  return async function handler(req,res){

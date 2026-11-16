@@ -1,7 +1,8 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';import {createServer} from 'node:http';import {readFile} from 'node:fs/promises';
-import {createCharacterApi} from './current-api.mjs';import {createCurrentServer} from '../robots/current-server.mjs';
+import {createCharacterApi,validateCurrentAssets} from './current-api.mjs';import {createCurrentServer} from '../robots/current-server.mjs';
 import {mkdtemp} from 'node:fs/promises';import {execFileSync} from 'node:child_process';import path from 'node:path';import {tmpdir} from 'node:os';import {pathToFileURL,fileURLToPath} from 'node:url';
 const bytes=Buffer.from('registered PNG fixture'),sha=createHash('sha256').update(bytes).digest('hex'),data={revision:'current-batch',assets:[{id:'cover-confident',sha256:sha,upstream_url:'https://example.invalid/fixed.png'}],aliases:{착한클로이:'cover-confident'},retired_ids:['robot-33-think-choice']};
+test('final API gate rejects retired SHA or ID and duplicate IDs across merged collections',()=>{assert.throws(()=>validateCurrentAssets(data.assets,{sha256:[sha]}),/RETIRED_ASSET/);assert.throws(()=>validateCurrentAssets(data.assets,{ids:['cover-confident']}),/RETIRED_ASSET/);assert.throws(()=>validateCurrentAssets([...data.assets,...data.assets]),/DUPLICATE_CURRENT_ASSET/);assert.equal(validateCurrentAssets(data.assets).length,1);});
 async function run(server,fn){await new Promise(r=>server.listen(0,'127.0.0.1',r));try{await fn('http://127.0.0.1:'+server.address().port);}finally{await new Promise(r=>server.close(r));}}
 test('current API exposes stable IDs without upstream URLs, blocks retired IDs and old hashes',async()=>{
  let calls=0;await run(createServer(createCharacterApi(data,{fetchAsset:async()=>{calls++;return new Response(bytes);}})),async base=>{
