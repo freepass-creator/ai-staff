@@ -15,3 +15,5 @@
 사람형12종은 같은 현재API에도 포함한다. 다른직원 참고자료는 catalog.json과 현재 일반묶음에 보존했다. design_proposal인 COD-01/COD-03/CLO-04 R1은 생산API에 포함하지 않는다. 01/03남성,02/04여성이다. CLO-01/CLO-03캐릭터는없다. 번호와PC역할은별개다.
 
 표지제목은 SUITE Heavy, 본문 Noto Sans KR, CI는 승인P2. 고정PNG의 문구·배경·배치만 바꾼다. 실제 고객·차량·계약 증빙이 필요한 문단은 실제 자료를 쓴다. 문구조판은 render-covers.mjs로 수행하고 폰트/CI/SHA를 확인한다.
+
+새 캐릭터·포즈 생성은 [실제 PNG 참조 준비기](NEW-GENERATION.md)를 사용한다. current 항목의 generation_url에 장면 brief를 주면 동일변형과 손 정본까지 결합한 요청을 받는다. 기존 이미지는 소급 변경하지 않는다.

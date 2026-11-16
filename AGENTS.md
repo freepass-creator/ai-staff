@@ -91,3 +91,7 @@
 | 4 | CLO-04 · 클로아 | 여성 |
 
 CLO-01·CLO-03 캐릭터는 없다. 기존 네 캐릭터의 눈매·머리 장식·개성을 유지해 활용한다. 원본을 단순 색상 교체하거나 남성 1·3을 여성 클로이 얼굴로 통일하지 않는다. 번호와 PC 운영 역할은 별개다.
+
+## 새 생성 입력 규격 (2026-11-16 대표 직접 요청)
+
+기존 자산은 소급 재생성하지 않는다. 새 CLO-02/사람형 포즈는 먼저 `node public-release/site/prepare-generation.mjs --id <current-id> --brief <장면> --output <새빈폴더>`를 실행하고 `--check <준비폴더>`로 검증한다. `imagegen-request.json`의 실제 PNG referenced_image_paths를 모두 imagegen에 첨부한다. 프롬프트만으로 생성 금지. 로봇은 동일변형 정면+좌우손바닥+왼손등, 사람형은동일인물참조만 사용. 출력은REVIEW.json실물검수전productionfalse, 자동정본승격없음. `/api/characters/current`의generation_url과NEW-GENERATION.md를따른다.
