@@ -1,6 +1,6 @@
 {
   "schema": "ai-staff/erp-banner-library/v1",
-  "revision": "autumn-2026-11-16-v1",
+  "revision": "autumn-2026-11-16-v2",
   "status": "review_only",
   "production_usable": false,
   "season": "autumn",
@@ -44,8 +44,8 @@
       "id": "stylesheet",
       "file": "banner.css",
       "role": "banner-styles",
-      "bytes": 5571,
-      "sha256": "e5c79aae5ae7931be6a1c5f562578afacad31ecfbc67fbf96c169c31cede1c44"
+      "bytes": 6215,
+      "sha256": "4a2f053e1beabe28ab23bb51cd4a71c9cf4363793eb297833def3e254085e8d2"
     },
     {
       "id": "palette",

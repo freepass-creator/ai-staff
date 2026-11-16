@@ -50,12 +50,29 @@
   grid-column: 3;
   grid-row: 1;
   justify-self: start;
-  padding: 8px 14px;
-  border: 1px solid #e5d772;
-  border-radius: 2px;
-  color: #382f12;
-  background: #fff2a0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  color: var(--autumn-text);
+  background: transparent;
   line-height: 20px;
+}
+.bnx .erp-autumn .bnx-go::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: radial-gradient(circle at 5px 7px, white 1px, transparent 1.2px),
+              radial-gradient(circle at 8px 7px, white 1px, transparent 1.2px),
+              radial-gradient(circle at 11px 7px, white 1px, transparent 1.2px),
+              currentColor;
+  clip-path: path("M8 1C3.7 1 .5 3.6 .5 7c0 2.1 1.2 3.9 3.3 5L3 15l4-2.1 1 .1c4.3 0 7.5-2.6 7.5-6S12.3 1 8 1Z");
+}
+@media (hover: hover) {
+  .bnx .erp-autumn .bnx-go:hover {text-decoration: underline; text-underline-offset: 3px;}
 }
 .bnx .erp-autumn .bnx-go:focus-visible {outline: 2px solid #1b2a4a; outline-offset: 2px;}
 @media (max-width: 700px) {
@@ -92,7 +109,7 @@
     grid-row: 2;
     align-self: start;
     margin-top: 3px;
-    padding: 0 5px;
+    min-height: 0;
     font-size: 13px;
     line-height: 17px;
   }
