@@ -107,5 +107,10 @@
     "robots/CLO-02/chakhan-sales/marketing/assets/character/hero-art-clo02.webp",
     "robots/CLO-02/chakhan-sales/marketing/assets/character/홈페이지-히어로-시안-미리보기.png",
     "robots/CLO-02/chakhan-sales/motion-3d/original-preview.webp"
+  ],
+  "retired_asset_sha256": [
+    "78bafda7a873ecae3b12f7c2c7350020c31bf08e32347127735e30a472f7962b",
+    "baf83fe576c94371f873c9fae5040208f0fd5b9555e9814439587e118577d1f4",
+    "f2af4d2b7f438462e7f42c3057a2ba90a474e43b71c0551863526346f9c3b744"
   ]
 }

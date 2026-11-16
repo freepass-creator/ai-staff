@@ -6,13 +6,13 @@
   "downloads": {
     "assets": {
       "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/AI-Staff-Current-Assets.zip",
-      "sha256": "6ecda5f631a333afe60a5db710f064f2debde8c34df0af2d25a3686ee3437bfd",
-      "bytes": 135388381
+      "sha256": "3a945bdb3bebf0c8ac52894a804d5e5dd07a100343fe9b832e1c725caa5f6ade",
+      "bytes": 138631051
     },
     "templates": {
       "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-Cover-Kit-v2.zip",
-      "sha256": "4b85384743ec6fe2d2e34a6ca50448e95610e44fa25f39c8effe136ee99405f2",
-      "bytes": 13729586
+      "sha256": "6194c185f47cf53d7fdc757624d5cf59157fa9f01b9682eb7b4baf7ea2e841ff",
+      "bytes": 13759387
     }
   },
   "assets": [
@@ -1291,10 +1291,10 @@
         "이해"
       ],
       "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-cover-aha.png",
-      "png_sha256": "f2af4d2b7f438462e7f42c3057a2ba90a474e43b71c0551863526346f9c3b744",
+      "png_sha256": "f65e03a62d6e0216f9a035cb2e11b461e3929e09fcf5c8d14969064411c88717",
       "width": 1254,
       "height": 1254,
-      "thumbnail": "chakhan/thumbs/cover-aha-f2af4d2b7f.webp",
+      "thumbnail": "chakhan/thumbs/cover-aha-f65e03a62d.webp",
       "character_id": "CLO-02",
       "brand": "착한거래"
     },
@@ -1314,10 +1314,10 @@
         "주의"
       ],
       "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-cover-dejected.png",
-      "png_sha256": "baf83fe576c94371f873c9fae5040208f0fd5b9555e9814439587e118577d1f4",
+      "png_sha256": "97acef9969cab0820b790282cab0fe2b33ad5484a99612eba2330d55c315c840",
       "width": 1254,
       "height": 1254,
-      "thumbnail": "chakhan/thumbs/cover-dejected-baf83fe576.webp",
+      "thumbnail": "chakhan/thumbs/cover-dejected-97acef9969.webp",
       "character_id": "CLO-02",
       "brand": "착한거래"
     },
@@ -1337,10 +1337,10 @@
         "선택완료"
       ],
       "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-cover-confident.png",
-      "png_sha256": "78bafda7a873ecae3b12f7c2c7350020c31bf08e32347127735e30a472f7962b",
+      "png_sha256": "43285dbaccf9cdb0cc4585d607ae812811123fb0873bc02806904d5ce8a6a1ff",
       "width": 1254,
       "height": 1254,
-      "thumbnail": "chakhan/thumbs/cover-confident-78bafda7a8.webp",
+      "thumbnail": "chakhan/thumbs/cover-confident-43285dbacc.webp",
       "character_id": "CLO-02",
       "brand": "착한거래"
     },
@@ -1406,6 +1406,72 @@
       "thumbnail": "chakhan/thumbs/guide-right-9083c41c95.webp",
       "character_id": "CLO-02",
       "brand": "착한거래"
+    },
+    {
+      "id": "hand-left-palm-v1",
+      "title": "왼손 손바닥 정본",
+      "category": "hand",
+      "status": "hand_design_master",
+      "production_usable": true,
+      "usage": "로봇 새 포즈의 손 구조·연속 손바닥 곡면 참조. 인물 대신 쓰는 장면 포즈가 아님. 엄지1+긴손가락4.",
+      "tags": [
+        "손 정본",
+        "left",
+        "palm",
+        "엄지1",
+        "긴손가락4"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Robot-Hand-Left-Palm-v1.png",
+      "png_sha256": "824c751038be633c74fa893f8a260e2d7b31cf302dde09b47500e2761122d970",
+      "width": 1254,
+      "height": 1254,
+      "thumbnail": "thumbs/hand-left-palm-v1-824c751038.webp",
+      "side": "left",
+      "surface": "palm"
+    },
+    {
+      "id": "hand-right-palm-v1",
+      "title": "오른손 손바닥 정본",
+      "category": "hand",
+      "status": "hand_design_master",
+      "production_usable": true,
+      "usage": "로봇 새 포즈의 손 구조·연속 손바닥 곡면 참조. 인물 대신 쓰는 장면 포즈가 아님. 엄지1+긴손가락4.",
+      "tags": [
+        "손 정본",
+        "right",
+        "palm",
+        "엄지1",
+        "긴손가락4"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Robot-Hand-Right-Palm-v1.png",
+      "png_sha256": "af28d734a6c47440a5d2dde677d49e271f2aeafe52a0d490a27e1ebc28ff9f45",
+      "width": 1254,
+      "height": 1254,
+      "thumbnail": "thumbs/hand-right-palm-v1-af28d734a6.webp",
+      "side": "right",
+      "surface": "palm"
+    },
+    {
+      "id": "hand-left-back-v1",
+      "title": "왼손 손등 기준",
+      "category": "hand",
+      "status": "hand_design_master",
+      "production_usable": true,
+      "usage": "로봇 새 포즈의 손 구조·연속 손바닥 곡면 참조. 인물 대신 쓰는 장면 포즈가 아님. 엄지1+긴손가락4.",
+      "tags": [
+        "손 정본",
+        "left",
+        "dorsal",
+        "엄지1",
+        "긴손가락4"
+      ],
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Robot-Hand-Left-Back-v1.png",
+      "png_sha256": "0526583b869d46f8b1b78a711426645b5c2721ce8b7a95400c0f4c6680bc489c",
+      "width": 1254,
+      "height": 1254,
+      "thumbnail": "thumbs/hand-left-back-v1-0526583b86.webp",
+      "side": "left",
+      "surface": "dorsal"
     }
   ],
   "backgrounds": [
@@ -1484,5 +1550,6 @@
     "policy": "Use existing identities. Male COD-01/COD-03; female CLO-02/CLO-04. Do not invent replacements."
   },
   "current_character_api": "/api/characters/current",
-  "retired_robot_policy": "Only seven current Chakhan cuts; earlier robot poses and mixed ZIPs withdrawn."
+  "retired_robot_policy": "Only seven current Chakhan cuts; earlier robot poses and mixed ZIPs withdrawn.",
+  "hand_master_catalog": "hand-masters.json"
 }

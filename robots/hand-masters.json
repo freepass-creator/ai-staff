@@ -1,0 +1,117 @@
+{
+  "schema": "ai-staff/robot-hand-master/v1",
+  "revision": "robot-hand-v1.0",
+  "authority": "2026-11-16 대표 직접 요청: 손바닥 정본 생성, 긴손가락3개 시안 폐기, 같은 현재API 제공",
+  "scope": "시각 디자인 정본. 숨은 3D 지오메트리·밀리미터 설계도·물리 마찰성능 확정이 아님.",
+  "supersedes": [
+    "grip-pads-v1",
+    "flat-polygon-palm",
+    "outlined-oval-pad"
+  ],
+  "topology": {
+    "digits_per_hand": 5,
+    "long_fingers": 4,
+    "thumbs": 1,
+    "finger_chains": [
+      "thumb",
+      "index",
+      "middle",
+      "ring",
+      "little"
+    ],
+    "long_finger_phalanges": 3,
+    "thumb_phalanges": 2,
+    "left_palm_image_order": [
+      "little",
+      "ring",
+      "middle",
+      "index",
+      "thumb"
+    ],
+    "right_palm_image_order": [
+      "thumb",
+      "index",
+      "middle",
+      "ring",
+      "little"
+    ],
+    "left_dorsal_image_order": [
+      "thumb",
+      "index",
+      "middle",
+      "ring",
+      "little"
+    ]
+  },
+  "surface_rules": [
+    "엄지기저 도톰한 볼륨이 엄지뿌리와 연속됨",
+    "바깥 손바닥 뒤꿈치와 손가락뿌리가 중앙면에 자연스럽게 이어짐",
+    "중앙은 상대적으로 오목, 굽힘 홈과 미세한 그립 결",
+    "별도로 붙인 테두리 타원 패드/평면판 금지",
+    "손 LED 없음, 긴손가락3개/5개+엄지 시안 생산금지"
+  ],
+  "assets": [
+    {
+      "id": "hand-left-palm-v1",
+      "label": "왼손 손바닥 정본",
+      "side": "left",
+      "surface": "palm",
+      "status": "current_hand_design_master",
+      "production_usable": true,
+      "usage": "로봇 새 포즈의 손 구조·연속 손바닥 곡면 참조. 인물 대신 쓰는 장면 포즈가 아님. 엄지1+긴손가락4.",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Robot-Hand-Left-Palm-v1.png",
+      "sha256": "824c751038be633c74fa893f8a260e2d7b31cf302dde09b47500e2761122d970",
+      "width": 1254,
+      "height": 1254,
+      "total_digits": 5,
+      "long_fingers": 4,
+      "thumbs": 1,
+      "palm_material": "continuous graphite elastomer",
+      "shell_material": "glossy white clearcoat",
+      "LED": false
+    },
+    {
+      "id": "hand-right-palm-v1",
+      "label": "오른손 손바닥 정본",
+      "side": "right",
+      "surface": "palm",
+      "status": "current_hand_design_master",
+      "production_usable": true,
+      "usage": "로봇 새 포즈의 손 구조·연속 손바닥 곡면 참조. 인물 대신 쓰는 장면 포즈가 아님. 엄지1+긴손가락4.",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Robot-Hand-Right-Palm-v1.png",
+      "sha256": "af28d734a6c47440a5d2dde677d49e271f2aeafe52a0d490a27e1ebc28ff9f45",
+      "width": 1254,
+      "height": 1254,
+      "total_digits": 5,
+      "long_fingers": 4,
+      "thumbs": 1,
+      "palm_material": "continuous graphite elastomer",
+      "shell_material": "glossy white clearcoat",
+      "LED": false
+    },
+    {
+      "id": "hand-left-back-v1",
+      "label": "왼손 손등 기준",
+      "side": "left",
+      "surface": "dorsal",
+      "status": "current_hand_design_master",
+      "production_usable": true,
+      "usage": "로봇 새 포즈의 손 구조·연속 손바닥 곡면 참조. 인물 대신 쓰는 장면 포즈가 아님. 엄지1+긴손가락4.",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Robot-Hand-Left-Back-v1.png",
+      "sha256": "0526583b869d46f8b1b78a711426645b5c2721ce8b7a95400c0f4c6680bc489c",
+      "width": 1254,
+      "height": 1254,
+      "total_digits": 5,
+      "long_fingers": 4,
+      "thumbs": 1,
+      "palm_material": "continuous graphite elastomer",
+      "shell_material": "glossy white clearcoat",
+      "LED": false
+    }
+  ],
+  "download": {
+    "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Robot-Hand-Masters-v1.zip",
+    "sha256": "7912ea2f1e5b73e7c1637212254a44c9b8bb2435e90fb5a158ed14316ae4d6ef",
+    "bytes": 3209054
+  }
+}
