@@ -95,3 +95,7 @@ CLO-01·CLO-03 캐릭터는 없다. 기존 네 캐릭터의 눈매·머리 장�
 ## 새 생성 입력 규격 (2026-11-16 대표 직접 요청)
 
 기존 자산은 소급 재생성하지 않는다. 새 CLO-02/사람형 포즈는 먼저 `node public-release/site/prepare-generation.mjs --id <current-id> --brief <장면> --output <새빈폴더>`를 실행하고 `--check <준비폴더>`로 검증한다. `imagegen-request.json`의 실제 PNG referenced_image_paths를 모두 imagegen에 첨부한다. 프롬프트만으로 생성 금지. 로봇은 동일변형 정면+좌우손바닥+왼손등, 사람형은동일인물참조만 사용. 출력은REVIEW.json실물검수전productionfalse, 자동정본승격없음. `/api/characters/current`의generation_url과NEW-GENERATION.md를따른다.
+
+## 여성형 어깨 공통 규격 (2026-11-16 대표 직접 확정)
+
+클로이(CLO-02)·클로아(CLO-04)는 robots/shoulder-master.json의 동일한 여성형 원형 발광 어깨를 쓴다. 둥근 외측 디스크/은은한 발광링/몸에 붙는 흰 곡면 테두리이며 넓거나 겹치는 견갑은 새 생성에 쓰지 않는다. 각자 얼굴·번호·머리장식·발광색은 유지한다. 현재 API의 shoulder-feminine-round-v1은 어깨 형태 전용으로 같은 generation 요청에 실제 PNG를 포함한다. 기존 이미지 일괄 재생성 지시가 아니다.

@@ -18,3 +18,5 @@ READY.json이 없거나 --check에 실패하면 생성 요청을 사용하지 �
 공개 한 주소 `/api/characters/current`에서 각 배우의 generation_url을 따라간다. `/api/characters/generation?id=현재ID&brief=새장면`이 현재 참조·규격·검수 항목을 제공한다.
 
 준비 폴더는 절대 PNG 경로를 담으므로 이동·복사한 요청은 사용하지 않는다. 다른 PC나 폴더에서는 새 빈 폴더로 다시 준비한다. --check는 실제 첨부 경로·PNG·온라인 revision을 다시 확인한다. 생성 규칙을 바꿀 때 generation rules revision도 갱신한다.
+
+새 로봇 요청에는 공통 여성형 원형 발광 어깨 PNG도 포함한다. 클로이·클로아의 어깨 형태는 같게, 얼굴·색·머리 장식은 각자 유지한다. 현재 생성 API의 배우는 승인된 CLO-02와 사람형이며, CLO-04를 승인 배우로 자동 승격하지 않는다. 어깨 부품을 얼굴·귀·가슴으로 복사하지 않는다.

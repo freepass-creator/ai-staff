@@ -39,9 +39,11 @@ for(const a of hands.assets){if(!c.assets.some(g=>g.id===a.id&&g.png_sha256===a.
 if(apiAssets.filter(a=>a.kind==='human_pose').length!==12)throw Error('HUMAN_API_CATALOG_INCOMPLETE');
 for(const a of chakhan.assets)if(!c.assets.some(g=>g.id===a.id&&g.png_sha256===a.sha256))throw Error('POSE_CATALOG_DRIFT');
 const profile=profiles.profiles[0];apiAssets.push({id:'profile-selected-02',character_id:'CLO-02',kind:'profile',label:'승인 프로필 02',sha256:profile.sha256,upstream_url:profile.png_url,width:profile.width,height:profile.height});
+const shoulder=JSON.parse(await readFile(path.join(root,'robots/shoulder-master.json'),'utf8')),detail=shoulder.asset;apiAssets.push({...detail,character_id:'SHARED-ROBOT-SHOULDER',variant:shoulder.revision,upstream_url:detail.png_url});delete apiAssets.at(-1).png_url;
+await writeFile(path.join(out,'shoulder-master.json'),JSON.stringify(shoulder,null,2)+'\n');
 validateCurrentAssets(apiAssets,{ids:retired.asset_ids,sha256:retired.retired_asset_sha256||[]});
 const revision=createHash('sha256').update(JSON.stringify(apiAssets)).digest('hex');
-const apiData={revision,assets:apiAssets,hand_master_revision:hands.revision,retired_ids:retired.asset_ids,retired_sha256:retired.retired_asset_sha256||[],aliases:{착한클로이:'canonical-chakhan-white-v1',착한거래클로이:'canonical-chakhan-white-v1',기본클로이:'canonical-basic-purple-v1',보라색클로이:'canonical-basic-purple-v1',사람형클로이:'human-01-front-welcome',사람클로이:'human-01-front-welcome',인간형클로이:'human-01-front-welcome',왼손바닥:'hand-left-palm-v1',오른손바닥:'hand-right-palm-v1'}};
+const apiData={revision,assets:apiAssets,hand_master_revision:hands.revision,shoulder_master_revision:shoulder.revision,retired_ids:retired.asset_ids,retired_sha256:retired.retired_asset_sha256||[],aliases:{착한클로이:'canonical-chakhan-white-v1',착한거래클로이:'canonical-chakhan-white-v1',기본클로이:'canonical-basic-purple-v1',보라색클로이:'canonical-basic-purple-v1',사람형클로이:'human-01-front-welcome',사람클로이:'human-01-front-welcome',인간형클로이:'human-01-front-welcome',왼손바닥:'hand-left-palm-v1',오른손바닥:'hand-right-palm-v1'}};
 await mkdir(path.join(out,'runtime'));await cp(path.join(root,'public-release/current-api.mjs'),path.join(out,'runtime/current-api.mjs'));
 await cp(path.join(root,'public-release/generation.mjs'),path.join(out,'runtime/generation.mjs'));
 await writeFile(path.join(out,'api/character.mjs'),`import {createCharacterApi} from '../runtime/current-api.mjs';\nexport default createCharacterApi(${JSON.stringify(apiData)});\n`);

@@ -16,8 +16,8 @@ export function createCharacterApi(data,{fetchAsset=fetch}={}){
   try{
    const u=new URL(req.url,'https://ai-staff-two.vercel.app'),route=(u.searchParams.get('__route')||u.pathname.replace(/^\/api\/characters\/?/,'')).replace(/\/$/,'');
    if(route==='current'){
-    const kind=u.searchParams.get('kind');if(kind&&!['canonical','pose','human_pose','hand_master','profile'].includes(kind))return json(400,{error:'UNKNOWN_ASSET_KIND'});
-    return json(200,{schema:'ai-staff/current-api/v1',revision:data.revision,policy:'CURRENT_ALLOWLIST_ONLY_NO_FALLBACK',generation_rules_revision:GENERATION_RULES_REVISION,new_generation:'/api/characters/generation',existing_assets:'REUSE_UNCHANGED',hand_policy:'/hand-grip-policy.json',hand_master_revision:data.hand_master_revision||null,hand_master_catalog:'/hand-masters.json',assets:data.assets.filter(a=>!kind||a.kind===kind).map(publicAsset)});
+    const kind=u.searchParams.get('kind');if(kind&&!['canonical','pose','human_pose','hand_master','detail_master','profile'].includes(kind))return json(400,{error:'UNKNOWN_ASSET_KIND'});
+    return json(200,{schema:'ai-staff/current-api/v1',revision:data.revision,policy:'CURRENT_ALLOWLIST_ONLY_NO_FALLBACK',generation_rules_revision:GENERATION_RULES_REVISION,new_generation:'/api/characters/generation',generation_guide:'/NEW-GENERATION.md',generation_preparer:'/prepare-generation.mjs',generation_client:'/character-client.mjs',generation_required_parameters:['id','brief'],existing_assets:'REUSE_UNCHANGED',hand_policy:'/hand-grip-policy.json',hand_master_revision:data.hand_master_revision||null,hand_master_catalog:'/hand-masters.json',shoulder_master_revision:data.shoulder_master_revision||null,assets:data.assets.filter(a=>!kind||a.kind===kind).map(publicAsset)});
    }
    if(route==='generation'){try{return json(200,createGenerationPacket(data,u.searchParams.get('id'),u.searchParams.get('brief')));}catch(e){return json(e.code==='RETIRED_CHARACTER_ASSET'?410:e.code==='UNKNOWN_CURRENT_ASSET'?404:e.code==='GENERATION_REFERENCE_MISSING'?409:400,{error:e.code||'GENERATION_PACKET_FAILED'});}}
    if(route==='resolve'){
