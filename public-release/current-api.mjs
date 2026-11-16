@@ -1,6 +1,10 @@
 import {createHash} from 'node:crypto';
 const normalize=s=>String(s).normalize('NFKC').replace(/[\s_·-]/g,'').toLowerCase();
+export function validateCurrentAssets(assets,{ids=[],sha256=[]}={}){
+ const seen=new Set();for(const a of assets){if(ids.includes(a.id)||sha256.includes(a.sha256))throw Error('RETIRED_ASSET_REINTRODUCED');if(seen.has(a.id))throw Error('DUPLICATE_CURRENT_ASSET');seen.add(a.id);if(!/^[a-f0-9]{64}$/.test(a.sha256))throw Error('INVALID_CURRENT_ASSET_HASH');}return assets;
+}
 export function createCharacterApi(data,{fetchAsset=fetch}={}){
+ validateCurrentAssets(data.assets,{ids:data.retired_ids,sha256:data.retired_sha256||[]});
  const byId=new Map(data.assets.map(a=>[a.id,a])),retired=new Set(data.retired_ids);
  const publicAsset=a=>{const {upstream_url,...safe}=a;return {...safe,url:`/api/characters/assets/${a.id}`,revision:a.sha256};};
  return async function handler(req,res){
@@ -10,7 +14,10 @@ export function createCharacterApi(data,{fetchAsset=fetch}={}){
   if(!['GET','HEAD'].includes(req.method))return json(405,{error:'READ_ONLY'});
   try{
    const u=new URL(req.url,'https://ai-staff-two.vercel.app'),route=(u.searchParams.get('__route')||u.pathname.replace(/^\/api\/characters\/?/,'')).replace(/\/$/,'');
-   if(route==='current')return json(200,{schema:'ai-staff/current-api/v1',revision:data.revision,policy:'CURRENT_ALLOWLIST_ONLY_NO_FALLBACK',hand_policy:'/hand-grip-policy.json',assets:data.assets.map(publicAsset)});
+   if(route==='current'){
+    const kind=u.searchParams.get('kind');if(kind&&!['canonical','pose','human_pose','hand_master','profile'].includes(kind))return json(400,{error:'UNKNOWN_ASSET_KIND'});
+    return json(200,{schema:'ai-staff/current-api/v1',revision:data.revision,policy:'CURRENT_ALLOWLIST_ONLY_NO_FALLBACK',hand_policy:'/hand-grip-policy.json',hand_master_revision:data.hand_master_revision||null,hand_master_catalog:'/hand-masters.json',assets:data.assets.filter(a=>!kind||a.kind===kind).map(publicAsset)});
+   }
    if(route==='resolve'){
     let id=u.searchParams.get('id');if(!id){const q=normalize(u.searchParams.get('q')||'');if(['클로이','clo02','chloe'].includes(q))return json(409,{error:'VARIANT_REQUIRED',examples:['착한클로이','기본클로이']});id=data.aliases[q];}
     if(retired.has(id))return json(410,{error:'RETIRED_CHARACTER_ASSET',current:'/api/characters/current'});

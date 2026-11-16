@@ -1,3 +1,5 @@
+- **손 정본·사람형 통합(2026-11-16 대표 직접 요청)**: 같은 current API에서 `kind=hand_master` 3종, `kind=human_pose` 12종을 고른다. 손 정본은 `robots/hand-masters.json` revision `robot-hand-v1.0`. 평면판·별도 타원 붙임 패드·긴손가락3개/엄지포함6개 시안 금지. 팔짱은 각손끝5개를 구분해서 검수한다. 새 손 포즈는 연속 탄성 손바닥 표면·엄지기저/바깥볼륨/오목중앙을 참조.
+
 # ai-staff — 작업 규칙 (Codex·Claude 공통)
 
 ## 블로그 메인 표지·손바닥 설계 (대표 정정, 2026-11-16)

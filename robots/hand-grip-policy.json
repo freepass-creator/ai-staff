@@ -1,15 +1,15 @@
 {
   "schema": "ai-staff/robot-hand-grip-policy/v1",
-  "revision": "grip-pads-v1",
+  "revision": "robot-hand-v1.0",
   "authority": "2026-11-16 대표 직접 정정: 손바닥 주름·도톰한 부분·미끄럼 방지 구조를 로봇에 적용",
-  "scope": "새 로봇 파생 포즈 공통 설계 기준. 기존 정본 PNG를 자동 재작성하지 않는다.",
+  "scope": "모든 새 로봇 손 제작의 시각 정본. 현재API에서 좌우/손바닥/손등과 SHA를 읽는다.",
   "anatomy": {
     "long_fingers_per_hand": 4,
     "separate_opposable_thumb": true,
     "total_digits": 5,
     "thumb_root": "손목 옆에서 대향하는 독립 관절; 손가락 네 개 중 하나로 세지 않음",
-    "thenar_pad": "엄지 밑의 도톰한 타원·삼각형 그립 패드",
-    "hypothenar_pad": "손바닥 바깥 뒤꿈치의 별도 완충 패드",
+    "thenar_pad": "별도 붙임판이 아닌 연속 탄성 손바닥의 엄지기저 융기",
+    "hypothenar_pad": "중앙면에 이어지는 바깥 손바닥 뒤꿈치 융기",
     "finger_root_pads": "네 손가락 뿌리와 손끝의 낮은 접촉 패드",
     "central_palm": "얕게 오목한 중앙과 실제 굽힘 방향을 따르는 곡선 홈"
   },
@@ -27,8 +27,17 @@
     "평평한 검은 장갑판",
     "무작위 혹·회로 장식으로 패드를 대신하기",
     "사람 피부처럼 사실적인 살 주름",
-    "손바닥 접촉면을 두꺼운 흰 갑옷으로 덮기"
+    "손바닥 접촉면을 두꺼운 흰 갑옷으로 덮기",
+    "긴손가락 세 개로 보이는 손",
+    "긴손가락 다섯 개에 엄지가 더 붙은 여섯 손",
+    "테두리로 분리된 타원 패드"
   ],
   "verification": "원본 PNG를 확대해 손가락 뿌리·엄지·패드와 굽힘을 직접 확인한다. 메타데이터의 digits=5만으로 합격 처리하지 않는다.",
-  "physical_claim": "미끄럼 방지 재료를 표현한 시각 설계이며 실제 마찰계수·기계 성능 검증은 아니다."
+  "physical_claim": "미끄럼 방지 재료를 표현한 시각 설계이며 실제 마찰계수·기계 성능 검증은 아니다.",
+  "master_catalog": "/hand-masters.json",
+  "master_ids": [
+    "hand-left-palm-v1",
+    "hand-right-palm-v1",
+    "hand-left-back-v1"
+  ]
 }

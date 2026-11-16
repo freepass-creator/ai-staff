@@ -1,4 +1,4 @@
-const labels={all:'전체',canonical:'클로이 정본',human:'사람형',robot:'로봇 활용',scene:'장면 합성',template:'포스터',revision:'R1 제안'};
+const labels={all:'전체',canonical:'클로이 정본',human:'사람형',robot:'로봇 활용',scene:'장면 합성',template:'포스터',revision:'R1 제안',hand:'손 정본'};
 const $=id=>document.getElementById(id),params=new URLSearchParams(location.search);
 let catalog,kind=labels[params.get('kind')]?params.get('kind'):'all',active;
 const query=$('query');query.value=params.get('q')||'';

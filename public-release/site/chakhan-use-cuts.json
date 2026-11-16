@@ -25,7 +25,6 @@
       "production_usable": true,
       "profile_usable": false,
       "canonical_replacement": false,
-      "palm_revision": "grip-pads-v1",
       "identity_reference_sha256": "49b6f9ae899afc64271aac75e0705b192316053d32ff85c6c316f20d02774352",
       "brand_pose_reference_sha256": "60c44eec60cdf7b2857a34acfc80a66dc36b309b9135c35e43d213841da80522",
       "tags": [
@@ -39,7 +38,9 @@
       "usage": "비교 기준을 고민하거나 선택을 망설이는 표지. 머리 기울기와 턱을 짚는 동작을 크게 보여주고 반대편에 질문형 제목을 배치한다.",
       "cover_placement": "오른쪽 캐릭터·왼쪽 질문형 제목",
       "hand_review": "확대 PNG 대조: 네 긴손가락+엄지, 별도 엄지 밑/바깥 패드, 중앙면과 관절 연결 확인",
-      "thumbnail": "chakhan/thumbs/cover-think-3ee35ac277.webp"
+      "thumbnail": "chakhan/thumbs/cover-think-3ee35ac277.webp",
+      "hand_master_revision": "robot-hand-v1.0",
+      "hand_reference_usable": false
     },
     {
       "id": "cover-aha",
@@ -47,7 +48,7 @@
       "character_number": "02",
       "file": "cutouts/Chakhan-CLO-02-cover-aha.png",
       "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-cover-aha.png",
-      "sha256": "f2af4d2b7f438462e7f42c3057a2ba90a474e43b71c0551863526346f9c3b744",
+      "sha256": "f65e03a62d6e0216f9a035cb2e11b461e3929e09fcf5c8d14969064411c88717",
       "width": 1254,
       "height": 1254,
       "transparent_background": true,
@@ -63,7 +64,7 @@
       "production_usable": true,
       "profile_usable": false,
       "canonical_replacement": false,
-      "palm_revision": "grip-pads-v1",
+      "palm_revision": "robot-hand-v1.0",
       "identity_reference_sha256": "49b6f9ae899afc64271aac75e0705b192316053d32ff85c6c316f20d02774352",
       "brand_pose_reference_sha256": "60c44eec60cdf7b2857a34acfc80a66dc36b309b9135c35e43d213841da80522",
       "tags": [
@@ -76,8 +77,15 @@
       ],
       "usage": "처음 알게 된 조건이나 놓친 체크 항목을 설명하는 표지. 위로 든 검지와 밝은 LCD 표정을 살려 발견형 제목과 함께 사용한다.",
       "cover_placement": "제목 상단·캐릭터 중앙 또는 오른쪽",
-      "hand_review": "확대 PNG 대조: 네 긴손가락+엄지, 별도 엄지 밑/바깥 패드, 중앙면과 관절 연결 확인",
-      "thumbnail": "chakhan/thumbs/cover-aha-f2af4d2b7f.webp"
+      "hand_review": "엄지와 네 긴손가락을 독립 윤곽/손끝으로 확대 검수; 연속 손바닥 정본 참조",
+      "hand_master_ids": [
+        "hand-left-palm-v1",
+        "hand-right-palm-v1",
+        "hand-left-back-v1"
+      ],
+      "thumbnail": "chakhan/thumbs/cover-aha-f65e03a62d.webp",
+      "hand_master_revision": "robot-hand-v1.0",
+      "hand_reference_usable": false
     },
     {
       "id": "cover-dejected",
@@ -85,7 +93,7 @@
       "character_number": "02",
       "file": "cutouts/Chakhan-CLO-02-cover-dejected.png",
       "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-cover-dejected.png",
-      "sha256": "baf83fe576c94371f873c9fae5040208f0fd5b9555e9814439587e118577d1f4",
+      "sha256": "97acef9969cab0820b790282cab0fe2b33ad5484a99612eba2330d55c315c840",
       "width": 1254,
       "height": 1254,
       "transparent_background": true,
@@ -101,7 +109,7 @@
       "production_usable": true,
       "profile_usable": false,
       "canonical_replacement": false,
-      "palm_revision": "grip-pads-v1",
+      "palm_revision": "robot-hand-v1.0",
       "identity_reference_sha256": "49b6f9ae899afc64271aac75e0705b192316053d32ff85c6c316f20d02774352",
       "brand_pose_reference_sha256": "60c44eec60cdf7b2857a34acfc80a66dc36b309b9135c35e43d213841da80522",
       "tags": [
@@ -114,8 +122,15 @@
       ],
       "usage": "기대와 다른 조건이나 아쉬운 선택을 짚는 표지. 내려간 어깨와 펼친 손이 보이도록 배치하고 과도한 공포·불안 조장 문구는 쓰지 않는다.",
       "cover_placement": "제목 상단·오른쪽 캐릭터",
-      "hand_review": "확대 PNG 대조: 네 긴손가락+엄지, 별도 엄지 밑/바깥 패드, 중앙면과 관절 연결 확인",
-      "thumbnail": "chakhan/thumbs/cover-dejected-baf83fe576.webp"
+      "hand_review": "엄지와 네 긴손가락을 독립 윤곽/손끝으로 확대 검수; 연속 손바닥 정본 참조",
+      "hand_master_ids": [
+        "hand-left-palm-v1",
+        "hand-right-palm-v1",
+        "hand-left-back-v1"
+      ],
+      "thumbnail": "chakhan/thumbs/cover-dejected-97acef9969.webp",
+      "hand_master_revision": "robot-hand-v1.0",
+      "hand_reference_usable": false
     },
     {
       "id": "cover-confident",
@@ -123,7 +138,7 @@
       "character_number": "02",
       "file": "cutouts/Chakhan-CLO-02-cover-confident.png",
       "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-cover-confident.png",
-      "sha256": "78bafda7a873ecae3b12f7c2c7350020c31bf08e32347127735e30a472f7962b",
+      "sha256": "43285dbaccf9cdb0cc4585d607ae812811123fb0873bc02806904d5ce8a6a1ff",
       "width": 1254,
       "height": 1254,
       "transparent_background": true,
@@ -139,7 +154,6 @@
       "production_usable": true,
       "profile_usable": false,
       "canonical_replacement": false,
-      "palm_revision": "grip-pads-v1",
       "identity_reference_sha256": "49b6f9ae899afc64271aac75e0705b192316053d32ff85c6c316f20d02774352",
       "brand_pose_reference_sha256": "60c44eec60cdf7b2857a34acfc80a66dc36b309b9135c35e43d213841da80522",
       "tags": [
@@ -152,8 +166,15 @@
       ],
       "usage": "조건을 이해한 뒤 정리·확신을 전달하는 표지. 팔짱을 낀 안정적인 자세를 크게 쓰고 체크리스트형 제목이나 짧은 결론을 배치한다.",
       "cover_placement": "왼쪽 캐릭터·상단 제목·오른쪽 보조 문구",
-      "hand_review": "실사 팔짱 자세 대조: 오른쪽 전완·손목·손등을 함께 교정. 엄지와 네 긴손가락 구분, 손가락은 반대 상완을 따라 대각선으로 놓임.",
-      "thumbnail": "chakhan/thumbs/cover-confident-78bafda7a8.webp"
+      "hand_review": "엄지와 네 긴손가락을 독립 윤곽/손끝으로 확대 검수; 연속 손바닥 정본 참조",
+      "hand_master_ids": [
+        "hand-left-palm-v1",
+        "hand-right-palm-v1",
+        "hand-left-back-v1"
+      ],
+      "thumbnail": "chakhan/thumbs/cover-confident-43285dbacc.webp",
+      "hand_master_revision": "robot-hand-v1.0",
+      "hand_reference_usable": false
     },
     {
       "id": "phone",
@@ -186,8 +207,9 @@
       "nameplate": "착한거래",
       "emission_color": "yellow",
       "group": "consultation",
-      "palm_revision": "earlier-closed-hand-pose",
-      "thumbnail": "chakhan/thumbs/phone-60c44eec60.webp"
+      "thumbnail": "chakhan/thumbs/phone-60c44eec60.webp",
+      "hand_master_revision": "robot-hand-v1.0",
+      "hand_reference_usable": false
     },
     {
       "id": "tablet",
@@ -220,8 +242,9 @@
       "nameplate": "착한거래",
       "emission_color": "yellow",
       "group": "consultation",
-      "palm_revision": "earlier-closed-hand-pose",
-      "thumbnail": "chakhan/thumbs/tablet-1ea53feeb3.webp"
+      "thumbnail": "chakhan/thumbs/tablet-1ea53feeb3.webp",
+      "hand_master_revision": "robot-hand-v1.0",
+      "hand_reference_usable": false
     },
     {
       "id": "guide-right",
@@ -254,8 +277,9 @@
       "nameplate": "착한거래",
       "emission_color": "yellow",
       "group": "consultation",
-      "palm_revision": "earlier-closed-hand-pose",
-      "thumbnail": "chakhan/thumbs/guide-right-9083c41c95.webp"
+      "thumbnail": "chakhan/thumbs/guide-right-9083c41c95.webp",
+      "hand_master_revision": "robot-hand-v1.0",
+      "hand_reference_usable": false
     }
   ],
   "runtime_assets": [
@@ -321,8 +345,8 @@
       "width": 1200,
       "height": 1200,
       "file": "Chakhan-Cover-Example-Aha.png",
-      "sha256": "1e845ea37083224485206ed5591d0c306e9dd501faaa21ada66ee3f03c55d4ab",
-      "character_source_sha256": "f2af4d2b7f438462e7f42c3057a2ba90a474e43b71c0551863526346f9c3b744",
+      "sha256": "6689f8c642d392b2a9e8cf5e2a9c06c8b3a1efcbafefd6261df00f094ea9ca1e",
+      "character_source_sha256": "f65e03a62d6e0216f9a035cb2e11b461e3929e09fcf5c8d14969064411c88717",
       "headline": "아, 이 조건을\n놓쳤네요!",
       "qa": {
         "issues": [],
@@ -340,7 +364,7 @@
         "놓쳤네요!"
       ],
       "purpose": "문구·배치 예시. 원고 내용에 맞춰 cover-jobs.json을 수정하고 고정 PNG로 재조판한다.",
-      "thumbnail": "chakhan/thumbs/chakhan-cover-example-aha-1e845ea370.webp"
+      "thumbnail": "chakhan/thumbs/chakhan-cover-example-aha-6689f8c642.webp"
     },
     {
       "id": "Chakhan-Cover-Example-Dejected",
@@ -349,8 +373,8 @@
       "width": 1200,
       "height": 1200,
       "file": "Chakhan-Cover-Example-Dejected.png",
-      "sha256": "661a8faf6c533d6d1f54c8483fd8f17a4374be3f9198eb62f3df00713a6ee455",
-      "character_source_sha256": "baf83fe576c94371f873c9fae5040208f0fd5b9555e9814439587e118577d1f4",
+      "sha256": "fdfeed7aef96ed98645380cccf71d2cfa47d4b059376240df3dcfe7ec4371dc3",
+      "character_source_sha256": "97acef9969cab0820b790282cab0fe2b33ad5484a99612eba2330d55c315c840",
       "headline": "싸다고 골랐는데,\n왜 아쉬울까요?",
       "qa": {
         "issues": [],
@@ -368,7 +392,7 @@
         "왜 아쉬울까요?"
       ],
       "purpose": "문구·배치 예시. 원고 내용에 맞춰 cover-jobs.json을 수정하고 고정 PNG로 재조판한다.",
-      "thumbnail": "chakhan/thumbs/chakhan-cover-example-dejected-661a8faf6c.webp"
+      "thumbnail": "chakhan/thumbs/chakhan-cover-example-dejected-fdfeed7aef.webp"
     },
     {
       "id": "Chakhan-Cover-Example-Confident",
@@ -377,8 +401,8 @@
       "width": 1200,
       "height": 1200,
       "file": "Chakhan-Cover-Example-Confident.png",
-      "sha256": "1092623f509cb2311308964adb8bf484f3f84bf1defd6db4d345f2a4f4f923e1",
-      "character_source_sha256": "78bafda7a873ecae3b12f7c2c7350020c31bf08e32347127735e30a472f7962b",
+      "sha256": "4872ded9df88237e06a147afe02d30fd8e18dd892281facd044efc93b16169f0",
+      "character_source_sha256": "43285dbaccf9cdb0cc4585d607ae812811123fb0873bc02806904d5ce8a6a1ff",
       "headline": "조건을 알고\n선택하면 든든!",
       "qa": {
         "issues": [],
@@ -396,7 +420,7 @@
         "선택하면 든든!"
       ],
       "purpose": "문구·배치 예시. 원고 내용에 맞춰 cover-jobs.json을 수정하고 고정 PNG로 재조판한다.",
-      "thumbnail": "chakhan/thumbs/chakhan-cover-example-confident-1092623f50.webp"
+      "thumbnail": "chakhan/thumbs/chakhan-cover-example-confident-4872ded9df.webp"
     }
   ],
   "hand_grip_policy": "hand-grip-policy.json",
@@ -415,11 +439,12 @@
     "CI": "original P2 SVG",
     "minimum_outer_margin_px": 64
   },
+  "hand_master_revision": "robot-hand-v1.0",
   "downloads": {
     "zip": {
       "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-Cover-Kit-v2.zip",
-      "sha256": "4b85384743ec6fe2d2e34a6ca50448e95610e44fa25f39c8effe136ee99405f2",
-      "bytes": 13729586
+      "sha256": "6194c185f47cf53d7fdc757624d5cf59157fa9f01b9682eb7b4baf7ea2e841ff",
+      "bytes": 13759387
     },
     "previous_batch": {
       "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-Use-Cuts-Batch01.zip",

@@ -9,7 +9,7 @@ test('Chakhan consumers receive only branded transparent usage cuts and portable
 
 
 test('main-cover choices contain four distinct emotional poses and fixed-pixel composition examples',async()=>{
- const poses=c.assets.filter(a=>a.group==='cover_emotion');assert.equal(poses.length,4);assert.deepEqual(new Set(poses.map(a=>a.emotion)),new Set(['think','aha','dejected','confident']));assert.ok(poses.every(a=>a.palm_revision==='grip-pads-v1'));
+ const poses=c.assets.filter(a=>a.group==='cover_emotion');assert.equal(poses.length,4);assert.deepEqual(new Set(poses.map(a=>a.emotion)),new Set(['think','aha','dejected','confident']));assert.ok(poses.every(a=>a.hand_master_revision==='robot-hand-v1.0'&&a.hand_reference_usable===false));assert.ok(poses.filter(a=>['cover-aha','cover-dejected'].includes(a.id)).every(a=>a.palm_revision==='robot-hand-v1.0'));
  assert.equal(c.covers.length,4);for(const cover of c.covers){assert.equal(cover.width,1200);assert.equal(cover.height,1200);assert.ok(poses.some(a=>a.id===cover.pose_id&&a.sha256===cover.character_source_sha256));assert.match(cover.sha256,/^[a-f0-9]{64}$/);assert.ok((await stat(new URL('./site/'+cover.thumbnail,import.meta.url))).size<150000);}
  const hand=JSON.parse(await readFile(new URL('../robots/hand-grip-policy.json',import.meta.url),'utf8'));assert.equal(hand.anatomy.long_fingers_per_hand,4);assert.equal(hand.anatomy.separate_opposable_thumb,true);assert.equal(hand.materials.palm_or_hand_back_LED,false);
 });
