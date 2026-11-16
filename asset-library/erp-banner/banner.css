@@ -71,6 +71,7 @@
               currentColor;
   clip-path: path("M8 1C3.7 1 .5 3.6 .5 7c0 2.1 1.2 3.9 3.3 5L3 15l4-2.1 1 .1c4.3 0 7.5-2.6 7.5-6S12.3 1 8 1Z");
 }
+.bnx .erp-autumn .bnx-go > svg {display: block; flex: none;}
 @media (hover: hover) {
   .bnx .erp-autumn .bnx-go:hover {text-decoration: underline; text-underline-offset: 3px;}
 }

@@ -20,6 +20,7 @@
 2. 가을의 `.bnx-note`와 `.bnx-cheer`에 `erp-autumn` 클래스를 추가한다. 기존 `data-wd`의 영문 요일 코드로 팔레트가 바뀐다. 배너 날짜·카피·넘김과 데이터 슬라이드는 ERP5에서 관리한다.
 3. 시안의 두 슬라이드는 얼굴 이미지 한 장씩을 첫 자식으로 쓴다. 시안 재현 시 `<img class="autumn-face" src="/assets/banner/review/cloa-128.webp" width="52" height="52" alt="" loading="lazy">`를 쓴다. 확정 후 기존 얼굴 슬롯을 활용할 때도 한 장씩만 렌더링한다. 얼굴은 참조 이미지에서 잘라 만든 검토용이며 출처·크롭·상태는 `review/face-source.json`에 있다.
 4. 카카오 링크는 남색 말풍선 아이콘과 ‘카카오톡 채널 열기’ 문구를 한 줄로 표시한다. 웹에서는 본문 오른쪽, 모바일에서는 본문 아래에 놓인다. 모바일의 ‘안내’는 얼굴 아래에 있고 터치 범위는 안내 카드 전체다.
+5. ERP5 `public/app.js`에서 안내 링크의 내용을 `${esc(notice.button)}${icon('chevron-right', 16)}`로 교체한다. 같은 파일에서 가져오는 `public/icons.js`의 공통 SVG를 쓰며 기존 문자 꺾쇠는 제거한다. 아이콘은 링크 글자색을 따르고 보조 기술에서는 문구만 읽힌다.
 
 ## 자산
 
