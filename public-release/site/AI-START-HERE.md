@@ -1,4 +1,4 @@
-현재 캐릭터 API는 **25개**: 로봇정면2 + 착한거래포즈7 + 사람형12 + 손정본3 + 승인프로필1. 사람형과 손도 `/api/characters/current` 하나에서 제공한다. `?kind=human_pose`, `?kind=hand_master`로 분류 조회하며 ID/revision/SHA/url로 동일하게 가져온다. 손 기준은 `robot-hand-v1.0`, 좌우손바닥과 왼손등3뷰. 손바닥은 연속곡면이며 오래된 분리 타원패드 기준을 사용하지 않는다.
+현재 캐릭터 API는 **26개(기존25+공통어깨1)**: 로봇정면2 + 착한거래포즈7 + 사람형12 + 손정본3 + 승인프로필1. 사람형과 손도 `/api/characters/current` 하나에서 제공한다. `?kind=human_pose`, `?kind=hand_master`로 분류 조회하며 ID/revision/SHA/url로 동일하게 가져온다. 손 기준은 `robot-hand-v1.0`, 좌우손바닥과 왼손등3뷰. 손바닥은 연속곡면이며 오래된 분리 타원패드 기준을 사용하지 않는다.
 
 # AI Staff 현재 캐릭터 사용
 
@@ -15,3 +15,5 @@
 사람형12종은 같은 현재API에도 포함한다. 다른직원 참고자료는 catalog.json과 현재 일반묶음에 보존했다. design_proposal인 COD-01/COD-03/CLO-04 R1은 생산API에 포함하지 않는다. 01/03남성,02/04여성이다. CLO-01/CLO-03캐릭터는없다. 번호와PC역할은별개다.
 
 표지제목은 SUITE Heavy, 본문 Noto Sans KR, CI는 승인P2. 고정PNG의 문구·배경·배치만 바꾼다. 실제 고객·차량·계약 증빙이 필요한 문단은 실제 자료를 쓴다. 문구조판은 render-covers.mjs로 수행하고 폰트/CI/SHA를 확인한다.
+
+새 캐릭터·포즈 생성은 [실제 PNG 참조 준비기](NEW-GENERATION.md)를 사용한다. current 항목의 generation_url에 장면 brief를 주면 동일변형과 손 정본까지 결합한 요청을 받는다. 기존 이미지는 소급 변경하지 않는다.

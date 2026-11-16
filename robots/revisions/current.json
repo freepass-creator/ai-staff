@@ -139,5 +139,17 @@
       "id": "CLO-04",
       "presentation": "female"
     }
-  ]
+  ],
+  "new_generation_design_override": {
+    "effective_on": "2026-11-16",
+    "scope": "new generation only; existing images unchanged",
+    "characters": [
+      "CLO-02",
+      "CLO-04"
+    ],
+    "same_feminine_shoulders": true,
+    "reference": "robots/shoulder-master.json",
+    "shape": "compact round luminous shoulder disk with curved white collar; no pauldron",
+    "preserve_character_specific_face_number_emission": true
+  }
 }

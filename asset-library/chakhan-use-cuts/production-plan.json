@@ -5,7 +5,12 @@
   "owner_instruction": "가리키기만 반복하지 말고 고민·깨달음·시무룩함 등 다양한 감정과 자세를 스스로 구성한다.",
   "current_batch": {
     "number": "02",
-    "emotions": ["고민", "깨달음", "시무룩함", "자신감"],
+    "emotions": [
+      "고민",
+      "깨달음",
+      "시무룩함",
+      "자신감"
+    ],
     "new_transparent_cutouts": 4,
     "cover_layout_examples": 4
   },
@@ -18,9 +23,32 @@
     "엄지·손가락 수·진한 회색 그립 패드를 이미지 확대 검수한다."
   ],
   "next_scene_groups": [
-    ["안도", "깜짝 놀람", "꼼꼼히 확인", "망설임"],
-    ["추천에 확신", "부담 없는 거절", "기대", "난감하지만 설명 준비"],
-    ["책상에서 비교", "메모하며 검토", "작은 성공", "재확인"]
+    [
+      "안도",
+      "깜짝 놀람",
+      "꼼꼼히 확인",
+      "망설임"
+    ],
+    [
+      "추천에 확신",
+      "부담 없는 거절",
+      "기대",
+      "난감하지만 설명 준비"
+    ],
+    [
+      "책상에서 비교",
+      "메모하며 검토",
+      "작은 성공",
+      "재확인"
+    ]
   ],
-  "automation_installed": false
+  "automation_installed": false,
+  "new_generation": {
+    "endpoint": "https://ai-staff-two.vercel.app/api/characters/generation",
+    "preparer": "public-release/site/prepare-generation.mjs",
+    "actual_png_references_required": true,
+    "manual_visual_review_required": true,
+    "retroactive_rewrite_existing": false,
+    "automatic_generation_installed": false
+  }
 }

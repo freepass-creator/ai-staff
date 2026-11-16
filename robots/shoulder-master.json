@@ -1,0 +1,29 @@
+{
+  "schema": "ai-staff/shared-shoulder-master/v1",
+  "revision": "feminine-round-shoulder-v1",
+  "authority": "2026-11-16 대표 직접 요청 및 굿굿 확인: 클로아·클로이 동일 여성형 원형 발광 어깨",
+  "applies_to": [
+    "CLO-02",
+    "CLO-04"
+  ],
+  "geometry_policy": "SAME compact feminine round shoulder bearing and curved white collar for both characters; exposed outward circular emissive ring; no broad pointed or overlapping pauldron.",
+  "emission_policy": "Warm-white light in shape-only component reference. Output uses each character current variant color; never copy another character face/color/antenna.",
+  "existing_assets_policy": "Preserve existing files; apply to new generation only.",
+  "asset": {
+    "id": "shoulder-feminine-round-v1",
+    "kind": "detail_master",
+    "detail": "shoulder",
+    "presentation": "feminine",
+    "applies_to": [
+      "CLO-02",
+      "CLO-04"
+    ],
+    "label": "클로이·클로아 공통 여성형 원형 발광 어깨",
+    "usage": "새 로봇 생성용 어깨 형태 참조 전용. 머리·귀·가슴이 아닌 양쪽 상완 바깥 어깨에 적용. 얼굴/번호/고유색은 캐릭터별 유지.",
+    "master_revision": "feminine-round-shoulder-v1",
+    "sha256": "919f79e70b7c86d1e9227ecf8b51dc28d7a813ed2ea31137abb74ec547795a94",
+    "width": 1536,
+    "height": 1024,
+    "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Robot-Feminine-Round-Shoulder-v1.png"
+  }
+}

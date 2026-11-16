@@ -1,0 +1,31 @@
+export const GENERATION_RULES_REVISION='reference-bound-generation-v1.1-round-shoulders';
+export function createGenerationPacket(data,id,brief){
+ const fail=code=>{const e=Error(code);e.code=code;throw e;},actor=data.assets.find(a=>a.id===id);
+ if(!actor)fail(data.retired_ids.includes(id)?'RETIRED_CHARACTER_ASSET':'UNKNOWN_CURRENT_ASSET');
+ if(!['canonical','pose','human_pose'].includes(actor.kind))fail('ACTOR_KIND_NOT_GENERATABLE');
+ if(typeof brief!=='string'||brief.trim().length<1||brief.length>1200||/[\x00-\x08\x0b\x0c\x0e-\x1f]/.test(brief))fail('INVALID_GENERATION_BRIEF');
+ const human=actor.kind==='human_pose',refs=[],add=(a,role)=>{if(!a)fail('GENERATION_REFERENCE_MISSING');if(!refs.some(r=>r.id===a.id))refs.push({id:a.id,role,kind:a.kind,side:a.side||null,surface:a.surface||null,sha256:a.sha256,url:`/api/characters/assets/${a.id}?revision=${a.sha256}`});};
+ add(actor,'selected_character_identity_and_optional_pose');
+ if(human){if(actor.character_id!=='HUMAN-CHLOE')fail('GENERATION_VARIANT_NOT_SUPPORTED');add(data.assets.find(a=>a.id==='human-01-front-welcome'&&a.kind==='human_pose'&&a.character_id===actor.character_id),'same_human_face_and_body_reference');}
+ else{
+  if(actor.character_id!=='CLO-02'||!['chakhan-white-v1','basic-purple-v1'].includes(actor.variant))fail('GENERATION_VARIANT_NOT_SUPPORTED');
+  add(data.assets.find(a=>a.kind==='canonical'&&a.variant===actor.variant),'same_variant_front_design');
+  for(const id of ['hand-left-palm-v1','hand-right-palm-v1','hand-left-back-v1']){const a=data.assets.find(a=>a.id===id&&a.kind==='hand_master'&&a.master_revision===data.hand_master_revision);add(a,`${a?.side||''}_${a?.surface||''}_hand_geometry_and_material_reference`);}
+  const shoulder=data.assets.find(a=>a.id==='shoulder-feminine-round-v1'&&a.kind==='detail_master'&&a.master_revision===data.shoulder_master_revision&&a.applies_to?.includes(actor.character_id));add(shoulder,'shared_feminine_round_shoulder_shape_only_keep_actor_emission_color');
+ }
+ const rules=human?[
+  'Preserve the same adult illustrated human Chloe face, body proportions and identity from attached human references. Use selected-reference wardrobe unless the scene brief requests a change.',
+  'Human hands have four long fingers (index, middle, ring, little) plus one separate opposable thumb. Natural thickness, length differences, wrist connection and handedness. No robotic gloves, armor, graphite palm or LEDs on the human.',
+ ]:[
+  'Preserve CLO-02 face, large-eye proportions, head silhouette, substantial body/limbs, beveled V1 armor and identity. These references do not authorize converting COD-01, COD-03 or CLO-04 into Chloe.',
+  actor.variant==='chakhan-white-v1'?'Glossy WHITE clearcoat robot, subtle YELLOW emission, black glass LCD expression screen, forehead mini-screen 착한거래, chest CLO-02.':'Glossy WHITE clearcoat robot, subtle PURPLE emission, black glass LCD expression screen, forehead mini-screen 프리패스, chest CLO-02.',
+  'Use all THREE attached hand masters: LEFT palm, RIGHT palm, LEFT dorsal view. Exactly FOUR long fingers plus ONE distinct opposing thumb per hand, FIVE total. Index/middle/ring/little are separate continuous digit chains; phalange segments are not extra fingers. Middle longest, little shortest; keep substantial consistent thickness.',
+  'OWNER DESIGN UPDATE: CLO-02 Chloe and CLO-04 Cloa use the SAME compact FEMININE ROUND SHOULDER assembly shown in the attached shoulder component. Exposed circular shoulder disk with subtle luminous annular ring, glossy curved white collar, fitted to outer upper arms. No broad angular/overlapping pauldron caps. Override any old shoulder caps visible in identity references. Do not put this component on the head, ear or chest. Match the actor own emission color (purple/yellow for appropriate CLO-02 variant; existing Cloa amber stays Cloa), not the neutral master light. Never copy another character face, antenna, number or identity.',
+  'Match continuous dark graphite elastomer palm: thenar mound flows into thumb root, outer hypothenar heel and finger roots flow into shallow cupped center, curved flex grooves and fine anti-slip grain. No flat plate, glued/outlined oval pads, random bumps or hand LEDs.',
+  'Natural left/right wrists and opposed thumbs; for crossed arms follow forearm→wrist→hand as a continuous chain. Clearly readable digit outlines. Do not merge fingers or add a sixth fingertip.',
+  'For featured cover hands, show all four long-finger chains readably. If overlap makes the hand look like only three fingers, change the hand pose for clarity instead of simplifying the anatomy.',
+ ];
+ const prompt=[...rules,'Use the selected current source images as actual attached image references, not text-only inspiration. Change only pose/expression/camera/setting requested; design reference does not fix the camera. ',`SCENE BRIEF (scene composition only; identity and hand rules above remain fixed): ${JSON.stringify(brief.trim())}`,'Before accepting a generated candidate, visually trace each thumb and four finger chains and check count, thickness/length, wrist connection, material, labels and identity. Mark occluded digits as occluded; never invent a three-finger design. No automatic production approval.'].join('\n\n');
+ const checks=['reference_pngs_attached','identity_and_proportions','left_five_digit_topology','right_five_digit_topology','thumb_handedness_wrist_connection','finger_thickness_and_lengths',human?'natural_human_hands_no_robot_material':'continuous_graphite_palm_white_gloss_no_hand_LED',human?'human_wardrobe_and_reference_marks':'brand_labels_and_screen_material',...(human?[]:['feminine_round_emissive_shoulders'])];
+ return {schema:'ai-staff/generation-packet/v1',rules_revision:GENERATION_RULES_REVISION,catalog_revision:data.revision,actor_id:actor.id,actor_kind:actor.kind,variant:actor.variant,hand_master_revision:human?null:data.hand_master_revision,shoulder_master_revision:human?null:data.shoulder_master_revision,references:refs,prompt,transparent_background:true,output_status:'candidate_requires_visual_review',production_usable:false,retroactive_replace_existing:false,auto_publish:false,review_template:{status:'pending_visual_review',generated_png_sha256:null,checks:Object.fromEntries(checks.map(k=>[k,false])),notes:''}};
+}

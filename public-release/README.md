@@ -1,4 +1,4 @@
-현재 캐릭터 API는 **25개**: 로봇정면2 + 착한거래포즈7 + 사람형12 + 손정본3 + 승인프로필1. 사람형과 손도 `/api/characters/current` 하나에서 제공한다. `?kind=human_pose`, `?kind=hand_master`로 분류 조회하며 ID/revision/SHA/url로 동일하게 가져온다. 손 기준은 `robot-hand-v1.0`, 좌우손바닥과 왼손등3뷰. 손바닥은 연속곡면이며 오래된 분리 타원패드 기준을 사용하지 않는다.
+현재 캐릭터 API는 **26개(기존25+공통어깨1)**: 로봇정면2 + 착한거래포즈7 + 사람형12 + 손정본3 + 승인프로필1. 사람형과 손도 `/api/characters/current` 하나에서 제공한다. `?kind=human_pose`, `?kind=hand_master`로 분류 조회하며 ID/revision/SHA/url로 동일하게 가져온다. 손 기준은 `robot-hand-v1.0`, 좌우손바닥과 왼손등3뷰. 손바닥은 연속곡면이며 오래된 분리 타원패드 기준을 사용하지 않는다.
 
 # AI Staff 현재 자산과 캐릭터 API
 
