@@ -16,4 +16,5 @@ jobs:
         with:
           node-version: '24'
       - run: node --test public-release/generation.test.mjs public-release/current-api.test.mjs public-release/catalog.test.mjs public-release/chakhan.test.mjs asset-library/blog-templates/layouts.test.mjs
+      - run: node --test public-release/build-vercel.test.mjs
       - run: node public-release/build.mjs "$RUNNER_TEMP/ai-staff-public-site"
