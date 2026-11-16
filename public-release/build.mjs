@@ -7,7 +7,7 @@ import {validateCurrentAssets} from './current-api.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),site=path.join(root,'public-release/site');
 const out=path.resolve(process.argv[2]||path.join(root,'public-site'));
 try{if((await readdir(out)).length)throw Error('OUTPUT_NOT_EMPTY');}catch(e){if(e.code!=='ENOENT')throw e;await mkdir(out,{recursive:true});}
-for(const name of ['index.html','styles.css','app.js','AI-START-HERE.md','CHARACTER-API.md','NEW-GENERATION.md','character-client.mjs','prepare-generation.mjs'])await cp(path.join(site,name),path.join(out,name));
+for(const name of ['index.html','styles.css','app.js','current-gate.mjs','AI-START-HERE.md','CHARACTER-API.md','NEW-GENERATION.md','character-client.mjs','prepare-generation.mjs'])await cp(path.join(site,name),path.join(out,name));
 await mkdir(path.join(out,'fonts'));for(const name of ['SUITE-Heavy.woff2','NotoSansKR-400.woff2','NotoSansKR-700.woff2','LICENSE-SUITE.txt','LICENSE-NOTO.txt'])await cp(path.join(site,'fonts',name),path.join(out,'fonts',name));
 const c=JSON.parse(await readFile(path.join(site,'catalog.json'),'utf8'));
 const profiles=JSON.parse(await readFile(path.join(root,'asset-library/kakao-profiles/library.json'),'utf8'));
