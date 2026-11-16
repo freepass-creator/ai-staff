@@ -23,7 +23,8 @@ export function buildApprovedMap(snapshot) {
 }
 
 export function approvedUrl(catalogAsset, approved, baseUrl) {
-  if (!catalogAsset || !(approved instanceof Map)) return null;
+  if (!catalogAsset || !(approved instanceof Map) ||
+      catalogAsset.production_usable === false || catalogAsset.status === 'design_proposal') return null;
   const current = approved.get(catalogAsset.id);
   // The same ID with different bytes is NOT approved; do not use an old PNG.
   if (!current || catalogAsset.png_sha256 !== current.sha256) return null;
