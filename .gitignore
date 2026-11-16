@@ -11,3 +11,7 @@ out/
 !templates/**/*.png
 !templates/**/*.jpg
 characters/클로이/refs/human-age20-candidate-v3.png
+
+# Vercel local metadata, deployment artifacts and public build output
+.vercel/
+public-site/

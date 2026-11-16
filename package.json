@@ -6,6 +6,7 @@
     "docs": "python generator/docs.py",
     "check": "python generator/face_check.py",
     "upload": "python generator/upload.py",
-    "test": "python -m unittest discover -s tests -v"
+    "test": "python -m unittest discover -s tests -v",
+    "build": "node public-release/build-vercel.mjs"
   }
 }
