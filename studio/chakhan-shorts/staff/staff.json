@@ -1,0 +1,136 @@
+{
+  "schema": "chakhan-shorts/staff/v1",
+  "source": "https://ai-staff-two.vercel.app/api/characters/current",
+  "api_revision": "e79f5b3ce8d26fd20da39c452f8ba2f526b724e0824feb371f728f8629d55e93",
+  "variant": "chakhan-white-v1",
+  "note": "현재 API 허용 목록 원본을 SHA 대조 후 투명 여백 자르기·축소만 했다. 캐릭터 재생성 없음.",
+  "staff": [
+    {
+      "id": "cover-think",
+      "label": "고민하며 비교",
+      "file": "cover-think.webp",
+      "width": 593,
+      "height": 820,
+      "source_sha256": "3ee35ac277c9b5202691e197932b7cb94ff0d6ce21c097550de06b4baedb3eea",
+      "source_url": "/api/characters/assets/cover-think",
+      "emotion": "think",
+      "usage": "비교 기준을 고민하거나 선택을 망설이는 표지. 머리 기울기와 턱을 짚는 동작을 크게 보여주고 반대편에 질문형 제목을 배치한다.",
+      "tags": [
+        "착한거래",
+        "메인표지",
+        "고민",
+        "비교",
+        "선택",
+        "판단"
+      ]
+    },
+    {
+      "id": "cover-aha",
+      "label": "깨달음",
+      "file": "cover-aha.webp",
+      "width": 717,
+      "height": 820,
+      "source_sha256": "f65e03a62d6e0216f9a035cb2e11b461e3929e09fcf5c8d14969064411c88717",
+      "source_url": "/api/characters/assets/cover-aha",
+      "emotion": "aha",
+      "usage": "처음 알게 된 조건이나 놓친 체크 항목을 설명하는 표지. 위로 든 검지와 밝은 LCD 표정을 살려 발견형 제목과 함께 사용한다.",
+      "tags": [
+        "착한거래",
+        "메인표지",
+        "깨달음",
+        "발견",
+        "체크포인트",
+        "이해"
+      ]
+    },
+    {
+      "id": "cover-dejected",
+      "label": "시무룩함",
+      "file": "cover-dejected.webp",
+      "width": 773,
+      "height": 820,
+      "source_sha256": "97acef9969cab0820b790282cab0fe2b33ad5484a99612eba2330d55c315c840",
+      "source_url": "/api/characters/assets/cover-dejected",
+      "emotion": "dejected",
+      "usage": "기대와 다른 조건이나 아쉬운 선택을 짚는 표지. 내려간 어깨와 펼친 손이 보이도록 배치하고 과도한 공포·불안 조장 문구는 쓰지 않는다.",
+      "tags": [
+        "착한거래",
+        "메인표지",
+        "시무룩",
+        "아쉬움",
+        "숨은조건",
+        "주의"
+      ]
+    },
+    {
+      "id": "cover-confident",
+      "label": "차분한 자신감",
+      "file": "cover-confident.webp",
+      "width": 577,
+      "height": 820,
+      "source_sha256": "43285dbaccf9cdb0cc4585d607ae812811123fb0873bc02806904d5ce8a6a1ff",
+      "source_url": "/api/characters/assets/cover-confident",
+      "emotion": "confident",
+      "usage": "조건을 이해한 뒤 정리·확신을 전달하는 표지. 팔짱을 낀 안정적인 자세를 크게 쓰고 체크리스트형 제목이나 짧은 결론을 배치한다.",
+      "tags": [
+        "착한거래",
+        "메인표지",
+        "자신감",
+        "확신",
+        "정리",
+        "선택완료"
+      ]
+    },
+    {
+      "id": "phone",
+      "label": "전화 상담",
+      "file": "phone.webp",
+      "width": 672,
+      "height": 820,
+      "source_sha256": "60c44eec60cdf7b2857a34acfc80a66dc36b309b9135c35e43d213841da80522",
+      "source_url": "/api/characters/assets/phone",
+      "emotion": null,
+      "usage": "전화로 상담하거나 문의하는 문단. 인물을 왼쪽에 놓고 오른쪽에 상담 안내를 배치한다. 스마트폰을 실제 직원/실제 통화 증빙으로 쓰지 않는다.",
+      "tags": [
+        "착한거래",
+        "상담문의",
+        "상담예약",
+        "연락방법"
+      ]
+    },
+    {
+      "id": "tablet",
+      "label": "태블릿으로 설명",
+      "file": "tablet.webp",
+      "width": 703,
+      "height": 820,
+      "source_sha256": "1ea53feeb3a24e08675d747238c867c7f630f3bd1b5bf0aaa6d847229e45a7ee",
+      "source_url": "/api/characters/assets/tablet",
+      "emotion": null,
+      "usage": "비교 방법이나 필요한 자료를 설명하는 문단. 태블릿에는 실제 견적 수치가 없으므로 정확한 내용은 별도 텍스트로 배치한다.",
+      "tags": [
+        "착한거래",
+        "견적비교",
+        "조건설명",
+        "필요서류"
+      ]
+    },
+    {
+      "id": "guide-right",
+      "label": "오른쪽 대상 안내",
+      "file": "guide-right.webp",
+      "width": 867,
+      "height": 820,
+      "source_sha256": "9083c41c95064172b8b61caad88261fab86c1883534535fde30e394d5663caae",
+      "source_url": "/api/characters/assets/guide-right",
+      "emotion": null,
+      "usage": "캐릭터를 왼쪽에 놓고 손끝이 향하는 오른쪽에 차량 사진/표/설명 문구를 배치한다. 가리키는 대상과 문단 주제를 일치시킨다.",
+      "tags": [
+        "착한거래",
+        "차량안내",
+        "설명란안내",
+        "가리키기"
+      ]
+    }
+  ]
+}

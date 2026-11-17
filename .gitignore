@@ -11,3 +11,9 @@ out/
 !templates/**/*.png
 !templates/**/*.jpg
 characters/클로이/refs/human-age20-candidate-v3.png
+
+# 착한거래 쇼츠: 스태프 컷·이미지를 품은 빌드 HTML·영상은 git 밖(D:\large\ai-staff\chakhan-shorts)
+studio/chakhan-shorts/staff/*.webp
+studio/chakhan-shorts/chakhan-shorts-studio.html
+*.mp4
+*.render.json
