@@ -2,7 +2,7 @@
 // 더블클릭만으로 열리는 단일 HTML(chakhan-shorts-studio.html)을 만든다.
 // file:// 로 연 페이지는 옆 폴더의 글꼴을 못 읽으므로 글꼴은 base64 로 넣는다.
 // 실행: node studio/chakhan-shorts/build.mjs  (저장소 루트에서)
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -41,6 +41,14 @@ html = html.replace('/*__FONT_FACES__*/', () => faces)
 
 const out = join(here, 'chakhan-shorts-studio.html');
 writeFileSync(out, html);
+// 사람이 열어 보는 고정 위치(git 밖). 작업 폴더가 바뀌어도 같은 경로로 연다.
+const LARGE = process.env.CHAKHAN_SHORTS_OUT || 'D:/large/ai-staff/chakhan-shorts';
+if (existsSync(dirname(LARGE))) {
+  mkdirSync(LARGE, { recursive: true });
+  for (const f of ['chakhan-shorts-studio.html']) writeFileSync(join(LARGE, f), html);
+  copyFileSync(join(here, 'convert_to_mp4.bat'), join(LARGE, 'convert_to_mp4.bat'));
+  console.log(`copied → ${join(LARGE, 'chakhan-shorts-studio.html')}`);
+}
 const sha = p => createHash('sha256').update(read(p)).digest('hex').slice(0, 12);
 console.log(`built ${out} (${(html.length / 1024 / 1024).toFixed(2)} MB)`);
 console.log(`  CI ${ciFile} sha256:${sha(ciFile)}`);

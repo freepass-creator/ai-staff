@@ -3,7 +3,7 @@
 9:16 쇼츠 모션그래픽(1080×1920) 제작기. 대표 v1(로컬 모션스튜디오)을 이어받아 CI·글꼴·AI 스태프를 내장했다.
 
 **자동 제작(기본)**: AI가 에피소드 JSON을 쓰고 `render.mjs`로 MP4를 뽑는다 → [`EPISODE.md`](EPISODE.md).
-아래 화면은 미리보기·수동 확인용이다.
+아래 화면은 미리보기·수동 확인용이다. 빌드하면 `D:/large/ai-staff/chakhan-shorts/chakhan-shorts-studio.html`(고정 위치)에도 복사되므로 그 파일을 더블클릭해 연다.
 
 `staff/*.webp`, 빌드한 `chakhan-shorts-studio.html`, 영상은 git 에 넣지 않는다(저장소 이미지 규칙). 새로 받은 저장소에서는 아래 「다시 만들기」 두 줄을 먼저 실행한다.
 
