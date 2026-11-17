@@ -99,6 +99,10 @@ CATEGORIES = {"ai-rentcar": "AI 장기렌터카", "sangsik": "상식 한 스푼"
 
 
 def build(word_fill, slash_fill, shadow=None, sub=None, sub_fill=None, rule_fill=None, rule_opacity=1.0, spec=None):
+    if slash_fill not in HIGHLIGHTER_COLORS:
+        raise ValueError(f"형광펜 색은 노랑·흰색·검정뿐: {slash_fill}")
+    if shadow and shadow != word_fill:
+        raise ValueError("그림자는 글씨와 같은 색이어야 한다")
     first_x0 = 0.0
     step = STROKE_W / math.cos(ANGLE) + GAP
     parts, right_edge = [], 0
@@ -210,11 +214,15 @@ def construction():
 # 바탕별 색: (글자, //, // 그림자, 카테고리 글씨, 세로줄, 세로줄 투명도)
 # 2026-11-17 대표: // 는 「잠시 멈춤(일시정지)」+「형광펜으로 잘 읽어라」.
 # 규칙: 형광펜(//)은 노랑, 나머지(글자·그림자·카테고리·세로줄)는 모두 바탕의 반대색 하나.
-# 노랑 바탕에서만 형광펜이 흰색이 된다(노랑 위 노랑은 안 보이므로, 2026-11-17 대표).
+# 규정(2026-11-17 대표): 글씨와 그림자는 같은 색이며 바탕에 맞춰 다양하게 바꿀 수 있다.
+# 형광펜 색은 노랑·흰색·검정 세 가지뿐 — 기본 노랑, 바탕이나 글씨가 노랑이면 흰색, 한 색만 되는 곳은 검정.
+HIGHLIGHTER_COLORS = (YELLOW, WHITE, INK)
 BACKGROUNDS = {
     "on-light": (INK, YELLOW, INK, INK, INK, 0.3),        # 흰 바탕: 전부 검정 + 노랑 형광펜
     "on-dark": (WHITE, YELLOW, WHITE, WHITE, WHITE, 0.4),  # 검정 바탕: 전부 흰색 + 노랑 형광펜
     "on-yellow": (INK, WHITE, INK, INK, INK, 0.3),        # 노랑 바탕: 전부 검정 + 흰 형광펜
+    # 강조형: 글씨를 노랑으로 쓸 때. 어두운 바탕에서만. 그림자는 글씨색(노랑)을 따르고 형광펜은 흰색, 카테고리는 흰색
+    "on-dark-accent": (YELLOW, WHITE, YELLOW, WHITE, WHITE, 0.4),
 }
 MONO = (INK, INK, None)                                            # 한 색만 되는 곳(도장·각인·팩스): 전부 검정, 그림자 없음
 
@@ -234,7 +242,8 @@ if __name__ == "__main__":
     print("wrote chakhan-ci-mono-black.svg")
     spec = {"schema": "chakhan-ci/spec/v1", "units": "SVG viewBox units of chakhan-ci-on-*.svg (wordmark ink height = 100)",
             "colors": {"yellow": YELLOW, "ink": INK, "white": WHITE},
-            "slash_shadow_offset": round(SHADOW, 2),
+            "slash_shadow_offset": round(SHADOW, 2), "highlighter_colors": list(HIGHLIGHTER_COLORS),
+            "rule": "wordmark and // shadow share one colour that may vary with the background; the // highlighter is only yellow, white or black",
             "backgrounds": {bg: {"wordmark": v[0], "slashes": v[1], "slash_shadow": v[2], "category": v[3], "rule": v[4], "rule_opacity": v[5]} for bg, v in BACKGROUNDS.items()},
             "clear_space": round(CLEAR, 2), "min_height_px": {"ci": 24, "lockup": 28, "symbol": 32},
             "category": {"ratio_to_wordmark": SUB_RATIO, "gap": round(SUB_GAP, 2), "rule_w": round(RULE_W, 2), "rule_h": round(RULE_H, 2)}, "categories": CATEGORIES}

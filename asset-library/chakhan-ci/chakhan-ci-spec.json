@@ -7,6 +7,17 @@
     "white": "#FFFFFF"
   },
   "slash_shadow_offset": 4.5,
+  "highlighter_colors": [
+    "#F6FD00",
+    "#FFFFFF",
+    "#0B0B0C"
+  ],
+  "rule": {
+    "x": 543.39,
+    "y": 15.0,
+    "w": 3.5,
+    "h": 70.0
+  },
   "backgrounds": {
     "on-light": {
       "wordmark": "#0B0B0C",
@@ -31,6 +42,14 @@
       "category": "#0B0B0C",
       "rule": "#0B0B0C",
       "rule_opacity": 0.3
+    },
+    "on-dark-accent": {
+      "wordmark": "#F6FD00",
+      "slashes": "#FFFFFF",
+      "slash_shadow": "#F6FD00",
+      "category": "#FFFFFF",
+      "rule": "#FFFFFF",
+      "rule_opacity": 0.4
     }
   },
   "clear_space": 50.0,
@@ -57,12 +76,6 @@
   ],
   "baseline": 90.01,
   "wordmark_right": 513.39,
-  "rule": {
-    "x": 543.39,
-    "y": 15.0,
-    "w": 3.5,
-    "h": 70.0
-  },
   "sub_x": 576.89,
   "sub_font_size": 51.59,
   "sub_font": "SUITE Heavy (900)"

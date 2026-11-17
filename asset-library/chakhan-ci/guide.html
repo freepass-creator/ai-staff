@@ -9,7 +9,7 @@ h1{font-size:28px;letter-spacing:-.02em}h2{font-size:19px;margin:48px 0 6px;padd
 h2 small{font-size:12px;color:#777;font-weight:600;margin-left:8px}
 p,li{font-size:14px;color:#333}p{margin:8px 0}ul{padding-left:20px;margin:8px 0}
 .lead{font-size:16px;color:#222;margin-top:10px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.g4{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:14px}
 .card{border-radius:10px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:170px}
 .card img{max-width:86%}.card span{font-size:12px;opacity:.65}
 .w{background:#fff;box-shadow:inset 0 0 0 1px #e2e2dc}.k{background:#0B0B0C;color:#fff}.y{background:#F6FD00}
@@ -31,10 +31,18 @@ code{font-family:Consolas,'Pretendard',monospace;font-size:12px;background:#fff;
   <div class="card k"><img src="chakhan-ci-on-dark.svg" alt="검정 바탕 CI"><span>검정·어두운 바탕</span></div>
   <div class="card y"><img src="chakhan-ci-on-yellow.svg" alt="노랑 바탕 CI"><span>노랑 바탕</span></div>
 </div>
-<p><b>색 규칙: 형광펜(//)은 노랑, 나머지(글자·// 그림자·카테고리·세로줄)는 모두 바탕의 반대색 하나.</b> 흰 바탕이면 전부 검정, 검정 바탕이면 전부 흰색. 노랑 바탕에서만 형광펜이 흰색이 된다(노랑 위 노랑은 보이지 않으므로) — 글자·그림자는 검정.</p>
+<p><b>색 규칙 (2026-11-17 대표)</b></p><ul><li><b>착한거래 글씨와 // 그림자는 늘 같은 색이며, 바탕에 맞춰 다양하게 바꿀 수 있다.</b> 기본은 바탕의 반대색(흰 바탕 검정, 검정 바탕 흰색), 어두운 바탕 강조형은 노랑.</li><li><b>형광펜(//) 색은 노랑 · 흰색 · 검정 세 가지뿐이다.</b> 기본은 노랑, 바탕이나 글씨가 노랑이면 흰색, 한 색만 되는 곳은 검정. 그 밖의 색으로 칠하지 않는다.</li></ul>
 <table><tr><th>바탕</th><th>착한거래 · // 그림자 · 카테고리</th><th>// 형광펜</th></tr>
 <tr><td>흰·밝은 바탕</td><td>검정</td><td>노랑</td></tr><tr><td>검정·어두운 바탕</td><td>흰색</td><td>노랑</td></tr><tr><td>노랑 바탕</td><td>검정</td><td>흰색</td></tr>
+<tr><td>검정·어두운 바탕 · 강조형(노란 글씨)</td><td>노랑 (카테고리는 흰색)</td><td>흰색</td></tr>
 <tr><td>한 색만 되는 곳(도장·각인·팩스)</td><td colspan="2">전부 검정, 그림자 없음 (단색판)</td></tr></table>
+
+<h3 style="font-size:15px;margin:22px 0 4px">강조형 — 착한거래를 노란 글씨로 쓸 때 <small style="font-size:12px;color:#777">chakhan-ci-on-dark-accent.svg</small></h3>
+<p>브랜드 노랑을 크게 보여 줄 때(영상 엔딩·간판 등). <b>검정·어두운 바탕에서만</b> 쓴다. 글씨·그림자 노랑, 형광펜 흰색, 카테고리 흰색.</p>
+<div class="g2">
+  <div class="card k"><img src="chakhan-ci-on-dark-accent.svg" alt="강조형"><span>chakhan-ci-on-dark-accent.svg</span></div>
+  <div class="card k"><img src="chakhan-ci-ai-rentcar-on-dark-accent.svg" alt="강조형 카테고리"><span>chakhan-ci-ai-rentcar-on-dark-accent.svg</span></div>
+</div>
 
 <h2>2. 색</h2>
 <div class="sw">
@@ -42,7 +50,7 @@ code{font-family:Consolas,'Pretendard',monospace;font-size:12px;background:#fff;
   <div><i style="background:#0B0B0C"></i><p><b>잉크</b><br>HEX #0B0B0C · RGB 11 11 12<br>흰·노랑 바탕의 글자·그림자</p></div>
   <div><i style="background:#fff;box-shadow:inset 0 -1px 0 #e2e2dc"></i><p><b>흰색</b><br>HEX #FFFFFF<br>검정 바탕의 글자·그림자 · 노랑 바탕의 형광펜</p></div>
 </div>
-<ul><li>노랑은 #F6FD00 하나만 쓴다. 다른 노랑(금색·주황빛)으로 바꿔 칠하지 않는다.</li>
+<ul><li>형광펜은 노랑 #F6FD00 · 흰색 #FFFFFF · 검정 #0B0B0C 세 가지만. 글씨·그림자는 바탕에 맞춰 다른 색도 쓸 수 있다(글씨와 그림자는 같은 색).</li><li>노랑은 #F6FD00 하나만 쓴다. 다른 노랑(금색·주황빛)으로 바꿔 칠하지 않는다.</li>
 <li>인쇄: 형광 노랑은 일반 CMYK로 화면만큼 밝게 나오지 않는다. 인쇄물은 별색(형광) 또는 시험 인쇄로 색을 맞춘 뒤 확정한다(아직 확정값 없음).</li></ul>
 
 <h2>3. 비율 <small>H = 「착한거래」 글자 높이</small></h2>
@@ -86,18 +94,20 @@ code{font-family:Consolas,'Pretendard',monospace;font-size:12px;background:#fff;
 <h2>7. 하지 않는 것</h2>
 <div class="g4">
   <div class="card w bad"><img src="chakhan-ci-on-light.svg" alt="" style="transform:scaleX(1.35)"><span>늘리거나 찌그러뜨리기</span></div>
-  <div class="card w bad"><img src="chakhan-ci-on-light.svg" alt="" style="filter:hue-rotate(160deg)"><span>형광펜 색 바꾸기</span></div>
+  <div class="card w bad"><img src="chakhan-ci-on-light.svg" alt="" style="filter:hue-rotate(160deg)"><span>형광펜을 노랑·흰·검정 밖의 색으로</span></div>
   <div class="card w bad"><img src="chakhan-ci-on-light.svg" alt="" style="transform:rotate(-8deg)"><span>돌리거나 기울이기</span></div>
   <div class="card y bad"><img src="chakhan-ci-on-light.svg" alt=""><span>노랑 바탕에 흰 바탕용 (// 가 사라짐)</span></div>
+  <div class="card w bad"><img src="chakhan-ci-on-dark-accent.svg" alt=""><span>노란 글씨(강조형)를 흰 바탕에</span></div>
 </div>
-<ul><li>// 와 글자 사이를 떼거나 붙이기, // 만 크게·작게 바꾸기, 그림자 방향·색 바꾸기.</li>
+<ul><li>// 와 글자 사이를 떼거나 붙이기, // 만 크게·작게 바꾸기, 그림자 방향 바꾸기, 그림자를 글씨와 다른 색으로 하기.</li>
 <li>다른 글꼴로 다시 쓰기, 외곽선·그라데이션·광택 같은 효과 넣기.</li>
 <li>사진 위에 바로 올려 글자가 묻히게 두기 — 어두운 사진은 검정 바탕형, 밝은 사진은 흰 바탕형을 쓰고 대비가 약하면 단색 띠를 깐다.</li></ul>
 
 <h2>8. 파일</h2>
 <table><tr><th>파일</th><th>쓰임</th></tr>
 <tr><td><code>chakhan-ci-on-light/dark/yellow.svg</code></td><td>기본형 (흰·검정·노랑 바탕)</td></tr>
-<tr><td><code>chakhan-ci-&lt;카테고리&gt;-on-light/dark/yellow.svg</code></td><td>카테고리형 (ai-rentcar, sangsik)</td></tr>
+<tr><td><code>chakhan-ci-on-dark-accent.svg</code></td><td>강조형(노란 글씨, 어두운 바탕만)</td></tr>
+<tr><td><code>chakhan-ci-&lt;카테고리&gt;-on-light/dark/yellow/dark-accent.svg</code></td><td>카테고리형 (ai-rentcar, sangsik)</td></tr>
 <tr><td><code>chakhan-symbol-on-dark/light/yellow.svg</code></td><td>프로필 심볼</td></tr>
 <tr><td><code>chakhan-ci-mono-black.svg</code></td><td>단색</td></tr>
 <tr><td><code>chakhan-ci-spec.json</code></td><td>영상·웹이 따르는 비율·색 기준값</td></tr>
