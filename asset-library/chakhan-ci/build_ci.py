@@ -68,12 +68,12 @@ def fmt(p):
 
 
 def marker_stroke(x0, seed):
-    """납작한 형광펜 촉으로 아래→위로 그은 한 획. 가장자리는 곧고(손이 그은 아주 작은 휨만), 양 끝은 촉 각도대로
-    비스듬히 잘리며, 위 끝 조금은 잉크가 마르며 가는 틈 두 줄로 갈라진다. x0 = 아래쪽 왼 끝 x."""
+    """납작한 형광펜 촉으로 아래→위로 그은 한 획. 가장자리는 곧고 양 끝은 촉 각도대로 비스듬히(평행하게) 잘린다.
+    x0 = 아래쪽 왼 끝 x."""
     yb, yt = SLASH_BOT, SLASH_TOP
     dx = (yb - yt) * math.tan(ANGLE)
     Wx = STROKE_W / math.cos(ANGLE)           # 수평으로 잰 획 폭
-    bow = 0.012 * H * (1 if seed == 0 else 0.8)  # 손목 호(아주 살짝)
+    bow = 0.0                            # 곧은 획
 
     def P(t, f):  # t: 0=아래 1=위(획 방향), f: 0=왼 가장자리 1=오른 가장자리
         x = x0 + dx * t + bow * math.sin(math.pi * t) + Wx * f
@@ -83,28 +83,11 @@ def marker_stroke(x0, seed):
     t0 = lambda f: 0.06 * f
     t1 = lambda f: 1 - 0.06 * (1 - f)
 
-    N = 10
-    DRY = 0.84                           # 이 위로는 마르며 가는 틈으로 갈라진다
-    lt = [DRY * i / N for i in range(N + 1)]
-    rt = [t0(1) + (DRY - t0(1)) * i / N for i in range(N + 1)]
-    pts = [P(t, 0) for t in lt] + [P(t, 1) for t in reversed(rt)]
+    # 2026-11-17 대표: 끝 갈라짐·결 같은 자연스러운 표현은 빼고, 형광펜으로 칠한 느낌은 색으로만 낸다 → 단색 평행사변형 획
+    pts = [P(t0(0), 0), P(t1(0), 0), P(t1(1), 1), P(t0(1), 1)]
     body = "M" + " L".join(fmt(p) for p in pts) + " Z"
-
-    # 마른 끝: 가는 틈 두 줄로 나뉜 세 띠. 같은 진하기, 끝 길이만 아주 조금 다르다
-    strips = []
-    for (f0, f1, short) in [(0.0, 0.315, 0.0), (0.345, 0.655, 0.018), (0.685, 1.0, 0.008)]:
-        a = DRY - 0.004
-        q = [P(a, f0), P(t1(f0) - short, f0), P(t1(f1) - short, f1), P(a, f1)]
-        strips.append((f"M{fmt(q[0])} L{fmt(q[1])} L{fmt(q[2])} L{fmt(q[3])} Z", 1))
-
-    # 펜 결: 획 방향의 아주 옅은 줄 두 개
-    grains = []
-    for f in (0.27, 0.63):
-        g = [P(0.06, f), P(DRY - 0.02, f), P(DRY - 0.02, f + 0.035), P(0.06, f + 0.035)]
-        grains.append(f"M{fmt(g[0])} L{fmt(g[1])} L{fmt(g[2])} L{fmt(g[3])} Z")
-
-    right_x = max(P(1.0, 1)[0], P(0.5, 1)[0])
-    return body, strips, grains, right_x
+    right_x = P(1.0, 1)[0]
+    return body, [], [], right_x
 
 
 # ── 카테고리 락업: CI | 카테고리 이름 (2026-11-17 대표: AI 장기렌터카, 상식 한 스푼 … 은 모두 착한거래의 카테고리)
