@@ -22,7 +22,7 @@ const epFile = resolve(epArg), baseDir = dirname(epFile);
 const ep = JSON.parse(readFileSync(epFile, 'utf8'));
 // 기본 저장 위치: 영상은 git 에 넣지 않는다 → D:/large/ai-staff/chakhan-shorts (없으면 에피소드 옆, .gitignore 대상)
 const LARGE = process.env.CHAKHAN_SHORTS_OUT || 'D:/large/ai-staff/chakhan-shorts';
-const outDefault = existsSync(dirname(LARGE)) ? (mkdirSync(LARGE, { recursive: true }), join(LARGE, basename(epFile).replace(/\.json$/i, '') + '.mp4'))
+const outDefault = existsSync(dirname(LARGE)) ? (mkdirSync(join(LARGE, 'output'), { recursive: true }), join(LARGE, 'output', basename(epFile).replace(/\.json$/i, '') + '.mp4'))
   : epFile.replace(/\.json$/i, '') + '.mp4';
 const out = resolve(outArg || outDefault);
 const sha = buf => createHash('sha256').update(buf).digest('hex');

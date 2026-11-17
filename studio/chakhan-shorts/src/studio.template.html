@@ -60,6 +60,7 @@ input[type=file]{max-width:100%;font-size:12px;margin-top:7px}textarea{resize:ve
 <div class="panel"><h2>3. AI 스태프 · 착한 클로이</h2>
 <div class="staffgrid" id="staffGrid"></div>
 <div class="fieldgrid"><label>KEY POINT 장면<select id="staffKP"></select></label><label>엔딩 장면<select id="staffEnd"></select></label></div>
+<label>받은 이미지 추가 (작업 폴더 <code>images\</code>의 투명 배경 PNG)<input id="addImage" type="file" accept="image/png,image/webp" multiple></label>
 <p>AI Staff 현재 허용 목록(착한거래 변형)의 공식 컷만 들어 있습니다. 원본 SHA를 대조해 넣었고 캐릭터를 다시 생성하지 않습니다. 컷을 누르면 쓰임새가 보입니다.</p>
 <div id="staffInfo" class="status">컷을 눌러 쓰임새를 확인하세요.</div></div>
 <div class="panel"><h2>4. 음성</h2>
@@ -230,10 +231,21 @@ $('record').onclick=async()=>{
   finally{stream?.getTracks().forEach(tr=>tr.stop());recording=false;$('record').disabled=false;$('record').textContent='● 영상 녹화·저장';setTime(0)}};
 
 // ── 에피소드 저장·열기
-$('saveProject').onclick=()=>{const o=Object.fromEntries(fields.map(id=>[id,$(id).value]));o.resolution=$('resolution').value;o.staffKP=$('staffKP').value;o.staffEnd=$('staffEnd').value;o.schema='chakhan-shorts/v2';download(new Blob([JSON.stringify(o,null,2)],{type:'application/json'}),'chakhan_episode.json')};
+// 받은 이미지: 화면에서 불러오면 칸에 쓸 수 있고, JSON 에는 작업 폴더 기준 경로(../images/파일명)로 저장한다
+const imagePath=id=>id.startsWith('img:')?'../images/'+id.slice(4):id;
+async function addImageFile(file){const data=await new Promise(ok=>{const r=new FileReader();r.onload=()=>ok(r.result);r.readAsDataURL(file)});
+  const notes=await window.chakhanStudio.addImages([{id:'img:'+file.name,label:file.name,data}]);
+  $('staffGrid').insertAdjacentHTML('beforeend',`<button type="button" data-id="img:${file.name}" title="${file.name}"><img src="${data}" alt="">${file.name}</button>`);
+  return notes}
+$('addImage').onchange=async e=>{const notes=[];for(const f of e.target.files)notes.push(...await addImageFile(f));e.target.value='';
+  $('staffInfo').textContent=notes.length?notes.join(' / '):'추가했습니다. KEY POINT·엔딩 칸에서 고르세요. JSON 에는 ../images/파일명 으로 저장됩니다.';staffMarks();draw()};
+$('saveProject').onclick=()=>{const o=Object.fromEntries(fields.map(id=>[id,$(id).value]));o.resolution=$('resolution').value;o.staffKP=imagePath($('staffKP').value)||'none';o.staffEnd=imagePath($('staffEnd').value)||'none';o.schema='chakhan-shorts/episode/v1';download(new Blob([JSON.stringify(o,null,2)],{type:'application/json'}),'chakhan_episode.json')};
 function applyEpisode(d){
   for(const id of fields)if(d[id]!=null)$(id).value=String(d[id]);
-  for(const k of ['staffKP','staffEnd'])if(d[k]!=null){if(d[k]!==''&&!staffImgs[d[k]])throw new Error(`${k}: 등록되지 않은 스태프 id "${d[k]}" (가능: ${STAFF.map(s=>s.id).join(', ')})`);$(k).value=d[k]}
+  for(const k of ['staffKP','staffEnd'])if(d[k]!=null){if(d[k]==='none'||d[k]===false)d[k]='';
+    // 브라우저에서 연 JSON 의 이미지 경로는 먼저 「받은 이미지 추가」로 같은 파일명을 불러 두어야 한다
+    if(typeof d[k]==='string'&&/[\\/]|\.(png|webp|jpe?g)$/i.test(d[k])){const n='img:'+d[k].split(/[\\/]/).pop();if(!staffImgs[n])throw new Error(`${k}: ${d[k]} — 먼저 「받은 이미지 추가」로 이 파일을 불러오세요`);d[k]=n}
+    if(d[k]!==''&&!staffImgs[d[k]])throw new Error(`${k}: 등록되지 않은 스태프 id "${d[k]}" (가능: ${STAFF.map(s=>s.id).join(', ')})`);$(k).value=d[k]}
   staffMarks();if(['720','1080'].includes(String(d.resolution))){$('resolution').value=String(d.resolution);$('resolution').onchange()}setTime(0)}
 // 글자가 자리를 넘치는지 검사한다(넘치면 잘리거나 겹친다). 영상 렌더 전에 반드시 통과해야 한다.
 function checkEpisode(){
@@ -257,14 +269,15 @@ window.chakhanStudio={
   seek:x=>{pause();setTime(x)}, duration,
   load:d=>{pause();applyEpisode(d);return checkEpisode()},
   // 외부에서 준 이미지(누끼 PNG 등)를 스태프 칸에 쓸 수 있게 등록한 뒤 에피소드를 적용한다
-  loadWithImages:async d=>{pause();const notes=[];
-    for(const im of d.images||[]){if(staffImgs[im.id])continue;const img=new Image();img.src=im.data;await img.decode();
+  loadWithImages:async d=>{pause();const notes=await window.chakhanStudio.addImages(d.images||[]);applyEpisode(d);return [...notes,...checkEpisode()]},
+  addImages:async list=>{const notes=[];
+    for(const im of list){if(staffImgs[im.id])continue;const img=new Image();img.src=im.data;await img.decode();
       staffImgs[im.id]=img;STAFF.push({id:im.id,label:im.label,usage:'외부 제공 이미지',data:im.data});
       for(const sel of ['staffKP','staffEnd'])$(sel).insertAdjacentHTML('beforeend',`<option value="${im.id}">${im.label}</option>`);
       const c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;const x=c.getContext('2d');x.drawImage(img,0,0);
       const a=[[0,0],[c.width-1,0],[0,c.height-1],[c.width-1,c.height-1]].map(([u,v])=>x.getImageData(u,v,1,1).data[3]);
       if(a.every(v=>v>=250))notes.push(`${im.label}: 배경이 투명하지 않습니다(네 모서리 불투명) — 사각형 그대로 보입니다`)}
-    applyEpisode(d);return [...notes,...checkEpisode()]},
+    return notes},
   check:checkEpisode,
   staff:()=>STAFF.map(({id,label,emotion,usage})=>({id,label,emotion,usage})),
   ready:()=>document.fonts.status==='loaded'&&ci.complete&&Object.values(staffImgs).every(i=>i.complete),

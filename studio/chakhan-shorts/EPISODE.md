@@ -2,6 +2,21 @@
 
 사람이 화면에서 만들지 않는다. **AI가 에피소드 JSON을 쓰고, 이미지는 받은 파일(또는 등록 컷 id)을 연결해, 명령 한 줄로 MP4를 뽑는다.**
 
+## 0. 로컬 작업 폴더 (기본 작업 방식)
+
+모든 작업은 이 PC의 `D:/large/ai-staff/chakhan-shorts/` 에서 하고, 완성 영상만 올린다(클라우드 연동 없음).
+
+| 위치 | 용도 |
+|---|---|
+| `episodes\*.json` | 대본(에피소드). 메모장으로 고치거나 스튜디오에서 저장 |
+| `images\` | 받은 이미지(투명 배경 PNG). json 에 `"../images/파일.png"` |
+| `output\` | 완성 MP4 + `.render.json` |
+| `영상만들기.bat` | 더블클릭 = episodes 전부 렌더, json 을 끌어다 놓기 = 그 편만 |
+| `chakhan-shorts-studio.html` | 미리보기·문구 수정. 「받은 이미지 추가」로 images 의 PNG를 불러오면 JSON 에 같은 경로로 저장 |
+| `사용법.txt` | 위 순서 요약 |
+
+폴더와 bat 는 아래 `build.mjs` 가 만들고 갱신한다(이미 있는 에피소드는 덮어쓰지 않는다).
+
 ## 1. 처음 한 번 (또는 스태프 컷·템플릿이 바뀌었을 때)
 
 ```bash
@@ -52,7 +67,7 @@ node studio/chakhan-shorts/build.mjs
 node studio/chakhan-shorts/render.mjs studio/chakhan-shorts/episodes/ep001-deposit-vs-prepay.json
 ```
 
-- 결과: `D:/large/ai-staff/chakhan-shorts/<에피소드>.mp4` (1080×1920, H.264, 30fps) + `.render.json`(입력·이미지·음성·스튜디오 SHA). 위치는 두 번째 인자나 `CHAKHAN_SHORTS_OUT` 로 바꾼다. 영상은 git 에 넣지 않는다.
+- 결과: `D:/large/ai-staff/chakhan-shorts/output/<에피소드>.mp4` (1080×1920, H.264, 30fps) + `.render.json`(입력·이미지·음성·스튜디오 SHA). 위치는 두 번째 인자나 `CHAKHAN_SHORTS_OUT` 로 바꾼다. 영상은 git 에 넣지 않는다.
 - 글자 넘침·불투명 이미지·없는 컷 id 가 있으면 `문제:` 를 출력하고 멈춘다. 문구를 줄이거나 이미지를 바꿔 다시 돌린다(`--force` 는 쓰지 않는다).
 - 12초 영상 렌더는 이 PC에서 약 10–15초.
 
