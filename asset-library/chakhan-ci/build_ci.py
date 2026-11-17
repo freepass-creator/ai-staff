@@ -31,26 +31,35 @@ SLASH_TOP = H / 2 - SLASH_SPAN / 2
 WORD_GAP = 0.20 * H        # 획과 글자 사이
 
 
+_FONT = None
+
+
+def outline(text, scale, track=TRACK):
+    """글자를 윤곽선 경로로. 기준선 y=0(아래가 +), 반환: 경로, 잉크 상자(xmin, ymin, xmax, ymax)."""
+    global _FONT
+    _FONT = _FONT or TTFont(str(FONT))
+    gs, cmap = _FONT.getGlyphSet(), _FONT.getBestCmap()
+    x, cmds, bp = 0.0, [], BoundsPen(gs)
+    for c in text:
+        n = cmap[ord(c)]
+        pen = SVGPathPen(gs, lambda v: f"{v:.2f}".rstrip("0").rstrip("."))
+        m = (scale, 0, 0, -scale, x, 0)
+        gs[n].draw(TransformPen(pen, m))
+        gs[n].draw(TransformPen(bp, m))
+        cmds.append(pen.getCommands())
+        x += gs[n].width * scale * (1 + track)
+    return "".join(cmds), bp.bounds
+
+
+def word_scale():
+    """워드마크 «착한거래» 잉크 높이가 H 가 되는 글자 배율."""
+    _, b = outline("착한거래", 1.0)
+    return H / (b[3] - b[1])
+
+
 def wordmark(text="착한거래"):
-    f = TTFont(str(FONT))
-    gs, cmap = f.getGlyphSet(), f.getBestCmap()
-    names = [cmap[ord(c)] for c in text]
-
-    def layout(scale):
-        x, cmds, bp = 0.0, [], BoundsPen(gs)
-        for n in names:
-            pen = SVGPathPen(gs, lambda v: f"{v:.2f}".rstrip("0").rstrip("."))
-            m = (scale, 0, 0, -scale, x, 0)
-            gs[n].draw(TransformPen(pen, m))
-            gs[n].draw(TransformPen(bp, m))
-            cmds.append(pen.getCommands())
-            x += gs[n].width * scale * (1 + TRACK)
-        return "".join(cmds), bp.bounds
-
-    _, b = layout(1.0)
-    scale = H / (b[3] - b[1])
-    d, b = layout(scale)
-    # 잉크 상자를 (0,0)-(w,H) 로 옮긴다
+    d, b = outline(text, word_scale())
+    # 잉크 상자를 (0,0)-(w,H) 로 옮긴다. 기준선은 y = -b[1]
     return d, (b[0], b[1]), b[2] - b[0]
 
 
@@ -98,7 +107,16 @@ def marker_stroke(x0, seed):
     return body, strips, grains, right_x
 
 
-def build(word_fill, slash_fill, grain=None):
+# ── 카테고리 락업: CI | 카테고리 이름 (2026-11-17 대표: AI 장기렌터카, 상식 한 스푼 … 은 모두 착한거래의 카테고리)
+# 카테고리 글씨는 CI와 같은 SUITE Heavy, 크기는 워드마크 글자의 0.47배, 기준선은 워드마크와 같다.
+SUB_RATIO = 0.47
+SUB_GAP = 0.30 * H     # 워드마크 → 세로줄, 세로줄 → 카테고리
+RULE_W = 0.035 * H
+RULE_H = 0.70 * H      # 워드마크 잉크 상자 세로 가운데
+CATEGORIES = {"ai-rentcar": "AI 장기렌터카", "sangsik": "상식 한 스푼"}
+
+
+def build(word_fill, slash_fill, grain=None, sub=None, sub_fill=None, rule_fill=None, rule_opacity=1.0, spec=None):
     first_x0 = 0.0
     step = STROKE_W / math.cos(ANGLE) + GAP
     parts, right_edge = [], 0
@@ -112,27 +130,61 @@ def build(word_fill, slash_fill, grain=None):
     d, (bx, by), ww = wordmark()
     wx = right_edge + WORD_GAP
     total_w = wx + ww + 0.04 * H
+    baseline = -by
+    extra, label = "", "착한거래"
+    rx = wx + ww + SUB_GAP
+    sx = rx + RULE_W + SUB_GAP
+    ssize = word_scale() * SUB_RATIO
+    if sub:
+        sd, sb = outline(sub, ssize)
+        extra = (f'<rect x="{rx:.2f}" y="{(H - RULE_H) / 2:.2f}" width="{RULE_W:.2f}" height="{RULE_H:.2f}" fill="{rule_fill}"'
+                 + (f' opacity="{rule_opacity}"' if rule_opacity != 1 else "") + "/>"
+                 f'<path fill="{sub_fill}" transform="translate({sx - sb[0]:.2f} {baseline:.2f})" d="{sd}"/>')
+        total_w = sx + (sb[2] - sb[0]) + 0.04 * H
+        label = f"착한거래 {sub}"
     pad = 0.08 * H
     top, bot = min(0.0, SLASH_TOP), max(H, SLASH_BOT)
     vb = (-pad, top - pad, total_w + 2 * pad, bot - top + 2 * pad)
+    if spec is not None:  # 영상·웹이 카테고리 글씨를 같은 자리에 직접 쓸 수 있게 기준값을 남긴다(SVG 단위)
+        upm = _FONT["head"].unitsPerEm
+        spec.update({
+            "viewBox": [round(v, 2) for v in vb], "baseline": round(baseline, 2), "wordmark_right": round(wx + ww, 2),
+            "rule": {"x": round(rx, 2), "y": round((H - RULE_H) / 2, 2), "w": round(RULE_W, 2), "h": round(RULE_H, 2)},
+            "sub_x": round(sx, 2), "sub_font_size": round(ssize * upm, 2), "sub_font": "SUITE Heavy (900)",
+        })
     svg = (
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb[0]:.1f} {vb[1]:.1f} {vb[2]:.1f} {vb[3]:.1f}" '
-        f'width="{vb[2] * 2:.0f}" height="{vb[3] * 2:.0f}" role="img" aria-label="착한거래">'
-        f'<title>착한거래</title>'
+        f'width="{vb[2] * 2:.0f}" height="{vb[3] * 2:.0f}" role="img" aria-label="{label}">'
+        f'<title>{label}</title>'
         f'<g fill="{slash_fill}">{"".join(parts)}</g>'
         f'<path fill="{word_fill}" transform="translate({wx - bx:.2f} {-by:.2f})" d="{d}"/>'
-        f"</svg>\n"
+        f"{extra}</svg>\n"
     )
     return svg
 
 
-VARIANTS = {
-    "chakhan-ci-on-light.svg": (INK, YELLOW, YELLOW_GRAIN),  # 흰·밝은 바탕: 글자 검정, // 노랑
-    "chakhan-ci-on-dark.svg": (YELLOW, WHITE, WHITE_GRAIN),  # 검정·어두운 바탕: 글자 노랑, // 흰색(2026-11-17 대표)
-    "chakhan-ci-mono-black.svg": (INK, INK, None),           # 노랑 바탕·단색 인쇄용
+# 바탕별 색: (글자, //, 형광펜 결, 카테고리 글씨, 세로줄, 세로줄 투명도)
+BACKGROUNDS = {
+    "on-light": (INK, YELLOW, YELLOW_GRAIN, INK, INK, 0.3),        # 흰·밝은 바탕: 글자 검정, // 노랑
+    "on-dark": (YELLOW, WHITE, WHITE_GRAIN, WHITE, WHITE, 0.4),    # 검정·어두운 바탕: 글자 노랑, // 흰색(2026-11-17 대표)
 }
+MONO = (INK, INK, None)                                            # 노랑 바탕·단색 인쇄용
 
 if __name__ == "__main__":
-    for name, (wf, sf, g) in VARIANTS.items():
-        (OUT / name).write_text(build(wf, sf, g), encoding="utf-8")
-        print("wrote", name)
+    import json
+    for bg, (wf, sf, g, cf, rf, ro) in BACKGROUNDS.items():
+        (OUT / f"chakhan-ci-{bg}.svg").write_text(build(wf, sf, g), encoding="utf-8")
+        print("wrote", f"chakhan-ci-{bg}.svg")
+        for slug, name in CATEGORIES.items():
+            fn = f"chakhan-ci-{slug}-{bg}.svg"
+            (OUT / fn).write_text(build(wf, sf, g, name, cf, rf, ro), encoding="utf-8")
+            print("wrote", fn)
+    (OUT / "chakhan-ci-mono-black.svg").write_text(build(*MONO), encoding="utf-8")
+    print("wrote chakhan-ci-mono-black.svg")
+    spec = {"schema": "chakhan-ci/spec/v1", "units": "SVG viewBox units of chakhan-ci-on-*.svg (wordmark ink height = 100)",
+            "colors": {"yellow": YELLOW, "ink": INK, "white": WHITE},
+            "backgrounds": {bg: {"wordmark": v[0], "slashes": v[1], "category": v[3], "rule": v[4], "rule_opacity": v[5]} for bg, v in BACKGROUNDS.items()},
+            "category": {"ratio_to_wordmark": SUB_RATIO, "gap": round(SUB_GAP, 2), "rule_w": round(RULE_W, 2), "rule_h": round(RULE_H, 2)}, "categories": CATEGORIES}
+    build(*BACKGROUNDS["on-dark"][:3], spec=spec)
+    (OUT / "chakhan-ci-spec.json").write_text(json.dumps(spec, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print("wrote chakhan-ci-spec.json")
