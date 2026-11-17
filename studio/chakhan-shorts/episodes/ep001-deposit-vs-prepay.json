@@ -1,0 +1,18 @@
+{
+  "schema": "chakhan-shorts/episode/v1",
+  "title": "보증금과 선납금",
+  "subtitle": "무엇이 다를까요?",
+  "kicker": "장기렌터카 · 핵심 비교",
+  "leftTitle": "보증금",
+  "rightTitle": "선납금",
+  "leftDesc": "계약 종료 시 조건에 따라 돌려받는 돈",
+  "rightDesc": "월 대여료 일부를 미리 납부하는 돈",
+  "point": "반환 조건과 총비용을 함께 비교하세요",
+  "leftBar": "반환 조건 확인",
+  "rightBar": "미리 납부한 대여료",
+  "closing": "시작은 비교부터",
+  "closingSub": "계약 전, 조건부터 같이 봐요",
+  "staffKP": "cover-think",
+  "staffEnd": "cover-confident",
+  "duration": 12
+}
