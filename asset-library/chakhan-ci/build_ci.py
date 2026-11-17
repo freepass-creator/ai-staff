@@ -14,16 +14,20 @@ OUT = Path(__file__).resolve().parent
 
 YELLOW = "#F6FD00"      # 브랜드 노랑 = 블로그 형광펜 마커와 같은 값
 YELLOW_GRAIN = "#D9E000"  # 형광펜 결(같은 색 계열의 조금 진한 줄)
+WHITE = "#FFFFFF"
+WHITE_GRAIN = "#D8D8D8"
 INK = "#0B0B0C"
 
 H = 100.0               # 워드마크 잉크 높이(기준 단위)
 TRACK = -0.03           # 자간(글자 폭 대비)
 
-# 형광펜 획 규격(H 대비)
-ANGLE = math.radians(24)   # 세로에서 오른쪽으로 기운 각
-STROKE_W = 0.27 * H        # 획 굵기(획에 수직)
-GAP = 0.13 * H             # 두 획 사이(수평)
-OVERSHOOT = 0.07 * H       # 글자 위아래로 살짝 넘치게
+# 형광펜 획 규격(H 대비). 2026-11-17 대표: CI로 쓰기엔 길다 → 글자 높이 안으로 줄이고 사선을 확실하게.
+ANGLE = math.radians(31)   # 세로에서 오른쪽으로 기운 각
+STROKE_W = 0.25 * H        # 획 굵기(획에 수직)
+GAP = 0.12 * H             # 두 획 사이(수평)
+SLASH_SPAN = 0.88 * H      # 획 세로 길이(글자 높이보다 조금 짧게, 글자 가운데에 맞춤)
+SLASH_BOT = H / 2 + SLASH_SPAN / 2
+SLASH_TOP = H / 2 - SLASH_SPAN / 2
 WORD_GAP = 0.20 * H        # 획과 글자 사이
 
 
@@ -57,7 +61,7 @@ def fmt(p):
 def marker_stroke(x0, seed):
     """납작한 형광펜 촉으로 아래→위로 그은 한 획. 가장자리는 곧고(손이 그은 아주 작은 휨만), 양 끝은 촉 각도대로
     비스듬히 잘리며, 위 끝 조금은 잉크가 마르며 가는 틈 두 줄로 갈라진다. x0 = 아래쪽 왼 끝 x."""
-    yb, yt = H + OVERSHOOT, -OVERSHOOT
+    yb, yt = SLASH_BOT, SLASH_TOP
     dx = (yb - yt) * math.tan(ANGLE)
     Wx = STROKE_W / math.cos(ANGLE)           # 수평으로 잰 획 폭
     bow = 0.012 * H * (1 if seed == 0 else 0.8)  # 손목 호(아주 살짝)
@@ -94,7 +98,7 @@ def marker_stroke(x0, seed):
     return body, strips, grains, right_x
 
 
-def build(word_fill, slash_fill, grain=True):
+def build(word_fill, slash_fill, grain=None):
     first_x0 = 0.0
     step = STROKE_W / math.cos(ANGLE) + GAP
     parts, right_edge = [], 0
@@ -104,12 +108,13 @@ def build(word_fill, slash_fill, grain=True):
         parts.append(f'<path d="{body}"/>')
         parts += [f'<path d="{d}"/>' for d, _ in fringes]
         if grain:
-            parts += [f'<path d="{d}" fill="{YELLOW_GRAIN}" opacity=".45"/>' for d in grains]
+            parts += [f'<path d="{d}" fill="{grain}" opacity=".45"/>' for d in grains]
     d, (bx, by), ww = wordmark()
     wx = right_edge + WORD_GAP
     total_w = wx + ww + 0.04 * H
     pad = 0.08 * H
-    vb = (-pad, -OVERSHOOT - pad, total_w + 2 * pad, H + 2 * OVERSHOOT + 2 * pad)
+    top, bot = min(0.0, SLASH_TOP), max(H, SLASH_BOT)
+    vb = (-pad, top - pad, total_w + 2 * pad, bot - top + 2 * pad)
     svg = (
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb[0]:.1f} {vb[1]:.1f} {vb[2]:.1f} {vb[3]:.1f}" '
         f'width="{vb[2] * 2:.0f}" height="{vb[3] * 2:.0f}" role="img" aria-label="착한거래">'
@@ -122,9 +127,9 @@ def build(word_fill, slash_fill, grain=True):
 
 
 VARIANTS = {
-    "chakhan-ci-on-light.svg": (INK, YELLOW, True),      # 흰·밝은 바탕: 글자 검정, // 노랑
-    "chakhan-ci-on-dark.svg": (YELLOW, YELLOW, True),    # 검정·어두운 바탕: 글자·// 모두 노랑
-    "chakhan-ci-mono-black.svg": (INK, INK, False),      # 노랑 바탕·단색 인쇄용
+    "chakhan-ci-on-light.svg": (INK, YELLOW, YELLOW_GRAIN),  # 흰·밝은 바탕: 글자 검정, // 노랑
+    "chakhan-ci-on-dark.svg": (YELLOW, WHITE, WHITE_GRAIN),  # 검정·어두운 바탕: 글자 노랑, // 흰색(2026-11-17 대표)
+    "chakhan-ci-mono-black.svg": (INK, INK, None),           # 노랑 바탕·단색 인쇄용
 }
 
 if __name__ == "__main__":
