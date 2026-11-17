@@ -6,21 +6,30 @@
     "ink": "#0B0B0C",
     "white": "#FFFFFF"
   },
+  "slash_shadow_offset": 4.5,
   "backgrounds": {
     "on-light": {
       "wordmark": "#0B0B0C",
       "slashes": "#F6FD00",
+      "slash_shadow": "#0B0B0C",
       "category": "#0B0B0C",
       "rule": "#0B0B0C",
       "rule_opacity": 0.3
     },
     "on-dark": {
-      "wordmark": "#F6FD00",
-      "slashes": "#FFFFFF",
+      "wordmark": "#FFFFFF",
+      "slashes": "#F6FD00",
+      "slash_shadow": "#FFFFFF",
       "category": "#FFFFFF",
       "rule": "#FFFFFF",
       "rule_opacity": 0.4
     }
+  },
+  "clear_space": 50.0,
+  "min_height_px": {
+    "ci": 24,
+    "lockup": 28,
+    "symbol": 32
   },
   "category": {
     "ratio_to_wordmark": 0.47,
@@ -35,18 +44,18 @@
   "viewBox": [
     -8.0,
     -8.0,
-    528.89,
+    533.39,
     116.0
   ],
   "baseline": 90.01,
-  "wordmark_right": 508.89,
+  "wordmark_right": 513.39,
   "rule": {
-    "x": 538.89,
+    "x": 543.39,
     "y": 15.0,
     "w": 3.5,
     "h": 70.0
   },
-  "sub_x": 572.39,
+  "sub_x": 576.89,
   "sub_font_size": 51.59,
   "sub_font": "SUITE Heavy (900)"
 }

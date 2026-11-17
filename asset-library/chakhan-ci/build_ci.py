@@ -13,9 +13,7 @@ FONT = ROOT / "public-release/site/fonts/SUITE-Heavy.woff2"
 OUT = Path(__file__).resolve().parent
 
 YELLOW = "#F6FD00"      # 브랜드 노랑 = 블로그 형광펜 마커와 같은 값
-YELLOW_GRAIN = "#D9E000"  # 형광펜 결(같은 색 계열의 조금 진한 줄)
 WHITE = "#FFFFFF"
-WHITE_GRAIN = "#D8D8D8"
 INK = "#0B0B0C"
 
 H = 100.0               # 워드마크 잉크 높이(기준 단위)
@@ -28,7 +26,8 @@ GAP = 0.12 * H             # 두 획 사이(수평)
 SLASH_SPAN = 0.88 * H      # 획 세로 길이(글자 높이보다 조금 짧게, 글자 가운데에 맞춤)
 SLASH_BOT = H / 2 + SLASH_SPAN / 2
 SLASH_TOP = H / 2 - SLASH_SPAN / 2
-WORD_GAP = 0.20 * H        # 획과 글자 사이
+WORD_GAP = 0.20 * H        # 획(그림자 포함)과 글자 사이
+SHADOW = 0.045 * H         # // 그림자: 오른쪽 아래로 옮긴 거리
 
 
 _FONT = None
@@ -99,7 +98,7 @@ RULE_H = 0.70 * H      # 워드마크 잉크 상자 세로 가운데
 CATEGORIES = {"ai-rentcar": "AI 장기렌터카", "sangsik": "상식 한 스푼"}
 
 
-def build(word_fill, slash_fill, grain=None, sub=None, sub_fill=None, rule_fill=None, rule_opacity=1.0, spec=None):
+def build(word_fill, slash_fill, shadow=None, sub=None, sub_fill=None, rule_fill=None, rule_opacity=1.0, spec=None):
     first_x0 = 0.0
     step = STROKE_W / math.cos(ANGLE) + GAP
     parts, right_edge = [], 0
@@ -107,9 +106,9 @@ def build(word_fill, slash_fill, grain=None, sub=None, sub_fill=None, rule_fill=
         body, fringes, grains, rx = marker_stroke(first_x0 + i * step, seed=i)
         right_edge = max(right_edge, rx)
         parts.append(f'<path d="{body}"/>')
-        parts += [f'<path d="{d}"/>' for d, _ in fringes]
-        if grain:
-            parts += [f'<path d="{d}" fill="{grain}" opacity=".45"/>' for d in grains]
+    # 그림자: 같은 획을 오른쪽 아래로 SHADOW 만큼 옮겨 뒤에 깐다(흰 바탕 검정, 검정 바탕 노랑)
+    if shadow:
+        right_edge += SHADOW
     d, (bx, by), ww = wordmark()
     wx = right_edge + WORD_GAP
     total_w = wx + ww + 0.04 * H
@@ -126,7 +125,7 @@ def build(word_fill, slash_fill, grain=None, sub=None, sub_fill=None, rule_fill=
         total_w = sx + (sb[2] - sb[0]) + 0.04 * H
         label = f"착한거래 {sub}"
     pad = 0.08 * H
-    top, bot = min(0.0, SLASH_TOP), max(H, SLASH_BOT)
+    top, bot = min(0.0, SLASH_TOP), max(H, SLASH_BOT + (SHADOW if shadow else 0))
     vb = (-pad, top - pad, total_w + 2 * pad, bot - top + 2 * pad)
     if spec is not None:  # 영상·웹이 카테고리 글씨를 같은 자리에 직접 쓸 수 있게 기준값을 남긴다(SVG 단위)
         upm = _FONT["head"].unitsPerEm
@@ -139,17 +138,81 @@ def build(word_fill, slash_fill, grain=None, sub=None, sub_fill=None, rule_fill=
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb[0]:.1f} {vb[1]:.1f} {vb[2]:.1f} {vb[3]:.1f}" '
         f'width="{vb[2] * 2:.0f}" height="{vb[3] * 2:.0f}" role="img" aria-label="{label}">'
         f'<title>{label}</title>'
-        f'<g fill="{slash_fill}">{"".join(parts)}</g>'
+        + (f'<g fill="{shadow}" transform="translate({SHADOW:.2f} {SHADOW:.2f})">{"".join(parts)}</g>' if shadow else "")
+        + f'<g fill="{slash_fill}">{"".join(parts)}</g>'
         f'<path fill="{word_fill}" transform="translate({wx - bx:.2f} {-by:.2f})" d="{d}"/>'
         f"{extra}</svg>\n"
     )
     return svg
 
 
-# 바탕별 색: (글자, //, 형광펜 결, 카테고리 글씨, 세로줄, 세로줄 투명도)
+def symbol(bg_fill, slash_fill, shadow=None):
+    """정사각 심볼(// 만): 유튜브·카톡 프로필처럼 작은 정사각·원형 자리용. 원형으로 잘려도 // 가 남게 가운데에 작게."""
+    step = STROKE_W / math.cos(ANGLE) + GAP
+    parts, right = [], 0
+    for i in range(2):
+        body, _, _, rx = marker_stroke(i * step, seed=i)
+        parts.append(f'<path d="{body}"/>')
+        right = max(right, rx)
+    if shadow:
+        right += SHADOW
+    top, bot = SLASH_TOP, SLASH_BOT + (SHADOW if shadow else 0)
+    cx, cy = right / 2, (top + bot) / 2
+    side = (bot - top) * 2.0
+    g = "".join(parts)
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{cx - side / 2:.2f} {cy - side / 2:.2f} {side:.2f} {side:.2f}" width="512" height="512" role="img" aria-label="착한거래">'
+            f'<title>착한거래</title><rect x="{cx - side / 2:.2f}" y="{cy - side / 2:.2f}" width="{side:.2f}" height="{side:.2f}" fill="{bg_fill}"/>'
+            + (f'<g fill="{shadow}" transform="translate({SHADOW:.2f} {SHADOW:.2f})">{g}</g>' if shadow else "")
+            + f'<g fill="{slash_fill}">{g}</g></svg>\n')
+
+
+CLEAR = 0.5 * H   # 여백: 잉크 상자 둘레로 0.5H 는 비운다
+
+
+def construction():
+    """비율 도면: 흰 바탕 CI 위에 치수선(H 기준)과 여백을 그린다. 규정집(guide.html)용."""
+    spec = {}
+    logo = build(INK, YELLOW, INK, spec=spec)
+    inner = logo[logo.index("<g "):logo.rindex("</svg>")]
+    step = STROKE_W / math.cos(ANGLE) + GAP
+    Wx = STROKE_W / math.cos(ANGLE)
+    dx = (SLASH_BOT - SLASH_TOP) * math.tan(ANGLE)
+    slash_r = step + dx + Wx + SHADOW
+    word_l, word_r = spec["wordmark_right"] - wordmark()[2], spec["wordmark_right"]
+    B = "#2F6BFF"
+    t = lambda x, y, s, a="middle": f'<text x="{x:.1f}" y="{y:.1f}" text-anchor="{a}" font-size="7.5" fill="{B}" font-family="Pretendard,Malgun Gothic,sans-serif" font-weight="700">{s}</text>'
+    ln = lambda x1, y1, x2, y2, dash=False: f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" stroke="{B}" stroke-width=".8"' + (' stroke-dasharray="3 2"' if dash else "") + "/>"
+
+    def hdim(x1, x2, y, s):  # 가로 치수
+        return ln(x1, y, x2, y) + ln(x1, y - 3, x1, y + 3) + ln(x2, y - 3, x2, y + 3) + t((x1 + x2) / 2, y + 10, s)
+
+    def vdim(x, y1, y2, s, side=1):  # 세로 치수
+        return ln(x, y1, x, y2) + ln(x - 3, y1, x + 3, y1) + ln(x - 3, y2, x + 3, y2) + t(x + 6 * side, (y1 + y2) / 2 + 3, s, "start" if side > 0 else "end")
+
+    W = word_r + 0.04 * H
+    a = [
+        f'<rect x="{-CLEAR:.1f}" y="{-CLEAR:.1f}" width="{W + 2 * CLEAR:.1f}" height="{H + 2 * CLEAR:.1f}" fill="none" stroke="{B}" stroke-width=".8" stroke-dasharray="4 3"/>',
+        t(-CLEAR + 2, -CLEAR - 4, "여백 0.5H (사방)", "start"),
+        ln(word_l, 0, W, 0, True), ln(word_l, H, W, H, True),
+        vdim(W + CLEAR + 12, 0, H, "H = 착한거래 글자 높이"),
+        vdim(-14, SLASH_TOP, SLASH_BOT, "// 길이 0.88H", -1),
+        hdim(slash_r, word_l, H + 16, "0.20H"),
+        hdim(0, Wx, H + 16, "획 0.25H"),
+        hdim(Wx, step, H + 30, "사이 0.12H"),
+        ln(0, SLASH_BOT, 0, SLASH_TOP, True), t(10, SLASH_TOP + 12, "31°", "start"),
+        t(slash_r - 8, H + 44, "그림자: 오른쪽 아래로 0.045H", "start"),
+    ]
+    vb = (-CLEAR - 60, -CLEAR - 16, W + 2 * CLEAR + 60 + 120, H + 2 * CLEAR + 24)
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb[0]:.1f} {vb[1]:.1f} {vb[2]:.1f} {vb[3]:.1f}" width="{vb[2] * 2:.0f}" height="{vb[3] * 2:.0f}">'
+            f'<rect x="{vb[0]:.1f}" y="{vb[1]:.1f}" width="{vb[2]:.1f}" height="{vb[3]:.1f}" fill="#fff"/>{inner}{"".join(a)}</svg>\n')
+
+
+# 바탕별 색: (글자, //, // 그림자, 카테고리 글씨, 세로줄, 세로줄 투명도)
+# 2026-11-17 대표: // 는 「잠시 멈춤(일시정지)」+「형광펜으로 잘 읽어라」.
+# 규칙 하나: 형광펜(//)은 어디서나 노랑, 나머지(글자·그림자·카테고리·세로줄)는 모두 바탕의 반대색 하나.
 BACKGROUNDS = {
-    "on-light": (INK, YELLOW, YELLOW_GRAIN, INK, INK, 0.3),        # 흰·밝은 바탕: 글자 검정, // 노랑
-    "on-dark": (YELLOW, WHITE, WHITE_GRAIN, WHITE, WHITE, 0.4),    # 검정·어두운 바탕: 글자 노랑, // 흰색(2026-11-17 대표)
+    "on-light": (INK, YELLOW, INK, INK, INK, 0.3),        # 흰 바탕: 전부 검정 + 노랑 형광펜
+    "on-dark": (WHITE, YELLOW, WHITE, WHITE, WHITE, 0.4),  # 검정 바탕: 전부 흰색 + 노랑 형광펜
 }
 MONO = (INK, INK, None)                                            # 노랑 바탕·단색 인쇄용
 
@@ -163,11 +226,18 @@ if __name__ == "__main__":
             (OUT / fn).write_text(build(wf, sf, g, name, cf, rf, ro), encoding="utf-8")
             print("wrote", fn)
     (OUT / "chakhan-ci-mono-black.svg").write_text(build(*MONO), encoding="utf-8")
+    for bg, (bf, sf, sh) in {"on-dark": (INK, YELLOW, WHITE), "on-light": ("#FFFFFF", YELLOW, INK), "on-yellow": (YELLOW, INK, None)}.items():
+        (OUT / f"chakhan-symbol-{bg}.svg").write_text(symbol(bf, sf, sh), encoding="utf-8")
+        print("wrote", f"chakhan-symbol-{bg}.svg")
     print("wrote chakhan-ci-mono-black.svg")
     spec = {"schema": "chakhan-ci/spec/v1", "units": "SVG viewBox units of chakhan-ci-on-*.svg (wordmark ink height = 100)",
             "colors": {"yellow": YELLOW, "ink": INK, "white": WHITE},
-            "backgrounds": {bg: {"wordmark": v[0], "slashes": v[1], "category": v[3], "rule": v[4], "rule_opacity": v[5]} for bg, v in BACKGROUNDS.items()},
+            "slash_shadow_offset": round(SHADOW, 2),
+            "backgrounds": {bg: {"wordmark": v[0], "slashes": v[1], "slash_shadow": v[2], "category": v[3], "rule": v[4], "rule_opacity": v[5]} for bg, v in BACKGROUNDS.items()},
+            "clear_space": round(CLEAR, 2), "min_height_px": {"ci": 24, "lockup": 28, "symbol": 32},
             "category": {"ratio_to_wordmark": SUB_RATIO, "gap": round(SUB_GAP, 2), "rule_w": round(RULE_W, 2), "rule_h": round(RULE_H, 2)}, "categories": CATEGORIES}
     build(*BACKGROUNDS["on-dark"][:3], spec=spec)
     (OUT / "chakhan-ci-spec.json").write_text(json.dumps(spec, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print("wrote chakhan-ci-spec.json")
+    (OUT / "chakhan-ci-construction.svg").write_text(construction(), encoding="utf-8")
+    print("wrote chakhan-ci-construction.svg")

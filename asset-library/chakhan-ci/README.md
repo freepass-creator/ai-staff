@@ -1,32 +1,36 @@
 # 착한거래 CI
 
-`//` 형광펜 두 획 + `착한거래` 워드마크. 글자는 **SUITE Heavy**(SUIT 아님)를 윤곽선 경로로 바꿔 글꼴 없이도 똑같이 보인다.
+**규정 전체는 [`guide.html`](guide.html)** (의미·색·비율 도면·여백·최소 크기·카테고리·심볼·단색·하지 않는 것·파일).
 
-| 파일 | 바탕 | 글자 | `//` |
+`//` + `착한거래` 워드마크. `//`는 **잠시 멈춤(일시정지)** + **형광펜으로 줄 쳐 가며 잘 읽기** — 「거래 전에 잠깐 멈춰 꼼꼼히 확인하자」(2026-11-17 대표). 글자는 **SUITE Heavy**(SUIT 아님)를 윤곽선 경로로 바꿔 글꼴 없이도 똑같이 보인다. 원본은 모두 SVG.
+
+## 색 규칙 하나
+
+**형광펜(`//`)은 어디서나 노랑 `#F6FD00`, 나머지(글자·`//` 그림자·카테고리·세로줄)는 모두 바탕의 반대색.**
+
+| 파일 | 바탕 | 글자 · 그림자 · 카테고리 | `//` |
 |---|---|---|---|
-| `chakhan-ci-on-light.svg` | 흰색·밝은 바탕 | 검정 `#0B0B0C` | 노랑 `#F6FD00` |
-| `chakhan-ci-on-dark.svg` | 검정·어두운 바탕 | 노랑 `#F6FD00` | 흰색 `#FFFFFF` |
-| `chakhan-ci-mono-black.svg` | 노랑 바탕·단색 인쇄 | 검정 | 검정 |
+| `chakhan-ci-on-light.svg` | 흰색·밝은 바탕 | 검정 `#0B0B0C` | 노랑 |
+| `chakhan-ci-on-dark.svg` | 검정·어두운 바탕 | 흰색 `#FFFFFF` | 노랑 |
+| `chakhan-ci-mono-black.svg` | 노랑 바탕·한 색 인쇄 | 검정(그림자 없음) | 검정 |
 
-- 브랜드 노랑은 `#F6FD00` 하나다(블로그 형광펜 마커와 같은 값). 다른 노랑으로 바꿔 칠하지 않는다.
-- `//`는 납작한 형광펜 촉으로 아래→위로 그은 두 획이다. 세로 길이는 글자 높이의 88%로 글자 가운데에 맞추고, 세로에서 31° 기울여 사선이 분명하게 보이게 한다(2026-11-17 대표). 양 끝은 촉 각도대로 비스듬히(평행하게) 잘린 **단색 획**이다. 형광펜 느낌은 색(검정 바탕 흰색, 흰 바탕 노랑)으로만 낸다 — 끝 갈라짐·결·손그림 흔들림 같은 표현을 넣지 않는다(2026-11-17 대표).
-- 비율을 바꾸거나 `//`와 글자 사이를 띄우거나 붙이지 않는다. 최소 높이 24px.
-- 확인: `preview.html`(바탕별·락업·크기별).
+## 비율 (H = 「착한거래」 글자 높이)
 
-## 카테고리 락업 `CI | 카테고리`
+- `//` 길이 0.88H(글자 세로 가운데) · 세로에서 31° · 획 굵기 0.25H(직각) · 두 획 사이 0.12H · 끝은 평행하게 자른 **단색 획**(갈라짐·결·손떨림 없음).
+- `//` 그림자: 같은 획을 오른쪽 아래로 0.045H 옮겨 뒤에 깐다. `//` ↔ 글자 0.20H(그림자 끝에서).
+- 여백 0.5H(사방). 최소 높이: 기본형 24px · 카테고리형 28px · 심볼 32px.
+- 도면: `chakhan-ci-construction.svg`. 기준값: `chakhan-ci-spec.json`.
 
-AI 장기렌터카, 상식 한 스푼, 미스터리극장 … 은 모두 착한거래의 **카테고리**다(2026-11-17 대표). 카테고리는 CI 오른쪽에 가는 세로줄을 두고 쓴다.
+## 카테고리 `CI | 카테고리`
 
-| 파일 | 바탕 |
-|---|---|
-| `chakhan-ci-ai-rentcar-on-light.svg` / `-on-dark.svg` | AI 장기렌터카 |
-| `chakhan-ci-sangsik-on-light.svg` / `-on-dark.svg` | 상식 한 스푼 |
+AI 장기렌터카, 상식 한 스푼, 미스터리극장 … 은 모두 착한거래의 **카테고리**다. `chakhan-ci-<ai-rentcar|sangsik>-on-<light|dark>.svg`.
 
-- 글꼴: CI와 같은 **SUITE Heavy**. 크기는 워드마크 글자의 **0.47배**, 기준선은 워드마크와 같다.
-- 색: 흰 바탕은 카테고리 검정 · 세로줄 검정 30%, 검정 바탕은 카테고리 흰색 · 세로줄 흰색 40%. 카테고리를 노랑으로 칠하지 않는다(노랑은 워드마크·// 몫).
-- 간격: 워드마크 → 세로줄 → 카테고리 각각 워드마크 높이의 0.30. 세로줄은 굵기 0.035 · 길이 0.70, 워드마크 세로 가운데.
-- 최소 높이 28px(카테고리 글씨가 읽히는 크기).
-- 새 카테고리는 `build_ci.py`의 `CATEGORIES`에 더해 다시 만든다. 영상·웹에서 카테고리를 직접 쓸 때는 `chakhan-ci-spec.json`(SVG 단위 위치·글자 크기·바탕별 색)을 따른다.
+- SUITE Heavy, 「착한거래」 글자의 **0.47배**, 기준선 맞춤. 워드마크 → 세로줄 → 카테고리 각 0.30H. 세로줄 0.035H × 0.70H(흰 바탕 검정 30%, 검정 바탕 흰색 40%).
+- 새 카테고리는 `build_ci.py`의 `CATEGORIES`에 더해 다시 만든다. 영상·웹에서 직접 쓸 때는 `chakhan-ci-spec.json`을 따른다.
+
+## 심볼
+
+`chakhan-symbol-on-dark|light|yellow.svg` — 유튜브·카톡 프로필 같은 작은 정사각·원형 자리에는 `//`만 쓴다.
 
 ## 다시 만들기
 
@@ -34,4 +38,10 @@ AI 장기렌터카, 상식 한 스푼, 미스터리극장 … 은 모두 착한�
 python -I asset-library/chakhan-ci/build_ci.py
 ```
 
-`fontTools`와 `brotli`가 필요하다. 글꼴은 저장소에 등록된 `public-release/site/fonts/SUITE-Heavy.woff2`(SUITE 2.040, OFL — `LICENSE-SUITE.txt`)를 쓴다. 획 모양은 난수 없이 고정 수식이라 매번 같은 SVG가 나온다.
+```bash
+python -I asset-library/chakhan-ci/export_png.py
+```
+
+- `build_ci.py`: 모든 SVG·`chakhan-ci-spec.json`·비율 도면. `fontTools`·`brotli` 필요. 글꼴은 `public-release/site/fonts/SUITE-Heavy.woff2`(SUITE 2.040, OFL — `LICENSE-SUITE.txt`). 난수 없는 고정 수식이라 매번 같은 결과.
+- `export_png.py`: PNG(로고 1200·2400px 폭, 심볼 512·1024px, 바탕 투명)를 `D:/dev-artifacts/ai-staff/chakhan-ci-png/`에 만든다(Edge/Chrome 필요). PNG는 git에 넣지 않는다.
+- 확인: `guide.html`, `preview.html`.
