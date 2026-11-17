@@ -23,6 +23,14 @@
       "category": "#FFFFFF",
       "rule": "#FFFFFF",
       "rule_opacity": 0.4
+    },
+    "on-yellow": {
+      "wordmark": "#0B0B0C",
+      "slashes": "#FFFFFF",
+      "slash_shadow": "#0B0B0C",
+      "category": "#0B0B0C",
+      "rule": "#0B0B0C",
+      "rule_opacity": 0.3
     }
   },
   "clear_space": 50.0,

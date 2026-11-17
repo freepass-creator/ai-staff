@@ -209,12 +209,14 @@ def construction():
 
 # 바탕별 색: (글자, //, // 그림자, 카테고리 글씨, 세로줄, 세로줄 투명도)
 # 2026-11-17 대표: // 는 「잠시 멈춤(일시정지)」+「형광펜으로 잘 읽어라」.
-# 규칙 하나: 형광펜(//)은 어디서나 노랑, 나머지(글자·그림자·카테고리·세로줄)는 모두 바탕의 반대색 하나.
+# 규칙: 형광펜(//)은 노랑, 나머지(글자·그림자·카테고리·세로줄)는 모두 바탕의 반대색 하나.
+# 노랑 바탕에서만 형광펜이 흰색이 된다(노랑 위 노랑은 안 보이므로, 2026-11-17 대표).
 BACKGROUNDS = {
     "on-light": (INK, YELLOW, INK, INK, INK, 0.3),        # 흰 바탕: 전부 검정 + 노랑 형광펜
     "on-dark": (WHITE, YELLOW, WHITE, WHITE, WHITE, 0.4),  # 검정 바탕: 전부 흰색 + 노랑 형광펜
+    "on-yellow": (INK, WHITE, INK, INK, INK, 0.3),        # 노랑 바탕: 전부 검정 + 흰 형광펜
 }
-MONO = (INK, INK, None)                                            # 노랑 바탕·단색 인쇄용
+MONO = (INK, INK, None)                                            # 한 색만 되는 곳(도장·각인·팩스): 전부 검정, 그림자 없음
 
 if __name__ == "__main__":
     import json
@@ -226,7 +228,7 @@ if __name__ == "__main__":
             (OUT / fn).write_text(build(wf, sf, g, name, cf, rf, ro), encoding="utf-8")
             print("wrote", fn)
     (OUT / "chakhan-ci-mono-black.svg").write_text(build(*MONO), encoding="utf-8")
-    for bg, (bf, sf, sh) in {"on-dark": (INK, YELLOW, WHITE), "on-light": ("#FFFFFF", YELLOW, INK), "on-yellow": (YELLOW, INK, None)}.items():
+    for bg, (bf, sf, sh) in {"on-dark": (INK, YELLOW, WHITE), "on-light": ("#FFFFFF", YELLOW, INK), "on-yellow": (YELLOW, WHITE, INK)}.items():
         (OUT / f"chakhan-symbol-{bg}.svg").write_text(symbol(bf, sf, sh), encoding="utf-8")
         print("wrote", f"chakhan-symbol-{bg}.svg")
     print("wrote chakhan-ci-mono-black.svg")

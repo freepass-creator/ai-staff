@@ -25,18 +25,22 @@ code{font-family:Consolas,'Pretendard',monospace;font-size:12px;background:#fff;
 <p class="lead"><b>//</b> 는 두 가지를 뜻한다 — <b>잠시 멈춤(일시정지)</b> 그리고 <b>형광펜으로 줄 쳐 가며 잘 읽기</b>. 「거래하기 전에 잠깐 멈춰서, 꼼꼼히 확인하자」가 착한거래의 약속이다.</p>
 <p>원본은 모두 SVG(글자를 윤곽선으로 바꾼 벡터)다. 크기를 바꿔도 모양·비율이 그대로이므로 늘 SVG 원본에서 시작한다. 정리: 2026-11-17 대표 확정.</p>
 
-<h2>1. 기본형 <small>chakhan-ci-on-light.svg · chakhan-ci-on-dark.svg</small></h2>
-<div class="g2">
+<h2>1. 기본형 <small>chakhan-ci-on-light / on-dark / on-yellow.svg</small></h2>
+<div class="g3">
   <div class="card w"><img src="chakhan-ci-on-light.svg" alt="흰 바탕 CI"><span>흰·밝은 바탕</span></div>
   <div class="card k"><img src="chakhan-ci-on-dark.svg" alt="검정 바탕 CI"><span>검정·어두운 바탕</span></div>
+  <div class="card y"><img src="chakhan-ci-on-yellow.svg" alt="노랑 바탕 CI"><span>노랑 바탕</span></div>
 </div>
-<p><b>색 규칙은 하나다: 형광펜(//)은 어디서나 노랑, 나머지(글자·// 그림자·카테고리·세로줄)는 모두 바탕의 반대색.</b> 흰 바탕이면 전부 검정, 검정 바탕이면 전부 흰색.</p>
+<p><b>색 규칙: 형광펜(//)은 노랑, 나머지(글자·// 그림자·카테고리·세로줄)는 모두 바탕의 반대색 하나.</b> 흰 바탕이면 전부 검정, 검정 바탕이면 전부 흰색. 노랑 바탕에서만 형광펜이 흰색이 된다(노랑 위 노랑은 보이지 않으므로) — 글자·그림자는 검정.</p>
+<table><tr><th>바탕</th><th>착한거래 · // 그림자 · 카테고리</th><th>// 형광펜</th></tr>
+<tr><td>흰·밝은 바탕</td><td>검정</td><td>노랑</td></tr><tr><td>검정·어두운 바탕</td><td>흰색</td><td>노랑</td></tr><tr><td>노랑 바탕</td><td>검정</td><td>흰색</td></tr>
+<tr><td>한 색만 되는 곳(도장·각인·팩스)</td><td colspan="2">전부 검정, 그림자 없음 (단색판)</td></tr></table>
 
 <h2>2. 색</h2>
 <div class="sw">
-  <div><i style="background:#F6FD00"></i><p><b>형광 노랑</b><br>HEX #F6FD00 · RGB 246 253 0<br>// 형광펜 전용</p></div>
-  <div><i style="background:#0B0B0C"></i><p><b>잉크</b><br>HEX #0B0B0C · RGB 11 11 12<br>흰 바탕의 글자·그림자</p></div>
-  <div><i style="background:#fff;box-shadow:inset 0 -1px 0 #e2e2dc"></i><p><b>흰색</b><br>HEX #FFFFFF<br>검정 바탕의 글자·그림자</p></div>
+  <div><i style="background:#F6FD00"></i><p><b>형광 노랑</b><br>HEX #F6FD00 · RGB 246 253 0<br>// 형광펜 · 노랑 바탕</p></div>
+  <div><i style="background:#0B0B0C"></i><p><b>잉크</b><br>HEX #0B0B0C · RGB 11 11 12<br>흰·노랑 바탕의 글자·그림자</p></div>
+  <div><i style="background:#fff;box-shadow:inset 0 -1px 0 #e2e2dc"></i><p><b>흰색</b><br>HEX #FFFFFF<br>검정 바탕의 글자·그림자 · 노랑 바탕의 형광펜</p></div>
 </div>
 <ul><li>노랑은 #F6FD00 하나만 쓴다. 다른 노랑(금색·주황빛)으로 바꿔 칠하지 않는다.</li>
 <li>인쇄: 형광 노랑은 일반 CMYK로 화면만큼 밝게 나오지 않는다. 인쇄물은 별색(형광) 또는 시험 인쇄로 색을 맞춘 뒤 확정한다(아직 확정값 없음).</li></ul>
@@ -48,7 +52,7 @@ code{font-family:Consolas,'Pretendard',monospace;font-size:12px;background:#fff;
 <tr><td>// 기울기</td><td>세로에서 오른쪽으로 31°</td></tr>
 <tr><td>// 획 굵기 · 두 획 사이</td><td>0.25H(획에 직각) · 0.12H(가로)</td></tr>
 <tr><td>// 끝</td><td>촉 각도대로 비스듬히 평행하게 자른 단색 획. 갈라짐·결·손떨림 표현 없음</td></tr>
-<tr><td>// 그림자</td><td>같은 획을 오른쪽 아래로 0.045H 옮겨 뒤에 깐다(흰 바탕 검정, 검정 바탕 흰색)</td></tr>
+<tr><td>// 그림자</td><td>같은 획을 오른쪽 아래로 0.045H 옮겨 뒤에 깐다(색은 글자와 같다)</td></tr>
 <tr><td>// ↔ 글자</td><td>0.20H (그림자 끝에서)</td></tr>
 <tr><td>글꼴</td><td>SUITE Heavy (윤곽선으로 넣어 글꼴 없이도 같다)</td></tr>
 <tr><td>여백</td><td>로고 잉크 상자 둘레 0.5H 안에는 아무것도 두지 않는다</td></tr>
@@ -64,7 +68,7 @@ code{font-family:Consolas,'Pretendard',monospace;font-size:12px;background:#fff;
 </div>
 <ul><li>글꼴은 CI와 같은 SUITE Heavy, 크기는 「착한거래」 글자의 0.47배, 바닥선(기준선)을 맞춘다.</li>
 <li>워드마크 → 세로줄 → 카테고리 간격은 각 0.30H. 세로줄은 굵기 0.035H · 길이 0.70H, 흰 바탕 검정 30% · 검정 바탕 흰색 40%.</li>
-<li>카테고리 글씨는 바탕의 반대색(검정/흰색). 노랑으로 칠하지 않는다.</li>
+<li>카테고리 글씨는 글자와 같은 색(흰·노랑 바탕 검정, 검정 바탕 흰색). 노랑으로 칠하지 않는다. 노랑 바탕용 <code>-on-yellow.svg</code>도 있다.</li>
 <li>새 카테고리는 <code>build_ci.py</code>의 <code>CATEGORIES</code>에 더해 다시 만든다. 영상·웹에서 직접 쓸 때는 <code>chakhan-ci-spec.json</code>의 위치·크기·색을 따른다.</li></ul>
 
 <h2>5. 심볼 <small>chakhan-symbol-*.svg</small></h2>
@@ -72,19 +76,19 @@ code{font-family:Consolas,'Pretendard',monospace;font-size:12px;background:#fff;
 <div class="g3">
   <div class="card k"><img src="chakhan-symbol-on-dark.svg" alt="" style="width:140px;border-radius:50%"><span>검정 바탕 (기본)</span></div>
   <div class="card w"><img src="chakhan-symbol-on-light.svg" alt="" style="width:140px;border-radius:50%;box-shadow:0 0 0 1px #e2e2dc"><span>흰 바탕</span></div>
-  <div class="card y"><img src="chakhan-symbol-on-yellow.svg" alt="" style="width:140px;border-radius:50%"><span>노랑 바탕 (단색)</span></div>
+  <div class="card y"><img src="chakhan-symbol-on-yellow.svg" alt="" style="width:140px;border-radius:50%"><span>노랑 바탕</span></div>
 </div>
 
 <h2>6. 단색</h2>
-<div class="g2"><div class="card y"><img src="chakhan-ci-mono-black.svg" alt=""><span>노랑 바탕·한 색 인쇄: 전부 검정, 그림자 없음</span></div>
-<div class="card w"><p style="text-align:center">노랑 바탕 위에 컬러판을 올리지 않는다(노랑 // 가 사라진다).<br>도장·각인·팩스처럼 한 색만 되는 곳도 단색판을 쓴다.</p></div></div>
+<div class="g2"><div class="card w"><img src="chakhan-ci-mono-black.svg" alt=""><span>chakhan-ci-mono-black.svg</span></div>
+<div class="card w"><p style="text-align:center">도장·각인·팩스·한 색 인쇄처럼 한 색만 되는 곳에 쓴다.<br>전부 검정, 그림자 없음.</p></div></div>
 
 <h2>7. 하지 않는 것</h2>
 <div class="g4">
   <div class="card w bad"><img src="chakhan-ci-on-light.svg" alt="" style="transform:scaleX(1.35)"><span>늘리거나 찌그러뜨리기</span></div>
   <div class="card w bad"><img src="chakhan-ci-on-light.svg" alt="" style="filter:hue-rotate(160deg)"><span>형광펜 색 바꾸기</span></div>
   <div class="card w bad"><img src="chakhan-ci-on-light.svg" alt="" style="transform:rotate(-8deg)"><span>돌리거나 기울이기</span></div>
-  <div class="card y bad"><img src="chakhan-ci-on-light.svg" alt=""><span>노랑 바탕에 컬러판</span></div>
+  <div class="card y bad"><img src="chakhan-ci-on-light.svg" alt=""><span>노랑 바탕에 흰 바탕용 (// 가 사라짐)</span></div>
 </div>
 <ul><li>// 와 글자 사이를 떼거나 붙이기, // 만 크게·작게 바꾸기, 그림자 방향·색 바꾸기.</li>
 <li>다른 글꼴로 다시 쓰기, 외곽선·그라데이션·광택 같은 효과 넣기.</li>
@@ -92,8 +96,8 @@ code{font-family:Consolas,'Pretendard',monospace;font-size:12px;background:#fff;
 
 <h2>8. 파일</h2>
 <table><tr><th>파일</th><th>쓰임</th></tr>
-<tr><td><code>chakhan-ci-on-light.svg</code> · <code>chakhan-ci-on-dark.svg</code></td><td>기본형</td></tr>
-<tr><td><code>chakhan-ci-&lt;카테고리&gt;-on-light/dark.svg</code></td><td>카테고리형 (ai-rentcar, sangsik)</td></tr>
+<tr><td><code>chakhan-ci-on-light/dark/yellow.svg</code></td><td>기본형 (흰·검정·노랑 바탕)</td></tr>
+<tr><td><code>chakhan-ci-&lt;카테고리&gt;-on-light/dark/yellow.svg</code></td><td>카테고리형 (ai-rentcar, sangsik)</td></tr>
 <tr><td><code>chakhan-symbol-on-dark/light/yellow.svg</code></td><td>프로필 심볼</td></tr>
 <tr><td><code>chakhan-ci-mono-black.svg</code></td><td>단색</td></tr>
 <tr><td><code>chakhan-ci-spec.json</code></td><td>영상·웹이 따르는 비율·색 기준값</td></tr>
