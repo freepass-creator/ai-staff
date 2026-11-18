@@ -111,7 +111,7 @@ SUB_RATIO = 0.47
 SUB_GAP = 0.30 * H     # 워드마크 → 세로줄, 세로줄 → 카테고리
 RULE_W = 0.035 * H
 RULE_H = 0.70 * H      # 워드마크 잉크 상자 세로 가운데
-CATEGORIES = {"ai-rentcar": "AI 장기렌터카", "sangsik": "상식 한 스푼"}
+CATEGORIES = {"ai-rentcar": "AI 장기렌터카", "sangsik": "상식 한 스푼", "econtract": "전자계약"}
 
 # 바탕별 색: (로고 = 글자·//, 카테고리 글씨, 세로줄, 세로줄 투명도). 로고는 한 색.
 LOGO_COLORS = (GREEN, GREEN_DARK, WHITE, INK)

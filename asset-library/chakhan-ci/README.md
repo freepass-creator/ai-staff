@@ -25,7 +25,7 @@
 
 ## 카테고리 `CI | 카테고리`
 
-`chakhan-ci-<ai-rentcar|sangsik>-on-<light|dark|green>.svg`. AI 장기렌터카(서비스), 상식 한 스푼(마케팅 콘텐츠) 모두 착한거래 아래. SUITE Heavy 0.47배, 기준선 맞춤, 로고와 같은 한 색. 새 카테고리는 `build_ci.py`의 `CATEGORIES`에 더한다.
+`chakhan-ci-<ai-rentcar|sangsik|econtract>-on-<light|dark|green>.svg`. AI 장기렌터카(서비스), 상식 한 스푼(마케팅 콘텐츠), 전자계약(서비스, 2026-11-18 대표 「착한거래 | 전자계약」) 모두 착한거래 아래. SUITE Heavy 0.47배, 기준선 맞춤, 로고와 같은 한 색. 새 카테고리는 `build_ci.py`의 `CATEGORIES`에 더한다.
 
 ## 심볼 · 확인 표시 효과
 
