@@ -12,7 +12,7 @@ p,li{font-size:14px;color:#333}p{margin:8px 0}ul{padding-left:20px;margin:8px 0}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
 .card{border-radius:10px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:160px}
 .card img{max-width:86%}.card>span{font-size:12px;opacity:.65}
-.w{background:#fff;box-shadow:inset 0 0 0 1px #e2e2dc}.k{background:#0B0B0C;color:#fff}.gr{background:#009867;color:#fff}
+.w{background:#fff;box-shadow:inset 0 0 0 1px #e2e2dc}.k{background:#0B0B0C;color:#fff}.gr{background:#009867;color:#fff}.y{background:#F6FD00}
 table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px;background:#fff}th,td{border:1px solid #e2e2dc;padding:9px 10px;text-align:left;vertical-align:top}th{background:#fafaf7}
 .sw{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}.sw div{flex:1;min-width:170px;border-radius:10px;overflow:hidden;background:#fff;box-shadow:inset 0 0 0 1px #e2e2dc;font-size:13px}
 .sw i{display:block;height:84px}.sw p{padding:10px 12px;margin:0}
@@ -58,10 +58,10 @@ code{font-family:Consolas,'Pretendard',monospace;font-size:12px;background:#fff;
 <h2>3. 비율 <small>H = 「착한거래」 글자 높이</small></h2>
 <div class="cons"><img src="chakhan-ci-construction.svg" alt="비율 도면"></div>
 <table><tr><th>항목</th><th>값</th></tr>
-<tr><td>// 길이 · 위치</td><td><b>0.70H</b>, 글자 세로 가운데 (2026-11-17 대표 확정 — 사선보다 「마크」로 서게)</td></tr>
+<tr><td>// 길이 · 위치</td><td>한 획 세로 <b>0.75H</b>, 글자 세로 <b>가운데</b> — 위아래 틈 0.125H씩, 바닥에 붙이지 않는다. 두 획은 같은 크기·같은 높이 (2026-11-18 대표 확정)</td></tr>
 <tr><td>// 기울기</td><td>세로에서 오른쪽으로 31°</td></tr>
 <tr><td>// 획 굵기 · 두 획 사이</td><td>0.25H(획에 직각) · 0.12H(가로)</td></tr>
-<tr><td>// 끝</td><td>평행하게 자른 단색 획. 그림자·갈라짐·결 없음</td></tr>
+<tr><td>// 끝</td><td>형광펜 막대 — 양 끝을 획 방향에 <b>직각</b>으로 자른다 (2026-11-18 대표 확정). 단색, 그림자·갈라짐·결 없음</td></tr>
 <tr><td>// ↔ 글자</td><td>0.20H</td></tr>
 <tr><td>글꼴</td><td>SUITE Heavy (윤곽선으로 넣어 글꼴 없이도 같다)</td></tr>
 <tr><td>여백</td><td>로고 잉크 상자 둘레 0.5H 안에는 아무것도 두지 않는다</td></tr>
@@ -96,23 +96,48 @@ code{font-family:Consolas,'Pretendard',monospace;font-size:12px;background:#fff;
   <div class="card k" style="align-items:flex-start"><p style="font-size:17px;color:#fff">제9조 <span class="hld">중도 해지 시 위약금이 발생한다.</span></p><span>검정 바탕 효과 #075539</span></div>
 </div>
 
-<h2>7. 하지 않는 것</h2>
+<h2>7. 쇼츠용 형광펜판 <small>chakhan-ci-shorts-*.svg · 2026-11-18</small></h2>
+<p>쇼츠 화면(검정 <code>#0B0B0C</code>)에 맞춘 별도 세트. 색은 <b>형광 노랑 <code>#F6FD00</code></b>, // 모양·비율은 기본형과 같다. 기본 CI(초록 한 색)는 블로그·문서·인쇄에, 이 세트는 쇼츠·짧은 영상에만 쓴다. 쇼츠판은 // 와 글씨 색을 나눌 수 있다(예외).</p>
+<div class="g3">
+  <div class="card k"><img src="chakhan-ci-shorts-yellow-slash-on-dark.svg" alt=""><span>기본 — 노랑 // · 흰 글자 — 쇼츠 화면 구석·첫 장면</span></div>
+  <div class="card k"><img src="chakhan-ci-shorts-yellow-on-dark.svg" alt=""><span>전부 형광 노랑 — 엔딩·마지막 로고</span></div>
+  <div class="card y"><img src="chakhan-ci-shorts-on-yellow.svg" alt=""><span>노랑 바탕 · 전부 검정 — 노랑 바탕 장면·엔딩</span></div>
+  <div class="card k"><img src="chakhan-ci-shorts-band-on-dark.svg" alt=""><span>사선 형광 띠 · 검정 글자 — 표지·썸네일</span></div>
+  <div class="card w"><img src="chakhan-ci-shorts-highlight-on-light.svg" alt=""><span>글자에 형광펜 칠 — 밝은 장면</span></div>
+  <div class="card w"><img src="chakhan-ci-shorts-yellow-slash-on-light.svg" alt=""><span>흰 바탕 · 노랑 // — 흰 바탕은 노랑이 흐려 큰 크기에서만</span></div>
+</div>
+<ul><li>쇼츠 아래 15%는 화면 UI가 덮으므로 로고를 두지 않는다.</li><li>노랑 위 글씨는 검정만, 검정 위 글씨는 흰색 또는 노랑만.</li></ul>
+
+<h2>8. 프리패스 <small>freepass-ci-*.svg · 2026-11-18</small></h2>
+<p>회사 이름 「프리패스」도 같은 SUITE Heavy·같은 // 규격(글자 높이 H, // 0.75H 가운데)으로 쓴다. 대표색은 아직 정하지 않아 검정·흰색, 쇼츠에서는 노랑 //.</p>
+<div class="g3">
+  <div class="card w"><img src="freepass-ci-on-light.svg" alt=""><span>// 프리패스 · 검정</span></div>
+  <div class="card k"><img src="freepass-ci-on-dark.svg" alt=""><span>// 프리패스 · 흰색</span></div>
+  <div class="card k"><img src="freepass-ci-shorts-on-dark.svg" alt=""><span>쇼츠 · 노랑 //</span></div>
+  <div class="card w"><img src="freepass-ci-word-on-light.svg" alt=""><span>글자만 · 검정</span></div>
+  <div class="card k"><img src="freepass-ci-word-on-dark.svg" alt=""><span>글자만 · 흰색</span></div>
+</div>
+
+<h2>9. 하지 않는 것</h2>
 <div class="g4">
   <div class="card w bad"><img src="chakhan-ci-on-light.svg" alt="" style="transform:scaleX(1.35)"><span>늘리거나 찌그러뜨리기</span></div>
   <div class="card w bad"><img src="chakhan-ci-on-light.svg" alt="" style="filter:hue-rotate(120deg)"><span>다른 색으로 칠하기</span></div>
   <div class="card w bad"><img src="chakhan-ci-on-dark.svg" alt=""><span>흰 바탕에 검정 바탕용 초록</span></div>
   <div class="card k bad"><img src="chakhan-ci-on-light.svg" alt=""><span>검정 바탕에 흰 바탕용 초록</span></div>
 </div>
-<ul><li>// 와 글씨를 다른 색으로 나누기, // 만 크게·작게 바꾸기, // 와 글자 사이를 떼거나 붙이기, 돌리거나 기울이기.</li>
+<ul><li>// 와 글씨를 다른 색으로 나누기(쇼츠판만 예외), // 만 크게·작게 바꾸기, // 와 글자 사이를 떼거나 붙이기, 돌리거나 기울이기.</li>
 <li>다른 글꼴로 다시 쓰기, 그림자·외곽선·그라데이션·광택 같은 효과 넣기.</li>
 <li>사진 위에 바로 올려 묻히게 두기 — 어두운 사진은 검정 바탕형, 밝은 사진은 흰 바탕형, 대비가 약하면 단색 띠를 깐다.</li></ul>
 
-<h2>8. 파일</h2>
+<h2>10. 파일</h2>
 <table><tr><th>파일</th><th>쓰임</th></tr>
 <tr><td><code>chakhan-ci-on-light/dark/green.svg</code></td><td>기본형 (흰·검정·초록 바탕)</td></tr>
 <tr><td><code>chakhan-ci-&lt;카테고리&gt;-on-light/dark/green.svg</code></td><td>카테고리형 (ai-rentcar, sangsik)</td></tr>
 <tr><td><code>chakhan-symbol-on-green/dark/light.svg</code></td><td>심볼 (앱 아이콘·프로필)</td></tr>
 <tr><td><code>chakhan-ci-mono-black.svg</code></td><td>단색 (한 색만 되는 곳)</td></tr>
+<tr><td><code>chakhan-ci-shorts-*.svg</code></td><td>쇼츠용 형광펜판 6종 (형광 노랑 #F6FD00)</td></tr>
+<tr><td><code>freepass-ci-*.svg</code></td><td>프리패스 워드마크 (// 포함·글자만, 검정·흰색·쇼츠)</td></tr>
+<tr><td><code>motion/</code></td><td>로고 등장 모션 6장면(① 위아래로 슥 ② 형광펜 긋기 ③ 멈춤 쿵 ④ 한 자씩 톡 ⑤ 형광 띠 쓸기 ⑥ 말 따옴표) — 영상은 D:/large/ai-staff/chakhan-ci-motion/</td></tr>
 <tr><td><code>chakhan-ci-spec.json</code></td><td>영상·웹이 따르는 비율·색 기준값</td></tr>
 <tr><td><code>build_ci.py</code></td><td>모든 SVG·기준값·비율 도면을 고정 수식으로 다시 만든다</td></tr>
 <tr><td><code>export_png.py</code></td><td>PNG(로고 1200·2400px 폭, 심볼 512·1024px, 바탕 투명)를 <code>D:/dev-artifacts/ai-staff/chakhan-ci-png/</code>에 만든다. PNG는 git에 넣지 않는다</td></tr></table>

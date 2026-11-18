@@ -10,7 +10,7 @@
     "highlight_on_dark": "#075539"
   },
   "rule": {
-    "x": 528.07,
+    "x": 515.6,
     "y": 15.0,
     "w": 3.5,
     "h": 70.0
@@ -52,11 +52,13 @@
     "symbol": 32
   },
   "slash": {
-    "span": 0.7,
+    "span": 0.75,
     "angle_deg": 31.0,
     "stroke": 0.25,
     "gap": 0.12,
-    "word_gap": 0.2
+    "word_gap": 0.2,
+    "lift": 0.0,
+    "ends": "square-to-stroke"
   },
   "category": {
     "ratio_to_wordmark": 0.47,
@@ -68,15 +70,133 @@
     "ai-rentcar": "AI 장기렌터카",
     "sangsik": "상식 한 스푼"
   },
+  "shorts": {
+    "yellow": "#F6FD00",
+    "sets": {
+      "yellow-slash-on-dark": {
+        "slash": "#F6FD00",
+        "text": "#FFFFFF",
+        "band": null,
+        "band_mode": null,
+        "background": "#0B0B0C",
+        "use": "기본 — 쇼츠 화면 구석·첫 장면"
+      },
+      "yellow-on-dark": {
+        "slash": "#F6FD00",
+        "text": "#F6FD00",
+        "band": null,
+        "band_mode": null,
+        "background": "#0B0B0C",
+        "use": "강하게 — 엔딩·한 장면 전체"
+      },
+      "on-yellow": {
+        "slash": "#0B0B0C",
+        "text": "#0B0B0C",
+        "band": null,
+        "band_mode": null,
+        "background": "#F6FD00",
+        "use": "노랑 바탕 장면·표지"
+      },
+      "band-on-dark": {
+        "slash": "#F6FD00",
+        "text": "#0B0B0C",
+        "band": "#F6FD00",
+        "band_mode": "full",
+        "background": "#0B0B0C",
+        "use": "표지·썸네일 — 사선 형광 띠 위 검정 글자"
+      },
+      "highlight-on-light": {
+        "slash": "#0B0B0C",
+        "text": "#0B0B0C",
+        "band": "#F6FD00",
+        "band_mode": "under",
+        "background": "#FFFFFF",
+        "use": "밝은 장면 — 글자 아래쪽에 형광펜 칠"
+      },
+      "yellow-slash-on-light": {
+        "slash": "#F6FD00",
+        "text": "#0B0B0C",
+        "band": null,
+        "band_mode": null,
+        "background": "#FFFFFF",
+        "use": "흰 바탕은 노랑이 흐려 큰 크기에서만"
+      }
+    }
+  },
+  "freepass": {
+    "note": "2026-11-18 확정 — 검정 글자 + 하늘 // #5B9FD4(어두운 바탕은 흰 글자), 한 색은 검정·흰색, 쇼츠는 형광 노랑 //",
+    "files": [
+      "freepass-ci-on-light.svg",
+      "freepass-ci-on-dark.svg",
+      "freepass-ci-shorts-on-dark.svg",
+      "freepass-ci-mono-black.svg",
+      "freepass-ci-mono-white.svg",
+      "freepass-ci-word-on-light.svg",
+      "freepass-ci-word-on-dark.svg"
+    ]
+  },
+  "freepass_en": {
+    "font": "Pretendard Bold 1.3.9 (OFL 1.1)",
+    "word": "FREEPASS",
+    "cap_height": 0.9,
+    "letter_gap": 0.11,
+    "kern": {
+      "PA": -0.1,
+      "AS": -0.03
+    },
+    "colors": {
+      "slash": "#5B9FD4",
+      "text": "#0B0B0C"
+    },
+    "why": "한글 SUITE Heavy 와 획 굵기·잉크 밀도가 맞는 영문(실측 20종 비교, 2026-11-18)",
+    "sets": {
+      "on-light": {
+        "slash": "#5B9FD4",
+        "text": "#0B0B0C",
+        "with_slash": true,
+        "use": "흰·밝은 바탕 기본"
+      },
+      "on-dark": {
+        "slash": "#5B9FD4",
+        "text": "#FFFFFF",
+        "with_slash": true,
+        "use": "검정·남색 바탕"
+      },
+      "mono-black": {
+        "slash": "#0B0B0C",
+        "text": "#0B0B0C",
+        "with_slash": true,
+        "use": "한 색 인쇄(검정)"
+      },
+      "mono-white": {
+        "slash": "#FFFFFF",
+        "text": "#FFFFFF",
+        "with_slash": true,
+        "use": "한 색(흰색) — 사진·색 바탕 위"
+      },
+      "word-on-light": {
+        "slash": "#0B0B0C",
+        "text": "#0B0B0C",
+        "with_slash": false,
+        "use": "// 없이 글자만"
+      },
+      "shorts-on-dark": {
+        "slash": "#F6FD00",
+        "text": "#FFFFFF",
+        "with_slash": true,
+        "use": "쇼츠(형광 노랑 //)"
+      }
+    }
+  },
   "viewBox": [
     -8.0,
     -8.0,
-    518.07,
+    505.6,
     116.0
   ],
   "baseline": 90.01,
-  "wordmark_right": 498.07,
-  "sub_x": 561.57,
+  "wordmark_right": 485.6,
+  "sub_x": 549.1,
   "sub_font_size": 51.59,
   "sub_font": "SUITE Heavy (900)"
 }

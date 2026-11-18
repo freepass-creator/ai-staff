@@ -19,7 +19,7 @@
 
 ## 비율 (H = 「착한거래」 글자 높이)
 
-- `//` 길이 **0.70H**(글자 세로 가운데) · 세로에서 31° · 획 굵기 0.25H(직각) · 두 획 사이 0.12H · 평행하게 자른 단색 획(그림자 없음). `//` ↔ 글자 0.20H.
+- `//` 한 획 세로 **0.75H**, 글자 세로 **가운데**(위아래 틈 0.125H씩, 바닥에 붙이지 않음) · 세로에서 31° · 획 굵기 0.25H(직각) · 두 획 사이 0.12H · **형광펜 막대**: 같은 크기 두 막대, 양 끝을 획 방향에 직각으로 자른다(2026-11-18 대표 확정). 단색, 그림자 없음. `//` ↔ 글자 0.20H.
 - 여백 0.5H(사방). 최소 높이: 기본형 24px · 카테고리형 28px · 심볼 32px.
 - 도면 `chakhan-ci-construction.svg`, 기준값 `chakhan-ci-spec.json`.
 
@@ -32,6 +32,39 @@
 - `chakhan-symbol-on-green|dark|light.svg` — 앱 아이콘·프로필. 기본은 초록 바탕에 흰 `//`.
 - 형광펜(확인 표시)은 로고가 아니라 움직임·화면 효과: 흰 바탕 `#B5F1D2`, 검정 바탕 `#075539`를 글자 아래 45%에 칠한다.
 
+## 쇼츠용 형광펜판 (2026-11-18 대표 지시)
+
+`chakhan-ci-shorts-<이름>.svg` — 쇼츠 화면(검정 `#0B0B0C`)용 별도 세트. 형광 노랑 `#F6FD00`, // 모양·비율은 기본형과 같다. 쇼츠판만 // 와 글씨 색을 나눌 수 있다. 기본 CI(초록)는 블로그·문서·인쇄용.
+
+| 이름 | 모습 | 쓰임 |
+|---|---|---|
+| `yellow-slash-on-dark` | 노랑 // · 흰 글자 | 기본 — 화면 구석·첫 장면 |
+| `yellow-on-dark` | 전부 노랑 | 엔딩·마지막 로고 |
+| `on-yellow` | 전부 검정(노랑 바탕에 놓음) | 노랑 바탕 장면·엔딩 |
+| `band-on-dark` | 사선 노랑 띠 위 검정 글자 | 표지·썸네일 |
+| `highlight-on-light` | 검정 글자 아래쪽에 형광펜 칠 | 밝은 장면 |
+| `yellow-slash-on-light` | 흰 바탕 · 노랑 // | 노랑이 흐려 큰 크기에서만 |
+
+쇼츠 아래 15%(화면 UI 자리)에는 로고를 두지 않는다.
+
+## 프리패스 워드마크 (2026-11-18 대표 지시)
+
+`freepass-ci-<on-light|on-dark|mono-black|mono-white|shorts-on-dark|word-on-light|word-on-dark>.svg` — 같은 SUITE Heavy·같은 // 규격(글자 높이 H). **색(2026-11-18 확정): 검정 글자 + 하늘 // `#5B9FD4`** — 착한거래 정본(초록 한 색)과 // 모양은 같고 색 짜임으로 구분. 어두운 바탕은 흰 글자 + 하늘 //, 한 색은 검정·흰색, 쇼츠는 노랑 //. `word-*`는 // 없이 글자만.
+
+### FREEPASS 영문 BI (2026-11-18 대표: 「FREEPASS 착한거래 버전으로 BI」, 「프리텐다드 볼드로 하자」)
+
+`freepass-en-ci-<on-light|on-dark|mono-black|mono-white|word-on-light|shorts-on-dark>.svg`
+
+- 글꼴 **Pretendard Bold**(OFL 1.1, `public-release/site/fonts/Pretendard-Bold.woff2`) 대문자를 윤곽선으로. 착한거래와 같은 // 규격(0.75H·31°·가운데).
+- 고른 이유: 영문 20종을 한글 SUITE Heavy와 같은 높이로 그려 획 굵기·잉크 밀도를 실측 — SemiBold 가 수치상 가장 가깝고(획 +3%), 나란히 놓으면 한글이 획이 많아 더 진해 보여 한 단계 굵은 Bold 가 같은 무게로 보인다.
+- 한글은 글자마다 자리 폭이 같고(SUITE 0.874em) 영문은 다르다(A 넓고 F 좁음). 그래서 영문은 글자 폭은 그대로 두고 글자 사이 빈 공간을 고르게(0.11 × 글자 높이) 맞추고, 사선 A 둘레만 눈대중으로 당겼다(PA −0.10, AS −0.03).
+- **대문자 높이 0.90H**(2026-11-18 대표 확정): 대문자는 네모를 꽉 채워 한글과 같은 높이면 더 커 보인다. // 는 착한거래와 같은 크기 그대로 두고 글자만 줄여 세로 가운데에 맞춘다.
+- 색: 검정 글자 + 하늘 // `#5B9FD4`. 착한거래 정본은 초록 한 색 — // 모양은 같고 색 짜임(두 색)으로 구분된다. 어두운 바탕은 흰 글자, 한 색은 검정·흰색, 쇼츠는 노랑 //.
+
+## 모션
+
+[`motion/`](motion/README.md) — 로고 등장 모션 6장면(위아래로 슥·형광펜 긋기·멈춤 쿵·한 자씩 톡·형광 띠 쓸기·말 따옴표) × 색 세트 × 세로·가로·정사각. 영상은 `D:/large/ai-staff/chakhan-ci-motion/`(git 밖).
+
 ## 다시 만들기
 
 ```bash
@@ -42,6 +75,6 @@ python -I asset-library/chakhan-ci/build_ci.py
 python -I asset-library/chakhan-ci/export_png.py
 ```
 
-- `build_ci.py`: 모든 SVG·기준값·도면. `fontTools`·`brotli` 필요. 글꼴 `public-release/site/fonts/SUITE-Heavy.woff2`(SUITE 2.040, OFL — `LICENSE-SUITE.txt`). 고정 수식이라 매번 같은 결과. `CHAKHAN_SLASH_SPAN`·`CHAKHAN_CI_OUT`으로 시험용 출력 가능.
+- `build_ci.py`: 모든 SVG·기준값·도면. `fontTools`·`brotli` 필요. 글꼴 `public-release/site/fonts/SUITE-Heavy.woff2`(SUITE 2.040, OFL — `LICENSE-SUITE.txt`). 고정 수식이라 매번 같은 결과. `CHAKHAN_SLASH_SPAN`·`_ANGLE`·`_STROKE`·`_GAP`·`_ALIGN`·`CHAKHAN_CI_OUT`으로 시험용 출력 가능.
 - `export_png.py`: PNG를 `D:/dev-artifacts/ai-staff/chakhan-ci-png/`에(Edge/Chrome 필요). PNG는 git에 넣지 않는다.
 - 확인: `guide.html`, `preview.html`.

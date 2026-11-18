@@ -16,7 +16,7 @@ BROWSERS = [os.environ.get("CHAKHAN_BROWSER", ""),
             r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
             r"C:\Program Files\Google\Chrome\Application\chrome.exe"]
 # (파일, 내보낼 가로 폭 px 목록). 로고는 바탕 투명, 심볼은 정사각 바탕 포함
-JOBS = [(p.name, [1200, 2400]) for p in sorted(HERE.glob("chakhan-ci-*.svg")) if "construction" not in p.name] + \
+JOBS = [(p.name, [1200, 2400]) for p in sorted([*HERE.glob("chakhan-ci-*.svg"), *HERE.glob("freepass-ci-*.svg")]) if "construction" not in p.name] + \
        [(p.name, [512, 1024]) for p in sorted(HERE.glob("chakhan-symbol-*.svg"))]
 
 

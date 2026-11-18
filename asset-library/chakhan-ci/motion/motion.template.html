@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>착한거래 CI 모션</title>
+<style>
+*{box-sizing:border-box;margin:0}
+body{background:#1d1d1f;color:#eee;font-family:system-ui,'Malgun Gothic',sans-serif;padding:16px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+button{background:#2c2c2e;color:#eee;border:0;border-radius:8px;padding:9px 14px;font-size:14px;cursor:pointer}
+textarea{background:#2c2c2e;color:#eee;border:0;border-radius:8px;padding:6px 10px;font-size:14px;width:220px}
+select{background:#2c2c2e;color:#eee;border:0;border-radius:8px;padding:9px 10px;font-size:14px}
+button.on{background:#F6FD00;color:#0B0B0C;font-weight:700}
+canvas{max-height:80vh;max-width:100%;display:block;border-radius:14px;background:#0B0B0C}
+p{font-size:13px;color:#aaa;margin:10px 0}
+</style></head><body>
+<div class="bar" id="bar"></div>
+<canvas id="canvas" width="1080" height="1920"></canvas>
+<p id="desc"></p>
+<script>
+const GEO=/*GEO*/null, COL=/*COLORS*/null, FONTS=/*FONTS*/null;
+let fontsReady=false;
+Promise.all(Object.entries(FONTS).map(([fam,b64])=>new FontFace(fam,`url(data:font/woff2;base64,${b64})`).load().then(f=>document.fonts.add(f)))).then(()=>{fontsReady=true;seek(0)});
+const QFONT="'SUITE','PretendardB',sans-serif";
+const cv=document.getElementById('canvas'),ctx=cv.getContext('2d');
+const clamp=x=>Math.max(0,Math.min(1,x)), P=(t,a,d)=>clamp((t-a)/d);
+const E={out3:x=>1-Math.pow(1-x,3),expo:x=>x>=1?1:1-Math.pow(2,-10*x),inout:x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2,
+  back:x=>{const c1=1.7,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)}};
+// 바탕색 세트: bg 바탕 · mark // · text 글자 · onMark 띠 위 글자. 기본 CI 색(초록 한 색)과 쇼츠 형광펜판(노랑)
+const THEMES={
+ shorts:{name:'쇼츠 · 검정 바탕 노랑 //',bg:COL.ink,mark:COL.yellow,text:COL.white,onMark:COL.ink},
+ light:{name:'흰 바탕 · 착한 초록',bg:COL.white,mark:COL.green,text:COL.green,onMark:COL.white},
+ dark:{name:'검정 바탕 · 초록',bg:COL.ink,mark:COL.green_dark,text:COL.green_dark,onMark:COL.ink},
+ green:{name:'초록 바탕 · 흰색',bg:COL.green,mark:COL.white,text:COL.white,onMark:COL.green},
+ mono_light:{name:'흰 바탕 · 검정',bg:COL.white,mark:COL.ink,text:COL.ink,onMark:COL.white},
+ mono_dark:{name:'검정 바탕 · 흰색',bg:COL.ink,mark:COL.white,text:COL.white,onMark:COL.ink},
+};
+// 화면 비율: 세로(쇼츠·릴스) · 가로(유튜브·발표) · 정사각(피드)
+const FORMATS={v:{name:'세로 9:16',w:1080,h:1920,logo:800,cy:.46,quote:118},h:{name:'가로 16:9',w:1920,h:1080,logo:1000,cy:.5,quote:120},s:{name:'정사각 1:1',w:1080,h:1080,logo:780,cy:.5,quote:96}};
+let W,Hc,G,H,charPaths,SL,slashRight,barInfo,SCALE,OX,OY,n,T,FMT;
+let QUOTE={text:'계약 전에\n조건부터 같이 봐요',who:'착한거래 AI'};
+const mid=(a,b)=>[(a[0]+b[0])/2,(a[1]+b[1])/2];
+function configure(word='chakhan',theme='shorts',format='v'){
+ FMT=format;const F=FORMATS[format];W=cv.width=F.w;Hc=cv.height=F.h;cv.style.aspectRatio=`${F.w}/${F.h}`;
+ G=GEO[word];H=G.H;T=THEMES[theme];charPaths=G.chars.map(c=>new Path2D(c.d));SL=G.slash;n=G.chars.length;
+ slashRight=Math.max(...SL.flat().map(p=>p[0]));
+ barInfo=SL.map(q=>{const b=mid(q[0],q[1]),e=mid(q[2],q[3]),L=Math.hypot(e[0]-b[0],e[1]-b[1]);return{b,e,L,u:[(e[0]-b[0])/L,(e[1]-b[1])/L],c:mid(b,e)}});
+ SCALE=F.logo/G.width;OX=(W-G.width*SCALE)/2;OY=Hc*F.cy-(H/2)*SCALE;
+}
+configure();
+
+function bg(c){ctx.setTransform(1,0,0,1,0,0);ctx.fillStyle=c;ctx.fillRect(0,0,W,Hc);ctx.setTransform(SCALE,0,0,SCALE,OX,OY)}
+function poly(pts,fill){ctx.beginPath();pts.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.closePath();ctx.fillStyle=fill;ctx.fill()}
+// 막대 i 를 아래 끝에서 p 만큼(0~1) 그린 모양, (dx,dy) 만큼 옮겨서
+function bar(i,fill,p=1,dx=0,dy=0){const q=SL[i];if(p<=0)return;
+  const a=q[0],b=q[1],c=[b[0]+(q[2][0]-b[0])*p,b[1]+(q[2][1]-b[1])*p],d=[a[0]+(q[3][0]-a[0])*p,a[1]+(q[3][1]-a[1])*p];
+  poly([a,b,c,d].map(v=>[v[0]+dx,v[1]+dy]),fill)}
+function char(i,fill,dx=0,dy=0,s=1,alpha=1){const c=G.chars[i];ctx.save();ctx.globalAlpha=alpha;
+  ctx.translate(c.cx+dx,H+dy);ctx.scale(s,s);ctx.translate(-c.cx,-H);ctx.translate(c.x,c.y);ctx.fillStyle=fill;ctx.fill(charPaths[i]);ctx.restore()}
+function clipRect(x0,y0,x1,y1){ctx.beginPath();ctx.rect(x0,y0,x1-x0,y1-y0);ctx.clip()}
+
+const SCENES={
+ updown:{name:'① 위아래로 슥',dur:3.0,desc:'첫 획은 위에서, 둘째 획은 아래에서 미끄러져 들어와 멈춘다. 이어서 글자가 바닥선 아래에서 한 자씩 올라온다.',
+  draw(t){bg(T.bg);const D=H*1.6;
+   ctx.save();clipRect(-20,G.top-1,slashRight+20,G.bottom+1);
+   [0,1].forEach(i=>{const k=E.expo(P(t,.05+i*.12,.6)),s=i?-1:1,u=barInfo[i].u;bar(i,T.mark,1,u[0]*D*(1-k)*s,u[1]*D*(1-k)*s)});ctx.restore();
+   ctx.save();clipRect(G.word_left-10,-H*.08,G.width+20,H*1.02);
+   for(let i=0;i<n;i++){const k=E.out3(P(t,.55+i*.07,.5));char(i,T.text,0,H*1.1*(1-k))}ctx.restore()}},
+ stroke:{name:'② 형광펜 긋기',dur:3.0,desc:'형광펜으로 긋듯 두 획이 아래에서 위로 칠해진다. 이어서 글자가 왼쪽부터 쓸리듯 나타난다.',
+  draw(t){bg(T.bg);bar(0,T.mark,E.inout(P(t,.1,.32)));bar(1,T.mark,E.inout(P(t,.32,.32)));
+   const k=E.inout(P(t,.68,.6));ctx.save();clipRect(G.word_left-10,-H*.2,G.word_left-10+(G.width-G.word_left+30)*k,H*1.2);
+   for(let i=0;i<n;i++)char(i,T.text);ctx.restore()}},
+ stamp:{name:'③ 멈춤 쿵',dur:3.0,desc:'// 가 크게 내려와 「쿵」 하고 멈춘다(잠시 멈춤). 그 뒤 글자가 // 뒤에서 오른쪽으로 빠져나온다.',
+  draw(t){bg(T.bg);const k=P(t,.05,.45),s=1+.7*(1-E.back(k)),cx=slashRight/2,cy=H/2;
+   ctx.save();ctx.globalAlpha=clamp(k*4);ctx.translate(cx,cy);ctx.scale(s,s);ctx.translate(-cx,-cy);bar(0,T.mark);bar(1,T.mark);ctx.restore();
+   const m=E.expo(P(t,.75,.7));ctx.save();clipRect(slashRight+H*.04,-H*.2,G.width+30,H*1.2);
+   for(let i=0;i<n;i++)char(i,T.text,-(G.width-G.word_left)*(1-m));ctx.restore()}},
+ pop:{name:'④ 한 자씩 톡',dur:3.0,desc:'두 획이 톡톡 튀어나오고, 글자가 한 자씩 통통 튀며 올라선다. 밝고 가벼운 느낌.',
+  draw(t){bg(T.bg);[0,1].forEach(i=>{const k=P(t,.05+i*.1,.4);if(k<=0)return;const s=E.back(k),c=barInfo[i].c;
+    ctx.save();ctx.translate(c[0],c[1]);ctx.scale(s,s);ctx.translate(-c[0],-c[1]);bar(i,T.mark);ctx.restore()});
+   for(let i=0;i<n;i++){const k=P(t,.4+i*.08,.45);if(k<=0)continue;char(i,T.text,0,H*.35*(1-E.out3(k)),Math.max(0,E.back(k)),clamp(k*3))}}},
+ band:{name:'⑤ 형광 띠 쓸기',dur:3.2,desc:'노란 형광 띠가 왼쪽에서 오른쪽으로 쓱 칠해지고 그 위에 검정 글자가 드러난다. 마지막에 // 가 위아래에서 들어온다. 표지·썸네일용.',
+  draw(t){bg(T.bg);const x0=G.word_left-.14*H,x1=G.width+.14*H,y0=-.16*H,y1=1.16*H,sk=.08*H;
+   const k=E.inout(P(t,.1,.5));ctx.save();clipRect(x0-5,y0-5,x0+(x1-x0+10)*k,y1+5);poly([[x0,y0+sk],[x1,y0],[x1,y1-sk],[x0,y1]],T.mark);ctx.restore();
+   const m=E.inout(P(t,.35,.5));ctx.save();clipRect(x0,y0,x0+(x1-x0)*m,y1);for(let i=0;i<n;i++)char(i,T.onMark);ctx.restore();
+   const D=H*1.6;ctx.save();clipRect(-20,G.top-1,slashRight+20,G.bottom+1);
+   [0,1].forEach(i=>{const q=E.expo(P(t,.85+i*.12,.6)),s=i?-1:1,u=barInfo[i].u;bar(i,T.mark,1,u[0]*D*(1-q)*s,u[1]*D*(1-q)*s)});ctx.restore()}},
+ quote:{name:'⑥ 말 따옴표',dur:3.0,desc:'// 가 따옴표를 대신한다 — 말 앞에 여는 // 가 위아래에서 들어오고, 말이 한 줄씩 올라온 뒤, 끝에 닫는 // 가 들어온다. 문구는 바꿔 쓸 수 있다.',
+  draw(t){bg(T.bg);ctx.setTransform(1,0,0,1,0,0);
+   const lines=QUOTE.text.split('\n'),m=W*.1;let fs=FORMATS[FMT].quote;
+   // 따옴표 크기 //: 글자 높이의 절반, 글자 윗선에 맞춤(“ ” 자리)
+   const geo=f=>{const hq=f*.5,k=hq/(G.bottom-G.top),mw=slashRight*k,gap=f*.14;return{hq,k,mw,gap}};
+   const fit=f=>{ctx.font=`${f}px ${QFONT}`;const g=geo(f),tx=m+g.mw+g.gap,ws=lines.map(l=>ctx.measureText(l).width);
+     return Math.max(...ws.map((w,i)=>tx+w+(i===lines.length-1?g.gap+g.mw:0)))};
+   const lim=W-m;if(fit(fs)>lim)fs*=(lim-m)/(fit(fs)-m);ctx.font=`${fs}px ${QFONT}`;
+   const g=geo(fs),tx=m+g.mw+g.gap,lh=fs*1.24,blockH=lh*lines.length+(QUOTE.who?fs*.9:0),y0=Hc*FORMATS[FMT].cy-blockH/2;
+   const baseOf=i=>y0+lh*(i+.5)+fs*.36,capTop=i=>baseOf(i)-fs*.74;
+   const mark=(x,y,t0)=>{ctx.save();ctx.setTransform(g.k,0,0,g.k,x,y-G.top*g.k);clipRect(-20,G.top-1,slashRight+20,G.bottom+1);const D=H*1.6;
+     [0,1].forEach(i=>{const q=E.expo(P(t,t0+i*.08,.5)),s=i?-1:1,u=barInfo[i].u;bar(i,T.mark,1,u[0]*D*(1-q)*s,u[1]*D*(1-q)*s)});ctx.restore()};
+   mark(m,capTop(0),.05);
+   ctx.setTransform(1,0,0,1,0,0);ctx.textBaseline='alphabetic';ctx.fillStyle=T.text;
+   lines.forEach((l,i)=>{const q=E.out3(P(t,.3+i*.12,.5)),base=baseOf(i);ctx.save();ctx.beginPath();ctx.rect(0,base-fs*1.05,W,fs*1.3);ctx.clip();
+     ctx.fillText(l,tx,base+fs*1.1*(1-q));ctx.restore()});
+   const li=lines.length-1;ctx.font=`${fs}px ${QFONT}`;mark(tx+ctx.measureText(lines[li]).width+g.gap,capTop(li),.45+li*.12+.35);
+   ctx.setTransform(1,0,0,1,0,0);
+   if(QUOTE.who){const q=clamp(P(t,1.3+li*.12,.4));ctx.globalAlpha=q*.6;ctx.fillStyle=T.text;ctx.font=`${fs*.42}px ${QFONT}`;ctx.fillText(QUOTE.who,tx,y0+lh*lines.length+fs*.75);ctx.globalAlpha=1}}},
+};
+let cur='updown';
+function seek(t){SCENES[cur].draw(Math.max(0,t))}
+// 렌더러용: set(장면, 낱말 chakhan|freepass, 바탕색 세트, 화면 비율 v|h|s) → 길이(초)
+window.motion={ready:()=>fontsReady,quote:(text,who='')=>{QUOTE={text,who};seek(0)},list:()=>Object.keys(SCENES),themes:()=>Object.keys(THEMES),formats:()=>Object.keys(FORMATS),
+ set:(id,word='chakhan',theme='shorts',format='v')=>{configure(word,theme,format);cur=id;seek(0);return SCENES[id].dur},dur:id=>SCENES[id||cur].dur,name:id=>SCENES[id].name,seek};
+// 사람용 미리보기: 장면 버튼 + 낱말·바탕색·비율 고르기
+const barEl=document.getElementById('bar');let raf,st,opt={word:'chakhan',theme:'shorts',format:'v'};
+function sel(key,map){const e=document.createElement('select');for(const k in map){const o=document.createElement('option');o.value=k;o.textContent=map[k];e.append(o)}e.value=opt[key];e.onchange=()=>{opt[key]=e.value;play(cur)};barEl.append(e)}
+function play(id){motion.set(id,opt.word,opt.theme,opt.format);document.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.id===id));document.getElementById('desc').textContent=SCENES[id].desc;
+ cancelAnimationFrame(raf);st=performance.now();(function step(now){const tt=(now-st)/1000;seek(tt);if(tt<SCENES[id].dur+.6)raf=requestAnimationFrame(step)})(st)}
+for(const id in SCENES){const b=document.createElement('button');b.textContent=SCENES[id].name;b.dataset.id=id;b.onclick=()=>play(id);barEl.append(b)}
+sel('word',{chakhan:'착한거래',freepass:'프리패스'});
+{const ta=document.createElement('textarea');ta.rows=2;ta.value=QUOTE.text;ta.title='⑥ 말 따옴표 문구(줄바꿈 가능)';ta.oninput=()=>{QUOTE.text=ta.value;if(cur==='quote')play('quote')};barEl.append(ta)}sel('theme',Object.fromEntries(Object.entries(THEMES).map(([k,v])=>[k,v.name])));sel('format',Object.fromEntries(Object.entries(FORMATS).map(([k,v])=>[k,v.name])));
+play(cur);
+</script></body></html>
