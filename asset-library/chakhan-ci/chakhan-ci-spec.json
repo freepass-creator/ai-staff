@@ -124,14 +124,69 @@
     }
   },
   "freepass": {
-    "note": "대표색 미정 — 검정·흰색, 쇼츠는 형광 노랑 //",
+    "note": "2026-11-18 확정 — 검정 글자 + 하늘 // #5B9FD4(어두운 바탕은 흰 글자), 한 색은 검정·흰색, 쇼츠는 형광 노랑 //",
     "files": [
       "freepass-ci-on-light.svg",
       "freepass-ci-on-dark.svg",
       "freepass-ci-shorts-on-dark.svg",
+      "freepass-ci-mono-black.svg",
+      "freepass-ci-mono-white.svg",
       "freepass-ci-word-on-light.svg",
       "freepass-ci-word-on-dark.svg"
     ]
+  },
+  "freepass_en": {
+    "font": "Pretendard Bold 1.3.9 (OFL 1.1)",
+    "word": "FREEPASS",
+    "cap_height": 0.9,
+    "letter_gap": 0.11,
+    "kern": {
+      "PA": -0.1,
+      "AS": -0.03
+    },
+    "colors": {
+      "slash": "#5B9FD4",
+      "text": "#0B0B0C"
+    },
+    "why": "한글 SUITE Heavy 와 획 굵기·잉크 밀도가 맞는 영문(실측 20종 비교, 2026-11-18)",
+    "sets": {
+      "on-light": {
+        "slash": "#5B9FD4",
+        "text": "#0B0B0C",
+        "with_slash": true,
+        "use": "흰·밝은 바탕 기본"
+      },
+      "on-dark": {
+        "slash": "#5B9FD4",
+        "text": "#FFFFFF",
+        "with_slash": true,
+        "use": "검정·남색 바탕"
+      },
+      "mono-black": {
+        "slash": "#0B0B0C",
+        "text": "#0B0B0C",
+        "with_slash": true,
+        "use": "한 색 인쇄(검정)"
+      },
+      "mono-white": {
+        "slash": "#FFFFFF",
+        "text": "#FFFFFF",
+        "with_slash": true,
+        "use": "한 색(흰색) — 사진·색 바탕 위"
+      },
+      "word-on-light": {
+        "slash": "#0B0B0C",
+        "text": "#0B0B0C",
+        "with_slash": false,
+        "use": "// 없이 글자만"
+      },
+      "shorts-on-dark": {
+        "slash": "#F6FD00",
+        "text": "#FFFFFF",
+        "with_slash": true,
+        "use": "쇼츠(형광 노랑 //)"
+      }
+    }
   },
   "viewBox": [
     -8.0,

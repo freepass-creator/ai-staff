@@ -49,7 +49,17 @@
 
 ## 프리패스 워드마크 (2026-11-18 대표 지시)
 
-`freepass-ci-<on-light|on-dark|shorts-on-dark|word-on-light|word-on-dark>.svg` — 같은 SUITE Heavy·같은 // 규격(글자 높이 H). 대표색 미정이라 검정·흰색, 쇼츠는 노랑 //. `word-*`는 // 없이 글자만.
+`freepass-ci-<on-light|on-dark|mono-black|mono-white|shorts-on-dark|word-on-light|word-on-dark>.svg` — 같은 SUITE Heavy·같은 // 규격(글자 높이 H). **색(2026-11-18 확정): 검정 글자 + 하늘 // `#5B9FD4`** — 착한거래 정본(초록 한 색)과 // 모양은 같고 색 짜임으로 구분. 어두운 바탕은 흰 글자 + 하늘 //, 한 색은 검정·흰색, 쇼츠는 노랑 //. `word-*`는 // 없이 글자만.
+
+### FREEPASS 영문 BI (2026-11-18 대표: 「FREEPASS 착한거래 버전으로 BI」, 「프리텐다드 볼드로 하자」)
+
+`freepass-en-ci-<on-light|on-dark|mono-black|mono-white|word-on-light|shorts-on-dark>.svg`
+
+- 글꼴 **Pretendard Bold**(OFL 1.1, `public-release/site/fonts/Pretendard-Bold.woff2`) 대문자를 윤곽선으로. 착한거래와 같은 // 규격(0.75H·31°·가운데).
+- 고른 이유: 영문 20종을 한글 SUITE Heavy와 같은 높이로 그려 획 굵기·잉크 밀도를 실측 — SemiBold 가 수치상 가장 가깝고(획 +3%), 나란히 놓으면 한글이 획이 많아 더 진해 보여 한 단계 굵은 Bold 가 같은 무게로 보인다.
+- 한글은 글자마다 자리 폭이 같고(SUITE 0.874em) 영문은 다르다(A 넓고 F 좁음). 그래서 영문은 글자 폭은 그대로 두고 글자 사이 빈 공간을 고르게(0.11 × 글자 높이) 맞추고, 사선 A 둘레만 눈대중으로 당겼다(PA −0.10, AS −0.03).
+- **대문자 높이 0.90H**(2026-11-18 대표 확정): 대문자는 네모를 꽉 채워 한글과 같은 높이면 더 커 보인다. // 는 착한거래와 같은 크기 그대로 두고 글자만 줄여 세로 가운데에 맞춘다.
+- 색: 검정 글자 + 하늘 // `#5B9FD4`. 착한거래 정본은 초록 한 색 — // 모양은 같고 색 짜임(두 색)으로 구분된다. 어두운 바탕은 흰 글자, 한 색은 검정·흰색, 쇼츠는 노랑 //.
 
 ## 모션
 

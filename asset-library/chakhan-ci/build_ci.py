@@ -12,6 +12,7 @@ from fontTools.pens.boundsPen import BoundsPen
 
 ROOT = Path(__file__).resolve().parents[2]
 FONT = ROOT / "public-release/site/fonts/SUITE-Heavy.woff2"
+FONT_EN = ROOT / "public-release/site/fonts/Pretendard-Bold.woff2"   # FREEPASS 영문(OFL 1.1, Pretendard 1.3.9)
 OUT = Path(os.environ.get("CHAKHAN_CI_OUT", Path(__file__).resolve().parent))
 
 # 2026-11-17 대표 확정: 대표색은 「착한 초록」 하나, 로고(// + 글씨)는 한 색. 바탕에 따라 밝기만 짝꿍으로 바꾼다.
@@ -212,8 +213,72 @@ def lockup(word="착한거래", slash_fill=GREEN, text_fill=GREEN, band=None, ba
 
 # ── 프리패스 워드마크(2026-11-18 대표 지시: 같은 SUITE Heavy·같은 // 규격). 대표색 미정이라 검정·흰색, 쇼츠는 형광 노랑 //.
 FREEPASS = {  # 이름: (// 넣기, // 색, 글자 색)
-    "on-light": (True, INK, INK), "on-dark": (True, WHITE, WHITE), "shorts-on-dark": (True, SHORTS_YELLOW, WHITE),
+    # 2026-11-18 대표 「추천대로」: 한글 프리패스도 영문 FREEPASS 와 같은 하늘 // (#5B9FD4). 착한거래 정본(초록 한 색)과 // 모양은 같고 색 짜임으로 구분
+    "on-light": (True, "#5B9FD4", INK), "on-dark": (True, "#5B9FD4", WHITE), "shorts-on-dark": (True, SHORTS_YELLOW, WHITE),
+    "mono-black": (True, INK, INK), "mono-white": (True, WHITE, WHITE),
     "word-on-light": (False, INK, INK), "word-on-dark": (False, WHITE, WHITE),
+}
+
+
+# ── FREEPASS 영문 BI (2026-11-18 대표: 「FREEPASS 착한거래 버전으로 BI」, 「프리텐다드 볼드로 하자」) ──
+# 글꼴: Pretendard Bold. 한글 SUITE Heavy(착한거래·프리패스)와 획 굵기·잉크 밀도를 재서 고름(SemiBold 가 수치상 +3%, 눈으로는 Bold 가 같은 무게).
+# 간격: 글자마다 폭은 글꼴 그대로, 글자 사이 빈 공간을 EN_GAP 으로 고르게 + 사선 A 둘레만 눈대중으로 당김(EN_KERN).
+# 색: 검정 글자 + 하늘 //(freepasserp.com 하늘색). 착한거래 정본은 초록 한 색 — 프리패스는 글자·// 두 색으로 구분된다.
+FREEPASS_SKY = "#5B9FD4"
+EN_GAP = 0.11
+EN_KERN = {"PA": -0.10, "AS": -0.03}   # 2026-11-18 대표 확정(사선 A 둘레를 더 당김)
+EN_CAP = float(os.environ.get("FREEPASS_EN_CAP", "0.90"))   # 2026-11-18 대표 확정: 대문자 0.90H — 대문자는 네모를 꽉 채워 같은 높이면 한글보다 커 보인다   # 대문자 높이(H 대비). // 는 그대로 두고 글자만 줄여 세로 가운데에 맞춘다
+_FONT_EN = None
+
+
+def outline_en(ch, scale):
+    global _FONT_EN
+    _FONT_EN = _FONT_EN or TTFont(str(FONT_EN))
+    gs, cmap = _FONT_EN.getGlyphSet(), _FONT_EN.getBestCmap()
+    pen, bp = SVGPathPen(gs, lambda v: f"{v:.2f}".rstrip("0").rstrip(".")), BoundsPen(gs)
+    m = (scale, 0, 0, -scale, 0, 0)
+    gs[cmap[ord(ch)]].draw(TransformPen(pen, m)); gs[cmap[ord(ch)]].draw(TransformPen(bp, m))
+    return pen.getCommands(), bp.bounds
+
+
+def lockup_en(word="FREEPASS", slash_fill=FREEPASS_SKY, text_fill=INK, with_slash=True, label=None):
+    """// + 영문 대문자(Pretendard Bold). 대문자 잉크 높이를 H 로, // 는 착한거래와 같은 규격."""
+    global _FONT_EN
+    _FONT_EN = _FONT_EN or TTFont(str(FONT_EN))
+    gs, cmap = _FONT_EN.getGlyphSet(), _FONT_EN.getBestCmap()
+    bp = BoundsPen(gs)
+    for c in word:
+        gs[cmap[ord(c)]].draw(bp)
+    k = EN_CAP * H / (bp.bounds[3] - bp.bounds[1])   # 대문자 높이 → EN_CAP·H
+    base = bp.bounds[3] * k + (1 - EN_CAP) * H / 2   # 기준선 위치(글자를 H 의 세로 가운데에)
+    g, right = slashes()
+    x = right + WORD_GAP if with_slash else 0.0
+    paths, prev = [], None
+    for c in word:
+        d, b = outline_en(c, k)
+        if prev:
+            x += EN_KERN.get(prev + c, 0) * H * EN_CAP
+        paths.append(f'<path transform="translate({x - b[0]:.2f} {base:.2f})" d="{d}"/>')
+        x += (b[2] - b[0]) + EN_GAP * H * EN_CAP
+        prev = c
+    W = x - EN_GAP * H * EN_CAP
+    top, bot = (min(0.0, SLASH_TOP), max(H, SLASH_BOT)) if with_slash else (0.0, H)
+    pad = 0.08 * H
+    vb = (-pad, top - pad, W + 2 * pad, bot - top + 2 * pad)
+    label = label or word
+    s = f'<g fill="{slash_fill}">{g}</g>' if with_slash else ""
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb[0]:.1f} {vb[1]:.1f} {vb[2]:.1f} {vb[3]:.1f}" '
+            f'width="{vb[2] * 2:.0f}" height="{vb[3] * 2:.0f}" role="img" aria-label="{label}"><title>{label}</title>{s}'
+            f'<g fill="{text_fill}">{"".join(paths)}</g></svg>\n')
+
+
+FREEPASS_EN = {  # 이름: (// 넣기, // 색, 글자 색, 쓰는 곳)
+    "on-light": (True, FREEPASS_SKY, INK, "흰·밝은 바탕 기본"),
+    "on-dark": (True, FREEPASS_SKY, WHITE, "검정·남색 바탕"),
+    "mono-black": (True, INK, INK, "한 색 인쇄(검정)"),
+    "mono-white": (True, WHITE, WHITE, "한 색(흰색) — 사진·색 바탕 위"),
+    "word-on-light": (False, INK, INK, "// 없이 글자만"),
+    "shorts-on-dark": (True, SHORTS_YELLOW, WHITE, "쇼츠(형광 노랑 //)"),
 }
 
 
@@ -281,6 +346,10 @@ if __name__ == "__main__":
         fn = f"freepass-ci-{name}.svg"
         (OUT / fn).write_text(lockup("프리패스", sf, tf, with_slash=ws), encoding="utf-8")
         print("wrote", fn)
+    for name, (ws, sf, tf, _use) in FREEPASS_EN.items():
+        fn = f"freepass-en-ci-{name}.svg"
+        (OUT / fn).write_text(lockup_en("FREEPASS", sf, tf, with_slash=ws), encoding="utf-8")
+        print("wrote", fn)
     spec = {"schema": "chakhan-ci/spec/v2", "units": "SVG viewBox units of chakhan-ci-on-*.svg (wordmark ink height = 100)",
             "colors": {"green": GREEN, "green_dark": GREEN_DARK, "ink": INK, "white": WHITE, "highlight_on_light": HL_LIGHT, "highlight_on_dark": HL_DARK},
             "rule": "one-colour logo (// and wordmark same colour): #009867 on light, #38CA91 on dark, white on green, black for one-colour print",
@@ -293,7 +362,10 @@ if __name__ == "__main__":
             "category": {"ratio_to_wordmark": SUB_RATIO, "gap": round(SUB_GAP, 2), "rule_w": round(RULE_W, 2), "rule_h": round(RULE_H, 2)},
             "categories": CATEGORIES,
             "shorts": {"yellow": SHORTS_YELLOW, "sets": {k: {"slash": v[0], "text": v[1], "band": v[2], "band_mode": v[3], "background": v[4], "use": v[5]} for k, v in SHORTS.items()}},
-            "freepass": {"note": "대표색 미정 — 검정·흰색, 쇼츠는 형광 노랑 //", "files": [f"freepass-ci-{k}.svg" for k in FREEPASS]}}
+            "freepass": {"note": "2026-11-18 확정 — 검정 글자 + 하늘 // #5B9FD4(어두운 바탕은 흰 글자), 한 색은 검정·흰색, 쇼츠는 형광 노랑 //", "files": [f"freepass-ci-{k}.svg" for k in FREEPASS]},
+            "freepass_en": {"font": "Pretendard Bold 1.3.9 (OFL 1.1)", "word": "FREEPASS", "cap_height": EN_CAP, "letter_gap": EN_GAP, "kern": EN_KERN,
+                            "colors": {"slash": FREEPASS_SKY, "text": INK}, "why": "한글 SUITE Heavy 와 획 굵기·잉크 밀도가 맞는 영문(실측 20종 비교, 2026-11-18)",
+                            "sets": {k: {"slash": v[1], "text": v[2], "with_slash": v[0], "use": v[3]} for k, v in FREEPASS_EN.items()}}}
     build(GREEN_DARK, spec=spec)
     (OUT / "chakhan-ci-spec.json").write_text(json.dumps(spec, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print("wrote chakhan-ci-spec.json")
