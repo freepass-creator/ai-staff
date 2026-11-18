@@ -172,6 +172,51 @@ def symbol(bg_fill, slash_fill, radius=0.0):
             f'<g fill="{slash_fill}">{g}</g></svg>\n')
 
 
+# ── 쇼츠용 형광펜판(2026-11-18 대표 지시). 쇼츠 화면(검정 #0B0B0C)과 같은 형광 노랑을 쓴다. 기본 CI(초록 한 색)와 별개 세트.
+SHORTS_YELLOW = "#F6FD00"
+SHORTS = {  # 이름: (// 색, 글자 색, 형광펜 띠 색, 띠 모양, 놓을 바탕, 쓰임)
+    "yellow-slash-on-dark": (SHORTS_YELLOW, WHITE, None, None, INK, "기본 — 쇼츠 화면 구석·첫 장면"),
+    "yellow-on-dark": (SHORTS_YELLOW, SHORTS_YELLOW, None, None, INK, "강하게 — 엔딩·한 장면 전체"),
+    "on-yellow": (INK, INK, None, None, SHORTS_YELLOW, "노랑 바탕 장면·표지"),
+    "band-on-dark": (SHORTS_YELLOW, INK, SHORTS_YELLOW, "full", INK, "표지·썸네일 — 사선 형광 띠 위 검정 글자"),
+    "highlight-on-light": (INK, INK, SHORTS_YELLOW, "under", WHITE, "밝은 장면 — 글자 아래쪽에 형광펜 칠"),
+    "yellow-slash-on-light": (SHORTS_YELLOW, INK, None, None, WHITE, "흰 바탕은 노랑이 흐려 큰 크기에서만"),
+}
+
+
+def lockup(word="착한거래", slash_fill=GREEN, text_fill=GREEN, band=None, band_mode=None, with_slash=True, label=None):
+    """// + 글자(SUITE Heavy) 한 줄. 글자 잉크 높이를 언제나 H 로 맞추므로 다른 낱말(프리패스)도 같은 규격이 된다. 바탕 투명(띠만 칠함)."""
+    _, b0 = outline(word, 1.0)
+    d, b = outline(word, H / (b0[3] - b0[1]))
+    g, right = slashes()
+    wx = right + WORD_GAP if with_slash else 0.0
+    W = wx + (b[2] - b[0]) + 0.04 * H
+    top, bot = (min(0.0, SLASH_TOP), max(H, SLASH_BOT)) if with_slash else (0.0, H)
+    pad = 0.08 * H
+    x_min, x_max = -pad, W + pad
+    extra = ""
+    if band:  # 형광펜으로 그은 띠: 살짝 기운 사각형
+        if band_mode == "full":
+            y0, y1, x0, x1, sk = -0.16 * H, 1.16 * H, wx - 0.14 * H, W + 0.10 * H, 0.08 * H
+        else:
+            y0, y1, x0, x1, sk = 0.42 * H, 1.06 * H, wx - 0.06 * H, W + 0.06 * H, 0.04 * H
+        extra = f'<path fill="{band}" d="M{x0:.2f} {y0 + sk:.2f} L{x1:.2f} {y0:.2f} L{x1:.2f} {y1 - sk:.2f} L{x0:.2f} {y1:.2f} Z"/>'
+        top, bot, x_max = min(top, y0), max(bot, y1), max(x_max, x1 + pad)
+    vb = (x_min, top - pad, x_max - x_min, bot - top + 2 * pad)
+    label = label or word
+    s = f'<g fill="{slash_fill}">{g}</g>' if with_slash else ""
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb[0]:.1f} {vb[1]:.1f} {vb[2]:.1f} {vb[3]:.1f}" '
+            f'width="{vb[2] * 2:.0f}" height="{vb[3] * 2:.0f}" role="img" aria-label="{label}"><title>{label}</title>{extra}{s}'
+            f'<path fill="{text_fill}" transform="translate({wx - b[0]:.2f} {-b[1]:.2f})" d="{d}"/></svg>\n')
+
+
+# ── 프리패스 워드마크(2026-11-18 대표 지시: 같은 SUITE Heavy·같은 // 규격). 대표색 미정이라 검정·흰색, 쇼츠는 형광 노랑 //.
+FREEPASS = {  # 이름: (// 넣기, // 색, 글자 색)
+    "on-light": (True, INK, INK), "on-dark": (True, WHITE, WHITE), "shorts-on-dark": (True, SHORTS_YELLOW, WHITE),
+    "word-on-light": (False, INK, INK), "word-on-dark": (False, WHITE, WHITE),
+}
+
+
 CLEAR = 0.5 * H   # 여백: 잉크 상자 둘레로 0.5H 는 비운다
 
 
@@ -228,6 +273,14 @@ if __name__ == "__main__":
     for bg, (bf, sf) in {"on-green": (GREEN, WHITE), "on-dark": (INK, GREEN_DARK), "on-light": (WHITE, GREEN)}.items():
         (OUT / f"chakhan-symbol-{bg}.svg").write_text(symbol(bf, sf), encoding="utf-8")
         print("wrote", f"chakhan-symbol-{bg}.svg")
+    for name, (sf, tf, band, mode, _bg, _use) in SHORTS.items():
+        fn = f"chakhan-ci-shorts-{name}.svg"
+        (OUT / fn).write_text(lockup("착한거래", sf, tf, band, mode), encoding="utf-8")
+        print("wrote", fn)
+    for name, (ws, sf, tf) in FREEPASS.items():
+        fn = f"freepass-ci-{name}.svg"
+        (OUT / fn).write_text(lockup("프리패스", sf, tf, with_slash=ws), encoding="utf-8")
+        print("wrote", fn)
     spec = {"schema": "chakhan-ci/spec/v2", "units": "SVG viewBox units of chakhan-ci-on-*.svg (wordmark ink height = 100)",
             "colors": {"green": GREEN, "green_dark": GREEN_DARK, "ink": INK, "white": WHITE, "highlight_on_light": HL_LIGHT, "highlight_on_dark": HL_DARK},
             "rule": "one-colour logo (// and wordmark same colour): #009867 on light, #38CA91 on dark, white on green, black for one-colour print",
@@ -238,7 +291,9 @@ if __name__ == "__main__":
                       "gap": round(GAP / H, 3), "word_gap": round(WORD_GAP / H, 3),
                       "lift": round(SLASH_LIFT / H, 3), "ends": "square-to-stroke"},
             "category": {"ratio_to_wordmark": SUB_RATIO, "gap": round(SUB_GAP, 2), "rule_w": round(RULE_W, 2), "rule_h": round(RULE_H, 2)},
-            "categories": CATEGORIES}
+            "categories": CATEGORIES,
+            "shorts": {"yellow": SHORTS_YELLOW, "sets": {k: {"slash": v[0], "text": v[1], "band": v[2], "band_mode": v[3], "background": v[4], "use": v[5]} for k, v in SHORTS.items()}},
+            "freepass": {"note": "대표색 미정 — 검정·흰색, 쇼츠는 형광 노랑 //", "files": [f"freepass-ci-{k}.svg" for k in FREEPASS]}}
     build(GREEN_DARK, spec=spec)
     (OUT / "chakhan-ci-spec.json").write_text(json.dumps(spec, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print("wrote chakhan-ci-spec.json")

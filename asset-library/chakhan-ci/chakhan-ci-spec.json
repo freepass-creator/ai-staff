@@ -70,6 +70,69 @@
     "ai-rentcar": "AI 장기렌터카",
     "sangsik": "상식 한 스푼"
   },
+  "shorts": {
+    "yellow": "#F6FD00",
+    "sets": {
+      "yellow-slash-on-dark": {
+        "slash": "#F6FD00",
+        "text": "#FFFFFF",
+        "band": null,
+        "band_mode": null,
+        "background": "#0B0B0C",
+        "use": "기본 — 쇼츠 화면 구석·첫 장면"
+      },
+      "yellow-on-dark": {
+        "slash": "#F6FD00",
+        "text": "#F6FD00",
+        "band": null,
+        "band_mode": null,
+        "background": "#0B0B0C",
+        "use": "강하게 — 엔딩·한 장면 전체"
+      },
+      "on-yellow": {
+        "slash": "#0B0B0C",
+        "text": "#0B0B0C",
+        "band": null,
+        "band_mode": null,
+        "background": "#F6FD00",
+        "use": "노랑 바탕 장면·표지"
+      },
+      "band-on-dark": {
+        "slash": "#F6FD00",
+        "text": "#0B0B0C",
+        "band": "#F6FD00",
+        "band_mode": "full",
+        "background": "#0B0B0C",
+        "use": "표지·썸네일 — 사선 형광 띠 위 검정 글자"
+      },
+      "highlight-on-light": {
+        "slash": "#0B0B0C",
+        "text": "#0B0B0C",
+        "band": "#F6FD00",
+        "band_mode": "under",
+        "background": "#FFFFFF",
+        "use": "밝은 장면 — 글자 아래쪽에 형광펜 칠"
+      },
+      "yellow-slash-on-light": {
+        "slash": "#F6FD00",
+        "text": "#0B0B0C",
+        "band": null,
+        "band_mode": null,
+        "background": "#FFFFFF",
+        "use": "흰 바탕은 노랑이 흐려 큰 크기에서만"
+      }
+    }
+  },
+  "freepass": {
+    "note": "대표색 미정 — 검정·흰색, 쇼츠는 형광 노랑 //",
+    "files": [
+      "freepass-ci-on-light.svg",
+      "freepass-ci-on-dark.svg",
+      "freepass-ci-shorts-on-dark.svg",
+      "freepass-ci-word-on-light.svg",
+      "freepass-ci-word-on-dark.svg"
+    ]
+  },
   "viewBox": [
     -8.0,
     -8.0,

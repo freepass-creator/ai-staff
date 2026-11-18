@@ -32,6 +32,25 @@
 - `chakhan-symbol-on-green|dark|light.svg` — 앱 아이콘·프로필. 기본은 초록 바탕에 흰 `//`.
 - 형광펜(확인 표시)은 로고가 아니라 움직임·화면 효과: 흰 바탕 `#B5F1D2`, 검정 바탕 `#075539`를 글자 아래 45%에 칠한다.
 
+## 쇼츠용 형광펜판 (2026-11-18 대표 지시)
+
+`chakhan-ci-shorts-<이름>.svg` — 쇼츠 화면(검정 `#0B0B0C`)용 별도 세트. 형광 노랑 `#F6FD00`, // 모양·비율은 기본형과 같다. 쇼츠판만 // 와 글씨 색을 나눌 수 있다. 기본 CI(초록)는 블로그·문서·인쇄용.
+
+| 이름 | 모습 | 쓰임 |
+|---|---|---|
+| `yellow-slash-on-dark` | 노랑 // · 흰 글자 | 기본 — 화면 구석·첫 장면 |
+| `yellow-on-dark` | 전부 노랑 | 엔딩·마지막 로고 |
+| `on-yellow` | 전부 검정(노랑 바탕에 놓음) | 노랑 바탕 장면·엔딩 |
+| `band-on-dark` | 사선 노랑 띠 위 검정 글자 | 표지·썸네일 |
+| `highlight-on-light` | 검정 글자 아래쪽에 형광펜 칠 | 밝은 장면 |
+| `yellow-slash-on-light` | 흰 바탕 · 노랑 // | 노랑이 흐려 큰 크기에서만 |
+
+쇼츠 아래 15%(화면 UI 자리)에는 로고를 두지 않는다.
+
+## 프리패스 워드마크 (2026-11-18 대표 지시)
+
+`freepass-ci-<on-light|on-dark|shorts-on-dark|word-on-light|word-on-dark>.svg` — 같은 SUITE Heavy·같은 // 규격(글자 높이 H). 대표색 미정이라 검정·흰색, 쇼츠는 노랑 //. `word-*`는 // 없이 글자만.
+
 ## 다시 만들기
 
 ```bash
@@ -42,6 +61,6 @@ python -I asset-library/chakhan-ci/build_ci.py
 python -I asset-library/chakhan-ci/export_png.py
 ```
 
-- `build_ci.py`: 모든 SVG·기준값·도면. `fontTools`·`brotli` 필요. 글꼴 `public-release/site/fonts/SUITE-Heavy.woff2`(SUITE 2.040, OFL — `LICENSE-SUITE.txt`). 고정 수식이라 매번 같은 결과. `CHAKHAN_SLASH_SPAN`·`CHAKHAN_CI_OUT`으로 시험용 출력 가능.
+- `build_ci.py`: 모든 SVG·기준값·도면. `fontTools`·`brotli` 필요. 글꼴 `public-release/site/fonts/SUITE-Heavy.woff2`(SUITE 2.040, OFL — `LICENSE-SUITE.txt`). 고정 수식이라 매번 같은 결과. `CHAKHAN_SLASH_SPAN`·`_ANGLE`·`_STROKE`·`_GAP`·`_ALIGN`·`CHAKHAN_CI_OUT`으로 시험용 출력 가능.
 - `export_png.py`: PNG를 `D:/dev-artifacts/ai-staff/chakhan-ci-png/`에(Edge/Chrome 필요). PNG는 git에 넣지 않는다.
 - 확인: `guide.html`, `preview.html`.
