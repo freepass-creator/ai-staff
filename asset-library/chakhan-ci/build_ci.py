@@ -1,7 +1,7 @@
 # 착한거래 CI 생성기 — «//»(잠시 멈춤) 두 획 + «착한거래»(SUITE Heavy 윤곽선). 한 색 로고.
 # 글자는 글꼴 윤곽선 경로로 바꿔 글꼴이 없어도 똑같이 보인다. 획은 난수 없이 고정 수식으로 그려 매번 같은 결과가 나온다.
 # 실행: python -I asset-library/chakhan-ci/build_ci.py  (저장소 루트에서, fontTools·brotli 필요)
-#       CHAKHAN_SLASH_SPAN=0.70 처럼 // 세로 길이(H 배수)를 바꿔 시험할 수 있다.
+#       시안 시험: CHAKHAN_SLASH_SPAN·_ANGLE·_STROKE·_GAP·_LIFT·_ALIGN, CHAKHAN_WORD_GAP 환경변수로 // 를 바꿔 볼 수 있다(CHAKHAN_CI_OUT 로 다른 폴더에).
 import math
 import os
 from pathlib import Path
@@ -27,13 +27,15 @@ H = 100.0               # 워드마크 잉크 높이(기준 단위)
 TRACK = -0.03           # 자간(글자 폭 대비)
 
 # // 규격(H 대비). 31° 로 기운 두 단색 막대(형광펜 획).
-# 2026-11-18 대표 지시: 끝을 획 방향에 직각으로 자르고(바닥을 수평으로 맞추지 않음), 둘째 획을 획 방향으로 한 칸 올린다. 색·기울기·굵기·간격·길이는 그대로.
-ANGLE = math.radians(31)   # 세로에서 오른쪽으로 기운 각
-STROKE_W = 0.25 * H        # 획 굵기(획에 수직)
-GAP = 0.12 * H             # 두 획 사이(수평)
-SLASH_SPAN = float(os.environ.get("CHAKHAN_SLASH_SPAN", "0.70")) * H  # 한 획의 세로 크기. 2026-11-17 대표 확정 0.70H — 사선보다 「마크」로 서게
-SLASH_LIFT = float(os.environ.get("CHAKHAN_SLASH_LIFT", "0.14")) * H  # 둘째 획을 획 방향으로 올리는 길이(계단)
-WORD_GAP = 0.20 * H        # 획과 글자 사이
+# 2026-11-18 대표 확정: 끝을 획 방향에 직각으로 자른 같은 크기 막대 두 개, 한 획 세로 0.75H, 글자 세로 가운데(위아래 틈 0.125H씩). 바닥에 붙이지 않는다. 색·기울기·굵기·간격은 그대로.
+ANGLE = math.radians(float(os.environ.get("CHAKHAN_SLASH_ANGLE", "31")))  # 세로에서 오른쪽으로 기운 각
+STROKE_W = float(os.environ.get("CHAKHAN_SLASH_STROKE", "0.25")) * H       # 획 굵기(획에 수직)
+GAP = float(os.environ.get("CHAKHAN_SLASH_GAP", "0.12")) * H            # 두 획 사이(수평)
+SLASH_SPAN = float(os.environ.get("CHAKHAN_SLASH_SPAN", "0.75")) * H  # 한 획의 세로 크기. 2026-11-18 대표 확정 0.75H
+SLASH_LIFT = float(os.environ.get("CHAKHAN_SLASH_LIFT", "0")) * H  # 둘째 획을 획 방향으로 올리는 길이. 2026-11-18 대표 확정: 0(두 획 같은 크기·같은 높이)
+_ALIGN = os.environ.get("CHAKHAN_SLASH_ALIGN", "center")  # floor=글자 바닥에 닿음 · center=글자 위아래 가운데 · top=글자 위에 맞춤
+SLASH_FLOOR = {"floor": H, "center": (H + SLASH_SPAN) / 2, "top": SLASH_SPAN}[_ALIGN]  # 두 획의 가장 아래 모서리 높이
+WORD_GAP = float(os.environ.get("CHAKHAN_WORD_GAP", "0.20")) * H       # 획과 글자 사이
 
 
 _FONT = None
@@ -79,7 +81,7 @@ def slash_stroke(x0, lift=0.0):
     L = (SLASH_SPAN - STROKE_W * math.sin(ANGLE)) / math.cos(ANGLE)  # 막대 하나의 세로 크기가 SLASH_SPAN 이 되는 중심선 길이
     h = STROKE_W / 2
     bx = x0 + h * nx + lift * ux                   # 아래 끝 중심
-    by = H / 2 + SLASH_SPAN / 2 - h * ny + lift * uy
+    by = SLASH_FLOOR - h * ny + lift * uy
     ex, ey = bx + ux * L, by + uy * L               # 위 끝 중심
     pts = [(bx - nx * h, by - ny * h), (bx + nx * h, by + ny * h), (ex + nx * h, ey + ny * h), (ex - nx * h, ey - ny * h)]
     return "M" + " L".join(fmt(p) for p in pts) + " Z", pts
@@ -199,7 +201,7 @@ def construction():
         t(-CLEAR + 2, -CLEAR - 4, "여백 0.5H (사방)", "start"),
         ln(word_l, 0, W, 0, True), ln(word_l, H, W, H, True),
         vdim(W + CLEAR + 12, 0, H, "H = 착한거래 글자 높이"),
-        vdim(-14, SLASH_TOP, SLASH_BOT, f"획 {SLASH_SPAN / H:.2f}H · 둘째 +{SLASH_LIFT / H:.2f}H", -1),
+        vdim(-14, SLASH_TOP, SLASH_BOT, f"획 {SLASH_SPAN / H:.2f}H · 가운데", -1),
         hdim(slash_r, word_l, H + 16, "0.20H"),
         hdim(0, Wx, H + 16, "획 0.25H"),
         hdim(Wx, step, H + 30, "사이 0.12H"),
