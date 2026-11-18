@@ -10,7 +10,7 @@
     "highlight_on_dark": "#075539"
   },
   "rule": {
-    "x": 528.07,
+    "x": 519.81,
     "y": 15.0,
     "w": 3.5,
     "h": 70.0
@@ -56,7 +56,9 @@
     "angle_deg": 31.0,
     "stroke": 0.25,
     "gap": 0.12,
-    "word_gap": 0.2
+    "word_gap": 0.2,
+    "lift": 0.14,
+    "ends": "square-to-stroke"
   },
   "category": {
     "ratio_to_wordmark": 0.47,
@@ -71,12 +73,12 @@
   "viewBox": [
     -8.0,
     -8.0,
-    518.07,
+    509.81,
     116.0
   ],
   "baseline": 90.01,
-  "wordmark_right": 498.07,
-  "sub_x": 561.57,
+  "wordmark_right": 489.81,
+  "sub_x": 553.31,
   "sub_font_size": 51.59,
   "sub_font": "SUITE Heavy (900)"
 }

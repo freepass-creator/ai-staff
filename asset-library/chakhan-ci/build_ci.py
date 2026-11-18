@@ -26,13 +26,13 @@ HL_DARK = "#075539"      # 형광펜 효과 — 검정 바탕 흰 글자 밑에 
 H = 100.0               # 워드마크 잉크 높이(기준 단위)
 TRACK = -0.03           # 자간(글자 폭 대비)
 
-# // 규격(H 대비). 31° 로 기운 두 단색 획, 끝은 평행하게 자른다.
+# // 규격(H 대비). 31° 로 기운 두 단색 막대(형광펜 획).
+# 2026-11-18 대표 지시: 끝을 획 방향에 직각으로 자르고(바닥을 수평으로 맞추지 않음), 둘째 획을 획 방향으로 한 칸 올린다. 색·기울기·굵기·간격·길이는 그대로.
 ANGLE = math.radians(31)   # 세로에서 오른쪽으로 기운 각
 STROKE_W = 0.25 * H        # 획 굵기(획에 수직)
 GAP = 0.12 * H             # 두 획 사이(수평)
-SLASH_SPAN = float(os.environ.get("CHAKHAN_SLASH_SPAN", "0.70")) * H  # 획 세로 길이(글자 세로 가운데에 맞춤). 2026-11-17 대표 확정 0.70H — 사선보다 「마크」로 서게
-SLASH_BOT = H / 2 + SLASH_SPAN / 2
-SLASH_TOP = H / 2 - SLASH_SPAN / 2
+SLASH_SPAN = float(os.environ.get("CHAKHAN_SLASH_SPAN", "0.70")) * H  # 한 획의 세로 크기. 2026-11-17 대표 확정 0.70H — 사선보다 「마크」로 서게
+SLASH_LIFT = float(os.environ.get("CHAKHAN_SLASH_LIFT", "0.14")) * H  # 둘째 획을 획 방향으로 올리는 길이(계단)
 WORD_GAP = 0.20 * H        # 획과 글자 사이
 
 
@@ -72,28 +72,34 @@ def fmt(p):
     return f"{p[0]:.2f} {p[1]:.2f}"
 
 
-def slash_stroke(x0):
-    """아래→위로 그은 한 획. 가장자리는 곧고 양 끝은 촉 각도대로 비스듬히(평행하게) 자른 단색 평행사변형. x0 = 아래쪽 왼 끝 x."""
-    yb, yt = SLASH_BOT, SLASH_TOP
-    dx = (yb - yt) * math.tan(ANGLE)
-    Wx = STROKE_W / math.cos(ANGLE)           # 수평으로 잰 획 폭
+def slash_stroke(x0, lift=0.0):
+    """아래→위로 그은 형광펜 막대 하나. 양 끝은 획 방향에 직각(바닥이 수평이 아님). x0 = 막대의 가장 왼쪽 x(올리기 전), lift = 획 방향으로 올린 길이."""
+    ux, uy = math.sin(ANGLE), -math.cos(ANGLE)      # 획 방향(위로)
+    nx, ny = math.cos(ANGLE), math.sin(ANGLE)       # 획에 직각(오른쪽 아래)
+    L = (SLASH_SPAN - STROKE_W * math.sin(ANGLE)) / math.cos(ANGLE)  # 막대 하나의 세로 크기가 SLASH_SPAN 이 되는 중심선 길이
+    h = STROKE_W / 2
+    bx = x0 + h * nx + lift * ux                   # 아래 끝 중심
+    by = H / 2 + SLASH_SPAN / 2 - h * ny + lift * uy
+    ex, ey = bx + ux * L, by + uy * L               # 위 끝 중심
+    pts = [(bx - nx * h, by - ny * h), (bx + nx * h, by + ny * h), (ex + nx * h, ey + ny * h), (ex - nx * h, ey - ny * h)]
+    return "M" + " L".join(fmt(p) for p in pts) + " Z", pts
 
-    def P(t, f):  # t: 0=아래 1=위(획 방향), f: 0=왼 가장자리 1=오른 가장자리
-        return (x0 + dx * t + Wx * f, yb - (yb - yt) * t)
 
-    # 양 끝은 촉 각도대로 비스듬히: 아래는 오른쪽이, 위는 왼쪽이 조금 짧다(두 자른 선이 평행)
-    pts = [P(0, 0), P(0.94, 0), P(1, 1), P(0.06, 1)]
-    return "M" + " L".join(fmt(p) for p in pts) + " Z", P(1.0, 1)[0]
+def _slash_polys():
+    step = STROKE_W / math.cos(ANGLE) + GAP
+    return [slash_stroke(i * step, i * SLASH_LIFT) for i in range(2)]
 
 
 def slashes():
-    step = STROKE_W / math.cos(ANGLE) + GAP
-    parts, right = [], 0
-    for i in range(2):
-        body, rx = slash_stroke(i * step)
-        parts.append(f'<path d="{body}"/>')
-        right = max(right, rx)
-    return "".join(parts), right
+    polys = _slash_polys()
+    xs = [p[0] for _, pts in polys for p in pts]
+    dx = -min(xs)  # 가장 왼쪽을 0 에
+    parts = ['<path d="M' + " L".join(fmt((x + dx, y)) for x, y in pts) + ' Z"/>' for _, pts in polys]
+    return "".join(parts), max(xs) + dx
+
+
+_ys = [p[1] for _, pts in _slash_polys() for p in pts]
+SLASH_TOP, SLASH_BOT = min(_ys), max(_ys)   # 두 막대를 합친 위·아래(둘째가 올라간 만큼 위가 높다)
 
 
 # ── 카테고리 락업: CI | 카테고리 이름 (AI 장기렌터카 = 서비스, 상식 한 스푼 = 마케팅 콘텐츠 시리즈 — 모두 착한거래 아래)
@@ -175,7 +181,7 @@ def construction():
     step = STROKE_W / math.cos(ANGLE) + GAP
     Wx = STROKE_W / math.cos(ANGLE)
     dx = (SLASH_BOT - SLASH_TOP) * math.tan(ANGLE)
-    slash_r = step + dx + Wx
+    slash_r = slashes()[1]
     word_l, word_r = spec["wordmark_right"] - wordmark()[2], spec["wordmark_right"]
     B = "#2F6BFF"
     t = lambda x, y, s, a="middle": f'<text x="{x:.1f}" y="{y:.1f}" text-anchor="{a}" font-size="7.5" fill="{B}" font-family="Pretendard,Malgun Gothic,sans-serif" font-weight="700">{s}</text>'
@@ -193,7 +199,7 @@ def construction():
         t(-CLEAR + 2, -CLEAR - 4, "여백 0.5H (사방)", "start"),
         ln(word_l, 0, W, 0, True), ln(word_l, H, W, H, True),
         vdim(W + CLEAR + 12, 0, H, "H = 착한거래 글자 높이"),
-        vdim(-14, SLASH_TOP, SLASH_BOT, f"// 길이 {SLASH_SPAN / H:.2f}H", -1),
+        vdim(-14, SLASH_TOP, SLASH_BOT, f"획 {SLASH_SPAN / H:.2f}H · 둘째 +{SLASH_LIFT / H:.2f}H", -1),
         hdim(slash_r, word_l, H + 16, "0.20H"),
         hdim(0, Wx, H + 16, "획 0.25H"),
         hdim(Wx, step, H + 30, "사이 0.12H"),
@@ -227,7 +233,8 @@ if __name__ == "__main__":
             "backgrounds": {bg: {"logo": v[0], "category": v[1], "rule": v[2], "rule_opacity": v[3]} for bg, v in BACKGROUNDS.items()},
             "clear_space": round(CLEAR, 2), "min_height_px": {"ci": 24, "lockup": 28, "symbol": 32},
             "slash": {"span": round(SLASH_SPAN / H, 3), "angle_deg": round(math.degrees(ANGLE), 1), "stroke": round(STROKE_W / H, 3),
-                      "gap": round(GAP / H, 3), "word_gap": round(WORD_GAP / H, 3)},
+                      "gap": round(GAP / H, 3), "word_gap": round(WORD_GAP / H, 3),
+                      "lift": round(SLASH_LIFT / H, 3), "ends": "square-to-stroke"},
             "category": {"ratio_to_wordmark": SUB_RATIO, "gap": round(SUB_GAP, 2), "rule_w": round(RULE_W, 2), "rule_h": round(RULE_H, 2)},
             "categories": CATEGORIES}
     build(GREEN_DARK, spec=spec)
