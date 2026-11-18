@@ -17,3 +17,6 @@ studio/chakhan-shorts/staff/*.webp
 studio/chakhan-shorts/chakhan-shorts-studio.html
 *.mp4
 *.render.json
+
+# 착한거래 CI 모션: 글꼴을 품은 빌드 HTML 은 git 밖(build_motion.py 로 다시 만든다)
+asset-library/chakhan-ci/motion/motion.html

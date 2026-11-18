@@ -51,6 +51,10 @@
 
 `freepass-ci-<on-light|on-dark|shorts-on-dark|word-on-light|word-on-dark>.svg` — 같은 SUITE Heavy·같은 // 규격(글자 높이 H). 대표색 미정이라 검정·흰색, 쇼츠는 노랑 //. `word-*`는 // 없이 글자만.
 
+## 모션
+
+[`motion/`](motion/README.md) — 로고 등장 모션 6장면(위아래로 슥·형광펜 긋기·멈춤 쿵·한 자씩 톡·형광 띠 쓸기·말 따옴표) × 색 세트 × 세로·가로·정사각. 영상은 `D:/large/ai-staff/chakhan-ci-motion/`(git 밖).
+
 ## 다시 만들기
 
 ```bash
