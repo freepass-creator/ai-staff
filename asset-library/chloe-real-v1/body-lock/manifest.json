@@ -31,7 +31,7 @@
     "review_scope": "interior pixel mask only; no leg contour editing"
   },
   "archive_folder": "https://drive.google.com/drive/folders/1TCWjK0ZLLMoaifwrpBdZLsedqdnDkIBm",
-  "body_lock_folder": "https://drive.google.com/drive/folders/1EFgSAZErw5iHQVLXDvACdoKVdeWy-rAq",
+  "body_lock_folder": "https://drive.google.com/drive/folders/1eiTjduieJXU9AhTAxF0La12G1YvZpt79",
   "archive_zip": "https://drive.google.com/file/d/1EFgSAZErw5iHQVLXDvACdoKVdeWy-rAq/view?usp=drivesdk",
   "controls": {
     "same_pose": "must reference immutable base and verify zero changed pixels outside mask",
