@@ -2,7 +2,7 @@
   "schema": "ai-staff/chloe-layered-body-design/v1",
   "character_id": "CLO-02",
   "identity_revision": "2026-11-20.1",
-  "design_revision": "body-layers-v2",
+  "design_revision": "body-layers-v3",
   "projection": "2D pixels from the upper-left; each photograph uses its own crown-to-shod-floor baseline. Photographic measurements are projected dimensions, not anatomical lengths.",
   "views": [
     {
@@ -271,6 +271,24 @@
       [1240, 471, 515, 569, 613],
       [1265, 470, 521, 563, 614],
       [1280, 470, 521, 564, 614]
+    ]
+  },
+  "rightLegSlices": {
+    "source": "suit-side",
+    "scope": "support-photo-projection",
+    "method": "Visible silhouette of the overlapping legs on the right-facing support photo, from below the skirt hem to above the shoe. Not anatomical depth or a second approved pose.",
+    "columns": ["y", "posteriorX", "anteriorX"],
+    "rows": [
+      [760, 147, 266], [780, 148, 262], [800, 149, 256], [820, 152, 250],
+      [840, 153, 246], [860, 151, 243], [880, 150, 235], [900, 146, 230],
+      [920, 141, 222], [940, 136, 221], [960, 134, 221], [980, 134, 220],
+      [1000, 136, 219], [1020, 140, 218], [1040, 143, 217], [1060, 147, 215],
+      [1080, 151, 215], [1100, 155, 215], [1120, 159, 217], [1140, 159, 219]
+    ],
+    "measurements": [
+      {"id": "right-visible-thigh", "label": "치마 아래 허벅지 앞뒤 폭", "y": 780},
+      {"id": "right-visible-calf", "label": "종아리 볼륨 구간 앞뒤 폭", "y": 960},
+      {"id": "right-visible-ankle", "label": "발목 부근 앞뒤 폭", "y": 1120}
     ]
   },
   "geometry": {

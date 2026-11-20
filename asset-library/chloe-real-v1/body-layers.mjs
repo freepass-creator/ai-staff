@@ -59,14 +59,18 @@ const frontLandmarks = Object.fromEntries(Object.entries(body.landmarks).map(([i
 }));
 
 const slices = design.frontLegSlices;
-if (slices.source !== front.source || slices.rows.length < 2) throw new Error('Missing leg reference rows.');
-for (const [index, row] of slices.rows.entries()) {
-  const [y, ...edges] = row;
-  if (edges.length !== 4 || (index > 0 && y <= slices.rows[index - 1][0]) ||
-      edges.some((x, edge) => edge > 0 && x <= edges[edge - 1])) {
-    throw new Error(`Invalid leg cross section at row ${index}`);
+const right = views.find(view => view.id === 'right');
+const rightSlices = design.rightLegSlices;
+for (const [section, view, edgeCount] of [[slices, front, 4], [rightSlices, right, 2]]) {
+  if (section.source !== view.source || section.rows.length < 2) throw new Error('Missing leg reference rows.');
+  for (const [index, row] of section.rows.entries()) {
+    const [y, ...edges] = row;
+    if (edges.length !== edgeCount || (index > 0 && y <= section.rows[index - 1][0]) ||
+        edges.some((x, edge) => edge > 0 && x <= edges[edge - 1])) {
+      throw new Error(`Invalid leg cross section at row ${index} of ${view.id}`);
+    }
+    for (const x of edges) assertPixel([x, y], view.width, view.height, section.source);
   }
-  for (const x of edges) assertPixel([x, y], front.width, front.height, slices.source);
 }
 
 const { legs, ...geometry } = design.geometry;
@@ -76,7 +80,13 @@ geometry.base = [...geometry.base, ...legs.map(leg => {
   return `${leg.upperOutside} ${outer[0]} L ${outer.slice(1).join(' ')} ${leg.foot} ${inner[0]} L ${inner.slice(1).join(' ')} ${leg.upperInside}`;
 })];
 
-const observations = design.observations.map(item => {
+const rightMeasurements = rightSlices.measurements.map(({ id, label, y }) => {
+  const row = rightSlices.rows.find(([height]) => height === y);
+  if (!row) throw new Error(`Missing source row for ${id}`);
+  return { id, label, view: 'right', axis: 'x', from: [row[1], y], to: [row[2], y],
+    scope: '오른쪽 보조 사진의 겹쳐 보이는 외곽 폭. 자세와 원근의 영향.' };
+});
+const observations = [...design.observations, ...rightMeasurements].map(item => {
   if (item.status === 'unobserved' && item.value === null) return item;
   const view = views.find(candidate => candidate.id === item.view);
   if (!view?.crownFloor || !['x', 'y'].includes(item.axis)) {
@@ -93,15 +103,16 @@ const observations = design.observations.map(item => {
 const report = { ...design, views, observations, frontLandmarks, geometry };
 if (mode === '--report') console.log(JSON.stringify(report, null, 2));
 else {
-  const photo = mode === '--compare' ? readFileSync(registry.assets.find(asset => asset.role === front.source).path) : null;
-  console.log(html(report, photo));
+  const photos = mode === '--compare' ? Object.fromEntries([front, right].map(view => [view.id,
+    readFileSync(registry.assets.find(asset => asset.role === view.source).path)])) : {};
+  console.log(html(report, photos));
 }
 
 function escape(value) {
   return String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 }
 
-function html({ layers, geometry, views, observations, frontLandmarks, frontLegSlices }, photo) {
+function html({ layers, geometry, views, observations, frontLandmarks, frontLegSlices, rightLegSlices }, photos) {
   const labels = {
     'approved-photo': '정본 사진',
     'support-photo': '방향 보조 사진',
@@ -110,12 +121,23 @@ function html({ layers, geometry, views, observations, frontLandmarks, frontLegS
   };
   const overlays = layers.map(layer => `<g id="layer-${layer.id}">${geometry[layer.id].map(path => `<path d="${escape(path)}"/>`).join('')}</g>`).join('');
   const marks = Object.values(frontLandmarks).flat().map(([x, y]) => `<circle cx="${x}" cy="${y}" r="7"/>`).join('');
-  const [frontView] = views;
+  const frontView = views.find(view => view.id === 'front');
+  const sideView = views.find(view => view.id === 'right');
+  const photo = photos.front;
   const photoImage = photo ? `<image id="reference-photo" width="${frontView.width}" height="${frontView.height}" href="data:image/png;base64,${photo.toString('base64')}"/>` : '';
   const legLines = [1, 2, 3, 4].map(index => {
     const points = frontLegSlices.rows.map(row => `${row[index]},${row[0]}`).join(' ');
     return `<polyline points="${points}"/>`;
   }).join('');
+  const sideLines = [1, 2].map(index => `<polyline points="${rightLegSlices.rows.map(row => `${row[index]},${row[0]}`).join(' ')}"/>`).join('');
+  const sideWidths = observations.filter(item => item.id.startsWith('right-visible-')).map(item =>
+    `<line x1="${item.from[0]}" x2="${item.to[0]}" y1="${item.from[1]}" y2="${item.to[1]}"/>`).join('');
+  const sideCard = photos.right ? `<section class="panel side-panel"><h2>오른쪽 다리 윤곽 검수</h2>
+<p class="caption">하늘색은 피부 외곽, 흰 선은 허벅지·종아리·발목 부근의 사진상 폭입니다.</p>
+<svg viewBox="90 735 230 565" role="img" aria-label="오른쪽 보조 사진에서 측정한 다리 외곽과 세 구간의 폭">
+<image width="${sideView.width}" height="${sideView.height}" href="data:image/png;base64,${photos.right.toString('base64')}"/>
+<g fill="none" stroke="#65edff" stroke-width="2.75">${sideLines}</g>
+<g stroke="white" stroke-width="2">${sideWidths}</g></svg></section>` : '';
   const viewList = views.map(view => `<li><strong>${escape(view.label)}</strong><span>${labels[view.status]}</span></li>`).join('');
   const rows = observations.map(item => {
     const view = views.find(candidate => candidate.id === item.view);
@@ -132,6 +154,7 @@ function html({ layers, geometry, views, observations, frontLandmarks, frontLegS
 </style>
 <style>
 fieldset:has(#photo:not(:checked)) #reference-photo,fieldset:has(#photo:checked) :is(#layer-base,#layer-wear,#layer-shoe),fieldset:has(#photo:not(:checked)) #reference-leg-lines{display:none}#reference-leg-lines{fill:none;stroke:#7feaff;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.side-panel{margin-top:1rem}.side-panel svg{display:block;width:min(100%,260px);border-radius:8px}
 </style>
 <main>
 <header><h1>클로이 몸체 설계도</h1><p>CLO-02 · 정본 ${escape(design.identity_revision)} · ${escape(design.design_revision)}</p></header>
@@ -155,5 +178,5 @@ ${photo ? `<g id="reference-leg-lines">${legLines}</g>` : ''}
 ${rows}
 </tbody></table></div>
 <p class="caption">신체·의상·구두는 같은 좌표에 놓입니다. 확대와 축소는 세 레이어에 같은 배율로 적용합니다.</p>
-</section></div></main></html>`;
+</section></div>${sideCard}</main></html>`;
 }
