@@ -9,10 +9,14 @@ if (!pack || !['--report', '--html', '--compare', '--photos'].includes(mode) || 
 
 const design = JSON.parse(readFileSync(new URL('./body-layers.json', import.meta.url)));
 const componentBlueprint = JSON.parse(readFileSync(new URL('./blueprint.json', import.meta.url)));
+const profile = JSON.parse(readFileSync(new URL('./profile.json', import.meta.url)));
 const resolver = fileURLToPath(new URL('./resolve.mjs', import.meta.url));
 const registry = JSON.parse(execFileSync(process.execPath, [resolver, pack, 'all'], { encoding: 'utf8' }));
 if (registry.character_id !== design.character_id || registry.revision !== design.identity_revision) {
   throw new Error('The design and reference pack use different identity revisions.');
+}
+if (profile.character_id !== registry.character_id || profile.identity_revision !== registry.revision) {
+  throw new Error('The profile and reference pack use different identity revisions.');
 }
 
 function assertPixel(point, width, height, label) {
@@ -102,7 +106,7 @@ const observations = [...design.observations, ...rightMeasurements].map(item => 
   return { ...item, status: 'projected', pixels, baseline, percent: Number((100 * pixels / baseline).toFixed(2)) };
 });
 
-const report = { ...design, views, observations, frontLandmarks, geometry };
+const report = { ...design, profile, views, observations, frontLandmarks, geometry };
 if (mode === '--report') console.log(JSON.stringify(report, null, 2));
 else if (mode === '--photos') console.log(photoSheet());
 else {
@@ -117,6 +121,7 @@ function escape(value) {
 
 function photoSheet() {
   const png = role => 'data:image/png;base64,' + readFileSync(registry.assets.find(asset => asset.role === role).path).toString('base64');
+  const { bust, waist, hips } = profile.circumference_cm;
   const panels = [
     [front, slices, 542, '정면 전신', '전신 정본'],
     [right, rightSlices, 190, '오른쪽 전신', '방향 보조'],
@@ -137,7 +142,10 @@ function photoSheet() {
 <title>클로이 실사 모델 시트</title><style>
 :root{font-family:system-ui,sans-serif;background:#edf0f3;color:#142238;line-height:1.4}body{margin:0;padding:clamp(1rem,3vw,2.5rem)}main{margin:auto;max-width:1250px}h1{margin:0;font-size:clamp(1.75rem,4vw,2.7rem)}p{margin:.25rem 0;color:#40536c}label{display:block;margin:.65rem 0 1rem;width:max-content}input{accent-color:#214a82}.gallery{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:.75rem}article{background:#fff;border:1px solid #ccd7e5;border-radius:10px;padding:.75rem;min-width:0}h2{font-size:1.15rem;margin:0}img,svg{display:block;width:100%;margin-top:.65rem;border-radius:5px;background:#b3b2bc}img{height:auto}svg{height:min(63vh,630px)}.guides{display:none;fill:none;stroke:#5defff;stroke-width:3}main:has(#guides:checked) .guides{display:block}footer{margin-top:.8rem}footer p{font-size:.9rem}@media(max-width:670px){.gallery{grid-template-columns:repeat(2,1fr)}svg{height:auto}}
 .portrait-front,.portrait:has(#portrait-front:checked) .portrait-master{display:none}.portrait:has(#portrait-front:checked) .portrait-front{display:block}.portrait label{font-size:.9rem;margin:.6rem 0 0;width:auto}
+.specs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem;margin:.75rem 0 .3rem}.specs div{background:#fff;border:1px solid #ccd7e5;border-radius:7px;padding:.4rem .6rem}.specs dt{font-size:.8rem;color:#40536c}.specs dd{margin:0;font-weight:650}.spec-note{font-size:.85rem}@media(max-width:670px){.specs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style><main><h1>클로이 실사 모델 시트</h1><p>CLO-02 · 사진 리비전 ${escape(design.identity_revision)} · 검수 ${escape(design.design_revision)}</p>
+<dl class="specs"><div><dt>맨발 키</dt><dd>${profile.height_cm_barefoot} cm</dd></div><div><dt>체중</dt><dd>${profile.weight_kg} kg</dd></div><div><dt>가슴–허리–엉덩이 둘레</dt><dd>${bust}–${waist}–${hips} cm</dd></div><div><dt>신발</dt><dd>${profile.shoe_size_mm} mm</dd></div></dl>
+<p class="spec-note">캐릭터 설정값입니다. 컷의 실루엣은 정면 전신 정본을 기준으로 검수합니다.</p>
 <label><input type="checkbox" id="guides"> 전신 기준선과 다리 윤곽 보기</label>
 <div class="gallery"><article class="portrait"><h2>얼굴 정본</h2><p>인물 식별 기준</p><img class="portrait-master" alt="클로이 얼굴 정본" src="${png('face-master')}"><img class="portrait-front" alt="클로이 정면 증명사진" src="${png('face-front')}"><label><input type="checkbox" id="portrait-front"> 정면 증명사진 보기</label></article>${panels}</div>
 <footer><p>전신은 사진마다 정수리부터 구두 바닥까지 높이를 맞췄습니다. 후면 측정선은 양쪽 다리의 바깥 윤곽입니다.</p><p>전신 사선·왼쪽·위·아래는 정본 미확정입니다.</p></footer></main></html>`;

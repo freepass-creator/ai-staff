@@ -5,6 +5,7 @@ import { isAbsolute, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const revision = '2026-11-20.1';
+const profile = JSON.parse(readFileSync(new URL('./profile.json', import.meta.url)));
 const schema = 'ai-staff/chloe-shot/v1';
 const closeups = ['full', 'knee-up', 'waist-up', 'bust', 'face'];
 const views = ['front', 'right45', 'left45', 'side', 'back'];
@@ -153,6 +154,9 @@ const poseLabels = {
 };
 
 try {
+  if (profile.character_id !== 'CLO-02' || profile.identity_revision !== revision) {
+    throw new Error('캐릭터 설정과 촬영 도구의 정본 버전이 다릅니다.');
+  }
   const { pack, text, opts } = readRequest(process.argv.slice(2));
   const prior = opts.has('--from') ? readPrior(opts.get('--from')) : null;
   const environment = prior ? environmentEdit(text) : null;
@@ -204,6 +208,7 @@ try {
   ].filter(Boolean);
   console.log(JSON.stringify({
     schema, character_id: 'CLO-02', identity_revision: revision, status: 'awaiting_image_generation_and_review',
+    profile,
     scene, camera, mode: environment ? 'environment-only' : prior ? 'camera-only' : 'new-shot',
     ...(environment ? { environment_edit: { scope: environment, brief: text } } : {}),
     ...(sourceReview ? { source_review: sourceReview } : {}), references: inputs,
