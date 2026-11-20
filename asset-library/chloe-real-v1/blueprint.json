@@ -2,7 +2,7 @@
   "schema": "ai-staff/chloe-component-blueprint/v1",
   "character_id": "CLO-02",
   "identity_revision": "2026-11-20.1",
-  "blueprint_revision": "2d-blueprint-v1",
+  "blueprint_revision": "2d-blueprint-v2",
   "basis": "Source pixel coordinates from the upper-left, manually annotated on approved 2D photographs. Rectangles are reference regions, never texture slices for direct assembly.",
   "body": {
     "primary": "suit-body-front",
@@ -15,7 +15,7 @@
       ],
       "chin": [
         544,
-        230
+        215
       ],
       "shoulders": [
         [

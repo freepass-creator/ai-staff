@@ -3,8 +3,8 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const [pack, mode = '--report', ...extra] = process.argv.slice(2);
-if (!pack || !['--report', '--html'].includes(mode) || extra.length) {
-  throw new Error('Usage: node body-layers.mjs <extracted pack> [--report|--html]');
+if (!pack || !['--report', '--html', '--compare'].includes(mode) || extra.length) {
+  throw new Error('Usage: node body-layers.mjs <extracted pack> [--report|--html|--compare]');
 }
 
 const design = JSON.parse(readFileSync(new URL('./body-layers.json', import.meta.url)));
@@ -58,6 +58,24 @@ const frontLandmarks = Object.fromEntries(Object.entries(body.landmarks).map(([i
   return [id, points];
 }));
 
+const slices = design.frontLegSlices;
+if (slices.source !== front.source || slices.rows.length < 2) throw new Error('Missing leg reference rows.');
+for (const [index, row] of slices.rows.entries()) {
+  const [y, ...edges] = row;
+  if (edges.length !== 4 || (index > 0 && y <= slices.rows[index - 1][0]) ||
+      edges.some((x, edge) => edge > 0 && x <= edges[edge - 1])) {
+    throw new Error(`Invalid leg cross section at row ${index}`);
+  }
+  for (const x of edges) assertPixel([x, y], front.width, front.height, slices.source);
+}
+
+const { legs, ...geometry } = design.geometry;
+geometry.base = [...geometry.base, ...legs.map(leg => {
+  const outer = slices.rows.map(row => `${row[leg.outside]} ${row[0]}`);
+  const inner = slices.rows.map(row => `${row[leg.inside]} ${row[0]}`).reverse();
+  return `${leg.upperOutside} ${outer[0]} L ${outer.slice(1).join(' ')} ${leg.foot} ${inner[0]} L ${inner.slice(1).join(' ')} ${leg.upperInside}`;
+})];
+
 const observations = design.observations.map(item => {
   if (item.status === 'unobserved' && item.value === null) return item;
   const view = views.find(candidate => candidate.id === item.view);
@@ -72,15 +90,18 @@ const observations = design.observations.map(item => {
   return { ...item, status: 'projected', pixels, baseline, percent: Number((100 * pixels / baseline).toFixed(2)) };
 });
 
-const report = { ...design, views, observations, frontLandmarks };
+const report = { ...design, views, observations, frontLandmarks, geometry };
 if (mode === '--report') console.log(JSON.stringify(report, null, 2));
-else console.log(html(report));
+else {
+  const photo = mode === '--compare' ? readFileSync(registry.assets.find(asset => asset.role === front.source).path) : null;
+  console.log(html(report, photo));
+}
 
 function escape(value) {
   return String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 }
 
-function html({ layers, geometry, views, observations, frontLandmarks }) {
+function html({ layers, geometry, views, observations, frontLandmarks, frontLegSlices }, photo) {
   const labels = {
     'approved-photo': '정본 사진',
     'support-photo': '방향 보조 사진',
@@ -89,6 +110,12 @@ function html({ layers, geometry, views, observations, frontLandmarks }) {
   };
   const overlays = layers.map(layer => `<g id="layer-${layer.id}">${geometry[layer.id].map(path => `<path d="${escape(path)}"/>`).join('')}</g>`).join('');
   const marks = Object.values(frontLandmarks).flat().map(([x, y]) => `<circle cx="${x}" cy="${y}" r="7"/>`).join('');
+  const [frontView] = views;
+  const photoImage = photo ? `<image id="reference-photo" width="${frontView.width}" height="${frontView.height}" href="data:image/png;base64,${photo.toString('base64')}"/>` : '';
+  const legLines = [1, 2, 3, 4].map(index => {
+    const points = frontLegSlices.rows.map(row => `${row[index]},${row[0]}`).join(' ');
+    return `<polyline points="${points}"/>`;
+  }).join('');
   const viewList = views.map(view => `<li><strong>${escape(view.label)}</strong><span>${labels[view.status]}</span></li>`).join('');
   const rows = observations.map(item => {
     const view = views.find(candidate => candidate.id === item.view);
@@ -103,18 +130,24 @@ function html({ layers, geometry, views, observations, frontLandmarks }) {
 <style>
 :root{font-family:system-ui,sans-serif;color:#172944;background:#f3f6fb;line-height:1.5}body{margin:0;padding:clamp(1rem,4vw,3rem)}main{max-width:1100px;margin:auto}h1{font-size:clamp(1.8rem,4vw,2.65rem);margin:0}h2{font-size:1.2rem;margin:0 0 .7rem}header p,.caption{color:#465976;margin:.4rem 0 1rem}.layout{display:grid;grid-template-columns:minmax(235px,.7fr) minmax(0,1.65fr);gap:1rem}.panel{background:white;border:1px solid #cdd8e6;border-radius:14px;padding:1rem}fieldset{border:0;margin:0;padding:0}legend{font-weight:650;margin-bottom:.5rem}label{display:inline-block;margin-right:.6rem}input{accent-color:#214a82}.figure{display:block;width:100%;height:min(65vh,620px);min-height:360px;margin:.4rem auto 0;background:#f3f8ff;border-radius:8px}.grid{stroke:#b6c9e0;stroke-width:3;stroke-dasharray:9 7}#layer-base{fill:#9bb6d6;stroke:#486d99;stroke-width:3}#layer-wear{fill:#263a56;stroke:#527397;stroke-width:4}#layer-shoe{fill:#111c29;stroke:#6585a2;stroke-width:3}fieldset:has(#wear:not(:checked)) #layer-wear,fieldset:has(#shoe:not(:checked)) #layer-shoe,fieldset:has(#guides:not(:checked)) #layer-guides{display:none}.views{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin:0 0 1.1rem}.views li{display:grid;border:1px solid #d0dce9;border-radius:7px;padding:.45rem .6rem}.views span,.caption,td:last-child{font-size:.87rem;color:#465976}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;text-align:left;font-size:.92rem}th,td{padding:.47rem .35rem;border-bottom:1px solid #dce5ef}td:nth-child(2),td:nth-child(3){white-space:nowrap}thead{background:#e9f0fa}p:last-child{margin-bottom:0}@media(max-width:740px){.layout{grid-template-columns:1fr}.figure{height:430px}.views{grid-template-columns:repeat(2,1fr)}}
 </style>
+<style>
+fieldset:has(#photo:not(:checked)) #reference-photo,fieldset:has(#photo:checked) :is(#layer-base,#layer-wear,#layer-shoe),fieldset:has(#photo:not(:checked)) #reference-leg-lines{display:none}#reference-leg-lines{fill:none;stroke:#7feaff;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+</style>
 <main>
 <header><h1>클로이 몸체 설계도</h1><p>CLO-02 · 정본 ${escape(design.identity_revision)} · ${escape(design.design_revision)}</p></header>
 <div class="layout">
 <section class="panel" aria-label="정면 레이어 도식">
-<fieldset><legend>정면 도식 레이어</legend><label><input id="wear" type="checkbox" checked> 의상</label><label><input id="shoe" type="checkbox" checked> 구두</label><label><input id="guides" type="checkbox" checked> 기준점</label>
+<fieldset><legend>정면 도식 레이어</legend><label><input id="wear" type="checkbox" checked> 의상</label><label><input id="shoe" type="checkbox" checked> 구두</label><label><input id="guides" type="checkbox" checked> 기준점</label>${photo ? '<label><input id="photo" type="checkbox"> 원본과 다리 윤곽 비교</label>' : ''}
 <svg class="figure" viewBox="${geometry.viewBox.join(' ')}" role="img" aria-label="기본 몸체·의상·구두의 정면 조립 도식">
+${photoImage}
 ${overlays}
+${photo ? `<g id="reference-leg-lines">${legLines}</g>` : ''}
 <g id="layer-guides"><path class="grid" d="M 315 25 H 770 M 315 683 H 770 M 315 1417 H 770 M 542 25 V 1417" fill="none"/>
 <g fill="#f4fbff" stroke="#214a82" stroke-width="3">${marks}</g></g>
 </svg>
 </fieldset>
 <p class="caption">정수리·골반 비교선·구두 바닥선을 표시했습니다. 기본 몸체는 가려진 윤곽을 포함한 구조 도식입니다. 구두를 끄면 구두 레이어만 숨겨집니다.</p>
+<p class="caption">다리는 정면 원본에서 확인한 양쪽 윤곽을 각각 20개 높이에서 연결했습니다. 치마와 구두에 가려진 부분은 도식입니다.</p>
 </section>
 <section class="panel"><h2>6방향 참조 상태</h2><ul class="views">${viewList}</ul>
 <h2>정본 사진의 투영 치수</h2><p class="caption">각 사진에서 정수리부터 구두가 닿는 바닥까지의 세로 픽셀을 100%로 둡니다. 방향별 원근과 자세가 투영 치수에 영향을 줍니다.</p>
