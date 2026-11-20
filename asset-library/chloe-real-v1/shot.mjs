@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { isAbsolute, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -152,6 +152,11 @@ try {
     broad.find(a => a.role === 'face-front');
   const body = broad.find(a => a.role === 'suit-body-front');
   const inputs = [master, face, body];
+  const detailMetadata = JSON.parse(readFileSync(new URL('./face-detail-v1.json', import.meta.url), 'utf8'));
+  const detailPath = resolve(pack, 'details', detailMetadata.extension_revision, detailMetadata.source);
+  const detail = ['face', 'bust'].includes(camera.framing) && ['front', 'right45', 'left45'].includes(camera.view) &&
+    existsSync(detailPath) ? approvedRefs(pack, 'face-detail').find(a => a.role === 'face-detail-support') : null;
+  if (detail) inputs.push(detail);
   const fallback = camera.view === 'side' ? 'suit-side' : camera.view === 'back' ? 'suit-back' : null;
   if (fallback && !prior) inputs.push(broad.find(a => a.role === fallback));
   if (prior) inputs.push(withDigest({ role: 'previous-accepted-shot', path: resolve(opts.get('--frame')) }));
@@ -161,6 +166,8 @@ try {
     'Create a photorealistic character image, like a still taken by a physical camera. Use image references, not any 3D asset.',
     'Image 1 is the sole identity master. Image 2 supports facial angle or frontal facial detail only.',
     'Image 3 locks body proportions. Preserve face shape, hair, torso and leg proportions, and the shape of the black closed-toe pumps when in frame.',
+    ...(detail ? ['Image 4 supplies skin, hair and eye texture only; preserve identity from image 1 and the face angle from image 2.'] : []),
+    'For close shots, retain realistic pores, mild localized skin sheen, fine facial hair and individual hair strands. Preserve iris color and shape, distinct pupil, real-looking eyelash detail and a small catchlight consistent with the lighting. Avoid plastic skin, smoothing, harsh sharpening and artificial glow. Scale texture to the framing.',
     ...(fallback && !prior ? ['Image 4 supplies the silhouette and angle only.'] : []),
     prior ? 'Edit the last accepted frame as the continuity reference. Change only camera position or framing. Preserve pose, expression, outfit, lighting, surroundings and props.' :
       'The last reference supplies posture only; ignore its face, body shape, outfit and camera position. Use the approved charcoal suit and neutral studio unless the scene specifies another outfit or location.',
@@ -172,7 +179,7 @@ try {
     schema, character_id: 'CLO-02', identity_revision: revision, status: 'awaiting_image_generation_and_review',
     scene, camera, mode: prior ? 'camera-only' : 'new-shot', references: inputs,
     imagegen: { referenced_image_paths: inputs.map(input => input.path), prompt: directions.join('\n') },
-    review_required: ['face identity when visible', 'projected proportions and pose', 'framing and continuity'],
+    review_required: ['face identity when visible', 'projected proportions and pose', 'framing and continuity', 'skin, eyes and hair detail in close shots'],
   }, null, 2));
 } catch (error) {
   console.error(error.stderr?.trim() || error.message);

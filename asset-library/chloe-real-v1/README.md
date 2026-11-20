@@ -14,6 +14,10 @@
 
     node asset-library/chloe-real-v1/resolve.mjs <정본-폴더> face-45
 
+[실사 디테일 정본 기록](face-detail-v1.json)은 정면 확대 질감 참조다. 얼굴 대조 0.632를 통과했다. 코와 볼의 모공과 은은한 윤기, 눈동자와 광원 반사, 잔머리와 가르마의 기준으로 쓴다. 디테일 사진을 `details/face-detail-v1/chloe-detail-master.png`에 추가하면 정면·사선의 가슴 위 및 얼굴 컷에서 자동으로 사용한다. 얼굴 구조는 기존 얼굴 정본 기준이다.
+
+    node asset-library/chloe-real-v1/resolve.mjs <정본-폴더> face-detail
+
 ## 말로 촬영 지시하기
 
 포즈 목록이 있는 캐릭터 파일 v2를 푼 뒤, 촬영 문장에서 구도·높이·화면 범위를 읽어 파일 경로와 생성 지시문을 출력한다.
