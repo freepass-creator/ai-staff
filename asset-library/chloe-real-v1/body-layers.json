@@ -1,0 +1,273 @@
+{
+  "schema": "ai-staff/chloe-layered-body-design/v1",
+  "character_id": "CLO-02",
+  "identity_revision": "2026-11-20.1",
+  "design_revision": "body-layers-v1",
+  "projection": "2D pixels from the upper-left; each photograph uses its own crown-to-shod-floor baseline. Photographic measurements are projected dimensions, not anatomical lengths.",
+  "views": [
+    {
+      "id": "front",
+      "label": "앞",
+      "status": "approved-photo",
+      "source": "suit-body-front",
+      "crownFloor": [
+        25,
+        1417
+      ]
+    },
+    {
+      "id": "right",
+      "label": "오른쪽",
+      "status": "support-photo",
+      "source": "suit-side",
+      "crownFloor": [
+        39,
+        1288
+      ]
+    },
+    {
+      "id": "back",
+      "label": "뒤",
+      "status": "support-photo",
+      "source": "suit-back",
+      "crownFloor": [
+        45,
+        1298
+      ]
+    },
+    {
+      "id": "left",
+      "label": "왼쪽",
+      "status": "sheet-support-only",
+      "source": "suit-details",
+      "roi": [
+        1175,
+        2,
+        177,
+        632
+      ],
+      "note": "270도 보조 시트의 저해상도 컷. 치수 고정에는 사용하지 않음."
+    },
+    {
+      "id": "top",
+      "label": "위",
+      "status": "unobserved",
+      "source": null
+    },
+    {
+      "id": "bottom",
+      "label": "아래",
+      "status": "unobserved",
+      "source": null
+    }
+  ],
+  "observations": [
+    {
+      "id": "visible-hand-length",
+      "label": "손목–손끝 세로 길이",
+      "view": "front",
+      "axis": "y",
+      "from": [
+        380,
+        700
+      ],
+      "to": [
+        406,
+        799
+      ],
+      "scope": "손의 사진 투영 길이. 펼친 손의 실측 길이는 아님."
+    },
+    {
+      "id": "visible-palm-width",
+      "label": "손 폭",
+      "view": "front",
+      "axis": "x",
+      "from": [
+        361,
+        744
+      ],
+      "to": [
+        404,
+        744
+      ],
+      "scope": "손바닥 부근의 보이는 폭. 손가락 자세의 영향."
+    },
+    {
+      "id": "visible-head-width",
+      "label": "정면 머리 폭",
+      "view": "front",
+      "axis": "x",
+      "from": [
+        455,
+        150
+      ],
+      "to": [
+        626,
+        150
+      ],
+      "scope": "머리카락 포함 정면 외곽."
+    },
+    {
+      "id": "visible-head-depth",
+      "label": "측면 머리 두께",
+      "view": "right",
+      "axis": "x",
+      "from": [
+        109,
+        148
+      ],
+      "to": [
+        254,
+        148
+      ],
+      "scope": "뒤쪽 머리카락에서 코 돌출까지의 보이는 외곽. 두개골 깊이는 아님."
+    },
+    {
+      "id": "pelvis-guide-height",
+      "label": "골반 비교선 높이",
+      "view": "front",
+      "axis": "y",
+      "from": [
+        541,
+        25
+      ],
+      "to": [
+        545,
+        683
+      ],
+      "scope": "정수리에서 정면 치마의 골반 비교선까지. 골반뼈 위치 미확정."
+    },
+    {
+      "id": "seen-shod-foot-length",
+      "label": "구두 신은 발 옆면 길이",
+      "view": "right",
+      "axis": "x",
+      "from": [
+        137,
+        1275
+      ],
+      "to": [
+        313,
+        1275
+      ],
+      "scope": "앞코와 뒤축 사이 사진 외곽. 맨발 길이는 미확정."
+    },
+    {
+      "id": "shoe-front-width",
+      "label": "구두 앞코 정면 폭",
+      "view": "front",
+      "axis": "x",
+      "from": [
+        463,
+        1388
+      ],
+      "to": [
+        529,
+        1388
+      ],
+      "scope": "정면 사진에서 보이는 구두 한 짝의 폭."
+    },
+    {
+      "id": "pelvis-depth",
+      "label": "엉덩이의 실제 앞뒤 두께",
+      "view": "right",
+      "status": "unobserved",
+      "value": null,
+      "reason": "정장·팔이 몸의 경계를 가림."
+    },
+    {
+      "id": "barefoot-length",
+      "label": "맨발 길이",
+      "view": "right",
+      "status": "unobserved",
+      "value": null,
+      "reason": "구두를 착용한 기준만 있음."
+    },
+    {
+      "id": "skull-depth",
+      "label": "머리카락을 뺀 머리 깊이",
+      "view": "right",
+      "status": "unobserved",
+      "value": null,
+      "reason": "뒤통수가 머리카락에 가려짐."
+    },
+    {
+      "id": "top-bottom-proportions",
+      "label": "위·아래 각도의 치수",
+      "view": "top",
+      "status": "unobserved",
+      "value": null,
+      "reason": "위·아래 기준 사진 없음."
+    }
+  ],
+  "layers": [
+    {
+      "id": "base",
+      "label": "기본 몸체",
+      "status": "schematic-only",
+      "locks": [
+        "head",
+        "shoulder",
+        "elbow",
+        "wrist",
+        "waist",
+        "pelvis",
+        "knee",
+        "ankle"
+      ],
+      "note": "관절과 표면의 2D 도식. 옷 아래 윤곽은 비교용 가이드."
+    },
+    {
+      "id": "wear",
+      "label": "의상",
+      "status": "shape-overlay",
+      "attaches_to": [
+        "shoulder",
+        "elbow",
+        "wrist",
+        "waist",
+        "pelvis"
+      ],
+      "note": "레이어를 켜거나 꺼도 몸체 기준점은 그대로."
+    },
+    {
+      "id": "shoe",
+      "label": "구두",
+      "status": "shape-overlay",
+      "attaches_to": [
+        "ankle",
+        "shoe_floor"
+      ],
+      "note": "현재 기준은 구두를 신은 자세. 맨발로 바꾸면 실제 접지는 별도 기준이 필요함."
+    }
+  ],
+  "transform": {
+    "allowed": "uniform scale and global translation on the assembly",
+    "perLayerBodyScale": false,
+    "topBottomMissing": "do_not_infer"
+  },
+  "geometry": {
+    "viewBox": [
+      300,
+      0,
+      485,
+      1448
+    ],
+    "base": [
+      "M 541 25 C 606 25 626 100 619 150 C 610 188 581 213 547 213 C 510 213 477 188 469 150 C 461 102 478 29 541 25 Z",
+      "M 511 206 Q 509 240 469 249 Q 435 254 405 275 Q 390 298 412 323 Q 435 376 452 426 Q 466 467 461 510 Q 455 553 438 610 Q 430 649 425 686 Q 441 737 481 775 Q 513 793 542 793 Q 579 792 610 771 Q 650 731 661 688 Q 657 651 647 609 Q 632 553 623 509 Q 617 462 633 425 Q 655 369 674 321 Q 697 296 680 275 Q 653 252 615 249 Q 578 240 577 206 Z",
+      "M 405 275 Q 385 280 381 306 Q 370 403 370 492 L 358 689 Q 355 731 363 753 Q 377 792 411 798 Q 414 785 400 774 Q 384 757 385 735 L 394 704 L 407 495 Q 415 413 434 334 Q 438 300 405 275 Z",
+      "M 680 275 Q 700 280 704 306 Q 715 403 718 492 L 730 689 Q 733 731 722 753 Q 708 792 675 798 Q 672 785 686 774 Q 702 757 701 735 L 692 704 L 681 495 Q 671 413 651 334 Q 647 300 680 275 Z",
+      "M 428 683 Q 428 746 431 833 Q 437 882 445 936 Q 448 972 442 1028 Q 434 1080 452 1144 Q 461 1205 469 1265 Q 467 1310 468 1358 Q 474 1394 497 1397 Q 516 1394 523 1379 Q 525 1346 517 1305 Q 507 1272 510 1233 Q 516 1168 528 1094 Q 539 1041 526 984 Q 537 930 544 877 L 543 778 Q 520 755 482 750 Z",
+      "M 658 683 Q 655 746 654 833 Q 647 882 640 936 Q 637 972 643 1028 Q 651 1080 634 1144 Q 625 1205 617 1265 Q 619 1310 617 1358 Q 611 1394 588 1397 Q 569 1394 562 1379 Q 560 1346 568 1305 Q 578 1272 575 1233 Q 569 1168 557 1094 Q 546 1041 559 984 Q 548 930 541 877 L 542 778 Q 565 755 603 750 Z"
+    ],
+    "wear": [
+      "M 410 272 Q 451 249 501 247 L 541 424 L 588 245 Q 636 251 677 272 Q 707 307 714 416 L 730 695 L 692 705 L 654 452 L 634 505 L 673 616 Q 628 647 548 625 Q 490 645 408 620 L 447 503 L 436 452 L 395 705 L 351 695 L 370 411 Q 377 310 410 272 Z",
+      "M 411 619 Q 470 637 544 625 Q 616 633 678 619 Q 690 681 680 748 L 670 834 Q 542 848 412 834 L 404 748 Q 397 679 411 619 Z"
+    ],
+    "shoe": [
+      "M 466 1310 Q 476 1296 481 1322 L 485 1364 Q 494 1381 507 1363 L 517 1314 Q 524 1298 527 1320 L 531 1383 Q 529 1409 507 1416 Q 496 1420 484 1414 Q 460 1409 461 1383 Z",
+      "M 615 1310 Q 605 1296 600 1322 L 596 1364 Q 587 1381 574 1363 L 564 1314 Q 557 1298 554 1320 L 550 1383 Q 552 1409 574 1416 Q 585 1420 597 1414 Q 621 1409 620 1383 Z"
+    ]
+  }
+}
