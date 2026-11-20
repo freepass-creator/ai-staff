@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const revision = '2026-11-20.1';
 const profile = JSON.parse(readFileSync(new URL('./profile.json', import.meta.url)));
+const skin = JSON.parse(readFileSync(new URL('./skin-reference.json', import.meta.url)));
 const schema = 'ai-staff/chloe-shot/v1';
 const closeups = ['full', 'knee-up', 'waist-up', 'bust', 'face'];
 const views = ['front', 'right45', 'left45', 'side', 'back'];
@@ -152,10 +153,31 @@ const poseLabels = {
   'stand-neutral':'neutral standing posture', 'sit-front':'seated upright, knees and shoulders relaxed',
   'sit-legs-crossed':'seated with one leg crossed', kneel:'neutral kneeling posture',
 };
+const skinAreasByFraming = {
+  full: ['hand', 'thigh', 'calf'],
+  'knee-up': ['hand', 'thigh'],
+  'waist-up': ['hand'],
+  bust: ['cheek', 'nose', 'neck'],
+  face: ['cheek', 'nose'],
+};
+
+function skinForShot(inputs, framing, preserveFrame) {
+  const samples = skin.samples.flatMap(sample => {
+    if (!skinAreasByFraming[framing].includes(sample.id)) return [];
+    const index = inputs.findIndex(input => input.role === sample.role);
+    if (index === -1) return [];
+    return [{ id: sample.id, source_role: sample.role, image_number: index + 1,
+      source_sha256: inputs[index].sha256, roi: sample.roi, source_sample_rgb: sample.sample_rgb }];
+  });
+  return { revision: skin.skin_revision, usage: preserveFrame ? 'preserve-accepted-frame' : 'reference-exposed-skin', samples };
+}
 
 try {
   if (profile.character_id !== 'CLO-02' || profile.identity_revision !== revision) {
     throw new Error('캐릭터 설정과 촬영 도구의 정본 버전이 다릅니다.');
+  }
+  if (skin.character_id !== profile.character_id || skin.identity_revision !== profile.identity_revision) {
+    throw new Error('피부 자료와 촬영 도구의 정본 버전이 다릅니다.');
   }
   const { pack, text, opts } = readRequest(process.argv.slice(2));
   const prior = opts.has('--from') ? readPrior(opts.get('--from')) : null;
@@ -191,11 +213,15 @@ try {
     inputs.push(frame);
   } else inputs.push(poseRef(pack, scene.pose));
 
+  const skinReference = skinForShot(inputs, camera.framing, Boolean(environment));
+
   const directions = [
     'Create a photorealistic character image, like a still taken by a physical camera. Use image references, not any 3D asset.',
     'Image 1 is the sole identity master. Image 2 supports facial angle or frontal facial detail only.',
     'Image 3 locks body proportions. Preserve face shape, hair, torso and leg proportions, and the shape of the black closed-toe pumps when in frame.',
     ...(detail ? ['Image 4 supplies skin, hair and eye texture only; preserve identity from image 1 and the face angle from image 2.'] : []),
+    ...(!environment && skinReference.samples.some(sample => sample.source_role === 'suit-body-front') ?
+      ['For exposed hands or legs, use the visible skin in image 3 as the local texture and tone reference. Let scene lighting determine color and highlights. Keep the approved silhouette and the requested clothing coverage.'] : []),
     'For close shots, retain realistic pores, mild localized skin sheen, fine facial hair and individual hair strands. Preserve iris color and shape, distinct pupil, real-looking eyelash detail and a small catchlight consistent with the lighting. Avoid plastic skin, smoothing, harsh sharpening and artificial glow. Scale texture to the framing.',
     ...(fallback && !prior ? ['Image 4 supplies the silhouette and angle only.'] : []),
     environment ? `Use the last accepted frame as the edit target. Change only ${environment.replaceAll('-', ' ')}. Preserve camera, crop, perspective, pose, expression, outfit and visible anatomical geometry. Change light as color and illumination rather than re-rendering face or body.` :
@@ -208,7 +234,7 @@ try {
   ].filter(Boolean);
   console.log(JSON.stringify({
     schema, character_id: 'CLO-02', identity_revision: revision, status: 'awaiting_image_generation_and_review',
-    profile,
+    profile, skin_reference: skinReference,
     scene, camera, mode: environment ? 'environment-only' : prior ? 'camera-only' : 'new-shot',
     ...(environment ? { environment_edit: { scope: environment, brief: text } } : {}),
     ...(sourceReview ? { source_review: sourceReview } : {}), references: inputs,
