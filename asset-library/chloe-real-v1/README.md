@@ -49,12 +49,15 @@
     node asset-library/chloe-real-v1/body-layers.mjs <캐릭터팩> --report > body-layers-report.json
     node asset-library/chloe-real-v1/body-layers.mjs <캐릭터팩> --html > chloe-body-blueprint.html
     node asset-library/chloe-real-v1/body-layers.mjs <캐릭터팩> --compare > chloe-body-comparison.html
+    node asset-library/chloe-real-v1/body-layers.mjs <캐릭터팩> --photos > chloe-photo-sheet.html
 
 정면 설계도에서 의상, 구두, 기준점을 각각 표시할 수 있다. 세 레이어는 같은 좌표와 배율을 공유한다. 보고서는 앞·뒤·좌·우·위·아래의 출처 상태와 치수의 픽셀 양끝을 담는다. 비율은 사진별 정수리부터 구두 접지까지의 높이를 100으로 둔 투영값이다. 오른쪽과 뒤는 방향 보조, 왼쪽은 보조 시트로만 연결한다. 위·아래, 정장 아래 골반 깊이, 맨발 크기는 자료가 들어오기 전까지 미확정으로 남긴다. 구두를 숨겨도 자세와 기준 바닥선은 그대로 유지된다.
 
 v2는 턱 기준점을 y=215로 보정하고, 치마 아래부터 구두 입구 위까지 다리 윤곽의 좌우 가장자리를 사진의 20개 높이에서 따로 기록한다. 이 좌표는 정면 도식을 그릴 때도 그대로 사용한다. 비교 모드에는 원본 사진이 포함되므로 내부 검수에 사용한다.
 
 v3는 오른쪽 보조 사진에서 치마와 구두 사이의 앞뒤 외곽을 20개 높이에서 추적한다. 비교 모드에서 사진의 측정선을 볼 수 있다. 측면 폭은 사진에서 두 다리가 겹쳐 보이는 투영값이다. v2의 정면 다리 좌표를 그대로 사용한다.
+
+v4는 후면 보조 사진에서 두 다리의 바깥 윤곽을 20개 높이에서 기록한다. 실사 모드에서 얼굴 정본·정면 전신·오른쪽·후면을 함께 보고 기준선을 켤 수 있다. 이 모드는 내부 검수용 원본 이미지를 포함한다.
 
 ## 체형 고정
 

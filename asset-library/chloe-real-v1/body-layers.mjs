@@ -3,8 +3,8 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const [pack, mode = '--report', ...extra] = process.argv.slice(2);
-if (!pack || !['--report', '--html', '--compare'].includes(mode) || extra.length) {
-  throw new Error('Usage: node body-layers.mjs <extracted pack> [--report|--html|--compare]');
+if (!pack || !['--report', '--html', '--compare', '--photos'].includes(mode) || extra.length) {
+  throw new Error('Usage: node body-layers.mjs <extracted pack> [--report|--html|--compare|--photos]');
 }
 
 const design = JSON.parse(readFileSync(new URL('./body-layers.json', import.meta.url)));
@@ -61,7 +61,9 @@ const frontLandmarks = Object.fromEntries(Object.entries(body.landmarks).map(([i
 const slices = design.frontLegSlices;
 const right = views.find(view => view.id === 'right');
 const rightSlices = design.rightLegSlices;
-for (const [section, view, edgeCount] of [[slices, front, 4], [rightSlices, right, 2]]) {
+const back = views.find(view => view.id === 'back');
+const backSlices = design.backLegSlices;
+for (const [section, view, edgeCount] of [[slices, front, 4], [rightSlices, right, 2], [backSlices, back, 2]]) {
   if (section.source !== view.source || section.rows.length < 2) throw new Error('Missing leg reference rows.');
   for (const [index, row] of section.rows.entries()) {
     const [y, ...edges] = row;
@@ -102,6 +104,7 @@ const observations = [...design.observations, ...rightMeasurements].map(item => 
 
 const report = { ...design, views, observations, frontLandmarks, geometry };
 if (mode === '--report') console.log(JSON.stringify(report, null, 2));
+else if (mode === '--photos') console.log(photoSheet());
 else {
   const photos = mode === '--compare' ? Object.fromEntries([front, right].map(view => [view.id,
     readFileSync(registry.assets.find(asset => asset.role === view.source).path)])) : {};
@@ -110,6 +113,34 @@ else {
 
 function escape(value) {
   return String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+}
+
+function photoSheet() {
+  const png = role => 'data:image/png;base64,' + readFileSync(registry.assets.find(asset => asset.role === role).path).toString('base64');
+  const panels = [
+    [front, slices, 542, '정면 전신', '전신 정본'],
+    [right, rightSlices, 190, '오른쪽 전신', '방향 보조'],
+    [back, backSlices, 190, '후면 전신', '방향 보조'],
+  ].map(([view, section, center, title, status]) => {
+    const [crown, floor] = view.crownFloor;
+    const height = (floor - crown) * 1.04;
+    const width = height * 0.29;
+    const contours = Array.from({ length: section.columns.length - 1 }, (_, offset) => {
+      const points = section.rows.map(row => `${row[offset + 1]},${row[0]}`).join(' ');
+      return `<polyline points="${points}"/>`;
+    }).join('');
+    return `<article><h2>${title}</h2><p>${status}</p><svg viewBox="${center - width / 2} ${crown - height * 0.02} ${width} ${height}" role="img" aria-label="클로이 ${title}">
+<image width="${view.width}" height="${view.height}" href="${png(view.source)}"/>
+<g class="guides"><path d="M${center - width / 2},${crown}h${width} M${center - width / 2},${floor}h${width}"/>${contours}</g></svg></article>`;
+  }).join('');
+  return `<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>클로이 실사 모델 시트</title><style>
+:root{font-family:system-ui,sans-serif;background:#edf0f3;color:#142238;line-height:1.4}body{margin:0;padding:clamp(1rem,3vw,2.5rem)}main{margin:auto;max-width:1250px}h1{margin:0;font-size:clamp(1.75rem,4vw,2.7rem)}p{margin:.25rem 0;color:#40536c}label{display:block;margin:.65rem 0 1rem;width:max-content}input{accent-color:#214a82}.gallery{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:.75rem}article{background:#fff;border:1px solid #ccd7e5;border-radius:10px;padding:.75rem;min-width:0}h2{font-size:1.15rem;margin:0}img,svg{display:block;width:100%;margin-top:.65rem;border-radius:5px;background:#b3b2bc}img{height:auto}svg{height:min(63vh,630px)}.guides{display:none;fill:none;stroke:#5defff;stroke-width:3}main:has(#guides:checked) .guides{display:block}footer{margin-top:.8rem}footer p{font-size:.9rem}@media(max-width:670px){.gallery{grid-template-columns:repeat(2,1fr)}svg{height:auto}}
+.portrait-front,.portrait:has(#portrait-front:checked) .portrait-master{display:none}.portrait:has(#portrait-front:checked) .portrait-front{display:block}.portrait label{font-size:.9rem;margin:.6rem 0 0;width:auto}
+</style><main><h1>클로이 실사 모델 시트</h1><p>CLO-02 · 사진 리비전 ${escape(design.identity_revision)} · 검수 ${escape(design.design_revision)}</p>
+<label><input type="checkbox" id="guides"> 전신 기준선과 다리 윤곽 보기</label>
+<div class="gallery"><article class="portrait"><h2>얼굴 정본</h2><p>인물 식별 기준</p><img class="portrait-master" alt="클로이 얼굴 정본" src="${png('face-master')}"><img class="portrait-front" alt="클로이 정면 증명사진" src="${png('face-front')}"><label><input type="checkbox" id="portrait-front"> 정면 증명사진 보기</label></article>${panels}</div>
+<footer><p>전신은 사진마다 정수리부터 구두 바닥까지 높이를 맞췄습니다. 후면 측정선은 양쪽 다리의 바깥 윤곽입니다.</p><p>전신 사선·왼쪽·위·아래는 정본 미확정입니다.</p></footer></main></html>`;
 }
 
 function html({ layers, geometry, views, observations, frontLandmarks, frontLegSlices, rightLegSlices }, photos) {

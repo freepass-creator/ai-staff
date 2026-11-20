@@ -2,7 +2,7 @@
   "schema": "ai-staff/chloe-layered-body-design/v1",
   "character_id": "CLO-02",
   "identity_revision": "2026-11-20.1",
-  "design_revision": "body-layers-v3",
+  "design_revision": "body-layers-v4",
   "projection": "2D pixels from the upper-left; each photograph uses its own crown-to-shod-floor baseline. Photographic measurements are projected dimensions, not anatomical lengths.",
   "views": [
     {
@@ -289,6 +289,19 @@
       {"id": "right-visible-thigh", "label": "치마 아래 허벅지 앞뒤 폭", "y": 780},
       {"id": "right-visible-calf", "label": "종아리 볼륨 구간 앞뒤 폭", "y": 960},
       {"id": "right-visible-ankle", "label": "발목 부근 앞뒤 폭", "y": 1120}
+    ]
+  },
+  "backLegSlices": {
+    "source": "suit-back",
+    "scope": "support-photo-projection",
+    "method": "Visible outer boundaries of the two legs together. The inside gap is obscured at several heights, so no individual leg width is derived.",
+    "columns": ["y", "screenLeftOuter", "screenRightOuter"],
+    "rows": [
+      [760, 99, 290], [780, 104, 285], [800, 109, 281], [820, 113, 277],
+      [840, 117, 274], [860, 119, 273], [880, 121, 271], [900, 121, 271],
+      [920, 120, 272], [940, 119, 273], [960, 119, 274], [980, 120, 273],
+      [1000, 123, 271], [1020, 127, 268], [1040, 131, 265], [1060, 136, 261],
+      [1080, 141, 257], [1100, 145, 253], [1120, 150, 248], [1140, 153, 246]
     ]
   },
   "geometry": {
