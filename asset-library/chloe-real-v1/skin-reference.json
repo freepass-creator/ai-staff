@@ -1,0 +1,17 @@
+{
+  "schema": "ai-staff/skin-reference/v1",
+  "character_id": "CLO-02",
+  "identity_revision": "2026-11-20.1",
+  "skin_revision": "skin-reference-v1",
+  "body_design_revision": "body-layers-v4",
+  "color_basis": "Channel medians of the source RGB pixels; affected by lighting, camera and makeup.",
+  "body_base_scope": "Garment-free assembly diagram; covered surfaces use an illustrative fill. Photographic references cover only the listed visible areas.",
+  "samples": [
+    {"id": "cheek", "label": "볼", "role": "face-detail-support", "roi": [388, 606, 74, 70], "sample_rgb": "#EFBEBA"},
+    {"id": "nose", "label": "코", "role": "face-detail-support", "roi": [542, 610, 40, 46], "sample_rgb": "#ECBAB3"},
+    {"id": "neck", "label": "목", "role": "face-detail-support", "roi": [455, 965, 96, 83], "sample_rgb": "#E2B9AD"},
+    {"id": "hand", "label": "손", "role": "suit-body-front", "roi": [375, 722, 13, 21], "sample_rgb": "#E1B3AA"},
+    {"id": "thigh", "label": "허벅지", "role": "suit-body-front", "roi": [460, 871, 50, 54], "sample_rgb": "#DDAA9A"},
+    {"id": "calf", "label": "종아리", "role": "suit-body-front", "roi": [461, 1080, 43, 56], "sample_rgb": "#D9AD9E"}
+  ]
+}

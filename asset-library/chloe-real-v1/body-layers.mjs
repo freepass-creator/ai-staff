@@ -3,8 +3,8 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const [pack, mode = '--report', ...extra] = process.argv.slice(2);
-if (!pack || !['--report', '--html', '--compare', '--photos'].includes(mode) || extra.length) {
-  throw new Error('Usage: node body-layers.mjs <extracted pack> [--report|--html|--compare|--photos]');
+if (!pack || !['--report', '--html', '--compare', '--photos', '--skin'].includes(mode) || extra.length) {
+  throw new Error('Usage: node body-layers.mjs <extracted pack> [--report|--html|--compare|--photos|--skin]');
 }
 
 const design = JSON.parse(readFileSync(new URL('./body-layers.json', import.meta.url)));
@@ -109,6 +109,7 @@ const observations = [...design.observations, ...rightMeasurements].map(item => 
 const report = { ...design, profile, views, observations, frontLandmarks, geometry };
 if (mode === '--report') console.log(JSON.stringify(report, null, 2));
 else if (mode === '--photos') console.log(photoSheet());
+else if (mode === '--skin') console.log(skinSheet());
 else {
   const photos = mode === '--compare' ? Object.fromEntries([front, right].map(view => [view.id,
     readFileSync(registry.assets.find(asset => asset.role === view.source).path)])) : {};
@@ -117,6 +118,44 @@ else {
 
 function escape(value) {
   return String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+}
+
+function skinSheet() {
+  const skin = JSON.parse(readFileSync(new URL('./skin-reference.json', import.meta.url)));
+  if (skin.character_id !== registry.character_id || skin.identity_revision !== registry.revision ||
+      skin.body_design_revision !== design.design_revision) throw new Error('Skin reference revision mismatch.');
+
+  const detail = JSON.parse(execFileSync(process.execPath, [resolver, pack, 'face-detail'], { encoding: 'utf8' }));
+  const sources = [registry.assets.find(asset => asset.role === front.source), detail.assets.find(asset => asset.role === 'face-detail-support')];
+  const frames = new Map(sources.map((source, index) => {
+    const bytes = readFileSync(source.path);
+    if (bytes.subarray(0, 8).toString('hex') !== '89504e470d0a1a0a' || bytes.toString('ascii', 12, 16) !== 'IHDR') {
+      throw new Error(`Expected a PNG skin source: ${source.role}`);
+    }
+    return [source.role, { id: `skin-source-${index}`, width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20), url: 'data:image/png;base64,' + bytes.toString('base64') }];
+  }));
+  const framesSvg = [...frames.values()].map(frame => `<image id="${frame.id}" width="${frame.width}" height="${frame.height}" href="${frame.url}"/>`).join('');
+  const samples = skin.samples.map((sample, index) => {
+    const frame = frames.get(sample.role);
+    if (!frame || !/^#[0-9A-F]{6}$/.test(sample.sample_rgb)) throw new Error(`Invalid skin sample: ${sample.id}`);
+    const [x, y, width, height] = sample.roi;
+    if (width <= 0 || height <= 0) throw new Error(`Invalid skin crop: ${sample.id}`);
+    assertPixel([x, y], frame.width, frame.height, sample.id);
+    assertPixel([x + width - 1, y + height - 1], frame.width, frame.height, sample.id);
+    return `<article><h3>${escape(sample.label)}</h3><svg viewBox="${sample.roi.join(' ')}" aria-label="${escape(sample.label)} 원본 확대" role="img"><clipPath id="sample-${index}"><rect x="${x}" y="${y}" width="${width}" height="${height}"/></clipPath><use href="#${frame.id}" clip-path="url(#sample-${index})"/></svg><p><span style="background:${sample.sample_rgb}"></span>${sample.sample_rgb}</p></article>`;
+  }).join('');
+  const bodyLayers = design.layers.map(layer => `<g id="skin-${layer.id}">${geometry[layer.id].map(path => `<path d="${escape(path)}"/>`).join('')}</g>`).join('');
+  const tone = skin.samples.find(sample => sample.id === 'thigh').sample_rgb;
+  return `<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>클로이 기본 몸체와 피부 참조</title><style>
+:root{font-family:system-ui,sans-serif;color:#1a2432;background:#f4f2ef;line-height:1.45}body{margin:0;padding:clamp(1rem,4vw,2.5rem)}main{max-width:1090px;margin:auto}h1{margin:0;font-size:clamp(1.6rem,4vw,2.6rem)}h2{margin:0 0 .5rem;font-size:1.2rem}h3,p{margin:0}header p,.note{color:#516079;margin:.5rem 0 1rem}.layout{display:grid;grid-template-columns:minmax(220px,.75fr) minmax(0,1.6fr);gap:1rem}.panel{background:white;border:1px solid #d9d1c9;border-radius:12px;padding:1rem}fieldset{border:0;padding:0;margin:0}legend{font-weight:650;margin-bottom:.5rem}label{margin-right:.75rem;display:inline-block}input{accent-color:#295476}.figure{height:min(65vh,650px);min-height:365px;width:100%;margin-top:.6rem;background:#f4ede9;border-radius:8px}#skin-base{fill:${tone};stroke:#8f6152;stroke-width:3}#skin-wear{fill:#263a56;stroke:#527397;stroke-width:4}#skin-shoe{fill:#111c29;stroke:#6585a2;stroke-width:3}fieldset:has(#wear:not(:checked)) #skin-wear,fieldset:has(#shoe:not(:checked)) #skin-shoe{display:none}.samples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem}.samples article{border:1px solid #ded4cb;border-radius:8px;padding:.6rem}.samples h3{font-size:.96rem}.samples svg{width:100%;height:112px;background:#f4ede9;display:block;border-radius:4px;margin-top:.35rem}.samples p{font: .85rem system-ui;margin-top:.35rem}.samples span{display:inline-block;width:1.1rem;height:.8rem;margin-right:.4rem;border:1px solid #92786b;border-radius:2px}@media(max-width:650px){.layout{grid-template-columns:1fr}.samples{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style><svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs>${framesSvg}</defs></svg>
+<main><header><h1>클로이 기본 몸체와 피부 참조</h1><p>CLO-02 · 사진 리비전 ${escape(registry.revision)} · ${escape(skin.skin_revision)}</p></header><div class="layout">
+<section class="panel"><fieldset><legend>정면 몸체 도식</legend><label><input type="checkbox" id="wear"> 의상</label><label><input type="checkbox" id="shoe"> 구두</label>
+<svg class="figure" viewBox="${geometry.viewBox.join(' ')}" role="img" aria-label="의상과 구두를 별개로 얹을 수 있는 정면 몸체 도식">${bodyLayers}</svg></fieldset>
+<p class="note">기본 몸체에 사진의 대표 색을 적용한 도식입니다. 원본에서 가려진 윤곽과 피부 상태는 확인이 필요합니다.</p></section>
+<section class="panel"><h2>정본 사진의 피부 디테일</h2><p class="note">확대 컷은 정본 사진의 픽셀입니다. 대표 색은 선택한 영역의 RGB 중앙값이며 조명에 따라 다르게 보일 수 있습니다.</p><div class="samples">${samples}</div></section>
+</div></main></html>`;
 }
 
 function photoSheet() {
