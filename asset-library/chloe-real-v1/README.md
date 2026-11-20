@@ -53,6 +53,8 @@
     node asset-library/chloe-real-v1/body-layers.mjs <캐릭터팩> --compare > chloe-body-comparison.html
     node asset-library/chloe-real-v1/body-layers.mjs <캐릭터팩> --photos > chloe-photo-sheet.html
     node asset-library/chloe-real-v1/body-layers.mjs <캐릭터팩> --skin > chloe-skin-reference.html
+    node asset-library/chloe-real-v1/body-layers.mjs <캐릭터팩> --fitting > chloe-white-fitting.html
+    node asset-library/chloe-real-v1/body-layers.mjs <캐릭터팩> --fitting-report > fitting-body-report.json
 
 정면 설계도에서 의상, 구두, 기준점을 각각 표시할 수 있다. 세 레이어는 같은 좌표와 배율을 공유한다. 보고서는 앞·뒤·좌·우·위·아래의 출처 상태와 치수의 픽셀 양끝을 담는다. 비율은 사진별 정수리부터 구두 접지까지의 높이를 100으로 둔 투영값이다. 오른쪽과 뒤는 방향 보조, 왼쪽은 보조 시트로만 연결한다. 위·아래, 정장 아래 골반 깊이, 맨발 크기는 자료가 들어오기 전까지 미확정으로 남긴다. 구두를 숨겨도 자세와 기준 바닥선은 그대로 유지된다.
 
@@ -65,6 +67,8 @@ v4는 후면 보조 사진에서 두 다리의 바깥 윤곽을 20개 높이에�
 [피부 참조](skin-reference.json)는 얼굴 디테일 원본과 정면 전신에서 볼·코·목·손·허벅지·종아리의 픽셀 영역과 RGB 중앙값을 기록한다. `--skin`은 두 원본의 무결성을 확인한 뒤 보정된 기본 몸체, 의상·구두 표시, 피부 원본 확대를 담은 내부 검수 시트를 만든다. 의상 아래는 참고용 채색 도식이며 실사 피부는 보이는 부위만 참조한다.
 
 촬영 요청에는 프레임에서 사용할 수 있는 피부 참조의 부위, 첨부 이미지 번호, 원본 해시와 좌표가 들어간다. 전신의 손·다리는 정면 전신, 얼굴 클로즈업의 볼·코는 첨부된 얼굴 디테일 원본을 참조한다. RGB는 원본 조명에서 읽었으므로 새 장면의 피부색을 고정하는 값으로 쓰지 않는다. 조명·배경 편집은 앞 컷 피부와 형태를 유지한다.
+
+[흰색 피팅 체형 참조](fitting-body.json)는 흰색 피팅 정면·측면·후면의 보이는 윤곽을 기록한다. 모델 시트에서 승인된 정장 전신과 함께 보고, 어깨·허리·골반·다리 측정선을 켤 수 있다. 자료마다 착용 상태와 자세가 달라 승인된 정면 비율을 변경하는 근거로 사용하지 않는다.
 
 ## 체형 고정
 

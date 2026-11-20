@@ -3,8 +3,8 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const [pack, mode = '--report', ...extra] = process.argv.slice(2);
-if (!pack || !['--report', '--html', '--compare', '--photos', '--skin'].includes(mode) || extra.length) {
-  throw new Error('Usage: node body-layers.mjs <extracted pack> [--report|--html|--compare|--photos|--skin]');
+if (!pack || !['--report', '--html', '--compare', '--photos', '--skin', '--fitting', '--fitting-report'].includes(mode) || extra.length) {
+  throw new Error('Usage: node body-layers.mjs <extracted pack> [--report|--html|--compare|--photos|--skin|--fitting|--fitting-report]');
 }
 
 const design = JSON.parse(readFileSync(new URL('./body-layers.json', import.meta.url)));
@@ -110,6 +110,7 @@ const report = { ...design, profile, views, observations, frontLandmarks, geomet
 if (mode === '--report') console.log(JSON.stringify(report, null, 2));
 else if (mode === '--photos') console.log(photoSheet());
 else if (mode === '--skin') console.log(skinSheet());
+else if (mode === '--fitting' || mode === '--fitting-report') console.log(fittingSheet());
 else {
   const photos = mode === '--compare' ? Object.fromEntries([front, right].map(view => [view.id,
     readFileSync(registry.assets.find(asset => asset.role === view.source).path)])) : {};
@@ -118,6 +119,55 @@ else {
 
 function escape(value) {
   return String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+}
+
+function fittingSheet() {
+  const fitting = JSON.parse(readFileSync(new URL('./fitting-body.json', import.meta.url)));
+  if (fitting.character_id !== registry.character_id || fitting.identity_revision !== registry.revision) {
+    throw new Error('Fitting reference revision mismatch.');
+  }
+  const assets = new Map(registry.assets.map(asset => [asset.role, asset]));
+  const fittingViews = fitting.views.map(view => {
+    const asset = assets.get(view.role);
+    const [width, height] = view.size;
+    const [top, floor] = view.baseline;
+    const bytes = readFileSync(asset.path);
+    if (bytes.readUInt32BE(16) !== width || bytes.readUInt32BE(20) !== height || floor <= top) {
+      throw new Error(`Invalid fitting dimensions: ${view.role}`);
+    }
+    assertPixel([0, top], width, height, view.role);
+    assertPixel([0, floor], width, height, view.role);
+    return { ...view, sha256: asset.sha256 };
+  });
+  const marks = fitting.marks.map(mark => {
+    const selected = fittingViews.find(view => view.role === mark.role);
+    const [width, height] = selected.size;
+    const [left, right] = mark.x;
+    assertPixel([left, mark.y], width, height, mark.label);
+    assertPixel([right, mark.y], width, height, mark.label);
+    if (right <= left) throw new Error(`Invalid fitting width: ${mark.label}`);
+    return { ...mark, pixels: right - left };
+  });
+  if (mode === '--fitting-report') return JSON.stringify({ ...fitting, profile, views: fittingViews, marks }, null, 2);
+
+  const master = { role: front.source, title: '정장 정면 정본', size: [front.width, front.height], baseline: front.crownFloor };
+  const cards = [master, ...fittingViews].map(view => {
+    const [width, height] = view.size;
+    const [top, floor] = view.baseline;
+    const visibleHeight = (floor - top) * 1.02;
+    const fitWidth = Math.min(width, visibleHeight * .34);
+    const image = readFileSync(assets.get(view.role).path).toString('base64');
+    const lines = marks.filter(mark => mark.role === view.role).map(mark => `<path d="M${mark.x[0]} ${mark.y}H${mark.x[1]}"><title>${escape(mark.label)} · ${mark.pixels} px</title></path>`).join('');
+    return `<article><h2>${escape(view.title)}</h2><p>${view === master ? '체형·인물 기준' : '흰색 피팅 · 보조 참조'}</p>
+<svg viewBox="${(width-fitWidth)/2} ${top-visibleHeight*.01} ${fitWidth} ${visibleHeight}" role="img" aria-label="${escape(view.title)} 전신">
+<image width="${width}" height="${height}" href="data:image/png;base64,${image}"/><g class="marks">${lines}</g></svg></article>`;
+  }).join('');
+  return `<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>클로이 흰색 피팅 체형 시트</title><style>
+:root{font-family:system-ui,sans-serif;background:#eef1f5;color:#18283c}body{margin:0;padding:clamp(1rem,4vw,2.5rem)}main{max-width:1160px;margin:auto}h1{font-size:clamp(1.55rem,4vw,2.7rem);margin:0}p{color:#455973;margin:.35rem 0}label{display:block;margin:.8rem 0}input{accent-color:#224b79}.views{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7rem}article{border:1px solid #cbd6e3;background:white;border-radius:10px;padding:.7rem}h2{font-size:1.1rem;margin:0}article p{font-size:.85rem}svg{display:block;width:100%;height:min(65vh,650px);border-radius:6px;background:#e3e4e8}.marks{display:none;fill:none;stroke:#04cef1;stroke-width:3}.marks path{vector-effect:non-scaling-stroke}main:has(#marks:checked) .marks{display:block}footer{line-height:1.5;margin-top:.8rem}@media(max-width:680px){.views{grid-template-columns:repeat(2,minmax(0,1fr))}svg{height:auto}}
+</style><main><h1>클로이 흰색 피팅 체형 시트</h1><p>CLO-02 · ${escape(fitting.identity_revision)} · ${escape(fitting.fitting_revision)}</p>
+<label><input type="checkbox" id="marks"> 어깨·허리·골반·다리 측정선 보기</label><div class="views">${cards}</div>
+<footer><p>정수리부터 접지점까지 각 사진의 높이를 맞췄습니다. 정장과 흰색 피팅은 신발과 자세가 달라 픽셀 폭을 직접 비교할 수 없습니다.</p><p>흰색 피팅은 몸통과 다리의 보이는 윤곽을 살피는 자료입니다. 얼굴과 현재 체형은 정본 사진을 우선합니다.</p></footer></main></html>`;
 }
 
 function skinSheet() {
