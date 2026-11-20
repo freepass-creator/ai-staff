@@ -1,0 +1,16 @@
+{
+  "schema": "ai-staff/chloe-face-angle-reference/v1",
+  "base_revision": "2026-11-20.1",
+  "extension_revision": "face-angle-45-v1",
+  "status": "reference",
+  "role": "face-angle-support",
+  "scope": "face only",
+  "source": "three-quarter-face.png",
+  "sha256": "52dfbbc42a2a6607a17451bffba96dfdc61956dbe6715c2de1aaad8bcdc67334",
+  "library_path": "AI_STUDIO_콘텐츠라이브러리/10_캐릭터_포즈표정/AI_Staff_CLO-02_실사정본_v1/사선_얼굴_보조_v1",
+  "gate": {
+    "threshold": 0.6,
+    "verdict": "pass",
+    "score": 0.72
+  }
+}
