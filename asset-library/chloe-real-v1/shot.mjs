@@ -13,17 +13,18 @@ const levels = ['eye', 'high', 'low'];
 function readRequest(args) {
   const [pack, text, ...flags] = args;
   if (!pack || !text?.trim() || flags.length % 2) {
-    throw new Error('Usage: node shot.mjs <character pack> "<촬영 지시>" [--from <shot.json> --frame <accepted image>]');
+    throw new Error('Usage: node shot.mjs <character pack> "<촬영 지시>" [--from <shot.json> --frame <image> [--review <review.json>]]');
   }
   const opts = new Map();
   for (let i = 0; i < flags.length; i += 2) {
     const [flag, value] = flags.slice(i, i + 2);
-    if (!['--from', '--frame'].includes(flag) || opts.has(flag) || !value || value.startsWith('--')) {
+    if (!['--from', '--frame', '--review'].includes(flag) || opts.has(flag) || !value || value.startsWith('--')) {
       throw new Error('Unknown or repeated option: ' + flag);
     }
     opts.set(flag, value);
   }
   if (opts.has('--from') !== opts.has('--frame')) throw new Error('이전 촬영 기록과 실제 컷 파일을 함께 지정하세요.');
+  if (opts.has('--review') && !opts.has('--frame')) throw new Error('검수 기록과 대조할 컷 파일이 필요합니다.');
   return { pack: resolve(pack), text: text.trim(), opts };
 }
 
@@ -112,6 +113,27 @@ function withDigest(asset) {
   return { ...asset, sha256: createHash('sha256').update(readFileSync(asset.path)).digest('hex') };
 }
 
+function readReview(path, frame, master) {
+  if (!path) throw new Error('조명·배경 변경에는 앞 컷의 얼굴 검수 기록도 지정하세요.');
+  const review = JSON.parse(readFileSync(path, 'utf8'));
+  if (review.schema !== 'ai-staff/chloe-shot-review/v1' || review.identity_revision !== revision ||
+      review.frame_sha256 !== frame.sha256 || review.master_sha256 !== master.sha256 ||
+      review.verdict !== 'pass' || !Number.isFinite(review.face_score) ||
+      review.face_score < 0.6 || review.face_score > 1 ||
+      !Number.isInteger(review.face_width_px) || review.face_width_px < 120) {
+    throw new Error('앞 컷의 검수 결과나 파일이 정본과 일치하지 않습니다.');
+  }
+  return review;
+}
+
+function environmentEdit(text) {
+  const command = /바꿔|변경|전환|옮겨|해줘/;
+  if (!command.test(text)) return null;
+  const light = /조명|조도|색온도|자연광|스탠드|빛만/.test(text);
+  const background = /배경|장소|창가로|사무실로/.test(text);
+  return light && background ? 'lighting-and-background' : light ? 'lighting' : background ? 'background' : null;
+}
+
 const cameraViews = {
   front: 'directly front-on',
   right45: 'camera on the character’s right at a front three-quarter angle of about 45 degrees',
@@ -133,17 +155,16 @@ const poseLabels = {
 try {
   const { pack, text, opts } = readRequest(process.argv.slice(2));
   const prior = opts.has('--from') ? readPrior(opts.get('--from')) : null;
+  const environment = prior ? environmentEdit(text) : null;
   const requestedPose = parsePose(text);
-  if (prior && requestedPose && requestedPose !== prior.scene.pose) {
-    throw new Error('이전 컷에서는 카메라만 바꿀 수 있습니다. 자세가 바뀌면 새 촬영으로 시작하세요.');
-  }
-  if (prior && /갈아입|배경\s*(바꿔|변경)|의상\s*(바꿔|변경)|장소\s*(바꿔|변경)/.test(text)) {
-    throw new Error('이전 컷의 의상과 장소는 잠겨 있습니다. 새 촬영으로 시작하세요.');
+  if (prior && ((requestedPose && requestedPose !== prior.scene.pose) ||
+      /갈아입|일어나|일어서|의상\s*(바꿔|변경)|표정\s*(바꿔|변경)/.test(text))) {
+    throw new Error('이전 컷의 인물·자세·의상은 유지합니다. 바꾸려면 새 촬영으로 시작하세요.');
   }
   const camera = parseCamera(text, prior?.camera);
-  if (prior && Object.keys(camera).every(key => camera[key] === prior.camera[key])) {
-    throw new Error('이전 컷에서 바꿀 카메라 항목을 지정하세요.');
-  }
+  const sameCamera = prior && Object.keys(camera).every(key => camera[key] === prior.camera[key]);
+  if (environment && !sameCamera) throw new Error('조명·배경과 카메라 변경은 한 번씩 따로 요청하세요.');
+  if (prior && sameCamera && !environment) throw new Error('이전 컷에서 바꿀 카메라나 조명·배경을 지정하세요.');
   const scene = prior?.scene || { pose: requestedPose || 'stand-neutral', brief: text };
   const broad = approvedRefs(pack, 'full');
   const master = broad.find(a => a.role === 'face-master');
@@ -159,8 +180,12 @@ try {
   if (detail) inputs.push(detail);
   const fallback = camera.view === 'side' ? 'suit-side' : camera.view === 'back' ? 'suit-back' : null;
   if (fallback && !prior) inputs.push(broad.find(a => a.role === fallback));
-  if (prior) inputs.push(withDigest({ role: 'previous-accepted-shot', path: resolve(opts.get('--frame')) }));
-  else inputs.push(poseRef(pack, scene.pose));
+  let sourceReview;
+  if (prior) {
+    const frame = withDigest({ role: 'previous-accepted-shot', path: resolve(opts.get('--frame')) });
+    if (environment || opts.has('--review')) sourceReview = readReview(opts.get('--review'), frame, master);
+    inputs.push(frame);
+  } else inputs.push(poseRef(pack, scene.pose));
 
   const directions = [
     'Create a photorealistic character image, like a still taken by a physical camera. Use image references, not any 3D asset.',
@@ -169,15 +194,19 @@ try {
     ...(detail ? ['Image 4 supplies skin, hair and eye texture only; preserve identity from image 1 and the face angle from image 2.'] : []),
     'For close shots, retain realistic pores, mild localized skin sheen, fine facial hair and individual hair strands. Preserve iris color and shape, distinct pupil, real-looking eyelash detail and a small catchlight consistent with the lighting. Avoid plastic skin, smoothing, harsh sharpening and artificial glow. Scale texture to the framing.',
     ...(fallback && !prior ? ['Image 4 supplies the silhouette and angle only.'] : []),
+    environment ? `Use the last accepted frame as the edit target. Change only ${environment.replaceAll('-', ' ')}. Preserve camera, crop, perspective, pose, expression, outfit and visible anatomical geometry. Change light as color and illumination rather than re-rendering face or body.` :
     prior ? 'Edit the last accepted frame as the continuity reference. Change only camera position or framing. Preserve pose, expression, outfit, lighting, surroundings and props.' :
       'The last reference supplies posture only; ignore its face, body shape, outfit and camera position. Use the approved charcoal suit and neutral studio unless the scene specifies another outfit or location.',
     `Camera: ${cameraViews[camera.view]}; ${heightWords[camera.height]}; ${framingWords[camera.framing]}.`,
     `Pose: ${poseLabels[scene.pose] || scene.pose}.`,
+    environment ? `Environment-only briefing: ${text}. Treat any wording outside the allowed edit scope as out of scope.` :
     prior ? 'Keep the subject from the last image and frame strictly as directed above. Do not reproduce the previous crop.' : `Scene briefing: ${scene.brief}`,
   ].filter(Boolean);
   console.log(JSON.stringify({
     schema, character_id: 'CLO-02', identity_revision: revision, status: 'awaiting_image_generation_and_review',
-    scene, camera, mode: prior ? 'camera-only' : 'new-shot', references: inputs,
+    scene, camera, mode: environment ? 'environment-only' : prior ? 'camera-only' : 'new-shot',
+    ...(environment ? { environment_edit: { scope: environment, brief: text } } : {}),
+    ...(sourceReview ? { source_review: sourceReview } : {}), references: inputs,
     imagegen: { referenced_image_paths: inputs.map(input => input.path), prompt: directions.join('\n') },
     review_required: ['face identity when visible', 'projected proportions and pose', 'framing and continuity', 'skin, eyes and hair detail in close shots'],
   }, null, 2));
