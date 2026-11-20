@@ -5,11 +5,19 @@ import { resolve } from 'node:path';
 const registryBytes = readFileSync(new URL('./current.json', import.meta.url));
 const registry = JSON.parse(registryBytes);
 const [directory, group = 'full'] = process.argv.slice(2);
-const roles = group === 'all' ? Object.keys(registry.files) : registry.sets[group];
+const angleGroup = group === 'face-45';
+const roles = group === 'all' ? Object.keys(registry.files) :
+  angleGroup ? ['face-master'] : Object.hasOwn(registry.sets, group) ? registry.sets[group] : null;
+
+function verifiedAsset(role, localPath, sha256) {
+  const digest = createHash('sha256').update(readFileSync(localPath)).digest('hex');
+  if (digest !== sha256) throw new Error('Asset SHA-256 mismatch: ' + role);
+  return { role, path: localPath, sha256: digest };
+}
 
 try {
   if (!directory || !roles) {
-    throw new Error('Usage: node resolve.mjs <extracted pack directory> [face|full|fitting|all]');
+    throw new Error('Usage: node resolve.mjs <extracted pack directory> [face|face-45|full|fitting|all]');
   }
   if (!readFileSync(resolve(directory, 'current.json')).equals(registryBytes)) {
     // Git checkouts may normalize line endings. Compare the parsed documents.
@@ -20,11 +28,15 @@ try {
   }
   const assets = roles.map(role => {
     const entry = registry.files[role];
-    const localPath = resolve(directory, entry.path);
-    const digest = createHash('sha256').update(readFileSync(localPath)).digest('hex');
-    if (digest !== entry.sha256) throw new Error('Asset SHA-256 mismatch: ' + role);
-    return { role, path: localPath, sha256: digest };
+    return verifiedAsset(role, resolve(directory, entry.path), entry.sha256);
   });
+  if (angleGroup) {
+    const angle = JSON.parse(readFileSync(new URL('./face-angle-45.json', import.meta.url), 'utf8'));
+    if (angle.base_revision !== registry.revision || angle.gate.verdict !== 'pass' ||
+        angle.scope !== 'face only') throw new Error('Unapproved face angle extension.');
+    const path = resolve(directory, 'angles', angle.extension_revision, angle.source);
+    assets.push(verifiedAsset('face-angle-45-support', path, angle.sha256));
+  }
   console.log(JSON.stringify({
     character_id: registry.character_id,
     variant: registry.variant,
