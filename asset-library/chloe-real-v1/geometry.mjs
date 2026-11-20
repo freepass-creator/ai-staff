@@ -22,8 +22,15 @@ function loadSource(pack) {
 }
 
 function imageRatios() {
-  const { head_top: top, shoe_tip: bottom, ...landmarks } = geometry.landmarks_y_px;
-  return Object.fromEntries(Object.entries(landmarks).map(([name, y]) => [name, (y - top) / (bottom - top)]));
+  const names = ['head_top', 'shoulder_line', 'waist_jacket', 'knee_center', 'ankle', 'shoe_tip'];
+  const points = names.map(name => geometry.landmarks_y_px[name]);
+  if (points.some((y, i) => !Number.isFinite(y) || y < 0 ||
+      y >= geometry.source_height || (i > 0 && y <= points[i - 1]))) {
+    throw new Error('INVALID_BODY_LANDMARKS');
+  }
+  const top = points[0];
+  const span = points.at(-1) - top;
+  return Object.fromEntries(names.slice(1, -1).map(name => [name, (geometry.landmarks_y_px[name] - top) / span]));
 }
 
 function compose(source, request) {
@@ -42,7 +49,7 @@ function compose(source, request) {
   }
   const frameWidth = source.width * scale;
   const frameHeight = source.height * scale;
-  if (x + frameWidth > width || y + frameHeight > height) throw new Error('APPROVED_FRAME_WOULD_BE_CROPPED');
+  if (frameWidth > width - x || frameHeight > height - y) throw new Error('APPROVED_FRAME_WOULD_BE_CROPPED');
   return [
     `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">`,
     `<rect width="${width}" height="${height}" fill="${background}"/>`,
