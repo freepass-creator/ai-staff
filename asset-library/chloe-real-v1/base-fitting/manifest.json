@@ -1,0 +1,31 @@
+{
+  "schema": "ai-staff/chloe-real-v1/fit-reference/v1",
+  "actor_variant": "CHLOE_REAL_V1",
+  "linked_body_lock": "CHLOE_REAL_V1_BODY_FRONT_LOCK_20261119_A",
+  "archive_folder": "https://drive.google.com/drive/folders/1O2NyKJUGEjHhdj1IlSu8LV6zHvUOyWZR",
+  "review_board": "https://drive.google.com/file/d/1xEz3jK7VUiE-YgKsQIf3EqYfR6dW2NZf/view",
+  "archive_zip": "https://drive.google.com/file/d/1rrpQabqVdDEhhRx0fCXHWjA0hItNR3iH/view",
+  "approved_anchors": {
+    "front_body_sha256": "8ca752cb889d1cd5a8682bf33cd3e74e397a304689bd4bc17abb4252a482fe4a",
+    "original_face_and_360_sha256": "640a420ad65446adaa0288e0f1bb14a0aace1dbb73ace053c3193977d2ecf7ff",
+    "approval_scope": "front 2D body image, original face source separately"
+  },
+  "exploratory_assets": {
+    "neutral_fitted_sports_bra_and_shorts": "REVIEW_ONLY",
+    "front_45_side_back_turnaround": "REVIEW_ONLY",
+    "closeup_body_details": "REVIEW_ONLY",
+    "poses": "REVIEW_ONLY",
+    "wardrobe": "REVIEW_ONLY",
+    "hosiery": "REVIEW_ONLY",
+    "expressions": "REVIEW_ONLY"
+  },
+  "prohibited_promotions": [
+    "do not replace characters/클로이 B reference or CLO-02 robot",
+    "no automatic current API selection",
+    "no automatic inferred height/measurements from generated visuals",
+    "no unseen 3D same-body claim",
+    "no deployment without approved mesh and visual QA"
+  ],
+  "studio_integration_status": "DRIVE_ASSET_PACKAGE_ONLY_NOT_CONNECTED",
+  "runway_used": false
+}
