@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_on": "2026-11-15",
+  "updated_on": "2026-11-16",
   "timezone": "Asia/Seoul",
   "authority": "대표 직접 확정: 보라색 CLO-02 클로이, CLO-04 클로아",
   "characters": [
@@ -34,17 +34,15 @@
       "reference": {
         "status": "use_current_variant_catalog",
         "catalog": "robots/current.json",
-        "variant_required_for_generic_name": true,
-        "approved_brand_lookup": "착한클로이",
-        "basic_variant_lookup": "기본클로이",
-        "notes": "매끈한 표면·은은한 발광 V1 기본형과 착한거래형 모두 대표 확정. current catalog 외 이미지 검색·구버전 fallback 금지."
+        "notes": "2026-11-16 approved VER1.0; no old design fallback"
       },
       "current_variants": {
         "chakhan": "chakhan-white-v1",
         "basic": "basic-purple-v1"
       },
       "number": 2,
-      "presentation": "female"
+      "presentation": "female",
+      "platform_version": "VER1.0"
     },
     {
       "id": "COD-03",
@@ -69,19 +67,20 @@
         "clo04"
       ],
       "signature_color": {
-        "name_ko": null,
-        "hex": null,
-        "status": "not_specified_in_latest_decision"
+        "name_ko": "앰버/주황빛",
+        "status": "approved_visual_reference"
       },
       "reference": {
-        "status": "needs_verified_source",
-        "source_basename": null,
-        "sha256": null,
-        "repository_path": null,
-        "notes": "이름·번호만 확정. 과거 주황 원본이나 착한거래 노랑 파생본을 파일명만 보고 자동 지정하지 않는다."
+        "status": "use_current_variant_catalog",
+        "catalog": "robots/current.json",
+        "notes": "2026-11-16 approved VER1.0; no old design fallback"
       },
       "number": 4,
-      "presentation": "female"
+      "presentation": "female",
+      "platform_version": "VER1.0",
+      "current_variants": {
+        "basic": "cloa-amber-v1"
+      }
     }
   ],
   "rules": {
@@ -134,12 +133,13 @@
   },
   "canonical_design": {
     "catalog": "robots/current.json",
-    "appearance_revision": "smooth-subtle-0.1",
+    "appearance_revision": "shared-feminine-platform-VER1.0",
     "status": "canonical",
     "production_usable": true,
     "variant_ids": [
       "chakhan-white-v1",
-      "basic-purple-v1"
+      "basic-purple-v1",
+      "cloa-amber-v1"
     ],
     "search_policy": {
       "canonical_only": true,
@@ -147,7 +147,8 @@
       "no_legacy_fallback": true,
       "archive_excluded": true,
       "generic_name_requires_brand_variant": true
-    }
+    },
+    "platform_version": "VER1.0"
   },
   "family_revision_catalog": "robots/revisions/current.json",
   "family_revision_policy": "Existing COD-01/COD-03/CLO-04 visual identities first. Previous invented CLO-01/CLO-03 candidates withdrawn. Match frontal camera/pose, preserve original face and helmet distinctions; do not auto-promote candidates.",
@@ -181,5 +182,6 @@
     ],
     "policy": "Four existing characters numbered 1,2,3,4. Reuse each existing identity; no new replacement characters. Presentation describes fictional robot design, not PC role."
   },
-  "new_pose_hand_grip_policy": "robots/hand-grip-policy.json"
+  "new_pose_hand_grip_policy": "robots/hand-grip-policy.json",
+  "current_platform_catalog": "robots/platform-ver1.json"
 }

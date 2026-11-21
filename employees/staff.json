@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_on": "2026-11-15",
+  "updated_on": "2026-11-16",
   "policy": "Visual identity and publication require human review. Static registry; no production publishing.",
   "staff": [
     {
@@ -9,13 +9,13 @@
       "role": "착한거래 AI 안내 캐릭터",
       "kind": "robot",
       "status": "canonical-front-ready",
-      "status_label": "착한 클로이 V1 정본 연결",
-      "description": "매끈한 흰 외장·은은한 발광 V1 정본. 기본형은 보라색, 착한거래형은 노란색입니다.",
-      "avatar": "/character-assets/chakhan-white-v1/png?sha=fecf6ba56d9381cbf21b6fe3f9e963224f73013e897141911da6c522b7603f07",
-      "avatar_note": "대표 확정 정면. 손등 LED 없음. 이전 노란 폐기본과 별도.",
+      "status_label": "VER1.0 정본 연결",
+      "description": "같은 VER1.0 플랫폼 · 넓은 LCD 화면과 큰 눈 · 여성형 원형 발광 어깨 · 광택 흰색 외장. 고유 발광색과 머리 장식은 유지.",
+      "avatar": "https://ai-staff-two.vercel.app/api/characters/assets/canonical-chakhan-white-v1?revision=82f18b12d35794d1311d98997b02750ebaa1dce1fb79d5347168cc525bcb2f57",
+      "avatar_note": "현재 VER1.0 정면 PNG. 이전 프로필/SVG 아님.",
       "source": "robots/current.json",
-      "studio": "/characters/?variant=chakhan-white-v1",
-      "kit": "/characters/",
+      "studio": "https://ai-staff-two.vercel.app/?kind=canonical",
+      "kit": "https://ai-staff-two.vercel.app/api/characters/current",
       "formats": [
         "블로그",
         "홈페이지",
@@ -29,7 +29,7 @@
         "쇼츠 PT"
       ],
       "contentVoice": "쉬운 말로 사실과 견적 조건을 설명하고 계약을 재촉하지 않는다.",
-      "approval": "2026-11-15 대표 확정: 기본형·착한거래형 smooth-subtle-0.1. 이전 시안 검색·자동 대체 금지. 새 포즈·3D는 별도 제작 필요.",
+      "approval": "2026-11-16 대표 VER1.0 확정. 구디자인 선택·공개 중단, 새 SVG·3D 리그 미제공.",
       "owner_brand": "프리패스",
       "human_form": {
         "id": "chloe-human",
@@ -48,28 +48,30 @@
         "static_svg_poses": 9,
         "viewer": "/human/",
         "library": "asset-library/chloe-human/library.json"
-      }
+      },
+      "platform_version": "VER1.0"
     },
     {
       "id": "CLO-04",
       "name": "클로아",
-      "role": "AI 캐릭터 후보",
+      "role": "프리패스 AI 캐릭터",
       "kind": "robot",
-      "status": "source-needed",
-      "status_label": "이미지 정본 필요",
-      "description": "대표 2026-11-14 정정: 기존 노란 착한거래 이미지 묶음은 CLO-04이나 해당 묶음은 폐기·사용 중단. 다른 올바른 원본 위치 확인 중.",
-      "avatar": null,
-      "avatar_note": "원본 미등록",
-      "source": "robots/registry.json",
-      "studio": null,
-      "kit": null,
+      "status": "canonical-front-ready",
+      "status_label": "VER1.0 정본 연결",
+      "description": "같은 VER1.0 플랫폼 · 넓은 LCD 화면과 큰 눈 · 여성형 원형 발광 어깨 · 광택 흰색 외장. 고유 발광색과 머리 장식은 유지.",
+      "avatar": "https://ai-staff-two.vercel.app/api/characters/assets/canonical-cloa-amber-v1?revision=a944508fe3461680361406ebfa00d2e068760d87fb893ec1c33c865b3a4052be",
+      "avatar_note": "현재 VER1.0 정면 PNG. 이전 프로필/SVG 아님.",
+      "source": "robots/current.json",
+      "studio": "https://ai-staff-two.vercel.app/?kind=canonical",
+      "kit": "https://ai-staff-two.vercel.app/api/characters/current",
       "formats": [
         "프로필 검토"
       ],
       "presets": [],
       "contentVoice": "역할·말투 미확정",
-      "approval": "기존 노란 착한거래 이미지 묶음 사용 금지. 대체 원본 확인 전 제작 보류.",
-      "owner_brand": "프리패스"
+      "approval": "2026-11-16 대표 VER1.0 확정. 구디자인 선택·공개 중단, 새 SVG·3D 리그 미제공.",
+      "owner_brand": "프리패스",
+      "platform_version": "VER1.0"
     },
     {
       "id": "chloun",

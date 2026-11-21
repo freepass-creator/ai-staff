@@ -15,7 +15,7 @@ try{
  $('kit').href=catalog.downloads.zip.url;
  for(const [id,label]of [['cover_emotion','표지 감정'],['consultation','상담·안내'],['all','전체']]){const count=catalog.assets.filter(a=>id==='all'||a.group===id).length,b=make('button','',label+' '+count);b.type='button';b.dataset.group=id;b.onclick=()=>{group=id;showCuts();};$('groups').append(b);}
  if(!['cover_emotion','consultation','all'].includes(group))group='cover_emotion';showCuts();
- for(const c of catalog.covers||[]){const article=make('article','asset-card'),a=make('a'),img=make('img');a.href=c.png_url;a.target='_blank';a.rel='noopener';img.src='../'+c.thumbnail;img.alt=c.label;img.loading='lazy';a.append(img);const text=make('div','card-copy');text.append(make('h3','',c.label),make('p','',c.headline));article.append(a,text);$('cover-grid').append(article);}
+ for(const c of catalog.covers||[]){const article=make('article','asset-card'),a=make('a'),img=make('img');a.href=c.png_url;a.target='_blank';a.rel='noopener';img.width=1200;img.height=1200;img.src='../'+c.thumbnail;img.alt=c.label;img.loading='lazy';a.append(img);const text=make('div','card-copy');text.append(make('h3','',c.label),make('p','',c.headline));article.append(a,text);$('cover-grid').append(article);}
  const emotions=catalog.assets.filter(a=>a.group==='cover_emotion').length;$('status').textContent='표지 감정 '+emotions+'컷 · 상담·안내 '+(catalog.assets.length-emotions)+'컷 · 표지 구성 예시 '+(catalog.covers||[]).length+'개';
 }catch{$('status').textContent='착한거래 이미지 목록을 불러오지 못했습니다. 잠시 후 다시 열어주세요.';}
 $('background').onclick=()=>{const dark=document.body.classList.toggle('dark-cuts');$('background').setAttribute('aria-pressed',String(dark));$('background').textContent=dark?'밝은 배경에서 보기':'어두운 배경에서 보기';};

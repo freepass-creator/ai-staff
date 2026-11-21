@@ -9,17 +9,15 @@
   "assets": 7,
   "downloads": {
     "zip": {
-      "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-Cover-Kit-v2.zip",
-      "sha256": "6194c185f47cf53d7fdc757624d5cf59157fa9f01b9682eb7b4baf7ea2e841ff",
-      "bytes": 13759387
-    },
-    "previous_batch": {
-      "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-CLO-02-Use-Cuts-Batch01.zip",
-      "sha256": "8608ca6c9511b50cc926d0bd5c51323415239dd005520d1bce213d862b703280",
-      "bytes": 4264087
+      "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/AI-Staff-VER1.0-Current-Kit.zip",
+      "sha256": "e0175ada1eba174cfc0120ec01a9856c00cc1eaf0c4621105ae080861ab2f39d",
+      "bytes": 18842140,
+      "contents": "VER1.0 front3 + Chakhan pose7 + cover4 + current // CI/fonts/renderer; no human/library-wide archive"
     }
   },
   "cover_emotion_assets": 4,
   "cover_examples": 4,
-  "current_api": "https://ai-staff-two.vercel.app/api/characters/current"
+  "current_api": "https://ai-staff-two.vercel.app/api/characters/current",
+  "design_version": "VER1.0",
+  "library_root": "D:/dev-artifacts/ai-staff/platform-ver1-20261116/cover-bundle"
 }

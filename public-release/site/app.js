@@ -1,4 +1,4 @@
-const labels={all:'전체',canonical:'클로이 정본',human:'사람형',robot:'로봇 활용',scene:'장면 합성',template:'포스터',revision:'R1 제안',hand:'손 정본'};
+const labels={all:'전체',canonical:'로봇 VER1.0 정본',human:'사람형',robot:'로봇 활용',scene:'장면 합성',template:'포스터',revision:'R1 제안',hand:'손 정본'};
 const $=id=>document.getElementById(id),params=new URLSearchParams(location.search);
 let catalog,kind=labels[params.get('kind')]?params.get('kind'):'all',active;
 const query=$('query');query.value=params.get('q')||'';
@@ -8,7 +8,7 @@ function render(){
  const terms=query.value.trim().normalize('NFKC').toLocaleLowerCase().split(/\s+/).filter(Boolean);
  const visible=catalog.assets.filter(a=>(kind==='all'||a.category===kind)&&terms.every(t=>[a.title,a.usage,a.id,...a.tags].join(' ').normalize('NFKC').toLocaleLowerCase().includes(t)));
  $('cards').replaceChildren();
- for(const a of visible){const card=make('article','asset-card'),button=make('button','asset-preview');button.type='button';button.setAttribute('aria-label',a.title+' 크게 보기');button.onclick=()=>open(a);const image=make('img');image.src=a.thumbnail;image.alt=a.title;image.loading='lazy';const badge=make('span','badge'+(!a.production_usable?' draft':''),!a.production_usable?'R1 검토용':a.status==='canonical'?'최신 정본':labels[a.category]);button.append(image,badge);const copy=make('div','card-copy'),title=make('h3','',a.title),usage=make('p','',a.usage),links=make('div','card-links'),png=make('a','','PNG 원본 ↗'),more=make('button','','크게 보기');png.href=a.png_url;png.target='_blank';png.rel='noopener';more.type='button';more.onclick=()=>open(a);links.append(png,more);copy.append(title,usage,links);card.append(button,copy);$('cards').append(card);}
+ for(const a of visible){const card=make('article','asset-card'),button=make('button','asset-preview');button.type='button';button.setAttribute('aria-label',a.title+' 크게 보기');button.onclick=()=>open(a);const image=make('img');image.src=a.thumbnail;image.alt=a.title;image.loading='lazy';const badge=make('span','badge'+(!a.production_usable?' draft':''),!a.production_usable?'R1 검토용':a.status==='canonical'?'최신 정본':labels[a.category]);button.setAttribute('aria-label',a.title+' 크게 보기 · '+badge.textContent);button.append(image,badge);const copy=make('div','card-copy'),title=make('h3','',a.title),usage=make('p','',a.usage),links=make('div','card-links'),png=make('a','','PNG 원본 ↗'),more=make('button','','크게 보기');png.href=a.png_url;png.target='_blank';png.rel='noopener';more.type='button';more.onclick=()=>open(a);links.append(png,more);copy.append(title,usage,links);card.append(button,copy);$('cards').append(card);}
  $('result-count').textContent=visible.length+'개 자산 · '+(kind==='revision'?'제안은 정본과 구분해 사용하세요.':'그림의 용도를 확인하고 골라 쓰세요.');$('empty').hidden=visible.length!==0;
  for(const button of $('filters').children)button.setAttribute('aria-pressed',String(button.dataset.kind===kind));
  const p=new URLSearchParams();if(kind!=='all')p.set('kind',kind);if(query.value)p.set('q',query.value);history.replaceState(null,'',location.pathname+(p.size?'?'+p.toString():''));
@@ -16,7 +16,7 @@ function render(){
 try{
  const response=await fetch('catalog.json',{cache:'no-cache'});if(!response.ok)throw Error('catalog');catalog=await response.json();
  for(const [key,label]of Object.entries(labels)){const count=key==='all'?catalog.assets.length:catalog.assets.filter(a=>a.category===key).length;const b=make('button','',label+' '+count);b.dataset.kind=key;b.type='button';b.onclick=()=>{kind=key;render();};$('filters').append(b);}
- $('usable-count').textContent=catalog.assets.filter(a=>a.production_usable).length;$('all-download').href=catalog.downloads.assets.url;$('template-download').href=catalog.downloads.templates.url;
+ $('usable-count').textContent=catalog.assets.filter(a=>a.production_usable).length;$('all-download').href=catalog.downloads.assets.url;$('template-download').href=catalog.downloads.assets.url;
  $('hero-robot').src=catalog.assets.find(a=>a.id==='canonical-basic-purple-v1').thumbnail;$('hero-human').src=catalog.assets.find(a=>a.id==='human-10-navy-present').thumbnail;
  $('release-link').href='https://github.com/freepass-creator/ai-staff/releases/tag/'+catalog.release_tag;query.oninput=render;render();
 }catch{$('result-count').textContent='자산 목록을 불러오지 못했습니다. 잠시 후 다시 열어주세요.';}

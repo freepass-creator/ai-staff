@@ -1,6 +1,6 @@
 {
   "schema": "ai-staff/robot-family-revision/v1",
-  "family_reference": "robots/current.json basic-purple-v1",
+  "family_reference": "robots/platform-ver1.json",
   "owner_brand": "프리패스",
   "shared_language": [
     "기존 캐릭터의 눈매·머리·귀 구조 보존",
@@ -17,8 +17,8 @@
       "CLO-04"
     ],
     "eyes": "Preserve each existing character: COD-01 round blue, COD-03 squared teal. CLO-02/CLO-04 related family, not identical cloned face.",
-    "canonical_CLO02": "unchanged",
-    "CLO04_shoulders": "compact, reduced projection"
+    "canonical_CLO02": "VER1.0 approved 2026-11-16",
+    "CLO04_shoulders": "same compact feminine round module as CLO02"
   },
   "withdrawn_proposals": [
     {
@@ -98,23 +98,6 @@
       "identity_reference_catalog": "robots/revisions/existing-references.json",
       "approval_note": "기존 프로필 정체성을 참조한 정면 파생 시안. 전신 하체는 추정 구조이며 정본/3D 설계도로 승격하지 않음.",
       "presentation": "male"
-    },
-    {
-      "character_id": "CLO-04",
-      "name_ko": "클로아",
-      "revision": "existing-front-R1-proposal",
-      "status": "design_proposal",
-      "production_usable": false,
-      "public_eligible": true,
-      "camera_angle": "front",
-      "plate_design": "원본의 고리 안테나 · 세 줄 볼 표시/열린 미소 · 작은 견갑",
-      "proposed_emission_color": "orange",
-      "source_png": "D:\\large\\ai-staff\\robot-existing-front-r1-20261115\\CLO-04-existing-front-R1.png",
-      "source_sha256": "fca5542e5719feb3636f966458988660086c660c5e90bbf784ff91f6be5ebe3d",
-      "identity_reference_sha256": "5a4537405ad38e7e23abdf3cd849e8299204c90218f1f64db2d788191cdbe616",
-      "identity_reference_catalog": "robots/revisions/existing-references.json",
-      "approval_note": "기존 프로필 정체성을 참조한 정면 파생 시안. 전신 하체는 추정 구조이며 정본/3D 설계도로 승격하지 않음.",
-      "presentation": "female"
     }
   ],
   "owner_correction": "Preserve existing COD-01 and COD-03 identities; prior CLO-01/03 inventions withdrawn. Existing source reference must be provided to generation.",
@@ -142,7 +125,7 @@
   ],
   "new_generation_design_override": {
     "effective_on": "2026-11-16",
-    "scope": "new generation only; existing images unchanged",
+    "scope": "VER1.0 current references only",
     "characters": [
       "CLO-02",
       "CLO-04"
@@ -150,6 +133,37 @@
     "same_feminine_shoulders": true,
     "reference": "robots/shoulder-master.json",
     "shape": "compact round luminous shoulder disk with curved white collar; no pauldron",
-    "preserve_character_specific_face_number_emission": true
-  }
+    "preserve_character_specific_face_number_emission": true,
+    "platform": "robots/platform-ver1.json",
+    "spacious_display_large_eyes": true
+  },
+  "canonical_members": [
+    {
+      "id": "canonical-basic-purple-v1",
+      "character_id": "CLO-02",
+      "variant": "basic-purple-v1",
+      "sha256": "39a28cfb18abbf5e1eb3e74bc91e7592c61cedc6b19a74eec333ec142814603d",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/CLO-02-freepass-VER1.0.png",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "canonical-chakhan-white-v1",
+      "character_id": "CLO-02",
+      "variant": "chakhan-white-v1",
+      "sha256": "82f18b12d35794d1311d98997b02750ebaa1dce1fb79d5347168cc525bcb2f57",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/CLO-02-chakhan-VER1.0.png",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "canonical-cloa-amber-v1",
+      "character_id": "CLO-04",
+      "variant": "cloa-amber-v1",
+      "sha256": "a944508fe3461680361406ebfa00d2e068760d87fb893ec1c33c865b3a4052be",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/CLO-04-freepass-VER1.0.png",
+      "width": 1024,
+      "height": 1536
+    }
+  ]
 }

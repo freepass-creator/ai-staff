@@ -1,22 +1,18 @@
-# 앞으로 새 캐릭터·포즈를 생성할 때
+# AI Staff VER1.0 — 현재 자산
 
-기존 이미지는 그대로 재사용한다. 새로 생성할 때만 아래 준비기를 실행한다.
+단일 진입점: https://ai-staff-two.vercel.app/api/characters/current
 
-```powershell
-node public-release/site/prepare-generation.mjs --id canonical-chakhan-white-v1 --brief "안도하며 가슴에 손을 얹는 자연스러운 상반신" --output D:/dev-artifacts/ai-staff/next-character-001
-node public-release/site/prepare-generation.mjs --check D:/dev-artifacts/ai-staff/next-character-001
-```
+현재26개: 로봇 정면3(기본 클로이/착한거래 클로이/클로아), 새 착한거래 포즈7, 사람형12, 손정본3, 공통 어깨1. 프로필은 구디자인으로 제공 중단했다. 구정면·R1 클로아·과거7포즈SHA·옛 SVG/모션/표지완성본·혼합ZIP은 현재 선택과 다운로드에서 제외한다. 원본은 로컬 이력으로만 보존하며 fallback하지 않는다.
 
-출력의 imagegen-request.json을 읽어 해당 인수 그대로 기존 imagegen 도구에 전달한다. referenced_image_paths에 있는 실제 PNG를 모두 첨부한다. 텍스트 프롬프트만 복사해 생성하지 않는다. 이 준비기는 이미지 모델을 호출하거나 API 키를 쓰지 않는다.
+CLO02와 CLO04는 VER1.0 공통 플랫폼이다. 넓은 검은 LCD 화면과 큰 눈의 비율, 몸/관절 비율, 여성형 원형 발광 어깨, 흰 광택 도장과 진회색 연속 손바닥을 유지한다. 02의양옆핀/보라색(착한거래는노랑)/속눈썹미소, 04의링안테나/amber/세줄볼표시/열린미소는 구별한다. 같은 플랫폼은 비주얼 설계 기준이며 실측3D모델·리그를 제공한다는 뜻은 아니다.
 
-로봇은 선택한 CLO-02와 같은 변형 정면, 좌·우 손바닥, 왼손등의 현재 PNG를 SHA로 검증한다. 사람형은 같은 사람의 정면과 선택 포즈만 받으며 로봇 손을 넣지 않는다. 프로필·손 단독 부품은 새 배우 생성 대상으로 쓸 수 없다. 현재 미승인 COD-01/03·CLO-04에 CLO-02의 얼굴·성별·외장을 자동 전파하지 않는다.
+정면 ID: canonical-basic-purple-v1, canonical-chakhan-white-v1, canonical-cloa-amber-v1. 포즈 ID: cover-think, cover-aha, cover-dejected, cover-confident, phone, tablet, guide-right. ID만 저장하고매번 current에서 revision/SHA/url을새로받는다. 과거hash로요청하면410이며사람형에는로봇손/외장을적용하지않는다.
 
-새 결과는 미검수 후보다. REVIEW.json은 모두 false로 시작한다. 실제 생성 PNG의 각손에서 엄지와 검지/중지/약지/새끼를 짚어 보고 두께·길이·좌우 손목 연결·엄지기저/오목 중앙/연속 그립·흰 도장 광택·은은한 LCD 발광·명찰을 확인한다. 세 손가락처럼 보이는 표지 손은 자세나 윤곽을 바꿔 다시 만든다. 참조 다운로드 성공을 이미지 품질 승인으로 간주하지 않는다.
+기존 이미지는 API PNG를그대로사용한다. 새 생성은 generation_url에 brief를추가하거나 다음명령을사용한다.
 
-READY.json이 없거나 --check에 실패하면 생성 요청을 사용하지 않는다. 원본 SHA가 달라지거나 준비 중 온라인 revision이 바뀌면 새 빈 폴더로 다시 준비한다. 과거 폴더나 생성 캐시로 대체하지 않는다. 자동 정본 승격·게시·예약은 없다.
+    node prepare-generation.mjs --id canonical-chakhan-white-v1 --brief "장면 설명" --output 새빈폴더
+    node prepare-generation.mjs --check 생성한폴더
 
-공개 한 주소 `/api/characters/current`에서 각 배우의 generation_url을 따라간다. `/api/characters/generation?id=현재ID&brief=새장면`이 현재 참조·규격·검수 항목을 제공한다.
+준비파일 imagegen-request.json의 실제 PNG 참조를 생성 도구에 첨부한다. 로봇은 정면·포즈 모두 같은 변형의 최신 정면+손3뷰+원형어깨, 정확히5종 PNG를 첨부한다. 선택한 포즈의 행동 힌트는 별도 문장으로 전달하며 포즈 PNG를 여섯 번째 첨부로 더하지 않는다. 손 참조를 생략하거나 5개 첨부 상한을 넘기지 않는다. 생성후각손엄지외4개/총5개·두께길이·손목연결·브랜드·얼굴비율·원형어깨를직접확인한다. 생성은자동게시/자동승격하지않는다.
 
-준비 폴더는 절대 PNG 경로를 담으므로 이동·복사한 요청은 사용하지 않는다. 다른 PC나 폴더에서는 새 빈 폴더로 다시 준비한다. --check는 실제 첨부 경로·PNG·온라인 revision을 다시 확인한다. 생성 규칙을 바꿀 때 generation rules revision도 갱신한다.
-
-새 로봇 요청에는 공통 여성형 원형 발광 어깨 PNG도 포함한다. 클로이·클로아의 어깨 형태는 같게, 얼굴·색·머리 장식은 각자 유지한다. 현재 생성 API의 배우는 승인된 CLO-02와 사람형이며, CLO-04를 승인 배우로 자동 승격하지 않는다. 어깨 부품을 얼굴·귀·가슴으로 복사하지 않는다.
+현재 정적 PNG가배포형식이다. VER1.0용 SVG/관절리그는아직없으며 옛SVG를대신쓰지않는다. 새캐릭터키트는 catalog.json의 downloads.assets(정면3+포즈7+안내+공개메타). 예전코드/source.bundle/인수원문/비밀값은공개패키지에넣지않는다.

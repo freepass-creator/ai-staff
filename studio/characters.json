@@ -1,30 +1,29 @@
 {
   "schema_version": 1,
-  "updated_on": "2026-11-15",
+  "updated_on": "2026-11-16",
   "policy": "Do not infer identity from filename; preserve originals; derivatives require review.",
   "characters": [
     {
       "id": "CLO-02",
       "display_name": "클로이",
       "identity_reference": "robots/current.json",
-      "identity_source_status": "current_variant_catalog_connected",
-      "motion_studio": "/characters/",
+      "identity_source_status": "VER1.0_canonical_catalog_connected",
+      "motion_studio": "https://ai-staff-two.vercel.app/?kind=canonical",
       "motion_engine": null,
-      "asset_identity_status": "canonical_smooth_subtle_v1_both_variants",
+      "asset_identity_status": "canonical_VER1.0",
       "image_generation": {
         "human_generator_compatible": false,
-        "robot_identity_preserving_generation": "approved_fixed_front_native_svg",
+        "robot_identity_preserving_generation": "reference_bound_VER1.0_current_PNG",
         "still_frame_export": true
       },
       "actions": {
         "idle": "canonical_front_static",
-        "new_pose": "not_pixel_verified",
+        "new_pose": "current_PNG_references_and_visual_review_required",
         "true_3d": "not_implemented"
       },
       "production": {
         "stills": [
-          "png",
-          "svg"
+          "png"
         ],
         "video": [],
         "audio": "not_supported"
@@ -51,15 +50,34 @@
         "static_svg_poses": 9,
         "viewer": "/human/",
         "library": "asset-library/chloe-human/library.json"
-      }
+      },
+      "platform_version": "VER1.0"
     },
     {
       "id": "CLO-04",
       "display_name": "클로아",
-      "identity_source_status": "reference_missing",
-      "motion_studio": null,
+      "identity_source_status": "VER1.0_canonical_catalog_connected",
+      "motion_studio": "https://ai-staff-two.vercel.app/?kind=canonical",
       "image_generation": {
-        "robot_identity_preserving_generation": "blocked_pending_reference"
+        "human_generator_compatible": false,
+        "robot_identity_preserving_generation": "reference_bound_VER1.0_current_PNG",
+        "still_frame_export": true
+      },
+      "identity_reference": "robots/current.json",
+      "platform_version": "VER1.0",
+      "motion_engine": null,
+      "asset_identity_status": "canonical_VER1.0",
+      "production": {
+        "stills": [
+          "png"
+        ],
+        "video": [],
+        "audio": "not_supported"
+      },
+      "actions": {
+        "idle": "canonical_front_static",
+        "new_pose": "current_PNG_references_and_visual_review_required",
+        "true_3d": "not_implemented"
       }
     }
   ]

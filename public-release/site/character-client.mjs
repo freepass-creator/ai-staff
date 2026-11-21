@@ -9,7 +9,7 @@ export async function loadCharacter(id,{base='https://ai-staff-two.vercel.app',f
 }
 export async function assertGenerationPacketCurrent(packet,{base='https://ai-staff-two.vercel.app',fetchImpl=fetch}={}){
  const r=await fetchImpl(new URL('/api/characters/current',base),{cache:'no-store'});if(!r.ok)throw Error('CURRENT_CATALOG_UNAVAILABLE');const c=await r.json();
- if(c.revision!==packet.catalog_revision||c.generation_rules_revision!==packet.rules_revision)throw Error('GENERATION_REFERENCES_CHANGED');
+ if(c.revision!==packet.catalog_revision||c.generation_rules_revision!==packet.rules_revision||(packet.actor_kind!=='human_pose'&&c.platform_version!==packet.platform_version))throw Error('GENERATION_REFERENCES_CHANGED');
  if(!Array.isArray(packet.references)||!packet.references.length||packet.references.some(a=>!c.assets.some(b=>b.id===a.id&&b.sha256===a.sha256&&b.kind===a.kind)))throw Error('GENERATION_REFERENCES_CHANGED');return c;
 }
 export async function prepareCharacterGeneration({id,brief},{base='https://ai-staff-two.vercel.app',fetchImpl=fetch}={}){

@@ -1,16 +1,18 @@
-현재 캐릭터 API는 **26개(기존25+공통어깨1)**: 로봇정면2 + 착한거래포즈7 + 사람형12 + 손정본3 + 승인프로필1. 사람형과 손도 `/api/characters/current` 하나에서 제공한다. `?kind=human_pose`, `?kind=hand_master`로 분류 조회하며 ID/revision/SHA/url로 동일하게 가져온다. 손 기준은 `robot-hand-v1.0`, 좌우손바닥과 왼손등3뷰. 손바닥은 연속곡면이며 오래된 분리 타원패드 기준을 사용하지 않는다.
+# AI Staff VER1.0 — 현재 자산
 
-# 캐릭터 최신 API
+단일 진입점: https://ai-staff-two.vercel.app/api/characters/current
 
-다른 AI와 프로젝트는 `https://ai-staff-two.vercel.app/api/characters/current` 한 곳에서 시작한다. 캐릭터 출력 때마다 최신 목록을 읽고 `id`, `revision`(PNG SHA256), `url`을 사용한다. url은 사이트 기준 상대경로이며 절대주소로 합쳐 호출한다. API가 주는 PNG 바이트를 그대로 쓴다. 이미지 생성으로 다시 그리지 않는다.
+현재26개: 로봇 정면3(기본 클로이/착한거래 클로이/클로아), 새 착한거래 포즈7, 사람형12, 손정본3, 공통 어깨1. 프로필은 구디자인으로 제공 중단했다. 구정면·R1 클로아·과거7포즈SHA·옛 SVG/모션/표지완성본·혼합ZIP은 현재 선택과 다운로드에서 제외한다. 원본은 로컬 이력으로만 보존하며 fallback하지 않는다.
 
-예: `GET /api/characters/resolve?id=cover-confident`. 정면은 `q=착한클로이` 또는 `q=기본클로이`. 기본 `클로이`만으로는 변형을 임의 선택하지 않는다. 프로필은 `id=profile-selected-02` 한 장만 허용한다.
+CLO02와 CLO04는 VER1.0 공통 플랫폼이다. 넓은 검은 LCD 화면과 큰 눈의 비율, 몸/관절 비율, 여성형 원형 발광 어깨, 흰 광택 도장과 진회색 연속 손바닥을 유지한다. 02의양옆핀/보라색(착한거래는노랑)/속눈썹미소, 04의링안테나/amber/세줄볼표시/열린미소는 구별한다. 같은 플랫폼은 비주얼 설계 기준이며 실측3D모델·리그를 제공한다는 뜻은 아니다.
 
-`GET /api/characters/assets/cover-confident?revision=<현재 SHA>`로 받으면 PNG 해시를 서버에서 검증한다. 폐기한 ID·revision은 410, 임의 ID는404, 원본 검증 실패는502로 멈춘다. 구버전/폴더검색 fallback은 없다. 손의 규격은 `/hand-grip-policy.json`.
+정면 ID: canonical-basic-purple-v1, canonical-chakhan-white-v1, canonical-cloa-amber-v1. 포즈 ID: cover-think, cover-aha, cover-dejected, cover-confident, phone, tablet, guide-right. ID만 저장하고매번 current에서 revision/SHA/url을새로받는다. 과거hash로요청하면410이며사람형에는로봇손/외장을적용하지않는다.
 
-매 게시 전 current를 새로 읽어 local SHA와 비교하고 다르면 새 PNG를 받는다. API 실패 시 과거 파일을 대신 게시하지 않는다. 이미 발행한 글의 재현용 사본은 이력일 뿐 새 글의 선택 원본이 아니다. 최신 목록을 정기적으로 읽는 로직은 소비 앱이 구현한다. 여기서는 상주 자동게시/동기화 에이전트를 설치하지 않는다.
+기존 이미지는 API PNG를그대로사용한다. 새 생성은 generation_url에 brief를추가하거나 다음명령을사용한다.
 
-구 로봇37컷·옛 로봇표지·이를 포함한 예전 전체/포스터 ZIP과 각도연구 다운로드는 공개 철회한다. 기존 사람형과 다른 직원의 등록/참고자료는 유지한다. 참조정면, 활용포즈, 승인프로필 용도는 서로 대체하지 않는다.
+    node prepare-generation.mjs --id canonical-chakhan-white-v1 --brief "장면 설명" --output 새빈폴더
+    node prepare-generation.mjs --check 생성한폴더
 
-미리보기 `/chakhan/`, 문구 편집용 최신 표지 키트는 `/chakhan-use-cuts.json`의 downloads.zip. 사용 브랜드는 착한거래, 기본 보라 정면은 프리패스다.
+준비파일 imagegen-request.json의 실제 PNG 참조를 생성 도구에 첨부한다. 로봇은 정면·포즈 모두 같은 변형의 최신 정면+손3뷰+원형어깨, 정확히5종 PNG를 첨부한다. 선택한 포즈의 행동 힌트는 별도 문장으로 전달하며 포즈 PNG를 여섯 번째 첨부로 더하지 않는다. 손 참조를 생략하거나 5개 첨부 상한을 넘기지 않는다. 생성후각손엄지외4개/총5개·두께길이·손목연결·브랜드·얼굴비율·원형어깨를직접확인한다. 생성은자동게시/자동승격하지않는다.
 
+현재 정적 PNG가배포형식이다. VER1.0용 SVG/관절리그는아직없으며 옛SVG를대신쓰지않는다. 새캐릭터키트는 catalog.json의 downloads.assets(정면3+포즈7+안내+공개메타). 예전코드/source.bundle/인수원문/비밀값은공개패키지에넣지않는다.
