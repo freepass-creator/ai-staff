@@ -1,0 +1,67 @@
+{
+  "weekdays": {
+    "mon": {
+      "bg": ["#FBF9F2", "#F6F0DB"],
+      "border": "#DED6BA",
+      "accent": "#72581F",
+      "text": "#1B2A4A",
+      "faceBorder": "#C6B487",
+      "leafA": "#C7A44F",
+      "leafB": "#AB7653"
+    },
+    "tue": {
+      "bg": ["#FBF9F2", "#EEF2E7"],
+      "border": "#D6DCC9",
+      "accent": "#4D6044",
+      "text": "#1B2A4A",
+      "faceBorder": "#B1BFA4",
+      "leafA": "#A8AA70",
+      "leafB": "#778C64"
+    },
+    "wed": {
+      "bg": ["#FBF9F2", "#F5EFDE"],
+      "border": "#DED4BD",
+      "accent": "#6D563B",
+      "text": "#1B2A4A",
+      "faceBorder": "#C6B295",
+      "leafA": "#C7AB70",
+      "leafB": "#A9835B"
+    },
+    "thu": {
+      "bg": ["#FBF9F2", "#F0F1E1"],
+      "border": "#D8D9BF",
+      "accent": "#59613B",
+      "text": "#1B2A4A",
+      "faceBorder": "#B7BD99",
+      "leafA": "#B5B573",
+      "leafB": "#879363"
+    },
+    "fri": {
+      "bg": ["#FBF9F2", "#F8EBE2"],
+      "border": "#E3D1C6",
+      "accent": "#80533F",
+      "text": "#1B2A4A",
+      "faceBorder": "#CEAC98",
+      "leafA": "#D0A472",
+      "leafB": "#B57B64"
+    },
+    "sat": {
+      "bg": ["#FBF9F2", "#F8EEDB"],
+      "border": "#E3D5BC",
+      "accent": "#73582F",
+      "text": "#1B2A4A",
+      "faceBorder": "#CBB68F",
+      "leafA": "#CDA959",
+      "leafB": "#B38B5B"
+    },
+    "sun": {
+      "bg": ["#FBF9F2", "#EDF1EB"],
+      "border": "#D4DBD2",
+      "accent": "#486157",
+      "text": "#1B2A4A",
+      "faceBorder": "#AEBCAD",
+      "leafA": "#A4AD84",
+      "leafB": "#82967F"
+    }
+  }
+}
