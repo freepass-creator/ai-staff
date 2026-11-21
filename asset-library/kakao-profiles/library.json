@@ -1,7 +1,7 @@
 {
   "schema": "ai-staff/profile-allowlist/v1",
   "scope": "KakaoTalk and avatar profile images only",
-  "owner_instruction": "선택한 02 한 장만 사용. 나머지 프로필 사진 전부 폐기.",
+  "owner_instruction": "2026-11-16 디자인 VER1.0 확정 및 구버전 폐기로 이전 단일 승인 프로필도 현재 제공 중단. 새 프로필 미등록; 정면을 프로필로 임의 대체하지 않는다.",
   "selection_policy": {
     "allowlist_only": true,
     "fallback_allowed": false,
@@ -10,16 +10,6 @@
     "unlisted_profile_status": "owner_rejected_do_not_use",
     "character_design_references_are_not_profile_fallbacks": true
   },
-  "profiles": [
-    {
-      "number": "02",
-      "display_code": "CLO-02",
-      "status": "owner_selected",
-      "production_usable": true,
-      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/CLO-02-kakao-profile-selected.png",
-      "sha256": "49b6f9ae899afc64271aac75e0705b192316053d32ff85c6c316f20d02774352",
-      "width": 1254,
-      "height": 1254
-    }
-  ]
+  "profiles": [],
+  "status": "retired_design_pending_ver1_profile"
 }

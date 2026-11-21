@@ -1,27 +1,9 @@
-# 클로이 V1 최신 정본
+# 로봇 VER1.0 현재 정본
 
-2026-11-15 대표 확정: **매끈한 표면·은은한 발광 smooth-subtle-0.1**. 기본형(프리패스/보라)과 착한거래형(착한거래/노랑) 모두 정본이다. 모두 CLO-02 클로이이며 프리패스 소속이다.
+## 2026-11-16 대표 최종 확정 — CLO02·CLO04 VER1.0 (아래 과거 기준보다 우선)
 
-기계 정본은 `robots/current.json` 하나다. 과거 대화·폴더·파일명으로 이미지를 다시 검색하지 않는다. 현재 정본 이외 이미지·재질 시안은 검색·선택·자동 대체에서 제외한다. 원본 이력은 보존하며 현재 이미지로 제공하지 않는다.
+정본은 robots/current.json 및 robots/platform-ver1.json. CLO02 기본 보라·착한거래 노랑과 CLO04 amber는 VER1.0이다. 넓은 검은 LCD 화면·큰 눈 비율·동일 여성형 원형 발광 어깨와 공통 플랫폼 비율을 유지한다. 얼굴 표정/고유 장식/발광색으로만 각 정체성을 구분한다. COD01·COD03의 정체성을 복제/개명하지 않는다.
 
-| 요청 | 논리 ID | 상태 |
-|---|---|---|
-| 착한 클로이 | `chakhan-white-v1` | 정본·제작 가능 |
-| 기본 클로이 / 보라색 클로이 | `basic-purple-v1` | 정본·제작 가능 |
+온라인 https://ai-staff-two.vercel.app/api/characters/current 에서 ID/revision/SHA/url을 읽는다. canonical-basic-purple-v1, canonical-chakhan-white-v1, canonical-cloa-amber-v1이 정면3종이다. 구 smooth-subtle-0.1 정면/04 R1/이전 프로필/옛 SVG·모션/혼합 ZIP은 현재 자산이 아니다. 파일명 검색·이력·캐시 fallback 금지. 로컬 원본은 이력 보존만 한다. 이전 단일 프로필도 구디자인이므로 공개 중단하며 새 프로필 미등록. 현재 승인 PNG와 새로 검수된7 활용컷만 로봇 생산용. 사람형12·손정본3은 유지한다. SVG와 3D 리그는 이번 VER1.0용으로 새 제작 완료한 것이 아니므로 옛 SVG를 대신 주지 않는다.
 
-```powershell
-node robots/current.mjs resolve 착한클로이 --production
-node robots/current.mjs resolve 기본클로이 --production
-```
-
-보기: http://127.0.0.1:54640/characters/
-
-API `/api/characters/resolve?q=착한클로이&production=1` 또는 기본클로이. 반환된 asset_urls와 SHA256으로 자산을 사용한다. 파일 누락·변조·과거 해시는 오류다. 구버전 fallback 금지. 단순 클로이/CLO-02만 지정하면 브랜드 변형을 확인한다.
-
-블로그 제작용 라이브러리는 `/library/`다. `asset-library/chloe-blog/library.json`이 현재 보관 위치를 가리킨다. 상황별 투명 PNG와 완성 표지·본문 카드, 다른 AI용 identity-lock·프롬프트·정본 참조를 제공한다. 활용 포즈는 생성형 파생 이미지이며 이 문서의 두 정면 정본을 대체하지 않는다.
-
-흰 외장·기존 얼굴·각진 V1 형태·육각 렌치 볼트·손등 LED 없음 기준. 검은 유리 얼굴 화면에서 표정이 발광하고 작은 명찰 모니터에는 미세 도트 글씨가 표시된다.
-
-최신 목록에는 이 두 정본만 제공한다. 옛 시안 ID와 이전 이미지 경로는 차단한다. 이전 픽셀 일치 키트는 과거 원본의 검증 이력이며 최신 외관으로 사용하지 않는다. 이번 승인은 고정 정면 PNG/SVG 외관 기준이며 새 포즈·숨은 면·3D 메시 승인은 아니다.
-
-적용 범위: PC0 AI Staff 소스·로컬 뷰어. 다른 PC와 이미 공개 배포된 복사본·외부 검색엔진은 별도 배포/확인이 필요하다.
+새 포즈 생성에는 현재 정면 및 손3뷰/어깨 실물PNG를 첨부한다. 각손 엄지외4개/총5개, 길이두께·좌우연결·원형어깨·넓은화면·큰눈을 실제PNG로 검수한다. 다른 AI가 임의로 얼굴/몸을 다시 디자인하지 않는다.

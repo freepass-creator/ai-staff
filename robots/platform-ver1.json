@@ -1,0 +1,63 @@
+{
+  "schema": "ai-staff/robot-platform/v1",
+  "revision": "shared-feminine-platform-VER1.0",
+  "version": "VER1.0",
+  "owner_approved_on": "2026-11-16",
+  "authority": "오케이 이 느낌으로 가자. 클로02랑 클로04 같은 플랫폼 느낌 유지하고 착한거래용 클로이도 이 얼굴 비율로 맞춰줘. 클로02 04 디자인 구버전 폐기하고 ver 1.0으로 확실하게 자리매김하세요",
+  "members": [
+    "CLO-02",
+    "CLO-04"
+  ],
+  "shared_design": [
+    "head/body proportion language",
+    "spacious black display aperture and large circular dot-screen eye scale",
+    "compact feminine circular luminous shoulder assembly",
+    "substantial articulated limbs and five-digit hand structure",
+    "glossy white clearcoat armor and graphite palms"
+  ],
+  "identity_differences": {
+    "CLO-02": [
+      "paired head fins",
+      "purple basic or yellow Chakhan",
+      "eyelashes and gentle smile",
+      "CLO-02 badge"
+    ],
+    "CLO-04": [
+      "ring antenna",
+      "amber emission",
+      "three cheek marks and open smile",
+      "CLO-04 badge"
+    ]
+  },
+  "measurement_scope": "Approved visual design references; not measured 3D meshes, physical dimensions or a rig.",
+  "old_design_policy": "retired from current selection, serving and release downloads; local originals preserved as history, no fallback",
+  "references": [
+    {
+      "id": "canonical-basic-purple-v1",
+      "character_id": "CLO-02",
+      "variant": "basic-purple-v1",
+      "sha256": "39a28cfb18abbf5e1eb3e74bc91e7592c61cedc6b19a74eec333ec142814603d",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/CLO-02-freepass-VER1.0.png",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "canonical-chakhan-white-v1",
+      "character_id": "CLO-02",
+      "variant": "chakhan-white-v1",
+      "sha256": "82f18b12d35794d1311d98997b02750ebaa1dce1fb79d5347168cc525bcb2f57",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/CLO-02-chakhan-VER1.0.png",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "canonical-cloa-amber-v1",
+      "character_id": "CLO-04",
+      "variant": "cloa-amber-v1",
+      "sha256": "a944508fe3461680361406ebfa00d2e068760d87fb893ec1c33c865b3a4052be",
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/CLO-04-freepass-VER1.0.png",
+      "width": 1024,
+      "height": 1536
+    }
+  ]
+}

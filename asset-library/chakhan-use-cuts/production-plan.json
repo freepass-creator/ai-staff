@@ -50,5 +50,8 @@
     "manual_visual_review_required": true,
     "retroactive_rewrite_existing": false,
     "automatic_generation_installed": false
-  }
+  },
+  "current_platform": "robots/platform-ver1.json",
+  "design_version": "VER1.0",
+  "old_design_policy": "No fallback: previous pose SHA and fixed cover composites retired. Remake from approved spacious-face VER1.0 master and visual-review five digits."
 }

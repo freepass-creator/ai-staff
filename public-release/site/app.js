@@ -1,4 +1,4 @@
-const labels={all:'전체',canonical:'클로이 정본',human:'사람형',robot:'로봇 활용',scene:'장면 합성',template:'포스터',revision:'R1 제안',hand:'손 정본'};
+const labels={all:'전체',canonical:'로봇 VER1.0 정본',human:'사람형',robot:'로봇 활용',scene:'장면 합성',template:'포스터',revision:'R1 제안',hand:'손 정본'};
 const $=id=>document.getElementById(id),params=new URLSearchParams(location.search);
 let catalog,kind=labels[params.get('kind')]?params.get('kind'):'all',active;
 const query=$('query');query.value=params.get('q')||'';
@@ -16,7 +16,7 @@ function render(){
 try{
  const response=await fetch('catalog.json',{cache:'no-cache'});if(!response.ok)throw Error('catalog');catalog=await response.json();
  for(const [key,label]of Object.entries(labels)){const count=key==='all'?catalog.assets.length:catalog.assets.filter(a=>a.category===key).length;const b=make('button','',label+' '+count);b.dataset.kind=key;b.type='button';b.onclick=()=>{kind=key;render();};$('filters').append(b);}
- $('usable-count').textContent=catalog.assets.filter(a=>a.production_usable).length;$('all-download').href=catalog.downloads.assets.url;$('template-download').href=catalog.downloads.templates.url;
+ $('usable-count').textContent=catalog.assets.filter(a=>a.production_usable).length;$('all-download').href=catalog.downloads.assets.url;$('template-download').href=catalog.downloads.assets.url;
  $('hero-robot').src=catalog.assets.find(a=>a.id==='canonical-basic-purple-v1').thumbnail;$('hero-human').src=catalog.assets.find(a=>a.id==='human-10-navy-present').thumbnail;
  $('release-link').href='https://github.com/freepass-creator/ai-staff/releases/tag/'+catalog.release_tag;query.oninput=render;render();
 }catch{$('result-count').textContent='자산 목록을 불러오지 못했습니다. 잠시 후 다시 열어주세요.';}

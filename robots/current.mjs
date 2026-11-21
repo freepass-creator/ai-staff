@@ -8,7 +8,7 @@ export async function loadCatalog(file){
  const c=JSON.parse(await readFile(file,'utf8'));
  if(c.schema_version!=='1.0'||!c.variants||!c.aliases)throw Error('invalid current catalog');
  for(const [id,v]of Object.entries(c.variants)){
-  if(!/^[a-z0-9-]+$/.test(id)||v.character_id!=='CLO-02'||!['canonical','candidate_pending_owner_review'].includes(v.status)||typeof v.production_usable!=='boolean'||(v.status!=='canonical'&&v.production_usable))throw Error('invalid variant authority');
+  if(!/^[a-z0-9-]+$/.test(id)||!['CLO-02','CLO-04'].includes(v.character_id)||!['canonical','candidate_pending_owner_review'].includes(v.status)||typeof v.production_usable!=='boolean'||(v.status!=='canonical'&&v.production_usable))throw Error('invalid variant authority');
   for(const a of Object.values(v.assets)){if(typeof a.file!=='string'||!/^[a-f0-9]{64}$/.test(a.sha256))throw Error('invalid asset reference');}
  }
  for(const id of Object.values(c.aliases))if(!c.variants[id])throw Error('alias target missing');

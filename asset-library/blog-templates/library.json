@@ -2,11 +2,7 @@
   "schema": "ai-staff/blog-poster-library/v1",
   "revision": "poster-6-layouts-6-themes-11-demos-20261115",
   "library_root": "D:\\dev-artifacts\\ai-staff\\blog-templates-20261115\\Chakhan-Blog-Poster-Kit-v1.0",
-  "package": {
-    "file": "D:\\dev-artifacts\\ai-staff\\blog-templates-20261115\\Chakhan-Blog-Poster-Kit-v1.zip",
-    "sha256": "cdec1ac5562859ae90775696535dda298a7f0cc68fc018b03a3e32b0a59b1bb6",
-    "bytes": 35155924
-  },
+  "package": null,
   "runtime": {
     "file": "D:\\dev-artifacts\\ai-staff\\blog-templates-20261115\\renderer-runtime.zip",
     "sha256": "5f18c27ad4214e5f2f44be68a08eb84cb8122c0c0b3ea97e61a4f77c66163e73",
@@ -25,5 +21,9 @@
     "faq"
   ],
   "sample_count": 11,
-  "theme_count": 6
+  "theme_count": 6,
+  "status": "retired_mixed_design_package",
+  "production_usable": false,
+  "current_api": "https://ai-staff-two.vercel.app/api/characters/current",
+  "reason": "Old mixed package includes retired robot design. Human template layouts remain reusable as code, but do not use this package as current robot source."
 }

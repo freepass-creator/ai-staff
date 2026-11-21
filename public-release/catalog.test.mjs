@@ -4,9 +4,9 @@ import {readFile,stat} from 'node:fs/promises';
 const site=new URL('./site/',import.meta.url),catalog=JSON.parse(await readFile(new URL('catalog.json',site),'utf8'));
 test('public catalog contains current identities and keeps new R1 designs as proposals',()=>{
  const ids=catalog.assets.map(a=>a.id);assert.equal(new Set(ids).size,ids.length);assert.equal(catalog.assets.filter(a=>a.category==='robot').length,7);assert.ok(!ids.some(id=>/^robot-/.test(id)));assert.ok(!ids.includes('poster-07-robot-cover'));
- assert.equal(catalog.assets.filter(a=>a.status==='canonical').length,2);
- const proposals=catalog.assets.filter(a=>a.category==='revision');assert.equal(proposals.length,3);assert.ok(proposals.every(a=>a.status==='design_proposal'&&a.production_usable===false));
- assert.deepEqual(proposals.map(a=>a.character_id).sort(),['CLO-04','COD-01','COD-03']);
+ assert.equal(catalog.assets.filter(a=>a.status==='canonical').length,3);
+ const proposals=catalog.assets.filter(a=>a.category==='revision');assert.equal(proposals.length,2);assert.ok(proposals.every(a=>a.status==='design_proposal'&&a.production_usable===false));
+ assert.deepEqual(proposals.map(a=>a.character_id).sort(),['COD-01','COD-03']);
  assert.ok(!ids.some(id=>/^revision-clo-0[13]-/.test(id)));
  assert.ok(!ids.includes('robot-01-welcome'));assert.equal(catalog.assets.filter(a=>a.category==='scene').length,30);
 });
@@ -24,7 +24,4 @@ test('public URLs, checksums, tiny previews, and metadata remain safe to publish
  assert.equal(catalog.backgrounds.length,3);
 });
 
-test('profile selection admits exactly the selected02 and forbids all fallback',async()=>{
- const p=JSON.parse(await readFile(new URL('../asset-library/kakao-profiles/library.json',import.meta.url),'utf8'));
- assert.equal(p.profiles.length,1);assert.equal(p.profiles[0].number,'02');assert.equal(p.profiles[0].sha256,'49b6f9ae899afc64271aac75e0705b192316053d32ff85c6c316f20d02774352');assert.equal(p.selection_policy.fallback_allowed,false);assert.equal(p.selection_policy.search_generated_or_archive_images,false);
-});
+test('retired profile is absent and cannot fall back to old or front images',async()=>{const p=JSON.parse(await readFile(new URL('../asset-library/kakao-profiles/library.json',import.meta.url),'utf8'));assert.equal(p.profiles.length,0);assert.equal(p.selection_policy.fallback_allowed,false);assert.equal(p.selection_policy.search_generated_or_archive_images,false);});
