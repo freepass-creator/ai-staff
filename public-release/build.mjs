@@ -9,11 +9,24 @@ const out=path.resolve(process.argv[2]||path.join(root,'public-site'));
 try{if((await readdir(out)).length)throw Error('OUTPUT_NOT_EMPTY');}catch(e){if(e.code!=='ENOENT')throw e;await mkdir(out,{recursive:true});}
 for(const name of ['index.html','styles.css','app.js','AI-START-HERE.md','CHARACTER-API.md','NEW-GENERATION.md','character-client.mjs','prepare-generation.mjs'])await cp(path.join(site,name),path.join(out,name));
 await mkdir(path.join(out,'fonts'));for(const name of ['SUITE-Heavy.woff2','NotoSansKR-400.woff2','NotoSansKR-700.woff2','LICENSE-SUITE.txt','LICENSE-NOTO.txt'])await cp(path.join(site,'fonts',name),path.join(out,'fonts',name));
+for(const name of ['SUITE-Heavy-UI.woff2','NotoSansKR-400-UI.woff2','NotoSansKR-700-UI.woff2'])await cp(path.join(site,'fonts',name),path.join(out,'fonts',name));
+await cp(path.join(root,'asset-library/chakhan-ci/chakhan-ci-on-light.svg'),path.join(out,'brand.svg'));
 const c=JSON.parse(await readFile(path.join(site,'catalog.json'),'utf8'));
+for(const file of ['index.html','chakhan/index.html']){
+ const location=file==='index.html'?'':'chakhan/',title=file==='index.html'?'AI Staff · 클로이·클로아 VER1.0':'착한거래 · 클로이 VER1.0 활용 이미지';
+ const image=c.assets.find(a=>a.id==='canonical-chakhan-white-v1').png_url;
+ let html=await readFile(path.join(out,file),'utf8').catch(()=>readFile(path.join(site,file),'utf8'));
+ html=html.replace('</head>',`<meta property="og:type" content="website"><meta property="og:title" content="${title}"><meta property="og:description" content="같은 캐릭터를 유지하는 최신 정본과 활용 PNG"><meta property="og:image" content="${image}"><meta property="og:url" content="https://ai-staff-two.vercel.app/${location}"></head>`);
+ for(const [id,asset]of [['hero-robot','canonical-basic-purple-v1'],['hero-human','human-10-navy-present']])html=html.replace(new RegExp(`id="${id}"`),`id="${id}" src="${c.assets.find(a=>a.id===asset).thumbnail}"`);
+ if(file==='index.html')await writeFile(path.join(out,file),html);
+ else c.chakhan_page_metadata=html;
+}
 const profiles=JSON.parse(await readFile(path.join(root,'asset-library/kakao-profiles/library.json'),'utf8'));
 validateProfilePolicy(profiles);
 await writeFile(path.join(out,'profiles.json'),JSON.stringify(profiles,null,2)+'\n');c.profile_catalog='profiles.json';
 const chakhan=JSON.parse(await readFile(path.join(site,'chakhan-use-cuts.json'),'utf8'));
+const ci=chakhan.runtime_assets?.find(a=>a.file==='assets/brand/ci-current.svg');
+if(!ci||ci.sha256!==createHash('sha256').update(await readFile(path.join(root,'asset-library/chakhan-ci/chakhan-ci-on-light.svg'))).digest('hex')||chakhan.runtime_assets.some(a=>a.file.endsWith('ci-P2.svg')))throw Error('CURRENT_CI_REFERENCE_DRIFT');
 if(chakhan.brand!=='착한거래'||!Array.isArray(chakhan.assets)||chakhan.assets.length<3||chakhan.assets.some(a=>a.brand!=='착한거래'||a.nameplate!=='착한거래'||a.emission_color!=='yellow'||!a.transparent_background||a.profile_usable!==false||!/^https:\/\/github\.com\/freepass-creator\/ai-staff\/releases\/download\//.test(a.png_url)||!/^[a-f0-9]{64}$/.test(a.sha256)))throw Error('INVALID_CHAKHAN_CUTS');
 const chakhanText=JSON.stringify(chakhan,null,2)+'\n';if(/(?:["\s])[A-Za-z]:[/\\]|source_thread|incoming-pc1|PRIVATE KEY/.test(chakhanText))throw Error('NON_PUBLIC_CHAKHAN_METADATA');
 if((chakhan.covers||[]).some(a=>a.platform_version!=='VER1.0'))throw Error('LEGACY_COVERS_NOT_CURRENT_PLATFORM');
@@ -24,6 +37,7 @@ if(hands.topology.digits_per_hand!==5||hands.topology.long_fingers!==4||hands.to
 await writeFile(path.join(out,'hand-masters.json'),JSON.stringify(hands,null,2)+'\n');
 await writeFile(path.join(out,'chakhan-use-cuts.json'),chakhanText);c.chakhan_use_cuts_catalog='chakhan-use-cuts.json';
 await mkdir(path.join(out,'chakhan','thumbs'),{recursive:true});for(const name of ['index.html','app.js'])await cp(path.join(site,'chakhan',name),path.join(out,'chakhan',name));
+await writeFile(path.join(out,'chakhan/index.html'),c.chakhan_page_metadata);delete c.chakhan_page_metadata;
 for(const a of [...chakhan.assets,...(chakhan.covers||[])]){if(!/^chakhan\/thumbs\/[a-z0-9-]+-[a-f0-9]{10}\.webp$/.test(a.thumbnail))throw Error('INVALID_CHAKHAN_THUMB');await cp(path.join(site,a.thumbnail),path.join(out,a.thumbnail));}
 c.site_commit=execFileSync('git',['-C',root,'rev-parse','HEAD'],{encoding:'utf8'}).trim();
 const retired=JSON.parse(await readFile(path.join(root,'robots/retired-public-assets.json'),'utf8'));
@@ -51,5 +65,7 @@ await mkdir(path.join(out,'runtime'));await cp(path.join(root,'public-release/cu
 await cp(path.join(root,'public-release/generation.mjs'),path.join(out,'runtime/generation.mjs'));
 await writeFile(path.join(out,'api/character.mjs'),`import {createCharacterApi} from '../runtime/current-api.mjs';\nexport default createCharacterApi(${JSON.stringify(apiData)});\n`);
 await writeFile(path.join(out,'package.json'),JSON.stringify({private:true,type:'module',engines:{node:'24.x'}}));
-await writeFile(path.join(out,'vercel.json'),JSON.stringify({version:2,cleanUrls:false,rewrites:[{source:'/api/characters/:path*',destination:'/api/character?__route=:path*'}],headers:[{source:'/(.*)',headers:[{key:'Cache-Control',value:'no-store'},{key:'Access-Control-Allow-Origin',value:'*'},{key:'X-Content-Type-Options',value:'nosniff'}]}]},null,2)+'\n');
+await writeFile(path.join(out,'robots.txt'),'User-agent: *\nAllow: /\nSitemap: https://ai-staff-two.vercel.app/sitemap.xml\n');
+await writeFile(path.join(out,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://ai-staff-two.vercel.app/</loc></url><url><loc>https://ai-staff-two.vercel.app/chakhan/</loc></url></urlset>');
+await writeFile(path.join(out,'vercel.json'),JSON.stringify({version:2,cleanUrls:false,rewrites:[{source:'/api/characters/:path*',destination:'/api/character?__route=:path*'}],headers:[{source:'/(.*)',headers:[{key:'Cache-Control',value:'no-store'},{key:'Access-Control-Allow-Origin',value:'*'},{key:'X-Content-Type-Options',value:'nosniff'},{key:'Strict-Transport-Security',value:'max-age=63072000; includeSubDomains'},{key:'Content-Security-Policy',value:"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' https://github.com https://*.githubusercontent.com data:; connect-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'"},{key:'X-Frame-Options',value:'DENY'},{key:'Referrer-Policy',value:'strict-origin-when-cross-origin'},{key:'Permissions-Policy',value:'camera=(), microphone=(), geolocation=()'}]}]},null,2)+'\n');
 console.log(JSON.stringify({status:'READY',output:out,assets:c.assets.length,source_commit:c.source_commit}));

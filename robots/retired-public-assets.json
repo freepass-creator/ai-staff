@@ -112,7 +112,11 @@
     "CLO-02-kakao-profile-selection.json",
     "existing-front-comparison.png",
     "existing-front-comparison-sources.png",
-    "reference-clo-04.png"
+    "reference-clo-04.png",
+    "Chakhan-VER1-0-Cover-Example-Think.png",
+    "Chakhan-VER1-0-Cover-Example-Aha.png",
+    "Chakhan-VER1-0-Cover-Example-Dejected.png",
+    "Chakhan-VER1-0-Cover-Example-Confident.png"
   ],
   "current_api": "https://ai-staff-two.vercel.app/api/characters/current",
   "archive_is_production_source": false,
@@ -158,6 +162,10 @@
     "43285dbaccf9cdb0cc4585d607ae812811123fb0873bc02806904d5ce8a6a1ff",
     "60c44eec60cdf7b2857a34acfc80a66dc36b309b9135c35e43d213841da80522",
     "1ea53feeb3a24e08675d747238c867c7f630f3bd1b5bf0aaa6d847229e45a7ee",
-    "9083c41c95064172b8b61caad88261fab86c1883534535fde30e394d5663caae"
+    "9083c41c95064172b8b61caad88261fab86c1883534535fde30e394d5663caae",
+    "5c1a72c5a27778626de1c21b7b2037181b44d58c805c50e38d1a04a897591e96",
+    "fdf835d3b6cc013cd07f3adf0dbfab7920ef6ddaa214487f13391636e04f8f16",
+    "a1bfde0f7bff9e1bd8a68f301d4a77bb1a140c5abd3dcf778ed98a4f28b25e12",
+    "c28aeead8a4faff65425c5c184913e25239a6bf9be5186f28dc9a0225e654bad"
   ]
 }

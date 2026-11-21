@@ -337,8 +337,12 @@
   ],
   "runtime_assets": [
     {
-      "file": "assets/fonts/SUITE-Heavy.woff2",
-      "sha256": "40b44d4cf9eaf2f4dbb4e9a96d713a0bed5db78e5d0097e50e7d2c751747125e"
+      "file": "assets/fonts/LICENSE-NOTO.txt",
+      "sha256": "b5c524a2a2b265ad6c40f12183ec481969fe6543100a577700d3fab97021b9c0"
+    },
+    {
+      "file": "assets/fonts/LICENSE-SUITE.txt",
+      "sha256": "4511d445dd33512b573bcb7bea8a690538f46c04f3e72f002fdad7987c8286fa"
     },
     {
       "file": "assets/fonts/NotoSansKR-400.woff2",
@@ -349,27 +353,23 @@
       "sha256": "dab3d492daa687386292cff1499225db580f931f800ee0d124eb0636378c6020"
     },
     {
-      "file": "assets/fonts/LICENSE-SUITE.txt",
-      "sha256": "4511d445dd33512b573bcb7bea8a690538f46c04f3e72f002fdad7987c8286fa"
+      "file": "assets/fonts/SUITE-Heavy.woff2",
+      "sha256": "40b44d4cf9eaf2f4dbb4e9a96d713a0bed5db78e5d0097e50e7d2c751747125e"
     },
     {
-      "file": "assets/fonts/LICENSE-NOTO.txt",
-      "sha256": "b5c524a2a2b265ad6c40f12183ec481969fe6543100a577700d3fab97021b9c0"
-    },
-    {
-      "file": "assets/brand/ci-P2.svg",
-      "sha256": "ea27c3c9d5df3af955f3da72b4a6d0ac21ca2498e9f06e66b8e3a632051cd0ad"
+      "file": "assets/brand/ci-current.svg",
+      "sha256": "e87db1eefd448b261cdfc9f4115683fca35bba766a86438a17c380a930fae521"
     }
   ],
   "covers": [
     {
-      "id": "Chakhan-VER1-0-Cover-Example-Think",
+      "id": "Chakhan-VER1-0-CI-Cover-Example-Think",
       "pose_id": "cover-think",
       "layout": "cream-side",
       "width": 1200,
       "height": 1200,
-      "file": "Chakhan-VER1-0-Cover-Example-Think.png",
-      "sha256": "5c1a72c5a27778626de1c21b7b2037181b44d58c805c50e38d1a04a897591e96",
+      "file": "Chakhan-VER1-0-CI-Cover-Example-Think.png",
+      "sha256": "acbd6fcbb2db71a655629863faf26acec0a83e9acc93033777b13303d186939a",
       "character_source_sha256": "7658ac2ecdc4a2c56b28eda775f8cbf1d7752754172c25e4b8dd35efa6a9c2c0",
       "headline": "장기렌트,\n무엇부터\n비교할까?",
       "qa": {
@@ -383,17 +383,17 @@
       },
       "platform_version": "VER1.0",
       "label": "고민하며 비교 · VER1.0 표지 예시",
-      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-VER1-0-Cover-Example-Think.png",
-      "thumbnail": "chakhan/thumbs/chakhan-ver1-0-cover-example-think-5c1a72c5a2.webp"
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-VER1-0-CI-Cover-Example-Think.png",
+      "thumbnail": "chakhan/thumbs/chakhan-ver1-0-ci-cover-example-think-acbd6fcbb2.webp"
     },
     {
-      "id": "Chakhan-VER1-0-Cover-Example-Aha",
+      "id": "Chakhan-VER1-0-CI-Cover-Example-Aha",
       "pose_id": "cover-aha",
       "layout": "midnight-top",
       "width": 1200,
       "height": 1200,
-      "file": "Chakhan-VER1-0-Cover-Example-Aha.png",
-      "sha256": "fdf835d3b6cc013cd07f3adf0dbfab7920ef6ddaa214487f13391636e04f8f16",
+      "file": "Chakhan-VER1-0-CI-Cover-Example-Aha.png",
+      "sha256": "d136475b39db65b9740c08cd9f797ed0225fe9829ce95e1f5b497f4b0e28b47d",
       "character_source_sha256": "8747f4266dce23579b9db5810e54659245732b2bfec1591e969506e92f686331",
       "headline": "아, 이 조건을\n놓쳤네요!",
       "qa": {
@@ -407,17 +407,17 @@
       },
       "platform_version": "VER1.0",
       "label": "깨달음 · VER1.0 표지 예시",
-      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-VER1-0-Cover-Example-Aha.png",
-      "thumbnail": "chakhan/thumbs/chakhan-ver1-0-cover-example-aha-fdf835d3b6.webp"
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-VER1-0-CI-Cover-Example-Aha.png",
+      "thumbnail": "chakhan/thumbs/chakhan-ver1-0-ci-cover-example-aha-d136475b39.webp"
     },
     {
-      "id": "Chakhan-VER1-0-Cover-Example-Dejected",
+      "id": "Chakhan-VER1-0-CI-Cover-Example-Dejected",
       "pose_id": "cover-dejected",
       "layout": "apricot-top",
       "width": 1200,
       "height": 1200,
-      "file": "Chakhan-VER1-0-Cover-Example-Dejected.png",
-      "sha256": "a1bfde0f7bff9e1bd8a68f301d4a77bb1a140c5abd3dcf778ed98a4f28b25e12",
+      "file": "Chakhan-VER1-0-CI-Cover-Example-Dejected.png",
+      "sha256": "89405f5e824047c25c1d9068d1631725f8e58f3933a973219bc594bca9369068",
       "character_source_sha256": "0811499e0e92c72f88a9d8c6ed33b25296b96ff774d5f1bb0377b0d132511903",
       "headline": "싸다고 골랐는데,\n왜 아쉬울까요?",
       "qa": {
@@ -431,17 +431,17 @@
       },
       "platform_version": "VER1.0",
       "label": "시무룩함 · VER1.0 표지 예시",
-      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-VER1-0-Cover-Example-Dejected.png",
-      "thumbnail": "chakhan/thumbs/chakhan-ver1-0-cover-example-dejected-a1bfde0f7b.webp"
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-VER1-0-CI-Cover-Example-Dejected.png",
+      "thumbnail": "chakhan/thumbs/chakhan-ver1-0-ci-cover-example-dejected-89405f5e82.webp"
     },
     {
-      "id": "Chakhan-VER1-0-Cover-Example-Confident",
+      "id": "Chakhan-VER1-0-CI-Cover-Example-Confident",
       "pose_id": "cover-confident",
       "layout": "sage-left",
       "width": 1200,
       "height": 1200,
-      "file": "Chakhan-VER1-0-Cover-Example-Confident.png",
-      "sha256": "c28aeead8a4faff65425c5c184913e25239a6bf9be5186f28dc9a0225e654bad",
+      "file": "Chakhan-VER1-0-CI-Cover-Example-Confident.png",
+      "sha256": "cd7c7824c89fdb60227fa952796c0be60ba18384d24aa001ccb22332e36b943f",
       "character_source_sha256": "4fc407ba4d132bced21df4b3e98257957fe94b8d2ebe30a45e42463ebe3b11cc",
       "headline": "조건을 알고\n선택하면 든든!",
       "qa": {
@@ -455,8 +455,8 @@
       },
       "platform_version": "VER1.0",
       "label": "차분한 자신감 · VER1.0 표지 예시",
-      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-VER1-0-Cover-Example-Confident.png",
-      "thumbnail": "chakhan/thumbs/chakhan-ver1-0-cover-example-confident-c28aeead8a.webp"
+      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/Chakhan-VER1-0-CI-Cover-Example-Confident.png",
+      "thumbnail": "chakhan/thumbs/chakhan-ver1-0-ci-cover-example-confident-cd7c7824c8.webp"
     }
   ],
   "hand_grip_policy": "hand-grip-policy.json",
@@ -472,16 +472,16 @@
     "covers": "1200x1200 square PNG",
     "title_font": "SUITE Heavy 900",
     "body_font": "Noto Sans KR 400/700",
-    "CI": "original P2 SVG",
+    "CI": "asset-library/chakhan-ci/chakhan-ci-on-light.svg · current // CI",
     "minimum_outer_margin_px": 64
   },
   "hand_master_revision": "robot-hand-v1.0",
   "downloads": {
     "zip": {
       "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/AI-Staff-VER1.0-Current-Kit.zip",
-      "sha256": "4a82b92fc5351af1f3182e2ddd8ff29d7e4e30aa447a46dae63f0f7f9ecb62b4",
-      "bytes": 18846035,
-      "contents": "VER1.0 front3 + Chakhan pose7 + cover4 + P2 CI/fonts/renderer; no human/library-wide archive"
+      "sha256": "e0175ada1eba174cfc0120ec01a9856c00cc1eaf0c4621105ae080861ab2f39d",
+      "bytes": 18842140,
+      "contents": "VER1.0 front3 + Chakhan pose7 + cover4 + current // CI/fonts/renderer; no human/library-wide archive"
     }
   },
   "design_version": "VER1.0",

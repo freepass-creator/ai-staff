@@ -10,9 +10,9 @@
   "downloads": {
     "zip": {
       "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/AI-Staff-VER1.0-Current-Kit.zip",
-      "sha256": "4a82b92fc5351af1f3182e2ddd8ff29d7e4e30aa447a46dae63f0f7f9ecb62b4",
-      "bytes": 18846035,
-      "contents": "VER1.0 front3 + Chakhan pose7 + cover4 + P2 CI/fonts/renderer; no human/library-wide archive"
+      "sha256": "e0175ada1eba174cfc0120ec01a9856c00cc1eaf0c4621105ae080861ab2f39d",
+      "bytes": 18842140,
+      "contents": "VER1.0 front3 + Chakhan pose7 + cover4 + current // CI/fonts/renderer; no human/library-wide archive"
     }
   },
   "cover_emotion_assets": 4,
