@@ -1,0 +1,18 @@
+{
+  "schema": "ai-staff/chloe-front-geometry/v1",
+  "identity_revision": "2026-11-20.1",
+  "geometry_revision": "front-photo-1",
+  "source_role": "suit-body-front",
+  "source_width": 1086,
+  "source_height": 1448,
+  "coordinate_basis": "Manual 2D photo landmarks, measured from top left; dressed, standing, heels on. Not anatomical measurements.",
+  "landmarks_y_px": {
+    "head_top": 24,
+    "shoulder_line": 275,
+    "waist_jacket": 550,
+    "knee_center": 947,
+    "ankle": 1260,
+    "shoe_tip": 1370
+  },
+  "approved_articulated_geometry": null
+}

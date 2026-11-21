@@ -1,0 +1,23 @@
+{
+  "schema": "ai-staff/fitting-body-reference/v1",
+  "character_id": "CLO-02",
+  "identity_revision": "2026-11-20.1",
+  "fitting_revision": "white-fitting-v1",
+  "status": "support-only",
+  "comparison": "Each view has its own visible crown-to-contact baseline. Clothing, stance and perspective affect silhouette. The approved suit photo retains identity and body precedence.",
+  "views": [
+    { "role": "fitting-front", "title": "피팅 정면", "size": [112, 342], "baseline": [3, 338] },
+    { "role": "fitting-side", "title": "피팅 측면", "size": [82, 342], "baseline": [5, 337] },
+    { "role": "fitting-back", "title": "피팅 후면", "size": [98, 342], "baseline": [4, 338] }
+  ],
+  "marks": [
+    { "role": "fitting-front", "label": "어깨 부근 외곽", "y": 68, "x": [21, 95] },
+    { "role": "fitting-front", "label": "허리 몸통 폭", "y": 118, "x": [36, 81] },
+    { "role": "fitting-front", "label": "골반 부근 착용 외곽", "y": 145, "x": [25, 92] },
+    { "role": "fitting-front", "label": "종아리 폭 · 화면 왼쪽", "y": 254, "x": [36, 57] },
+    { "role": "fitting-front", "label": "발목 부근 폭 · 화면 왼쪽", "y": 304, "x": [46, 56] },
+    { "role": "fitting-side", "label": "골반 부근 앞뒤 외곽", "y": 155, "x": [17, 66] },
+    { "role": "fitting-back", "label": "허리 몸통 폭", "y": 118, "x": [25, 70] }
+  ],
+  "limits": ["지원 자료는 얼굴 승인에 사용하지 않는다.", "측정선은 의상과 자세의 영향을 받는 2D 사진 투영값이다.", "가려진 몸체 둘레와 맨발의 실제 크기는 이 자료에서 잴 수 없다."]
+}

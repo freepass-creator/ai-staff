@@ -1,0 +1,15 @@
+{
+  "schema": "ai-staff/character-profile/v1",
+  "character_id": "CLO-02",
+  "identity_revision": "2026-11-20.1",
+  "profile_revision": "profile-v1",
+  "measurement_basis": "approved-fictional-character-specification",
+  "height_cm_barefoot": 168,
+  "weight_kg": 54,
+  "circumference_cm": {
+    "bust": 84,
+    "waist": 65,
+    "hips": 91
+  },
+  "shoe_size_mm": 235
+}

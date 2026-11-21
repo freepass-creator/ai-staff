@@ -115,3 +115,5 @@ CREATE_NEW_JUSTIFIED(2026-10-03): `reuse:check` 후보인 character.json과 cast
 
 
 공개 자산 빌드: `public-release/README.md`. COD-01/COD-03/CLO-04 R1은 기존 프로필의 얼굴·머리 구조를 보존해 정면으로 맞춘 파생 제안이며 CLO-02 정본과 구분합니다. 새 환경 컷은 고정 캐릭터를 별도 생성 배경에 합성하므로 반복 출력에서 얼굴을 다시 그리지 않습니다.
+
+- CLO-02 실사 정본(얼굴·전신·피팅): [참조 규격과 재사용 도구](asset-library/chloe-real-v1/README.md).
