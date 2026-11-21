@@ -3,7 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
-import {validateCurrentAssets,createCanonicalAssets,validateProfilePolicy} from './current-api.mjs';
+import {validateCurrentAssets,createCanonicalAssets,validateProfilePolicy,validateCurrentCiReference} from './current-api.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),site=path.join(root,'public-release/site');
 const out=path.resolve(process.argv[2]||path.join(root,'public-site'));
 try{if((await readdir(out)).length)throw Error('OUTPUT_NOT_EMPTY');}catch(e){if(e.code!=='ENOENT')throw e;await mkdir(out,{recursive:true});}
@@ -25,8 +25,7 @@ const profiles=JSON.parse(await readFile(path.join(root,'asset-library/kakao-pro
 validateProfilePolicy(profiles);
 await writeFile(path.join(out,'profiles.json'),JSON.stringify(profiles,null,2)+'\n');c.profile_catalog='profiles.json';
 const chakhan=JSON.parse(await readFile(path.join(site,'chakhan-use-cuts.json'),'utf8'));
-const ci=chakhan.runtime_assets?.find(a=>a.file==='assets/brand/ci-current.svg');
-if(!ci||ci.sha256!==createHash('sha256').update(await readFile(path.join(root,'asset-library/chakhan-ci/chakhan-ci-on-light.svg'))).digest('hex')||chakhan.runtime_assets.some(a=>a.file.endsWith('ci-P2.svg')))throw Error('CURRENT_CI_REFERENCE_DRIFT');
+validateCurrentCiReference(chakhan.runtime_assets,await readFile(path.join(root,'asset-library/chakhan-ci/chakhan-ci-on-light.svg'),'utf8'));
 if(chakhan.brand!=='착한거래'||!Array.isArray(chakhan.assets)||chakhan.assets.length<3||chakhan.assets.some(a=>a.brand!=='착한거래'||a.nameplate!=='착한거래'||a.emission_color!=='yellow'||!a.transparent_background||a.profile_usable!==false||!/^https:\/\/github\.com\/freepass-creator\/ai-staff\/releases\/download\//.test(a.png_url)||!/^[a-f0-9]{64}$/.test(a.sha256)))throw Error('INVALID_CHAKHAN_CUTS');
 const chakhanText=JSON.stringify(chakhan,null,2)+'\n';if(/(?:["\s])[A-Za-z]:[/\\]|source_thread|incoming-pc1|PRIVATE KEY/.test(chakhanText))throw Error('NON_PUBLIC_CHAKHAN_METADATA');
 if((chakhan.covers||[]).some(a=>a.platform_version!=='VER1.0'))throw Error('LEGACY_COVERS_NOT_CURRENT_PLATFORM');

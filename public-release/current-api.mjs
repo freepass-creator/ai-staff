@@ -2,6 +2,10 @@ import {createHash} from 'node:crypto';
 import {createGenerationPacket,GENERATION_RULES_REVISION} from './generation.mjs';
 export const PLATFORM_VERSION='VER1.0';
 export const ROBOT_VARIANTS=Object.freeze({'chakhan-white-v1':'CLO-02','basic-purple-v1':'CLO-02','cloa-amber-v1':'CLO-04'});
+export function validateCurrentCiReference(assets,text){
+ const matches=assets?.filter(a=>a.file==='assets/brand/ci-current.svg')||[],lf=text.replace(/\r\n/g,'\n');
+ if(matches.length!==1||assets.some(a=>a.file.endsWith('ci-P2.svg'))||![lf,lf.replace(/\n/g,'\r\n')].some(s=>createHash('sha256').update(s).digest('hex')===matches[0].sha256))throw Error('CURRENT_CI_REFERENCE_DRIFT');
+}
 export function validateProfilePolicy(profiles){if(!Array.isArray(profiles.profiles)||profiles.profiles.length!==0||profiles.selection_policy?.fallback_allowed!==false)throw Error('PROFILES_ARCHIVED_NO_FALLBACK');}
 export function createCanonicalAssets(assets,current){
  const canonical=assets.filter(a=>a.category==='canonical');
