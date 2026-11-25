@@ -69,8 +69,8 @@
       "lookup_alias": "클로아",
       "design_version": "1.0",
       "platform_version": "VER1.0",
-      "status": "canonical",
-      "production_usable": true,
+      "status": "retired",
+      "production_usable": false,
       "owner_brand": "프리패스",
       "appearance_revision": "shared-feminine-platform-VER1.0",
       "nameplate_text": "프리패스",
@@ -88,7 +88,10 @@
       "svg_representation": {
         "available": false,
         "reason": "Earlier SVGs encode a retired design; do not reuse them as this revision."
-      }
+      },
+      "retired_on": "2026-11-26",
+      "retired_reason": "대표 직접(2026-11-26): 과거 캐릭터 사용 금지·접근 차단. CLO-04 이마 마크가 바뀌어 VER1.0 클로아와 11-23 웃는 이마 마크판을 폐기. 새 이마 마크 판 확인 전 CLO-04 제작 보류, 퇴역 자산으로 대체 금지.",
+      "replacement": null
     }
   },
   "aliases": {

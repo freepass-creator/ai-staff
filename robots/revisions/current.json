@@ -155,15 +155,6 @@
       "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/CLO-02-chakhan-VER1.0.png",
       "width": 1024,
       "height": 1536
-    },
-    {
-      "id": "canonical-cloa-amber-v1",
-      "character_id": "CLO-04",
-      "variant": "cloa-amber-v1",
-      "sha256": "a944508fe3461680361406ebfa00d2e068760d87fb893ec1c33c865b3a4052be",
-      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/CLO-04-freepass-VER1.0.png",
-      "width": 1024,
-      "height": 1536
     }
   ]
 }

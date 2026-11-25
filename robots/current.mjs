@@ -8,7 +8,7 @@ export async function loadCatalog(file){
  const c=JSON.parse(await readFile(file,'utf8'));
  if(c.schema_version!=='1.0'||!c.variants||!c.aliases)throw Error('invalid current catalog');
  for(const [id,v]of Object.entries(c.variants)){
-  if(!/^[a-z0-9-]+$/.test(id)||!['CLO-02','CLO-04'].includes(v.character_id)||!['canonical','candidate_pending_owner_review'].includes(v.status)||typeof v.production_usable!=='boolean'||(v.status!=='canonical'&&v.production_usable))throw Error('invalid variant authority');
+  if(!/^[a-z0-9-]+$/.test(id)||!['CLO-02','CLO-04'].includes(v.character_id)||!['canonical','candidate_pending_owner_review','retired'].includes(v.status)||typeof v.production_usable!=='boolean'||(v.status!=='canonical'&&v.production_usable))throw Error('invalid variant authority');
   for(const a of Object.values(v.assets)){if(typeof a.file!=='string'||!/^[a-f0-9]{64}$/.test(a.sha256))throw Error('invalid asset reference');}
  }
  for(const id of Object.values(c.aliases))if(!c.variants[id])throw Error('alias target missing');
@@ -17,7 +17,7 @@ export async function loadCatalog(file){
 export function resolve(c,query,{production=false}={}){
  const key=normalize(query),id=c.aliases[key];
  if(!id){const e=Error(c.ambiguous_aliases.includes(key)?'VARIANT_REQUIRED':'UNKNOWN_CHARACTER_ALIAS');e.code=e.message;throw e;}
- const v=c.variants[id];if(production&&!v.production_usable){const e=Error('CANDIDATE_NOT_PRODUCTION_APPROVED');e.code=e.message;throw e;}
+ const v=c.variants[id];if(v.status==='retired'){const e=Error('RETIRED_CHARACTER_ASSET');e.code=e.message;throw e;}if(production&&!v.production_usable){const e=Error('CANDIDATE_NOT_PRODUCTION_APPROVED');e.code=e.message;throw e;}
  return {variant_id:id,...v,asset_urls:Object.fromEntries(Object.entries(v.assets).map(([kind,a])=>[kind,`/character-assets/${id}/${kind}?sha=${a.sha256}`]))};
 }
 export async function verifiedAsset(v,kind){
