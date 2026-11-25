@@ -42,7 +42,8 @@
     "robot-38-gentle-thanks",
     "poster-07-robot-cover",
     "revision-clo-04-r1",
-    "profile-selected-02"
+    "profile-selected-02",
+    "canonical-cloa-amber-v1"
   ],
   "release_files": [
     "robot-02-compare.png",
@@ -116,7 +117,9 @@
     "Chakhan-VER1-0-Cover-Example-Think.png",
     "Chakhan-VER1-0-Cover-Example-Aha.png",
     "Chakhan-VER1-0-Cover-Example-Dejected.png",
-    "Chakhan-VER1-0-Cover-Example-Confident.png"
+    "Chakhan-VER1-0-Cover-Example-Confident.png",
+    "CLO-04-freepass-VER1.0.png",
+    "AI-Staff-VER1.0-Current-Kit.zip"
   ],
   "current_api": "https://ai-staff-two.vercel.app/api/characters/current",
   "archive_is_production_source": false,
@@ -166,6 +169,28 @@
     "5c1a72c5a27778626de1c21b7b2037181b44d58c805c50e38d1a04a897591e96",
     "fdf835d3b6cc013cd07f3adf0dbfab7920ef6ddaa214487f13391636e04f8f16",
     "a1bfde0f7bff9e1bd8a68f301d4a77bb1a140c5abd3dcf778ed98a4f28b25e12",
-    "c28aeead8a4faff65425c5c184913e25239a6bf9be5186f28dc9a0225e654bad"
+    "c28aeead8a4faff65425c5c184913e25239a6bf9be5186f28dc9a0225e654bad",
+    "a944508fe3461680361406ebfa00d2e068760d87fb893ec1c33c865b3a4052be",
+    "735c19b6e4bd7f5e21745283a65c1758782dcedcd2095d24c5d9bc530e48784f",
+    "071ce094a4df0da17184b4c83a4d01aec19e66429e7f97457db6b194eed1ef50"
+  ],
+  "retirements": [
+    {
+      "on": "2026-11-26",
+      "ids": [
+        "canonical-cloa-amber-v1"
+      ],
+      "sha256": [
+        "a944508fe3461680361406ebfa00d2e068760d87fb893ec1c33c865b3a4052be",
+        "735c19b6e4bd7f5e21745283a65c1758782dcedcd2095d24c5d9bc530e48784f",
+        "071ce094a4df0da17184b4c83a4d01aec19e66429e7f97457db6b194eed1ef50"
+      ],
+      "release_files": [
+        "CLO-04-freepass-VER1.0.png",
+        "AI-Staff-VER1.0-Current-Kit.zip"
+      ],
+      "reason": "대표 직접(2026-11-26): 과거 캐릭터 사용 금지·접근 차단. CLO-04 이마 마크가 바뀌어 VER1.0 클로아와 11-23 웃는 이마 마크판을 폐기. 새 이마 마크 판 확인 전 CLO-04 제작 보류, 퇴역 자산으로 대체 금지.",
+      "backup": "PC1 로컬 보관(공개 저장소 밖), SHA 로 대조"
+    }
   ]
 }

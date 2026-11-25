@@ -13,7 +13,7 @@ for(const name of ['SUITE-Heavy-UI.woff2','NotoSansKR-400-UI.woff2','NotoSansKR-
 await cp(path.join(root,'asset-library/chakhan-ci/chakhan-ci-on-light.svg'),path.join(out,'brand.svg'));
 const c=JSON.parse(await readFile(path.join(site,'catalog.json'),'utf8'));
 for(const file of ['index.html','chakhan/index.html']){
- const location=file==='index.html'?'':'chakhan/',title=file==='index.html'?'AI Staff · 클로이·클로아 VER1.0':'착한거래 · 클로이 VER1.0 활용 이미지';
+ const location=file==='index.html'?'':'chakhan/',title=file==='index.html'?'AI Staff · 클로이 VER1.0':'착한거래 · 클로이 VER1.0 활용 이미지';
  const image=c.assets.find(a=>a.id==='canonical-chakhan-white-v1').png_url;
  let html=await readFile(path.join(out,file),'utf8').catch(()=>readFile(path.join(site,file),'utf8'));
  html=html.replace('</head>',`<meta property="og:type" content="website"><meta property="og:title" content="${title}"><meta property="og:description" content="같은 캐릭터를 유지하는 최신 정본과 활용 PNG"><meta property="og:image" content="${image}"><meta property="og:url" content="https://ai-staff-two.vercel.app/${location}"></head>`);
@@ -58,7 +58,7 @@ const shoulder=JSON.parse(await readFile(path.join(root,'robots/shoulder-master.
 await writeFile(path.join(out,'shoulder-master.json'),JSON.stringify(shoulder,null,2)+'\n');
 validateCurrentAssets(apiAssets,{ids:retired.asset_ids,sha256:retired.retired_asset_sha256||[]});
 const revision=createHash('sha256').update(JSON.stringify(apiAssets)).digest('hex');
-if(apiAssets.length!==26||apiAssets.filter(a=>a.kind==='pose').length!==7||apiAssets.some(a=>a.kind==='profile'))throw Error('PLATFORM_API_CATALOG_INCOMPLETE');
+if(apiAssets.length!==25||apiAssets.some(a=>a.character_id==='CLO-04')||apiAssets.filter(a=>a.kind==='pose').length!==7||apiAssets.some(a=>a.kind==='profile'))throw Error('PLATFORM_API_CATALOG_INCOMPLETE');
 const apiData={platform_version:'VER1.0',revision,assets:apiAssets,hand_master_revision:hands.revision,shoulder_master_revision:shoulder.revision,retired_ids:retired.asset_ids,retired_sha256:retired.retired_asset_sha256||[],aliases:{착한클로이:'canonical-chakhan-white-v1',착한거래클로이:'canonical-chakhan-white-v1',기본클로이:'canonical-basic-purple-v1',보라색클로이:'canonical-basic-purple-v1',클로아:'canonical-cloa-amber-v1',clo04:'canonical-cloa-amber-v1',사람형클로이:'human-01-front-welcome',사람클로이:'human-01-front-welcome',인간형클로이:'human-01-front-welcome',왼손바닥:'hand-left-palm-v1',오른손바닥:'hand-right-palm-v1'}};
 await mkdir(path.join(out,'runtime'));await cp(path.join(root,'public-release/current-api.mjs'),path.join(out,'runtime/current-api.mjs'));
 await cp(path.join(root,'public-release/generation.mjs'),path.join(out,'runtime/generation.mjs'));

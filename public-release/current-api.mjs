@@ -9,7 +9,10 @@ export function validateCurrentCiReference(assets,text){
 export function validateProfilePolicy(profiles){if(!Array.isArray(profiles.profiles)||profiles.profiles.length!==0||profiles.selection_policy?.fallback_allowed!==false)throw Error('PROFILES_ARCHIVED_NO_FALLBACK');}
 export function createCanonicalAssets(assets,current){
  const canonical=assets.filter(a=>a.category==='canonical');
- if(canonical.length!==3||new Set(canonical.map(a=>a.id)).size!==3)throw Error('CANONICAL_PLATFORM_INCOMPLETE');
+ // 정면 정본 개수는 current.json 에서 status=canonical 인 변형 수를 따른다(폐기·제작 보류된 변형은 빠진다, 2026-11-26 CLO-04).
+ const live=Object.entries(current.variants||{}).filter(([k,v])=>ROBOT_VARIANTS[k]&&v.status==='canonical').map(([k])=>`canonical-${k}`).sort();
+ for(const [k,v]of Object.entries(current.variants||{}))if(v.status!=='canonical'&&v.production_usable!==false)throw Error('RETIRED_VARIANT_STILL_USABLE');
+ if(!live.length||canonical.length!==live.length||new Set(canonical.map(a=>a.id)).size!==live.length||JSON.stringify(canonical.map(a=>a.id).sort())!==JSON.stringify(live))throw Error('CANONICAL_PLATFORM_INCOMPLETE');
  return canonical.map(a=>{const variant=a.id.replace(/^canonical-/,''),character_id=ROBOT_VARIANTS[variant],v=current.variants[variant];
  if(!character_id||a.id!==`canonical-${variant}`||!v||v.character_id!==character_id||v.status!=='canonical'||v.production_usable!==true||v.assets?.png?.sha256!==a.png_sha256||(a.character_id&&a.character_id!==character_id))throw Error('CANONICAL_DRIFT');
  return {id:a.id,character_id,kind:'canonical',platform_version:PLATFORM_VERSION,variant,label:a.title,sha256:a.png_sha256,upstream_url:a.png_url,width:a.width,height:a.height};});

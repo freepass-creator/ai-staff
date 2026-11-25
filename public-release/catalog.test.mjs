@@ -4,7 +4,7 @@ import {readFile,stat} from 'node:fs/promises';
 const site=new URL('./site/',import.meta.url),catalog=JSON.parse(await readFile(new URL('catalog.json',site),'utf8'));
 test('public catalog contains current identities and keeps new R1 designs as proposals',()=>{
  const ids=catalog.assets.map(a=>a.id);assert.equal(new Set(ids).size,ids.length);assert.equal(catalog.assets.filter(a=>a.category==='robot').length,7);assert.ok(!ids.some(id=>/^robot-/.test(id)));assert.ok(!ids.includes('poster-07-robot-cover'));
- assert.equal(catalog.assets.filter(a=>a.status==='canonical').length,3);
+ assert.equal(catalog.assets.filter(a=>a.status==='canonical').length,2);assert.ok(!catalog.assets.some(a=>a.character_id==='CLO-04'||a.id==='canonical-cloa-amber-v1'));
  const proposals=catalog.assets.filter(a=>a.category==='revision');assert.equal(proposals.length,2);assert.ok(proposals.every(a=>a.status==='design_proposal'&&a.production_usable===false));
  assert.deepEqual(proposals.map(a=>a.character_id).sort(),['COD-01','COD-03']);
  assert.ok(!ids.some(id=>/^revision-clo-0[13]-/.test(id)));

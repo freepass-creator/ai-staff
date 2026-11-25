@@ -5,37 +5,13 @@
   "identity_policy": "CLO-02 and CLO-04 share VER1.0 platform proportions; preserve each face identity and accents; no retired design fallback.",
   "downloads": {
     "assets": {
-      "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/AI-Staff-VER1.0-Current-Kit.zip",
-      "sha256": "e0175ada1eba174cfc0120ec01a9856c00cc1eaf0c4621105ae080861ab2f39d",
-      "bytes": 18842140,
-      "contents": "VER1.0 front3 + Chakhan pose7 + cover4 + current // CI/fonts/renderer; no human/library-wide archive"
+      "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/AI-Staff-VER1.0-Current-Kit-r2.zip",
+      "sha256": "5016c048e58d3bf9d3b4468bad93bcb951770fc2eb21e65d4a7a091f3f088282",
+      "bytes": 16998321,
+      "contents": "VER1.0 front2 (CLO-04 retired 2026-11-26) + Chakhan pose7 + cover4 + current // CI/fonts/renderer; no human/library-wide archive"
     }
   },
   "assets": [
-    {
-      "id": "canonical-cloa-amber-v1",
-      "character_id": "CLO-04",
-      "variant": "cloa-amber-v1",
-      "title": "클로아 · VER1.0",
-      "category": "canonical",
-      "status": "canonical",
-      "production_usable": true,
-      "platform_version": "VER1.0",
-      "usage": "CLO-04 VER1.0 최신 정면 디자인. 같은 플랫폼의 넓은 화면·큰 눈·원형 여성형 어깨 기준.",
-      "tags": [
-        "CLO-04",
-        "VER1.0",
-        "정본",
-        "프리패스",
-        "amber"
-      ],
-      "png_url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/CLO-04-freepass-VER1.0.png",
-      "png_sha256": "a944508fe3461680361406ebfa00d2e068760d87fb893ec1c33c865b3a4052be",
-      "png_file": "png/CLO-04-freepass-VER1.0.png",
-      "width": 1024,
-      "height": 1536,
-      "thumbnail": "thumbs/canonical-cloa-amber-v1-a944508fe3.webp"
-    },
     {
       "id": "canonical-chakhan-white-v1",
       "character_id": "CLO-02",
@@ -1583,5 +1559,13 @@
   },
   "current_character_api": "/api/characters/current",
   "retired_robot_policy": "VER1.0 current only. Old canonical revisions, R1 CLO04, old profile and SVG are retired; original files are archive only.",
-  "hand_master_catalog": "hand-masters.json"
+  "hand_master_catalog": "hand-masters.json",
+  "suspended_characters": [
+    {
+      "character_id": "CLO-04",
+      "status": "production_suspended",
+      "since": "2026-11-26",
+      "reason": "이마 마크 교체본 확인 전 제작 보류. 과거 CLO-04 이미지로 대체하지 않는다."
+    }
+  ]
 }

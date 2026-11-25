@@ -36,10 +36,11 @@ export function createCurrentServer({root,catalogFile}){
   }
   if(pathname==='/library'){res.writeHead(302,{Location:'/library/','Cache-Control':'no-store'});return res.end();}
   if(pathname.startsWith('/library/'))return await serveLibrary({root,pathname,res,method:req.method});
-  if(pathname==='/api/characters/current')return send(res,200,{schema_version:c.schema_version,updated_on:c.updated_on,variants:Object.fromEntries(Object.keys(c.variants).map(id=>[id,resolve(c,c.variants[id].lookup_alias)]))});
-  if(pathname==='/api/characters/resolve'){const q=u.searchParams.get('q')||'';let v;try{v=resolve(c,q,{production:u.searchParams.get('production')==='1'});}catch(e){return send(res,e.code==='CANDIDATE_NOT_PRODUCTION_APPROVED'?409:404,{error:e.code,available:Object.keys(c.variants)});}for(const kind of Object.keys(v.assets))await verifiedAsset(v,kind);return send(res,200,{...v,asset_integrity:'verified'});}
+  if(pathname==='/api/characters/current')return send(res,200,{schema_version:c.schema_version,updated_on:c.updated_on,variants:Object.fromEntries(Object.keys(c.variants).filter(id=>c.variants[id].status!=='retired').map(id=>[id,resolve(c,c.variants[id].lookup_alias)]))});
+  if(pathname==='/api/characters/resolve'){const q=u.searchParams.get('q')||'';let v;try{v=resolve(c,q,{production:u.searchParams.get('production')==='1'});}catch(e){return send(res,e.code==='RETIRED_CHARACTER_ASSET'?410:e.code==='CANDIDATE_NOT_PRODUCTION_APPROVED'?409:404,{error:e.code,available:Object.keys(c.variants).filter(id=>c.variants[id].status!=='retired')});}for(const kind of Object.keys(v.assets))await verifiedAsset(v,kind);return send(res,200,{...v,asset_integrity:'verified'});}
   if(pathname.startsWith('/character-assets/')){
    const [,base,id,kind,extra]=pathname.split('/');if(extra||!c.variants[id])return send(res,404,{error:'unknown variant'});
+   if(c.variants[id].status==='retired')return send(res,410,{error:'RETIRED_CHARACTER_ASSET',current:'https://ai-staff-two.vercel.app/api/characters/current'});
    if(u.searchParams.get('production')==='1'&&!c.variants[id].production_usable)return send(res,409,{error:'CANDIDATE_NOT_PRODUCTION_APPROVED'});
    const a=await verifiedAsset(c.variants[id],kind);if(u.searchParams.has('sha')&&u.searchParams.get('sha')!==a.sha256)return send(res,409,{error:'STALE_ASSET_HASH'});
    res.writeHead(200,{'Content-Type':mime[path.extname(a.file)]||'application/octet-stream','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','X-Character-Variant':id,'X-Character-Status':c.variants[id].status,'X-Asset-SHA256':a.sha256});return res.end(req.method==='HEAD'?undefined:a.bytes);

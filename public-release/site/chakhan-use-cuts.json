@@ -478,10 +478,10 @@
   "hand_master_revision": "robot-hand-v1.0",
   "downloads": {
     "zip": {
-      "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/AI-Staff-VER1.0-Current-Kit.zip",
-      "sha256": "e0175ada1eba174cfc0120ec01a9856c00cc1eaf0c4621105ae080861ab2f39d",
-      "bytes": 18842140,
-      "contents": "VER1.0 front3 + Chakhan pose7 + cover4 + current // CI/fonts/renderer; no human/library-wide archive"
+      "url": "https://github.com/freepass-creator/ai-staff/releases/download/ai-staff-r1-20261115/AI-Staff-VER1.0-Current-Kit-r2.zip",
+      "sha256": "5016c048e58d3bf9d3b4468bad93bcb951770fc2eb21e65d4a7a091f3f088282",
+      "bytes": 16998321,
+      "contents": "VER1.0 front2 (CLO-04 retired 2026-11-26) + Chakhan pose7 + cover4 + current // CI/fonts/renderer; no human/library-wide archive"
     }
   },
   "design_version": "VER1.0",
