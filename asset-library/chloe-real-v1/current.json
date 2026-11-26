@@ -1,0 +1,121 @@
+{
+  "schema": "ai-staff/character-reference/v1",
+  "character_id": "CLO-02",
+  "variant": "chloe-real-v1",
+  "revision": "2026-11-20.1",
+  "approved_on": "2026-11-20",
+  "status": "canonical",
+  "library_path": "AI_STUDIO_콘텐츠라이브러리/10_캐릭터_포즈표정/AI_Staff_CLO-02_실사정본_v1",
+  "files": {
+    "face-master": {
+      "path": "reference/01-face-master.png",
+      "sha256": "f43eec1ced1d55586bf3d0f2f39e8d5ae9eb067ea6a6006341ffe4d3547bac35"
+    },
+    "face-front": {
+      "path": "reference/02-face-front.png",
+      "sha256": "d39a0607b7538e9a226ed736b44d164af7ea6838e26f8d9a90ccdfcd685ebc45"
+    },
+    "suit-body-front": {
+      "path": "reference/08-approved-suit-body-front.png",
+      "sha256": "8ca752cb889d1cd5a8682bf33cd3e74e397a304689bd4bc17abb4252a482fe4a"
+    },
+    "suit-front": {
+      "path": "reference/03-body-front.png",
+      "sha256": "4d3f5ea05d1eedcf9e2e7bd3d26aa1569f9c62e09d9b987b7bc4c7d8f9bc6b34"
+    },
+    "suit-side": {
+      "path": "reference/04-body-side.png",
+      "sha256": "26a97d530815d7c4810b5042df73826602f09b69ace7f4c2166af1768e9e6d86"
+    },
+    "suit-back": {
+      "path": "reference/05-body-back.png",
+      "sha256": "e91dec5c28f20c2be2001409238315cf322486077e386697c686a276ae6333fe"
+    },
+    "suit-details": {
+      "path": "reference/06-turnaround-details.png",
+      "sha256": "2f2dc977d7cd524507d7387ee034106a0bce89161ffa1a98c5430bbd950e0cfe"
+    },
+    "fitting-front": {
+      "path": "fitting/front.png",
+      "sha256": "9a9ed419dea7d4bc52993baa7749deb8de6effe692f9c1617aadc798e15c8f31"
+    },
+    "fitting-upper": {
+      "path": "fitting/upper.png",
+      "sha256": "ea18a6dec3fe629993ecfc2b9d6766e1a0c3a8b4713a41d607868dc25354a04d"
+    },
+    "fitting-lower": {
+      "path": "fitting/lower.png",
+      "sha256": "185b58437b7a51e08a235720545955ac73e6b24c0137b973cef06f493bf32771"
+    },
+    "fitting-side": {
+      "path": "fitting/side.png",
+      "sha256": "3298bcd0c4a363e7538db3c8ce55629ca239a0f712ef5aaac5177051b3b4676e"
+    },
+    "fitting-back": {
+      "path": "fitting/back.png",
+      "sha256": "4db7be33e1c9a7b6dca82dec7cbf3f55ef454cbd4221691ef3cb6a75c2636387"
+    },
+    "fitting-chest": {
+      "path": "fitting/chest.png",
+      "sha256": "5f178e2245ea492f5ced33d1a4f041450973687713a7b1b6a8684fc5f1823e93"
+    },
+    "fitting-waist": {
+      "path": "fitting/waist.png",
+      "sha256": "7f3d411a495de3785891a4d90af649db3e8bb075c882241c2e06c37108a224ab"
+    },
+    "fitting-hips": {
+      "path": "fitting/hips.png",
+      "sha256": "63a59f375431e7972ab5a7a2a0879519ca0adc08f31598259aeec2fae72785bc"
+    },
+    "fitting-thigh": {
+      "path": "fitting/thigh.png",
+      "sha256": "7db29429d3ce2ec03280e2a42348e2fa882004d46b45c2eadae2c78f641b637c"
+    },
+    "fitting-knee": {
+      "path": "fitting/knee.png",
+      "sha256": "853781798740851d53e164c8bd7a8f330529c887039cacc6a71fb37b6152176d"
+    },
+    "fitting-calf-ankle": {
+      "path": "fitting/calf-ankle.png",
+      "sha256": "0f9e7a6697714ce961eac7222a884245ce89b25bedbee30fde772c3e41d97157"
+    },
+    "fitting-turnaround": {
+      "path": "fitting/turnaround.png",
+      "sha256": "462910e8979839c514fad3e89f9d1d3cd3414f932779d7baa8e47f36782dd587"
+    },
+    "fitting-details": {
+      "path": "fitting/details.png",
+      "sha256": "81fdf8b71bcdde1d24b2efe4b06624aa03c6e72edc4b305eeed1dd5b3186206c"
+    }
+  },
+  "sets": {
+    "face": [
+      "face-master",
+      "face-front"
+    ],
+    "full": [
+      "face-master",
+      "face-front",
+      "suit-body-front",
+      "suit-side",
+      "suit-back"
+    ],
+    "fitting": [
+      "face-master",
+      "suit-body-front",
+      "fitting-front",
+      "fitting-upper",
+      "fitting-lower",
+      "fitting-side",
+      "fitting-back",
+      "fitting-chest",
+      "fitting-waist",
+      "fitting-hips",
+      "fitting-thigh",
+      "fitting-knee",
+      "fitting-calf-ankle",
+      "fitting-turnaround",
+      "fitting-details"
+    ]
+  }
+}

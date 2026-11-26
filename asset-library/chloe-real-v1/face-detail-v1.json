@@ -1,0 +1,26 @@
+{
+  "schema": "ai-staff/chloe-face-detail-reference/v1",
+  "base_revision": "2026-11-20.1",
+  "extension_revision": "face-detail-v1",
+  "status": "approved_detail_reference",
+  "role": "face-detail-support",
+  "scope": "face only",
+  "source": "chloe-detail-master.png",
+  "sha256": "f795c9e77c448e63b5b98e6792f73a69a7719f948a71132aed5d235ac8917790",
+  "native_pixels": [
+    1051,
+    1496
+  ],
+  "library_path": "AI_STUDIO_콘텐츠라이브러리/10_캐릭터_포즈표정/AI_Staff_CLO-02_실사정본_v1/실사_디테일_정본_v1",
+  "gate": {
+    "verdict": "pass",
+    "threshold": 0.6,
+    "score": 0.632
+  },
+  "detail": [
+    "코와 볼의 자연스러운 모공과 윤기",
+    "홍채의 결과 동공, 동일 광원의 작은 반사광",
+    "속눈썹·눈썹과 가르마·잔머리",
+    "입술 결과 자연스러운 피부색 변화"
+  ]
+}

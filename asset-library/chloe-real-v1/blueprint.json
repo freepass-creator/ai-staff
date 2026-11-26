@@ -1,0 +1,283 @@
+{
+  "schema": "ai-staff/chloe-component-blueprint/v1",
+  "character_id": "CLO-02",
+  "identity_revision": "2026-11-20.1",
+  "blueprint_revision": "2d-blueprint-v2",
+  "basis": "Source pixel coordinates from the upper-left, manually annotated on approved 2D photographs. Rectangles are reference regions, never texture slices for direct assembly.",
+  "body": {
+    "primary": "suit-body-front",
+    "crown_y_px": 25,
+    "shoe_floor_y_px": 1417,
+    "landmarks": {
+      "crown": [
+        541,
+        25
+      ],
+      "chin": [
+        544,
+        215
+      ],
+      "shoulders": [
+        [
+          405,
+          275
+        ],
+        [
+          680,
+          275
+        ]
+      ],
+      "elbows": [
+        [
+          389,
+          493
+        ],
+        [
+          699,
+          493
+        ]
+      ],
+      "waist_jacket": [
+        545,
+        511
+      ],
+      "hip_line": [
+        545,
+        683
+      ],
+      "wrists": [
+        [
+          374,
+          704
+        ],
+        [
+          711,
+          704
+        ]
+      ],
+      "knees": [
+        [
+          485,
+          965
+        ],
+        [
+          596,
+          965
+        ]
+      ],
+      "ankles": [
+        [
+          492,
+          1265
+        ],
+        [
+          592,
+          1265
+        ]
+      ],
+      "shoe_floor": [
+        [
+          493,
+          1417
+        ],
+        [
+          592,
+          1417
+        ]
+      ]
+    },
+    "unit": "% of projected crown-to-shoe-floor in the approved standing shot",
+    "precision": "manual pixel picks, visible garment/shoe geometry only"
+  },
+  "rules": [
+    "Use approved face-master for identity and suit-body-front for the standing proportions in every assembly recipe.",
+    "All components share this actor revision; never mix an unverified candidate, another character, or pixels from different perspectives into an image.",
+    "For image generation use whole reference photos; named crop boxes explain what to inspect. Use a single camera view and pose per output.",
+    "Resize the approved whole figure uniformly. Compare a new pose against that pose and matching camera angle. A cropped scene cannot establish the hidden segment dimensions.",
+    "Side and back references support visible clothing/hair/shoes. Body depth, true circumferences, skin under clothing, and occluded joints cannot be derived from this blueprint."
+  ],
+  "parts": [
+    {
+      "id": "face",
+      "label": "얼굴 전체",
+      "source": "face-front",
+      "rect": [
+        182,
+        97,
+        689,
+        872
+      ],
+      "scope": "identity",
+      "note": "shape and spacing of eyes, nose, lips and jaw; face-master remains first"
+    },
+    {
+      "id": "eyes",
+      "label": "눈·홍채",
+      "source": "face-detail",
+      "rect": [
+        349,
+        432,
+        414,
+        197
+      ],
+      "scope": "texture-only",
+      "note": "brown iris, consistent catchlight and eyelash; eyelid shape from face-master"
+    },
+    {
+      "id": "nose-skin",
+      "label": "코·볼 피부",
+      "source": "face-detail",
+      "rect": [
+        318,
+        552,
+        430,
+        207
+      ],
+      "scope": "texture-only",
+      "note": "pores and mild sheen; no smoothing or fake gloss"
+    },
+    {
+      "id": "mouth",
+      "label": "입술",
+      "source": "face-detail",
+      "rect": [
+        443,
+        715,
+        221,
+        146
+      ],
+      "scope": "texture-only",
+      "note": "natural lip lines; shape from face-master"
+    },
+    {
+      "id": "hair",
+      "label": "가르마·잔머리",
+      "source": "face-detail",
+      "rect": [
+        117,
+        9,
+        833,
+        481
+      ],
+      "scope": "texture-only",
+      "note": "follow approved hairline, part, strands and brown hue"
+    },
+    {
+      "id": "neck-shoulder",
+      "label": "목·어깨",
+      "source": "suit-body-front",
+      "rect": [
+        354,
+        208,
+        377,
+        174
+      ],
+      "scope": "front-reference",
+      "note": "neck alignment and shoulder line; jacket padding is visible, anatomical width unknown"
+    },
+    {
+      "id": "torso",
+      "label": "몸통·허리",
+      "source": "suit-body-front",
+      "rect": [
+        355,
+        287,
+        377,
+        336
+      ],
+      "scope": "front-reference",
+      "note": "standing jacket outline and waist location"
+    },
+    {
+      "id": "pelvis",
+      "label": "골반·치마선",
+      "source": "suit-body-front",
+      "rect": [
+        344,
+        585,
+        402,
+        269
+      ],
+      "scope": "front-reference",
+      "note": "use only the photographed clothed outline"
+    },
+    {
+      "id": "arm-hand",
+      "label": "팔·손",
+      "source": "suit-body-front",
+      "rect": [
+        344,
+        268,
+        398,
+        552
+      ],
+      "scope": "front-reference",
+      "note": "arm drop, wrist height and hand pose; don't transplant pose between angles"
+    },
+    {
+      "id": "legs",
+      "label": "허벅지·무릎·발목",
+      "source": "suit-body-front",
+      "rect": [
+        407,
+        824,
+        273,
+        478
+      ],
+      "scope": "front-reference",
+      "note": "knees and ankles compare after uniform scaling"
+    },
+    {
+      "id": "shoe-front",
+      "label": "구두 정면",
+      "source": "suit-body-front",
+      "rect": [
+        440,
+        1250,
+        208,
+        173
+      ],
+      "scope": "front-reference",
+      "note": "pointed toe and paired shoe baseline"
+    },
+    {
+      "id": "shoe-side",
+      "label": "구두 옆면",
+      "source": "suit-side",
+      "rect": [
+        119,
+        1129,
+        215,
+        175
+      ],
+      "scope": "angle-helper",
+      "note": "heel profile, shoe opening and toe; compare side-to-side only"
+    },
+    {
+      "id": "hair-back",
+      "label": "머리 뒷면",
+      "source": "suit-back",
+      "rect": [
+        88,
+        22,
+        191,
+        443
+      ],
+      "scope": "angle-helper",
+      "note": "back hair shape and length; compare rear shots only"
+    },
+    {
+      "id": "shoe-back",
+      "label": "구두 뒤축",
+      "source": "suit-back",
+      "rect": [
+        121,
+        1145,
+        168,
+        173
+      ],
+      "scope": "angle-helper",
+      "note": "heel placement and symmetrical rear shape"
+    }
+  ]
+}
