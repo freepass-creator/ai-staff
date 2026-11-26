@@ -1,0 +1,160 @@
+{
+  "schema": "ai-staff/erp-banner-library/v1",
+  "revision": "autumn-2026-11-16-v3",
+  "status": "review_only",
+  "production_usable": false,
+  "season": "autumn",
+  "weekdays": [
+    "mon",
+    "tue",
+    "wed",
+    "thu",
+    "fri",
+    "sat",
+    "sun"
+  ],
+  "paths": {
+    "file": "relative to library.json",
+    "archive_file": "relative to the ai-staff original asset archive"
+  },
+  "sources": [
+    {
+      "id": "landscape-master",
+      "archive_file": "erp-banner/banner-v1-20261116/autumn-landscape-master.png",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 1942029,
+      "sha256": "8297277d73f200ee576930eb073165f5808d7a673530818f771f9e7f2eaa91fb"
+    },
+    {
+      "id": "cloa-profile",
+      "archive_file": "robot-existing-reference-20261115/FREEPASS-CLO-04.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1825322,
+      "sha256": "5a4537405ad38e7e23abdf3cd849e8299204c90218f1f64db2d788191cdbe616",
+      "catalog": "robots/revisions/existing-references.json",
+      "status": "existing_identity_reference"
+    }
+  ],
+  "assets": [
+    {
+      "id": "stylesheet",
+      "file": "banner.css",
+      "role": "banner-styles",
+      "bytes": 6276,
+      "sha256": "df000e0e5b7bfc1dd6b4d1eec6857407c0a57694c33826e8130fe8591d6292ee"
+    },
+    {
+      "id": "palette",
+      "file": "autumn-palette.json",
+      "role": "weekday-palette",
+      "bytes": 1542,
+      "sha256": "fa88190c61a4b937a1f177fa0e03c865b2840ec1b0ebe2a6a0bd522675f9f983"
+    },
+    {
+      "id": "autumn-landscape",
+      "file": "autumn-landscape.webp",
+      "role": "banner-background",
+      "source": "landscape-master",
+      "bytes": 5150,
+      "sha256": "a23920c2146b7aa6fa0cb52cc26201a2e3572b895f2a0481a8c02fa2b54f01f8",
+      "width": 780,
+      "height": 260
+    },
+    {
+      "id": "autumn-left-a",
+      "file": "autumn-left-a.svg",
+      "role": "decorative-mask",
+      "side": "left",
+      "layer": "a",
+      "bytes": 514,
+      "sha256": "db54e1873c58dbeb4059aa3d164504371edefe4f77cdcc14e0be59f6ff1b7b5d",
+      "viewBox": "0 0 110 96"
+    },
+    {
+      "id": "autumn-left-b",
+      "file": "autumn-left-b.svg",
+      "role": "decorative-mask",
+      "side": "left",
+      "layer": "b",
+      "bytes": 473,
+      "sha256": "ab774a2d0795be32daa2166f33fb208daf1e9ece54efd6379f629615f6341993",
+      "viewBox": "0 0 110 96"
+    },
+    {
+      "id": "autumn-right-a",
+      "file": "autumn-right-a.svg",
+      "role": "decorative-mask",
+      "side": "right",
+      "layer": "a",
+      "bytes": 981,
+      "sha256": "fa05258cae501d3e87498dcfec2ef8949b6beb7cce7d3a0699785ee0033ec815",
+      "viewBox": "0 0 110 96"
+    },
+    {
+      "id": "autumn-right-b",
+      "file": "autumn-right-b.svg",
+      "role": "decorative-mask",
+      "side": "right",
+      "layer": "b",
+      "bytes": 802,
+      "sha256": "10e0c4947de1285f1bc77a74ffff190bb02d46274dd0e5c9a9b357826b7a7919",
+      "viewBox": "0 0 110 96"
+    },
+    {
+      "id": "cloa-source-record",
+      "file": "review/face-source.json",
+      "role": "review-face-provenance",
+      "source": "cloa-profile",
+      "transform": {
+        "crop_xywh": [
+          150,
+          0,
+          912,
+          912
+        ],
+        "coordinate_system": "원본 좌측 상단 기준 픽셀",
+        "resize_kernel": "lanczos3",
+        "encoder": "sharp 0.35.5",
+        "format": "webp",
+        "quality": 90,
+        "effort": 6,
+        "background": "기존 짙은 배경을 유지하며 원형 표시는 CSS border-radius: 50%로 적용",
+        "edits": [
+          "crop",
+          "resize",
+          "encode"
+        ]
+      },
+      "bytes": 1594,
+      "sha256": "31ea7151abd47e200effad689b93f16794a81f8e2ca2b52b31b2ecfb85d83bcc"
+    },
+    {
+      "id": "cloa-128",
+      "file": "review/cloa-128.webp",
+      "role": "review-face",
+      "character_id": "CLO-04",
+      "source": "cloa-profile",
+      "transform_record": "cloa-source-record",
+      "bytes": 7020,
+      "sha256": "3b7578f8d1122ac6fa12c988bada1332919c733b5519fb747d1c346d168f4392",
+      "width": 128,
+      "height": 128
+    },
+    {
+      "id": "cloa-256",
+      "file": "review/cloa-256.webp",
+      "role": "review-face",
+      "character_id": "CLO-04",
+      "source": "cloa-profile",
+      "transform_record": "cloa-source-record",
+      "bytes": 19110,
+      "sha256": "c12a51d82c14d897d922f5e2d785a1e46be373fa811266e7f0b9083b648290e3",
+      "width": 256,
+      "height": 256
+    }
+  ]
+}

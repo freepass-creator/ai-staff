@@ -1,0 +1,210 @@
+/* Load after the ERP5 list stylesheet. Apply erp-autumn to the notice and cheer slides. */
+.bnx .erp-autumn {
+  --autumn-start: #FBF9F2;
+  --autumn-end: #F6F0DB;
+  --autumn-text: #1B2A4A;
+  --autumn-accent: #72581F;
+  --autumn-border: #DED6BA;
+  --autumn-ring: #C6B487;
+  --leaf-a: #C7A44F;
+  --leaf-b: #AB7653;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: 52px minmax(0, max-content) max-content minmax(72px, 1fr);
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px;
+  height: 96px;
+  overflow: hidden;
+  border: 1px solid var(--autumn-border);
+  border-radius: 2px;
+  color: var(--autumn-text);
+  background: linear-gradient(105deg, var(--autumn-start) 30%, var(--autumn-end));
+}
+.bnx .erp-autumn::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: -1;
+  width: clamp(88px, calc(100% - 620px), 48%);
+  background: url("./autumn-landscape.webp") no-repeat right 59% / cover;
+  mask-image: linear-gradient(90deg, transparent, black 25%);
+  pointer-events: none;
+}
+.bnx .erp-autumn .autumn-face {
+  grid-column: 1;
+  grid-row: 1;
+  width: 52px;
+  height: 52px;
+  border: 2px solid #fff;
+  outline: 1px solid var(--autumn-ring);
+  border-radius: 50%;
+  object-fit: cover;
+}
+.bnx .erp-autumn .bnx-tx {grid-column: 2; grid-row: 1; min-width: 0;}
+.bnx .erp-autumn .bnx-tx small {color: var(--autumn-accent); line-height: 16px;}
+.bnx .erp-autumn .bnx-tx b {color: var(--autumn-text); line-height: 1.28;}
+.bnx .erp-autumn .bnx-d {color: var(--autumn-text); opacity: 1; margin-top: 2px;}
+.bnx .erp-autumn .bnx-go {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  color: var(--autumn-text);
+  background: transparent;
+  line-height: 20px;
+}
+.bnx .erp-autumn .bnx-go::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: radial-gradient(circle at 5px 7px, white 1px, transparent 1.2px),
+              radial-gradient(circle at 8px 7px, white 1px, transparent 1.2px),
+              radial-gradient(circle at 11px 7px, white 1px, transparent 1.2px),
+              currentColor;
+  clip-path: path("M8 1C3.7 1 .5 3.6 .5 7c0 2.1 1.2 3.9 3.3 5L3 15l4-2.1 1 .1c4.3 0 7.5-2.6 7.5-6S12.3 1 8 1Z");
+}
+.bnx .erp-autumn .bnx-go > svg {display: block; flex: none;}
+@media (hover: hover) {
+  .bnx .erp-autumn .bnx-go:hover {text-decoration: underline; text-underline-offset: 3px;}
+}
+.bnx .erp-autumn .bnx-go:focus-visible {outline: 2px solid #1b2a4a; outline-offset: 2px;}
+@media (max-width: 700px) {
+  .bnx .erp-autumn {
+    height: 80px;
+    padding: 0 10px;
+    grid-template-columns: 40px minmax(0, 1fr) clamp(62px, 20%, 84px);
+    column-gap: 8px;
+    row-gap: 0;
+  }
+  .bnx .erp-autumn::before {
+    width: clamp(74px, 24%, 110px);
+    background-size: auto 100%;
+    background-position: 90% center;
+    mask-image: linear-gradient(90deg, transparent, black 28%);
+  }
+  .bnx .erp-autumn .autumn-face {width: 40px; height: 40px;}
+  .bnx .erp-autumn .bnx-tx b {font-size: 15px; line-height: 19px;}
+  .bnx .erp-autumn .bnx-d {font-size: 13px; line-height: 16px; margin-top: 1px;}
+  .bnx .bnx-note.erp-autumn {grid-template-rows: auto auto; align-content: center;}
+  .bnx .bnx-note.erp-autumn .autumn-face {grid-row: 1 / -1; transform: translateY(-7px);}
+  .bnx .bnx-note.erp-autumn .bnx-tx {grid-row: 1;}
+  .bnx .bnx-note.erp-autumn .bnx-tx small {
+    position: absolute;
+    top: 54px;
+    left: 10px;
+    width: 40px;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+  }
+  .bnx .erp-autumn .bnx-go {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    margin-top: 3px;
+    min-height: 0;
+    font-size: 13px;
+    line-height: 17px;
+  }
+  .bnx .erp-autumn .bnx-go::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+  .bnx .bnx-note.erp-autumn:has(.bnx-go:focus-visible) {outline: 2px solid #1b2a4a; outline-offset: -2px;}
+  .bnx .bnx-cheer.erp-autumn .bnx-tx small {font-size: 13px;}
+  .bnx .bnx-cheer.erp-autumn .bnx-d {word-break: keep-all; text-wrap: balance;}
+}
+
+.bnx .erp-autumn[data-wd="tue"] {
+  --autumn-start: #FBF9F2;
+  --autumn-end: #EEF2E7;
+  --autumn-text: #1B2A4A;
+  --autumn-accent: #4D6044;
+  --autumn-border: #D6DCC9;
+  --autumn-ring: #B1BFA4;
+  --leaf-a: #A8AA70;
+  --leaf-b: #778C64;
+}
+.bnx .erp-autumn[data-wd="wed"] {
+  --autumn-start: #FBF9F2;
+  --autumn-end: #F5EFDE;
+  --autumn-text: #1B2A4A;
+  --autumn-accent: #6D563B;
+  --autumn-border: #DED4BD;
+  --autumn-ring: #C6B295;
+  --leaf-a: #C7AB70;
+  --leaf-b: #A9835B;
+}
+.bnx .erp-autumn[data-wd="thu"] {
+  --autumn-start: #FBF9F2;
+  --autumn-end: #F0F1E1;
+  --autumn-text: #1B2A4A;
+  --autumn-accent: #59613B;
+  --autumn-border: #D8D9BF;
+  --autumn-ring: #B7BD99;
+  --leaf-a: #B5B573;
+  --leaf-b: #879363;
+}
+.bnx .erp-autumn[data-wd="fri"] {
+  --autumn-start: #FBF9F2;
+  --autumn-end: #F8EBE2;
+  --autumn-text: #1B2A4A;
+  --autumn-accent: #80533F;
+  --autumn-border: #E3D1C6;
+  --autumn-ring: #CEAC98;
+  --leaf-a: #D0A472;
+  --leaf-b: #B57B64;
+}
+.bnx .erp-autumn[data-wd="sat"] {
+  --autumn-start: #FBF9F2;
+  --autumn-end: #F8EEDB;
+  --autumn-text: #1B2A4A;
+  --autumn-accent: #73582F;
+  --autumn-border: #E3D5BC;
+  --autumn-ring: #CBB68F;
+  --leaf-a: #CDA959;
+  --leaf-b: #B38B5B;
+}
+.bnx .erp-autumn[data-wd="sun"] {
+  --autumn-start: #FBF9F2;
+  --autumn-end: #EDF1EB;
+  --autumn-text: #1B2A4A;
+  --autumn-accent: #486157;
+  --autumn-border: #D4DBD2;
+  --autumn-ring: #AEBCAD;
+  --leaf-a: #A4AD84;
+  --leaf-b: #82967F;
+}
+
+/* The same artwork can use two weekday colors in the compact leaf treatment. */
+.bnx .erp-autumn--leaves::before,
+.bnx .erp-autumn--leaves::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: auto;
+  pointer-events: none;
+  background: var(--leaf-a);
+  mask-image: url("./autumn-left-a.svg"), url("./autumn-right-a.svg");
+  mask-size: 110px 96px, 110px 96px;
+  mask-position: left center, right center;
+  mask-repeat: no-repeat;
+}
+.bnx .erp-autumn--leaves::after {
+  background: var(--leaf-b);
+  mask-image: url("./autumn-left-b.svg"), url("./autumn-right-b.svg");
+}
+@media (max-width: 700px) {
+  .bnx .erp-autumn--leaves::before,
+  .bnx .erp-autumn--leaves::after {mask-size: 54px 80px, 54px 80px;}
+}
