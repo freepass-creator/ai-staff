@@ -1,0 +1,48 @@
+{
+  "schema": "ai-staff/chloe-real-body-lock/v1",
+  "character_variant": "CHLOE_REAL_V1",
+  "relation_to_existing_character": "separate photorealistic study, does not replace characters/클로이 selected B or robots/CLO-02",
+  "body_lock_id": "CHLOE_REAL_V1_BODY_FRONT_LOCK_20261119_A",
+  "decision_date": "2026-11-19",
+  "body_lock_status": "APPROVED_REFERENCE_FIXED_FRONT_2D",
+  "face_master_status": "SEPARATE_FACE_AUTHORITY_UNCHANGED",
+  "body": {
+    "filename": "CHLOE_BODY_MASTER_FRONT_V1.png",
+    "sha256": "8ca752cb889d1cd5a8682bf33cd3e74e397a304689bd4bc17abb4252a482fe4a",
+    "width": 1086,
+    "height": 1448,
+    "pose": "front-neutral",
+    "reference_url": "https://drive.google.com/file/d/1FsWNoDq7N3o0dLe0kCPnMdlPWebdtl_d/view?usp=drivesdk"
+  },
+  "face": {
+    "filename": "02_CHLOE_REAL_V1_SUPPORT_체형각도_360시트.png",
+    "sha256": "640a420ad65446adaa0288e0f1bb14a0aace1dbb73ace053c3193977d2ecf7ff",
+    "crop_xyxy": [
+      0,
+      694,
+      282,
+      1024
+    ],
+    "identity_source_role": "original lower-left face crop; generated body face is not face master"
+  },
+  "stocking_mask": {
+    "filename": "STOCKINGS_ONLY_EDIT_INTERIOR_MASK_V1.png",
+    "drive_url": "https://drive.google.com/file/d/1J0jvle9F7N4QlFG9PSy_Nh21dUkiIl9C/view?usp=drivesdk",
+    "review_scope": "interior pixel mask only; no leg contour editing"
+  },
+  "archive_folder": "https://drive.google.com/drive/folders/1TCWjK0ZLLMoaifwrpBdZLsedqdnDkIBm",
+  "body_lock_folder": "https://drive.google.com/drive/folders/1eiTjduieJXU9AhTAxF0La12G1YvZpt79",
+  "archive_zip": "https://drive.google.com/file/d/1EFgSAZErw5iHQVLXDvACdoKVdeWy-rAq/view?usp=drivesdk",
+  "controls": {
+    "same_pose": "must reference immutable base and verify zero changed pixels outside mask",
+    "new_angle": "review required; 2D proof invalid",
+    "other_outfits": "review required; do not claim pixel-identity",
+    "auto_promote_to_current_api": false,
+    "deploy": false
+  },
+  "verification": {
+    "master_self_test": "passed",
+    "generated_hosiery_variants": "5 review-only, all fail outside-mask exact pixels",
+    "runner": "generator/chloe_real_body_lock.py"
+  }
+}
